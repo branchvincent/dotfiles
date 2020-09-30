@@ -1,0 +1,4 @@
+#!/bin/bash
+
+source /dev/stdin <<<"$(curl -fsSL bootstrap.yadm.io)" # ensure yadm is available
+yadm clone --bootstrap https://github.com/branchvincent/dotfiles.git

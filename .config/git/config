@@ -1,0 +1,43 @@
+[user]
+    name = Branch Vincent
+    email = branchevincent@gmail.com
+[github]
+    user = branchvincent
+[core]
+    autocrlf = input				# normalize line endings on commit (but not checkout)
+    mergeoptions = --no-edit		# dont prompt for commit message on a merge
+    pager = diff-so-fancy | $PAGER	# use a better diff visualizer
+[color "diff"]
+    meta = yellow
+    frag = magenta bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
+[commit]
+    template = ~/.config/git/commit-msg
+[fetch]
+    prune = true			# prune deleted remote refs
+    pruneTags = true		# prune deleted remote tags
+[format]
+    pretty = format:%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s
+[include]
+    path = aliases
+[init]
+    defaultBranch = main
+    templateDir = ~/.config/git/template
+[log]
+    date = relative
+[pull]
+    ff = only
+[push]
+    followTags = true		# push annotated tag(s) with commit(s)
+[url "https://github.com/"]
+    insteadOf = gh:
+[url "https://github.com/branchvincent/"]
+    insteadOf = me:

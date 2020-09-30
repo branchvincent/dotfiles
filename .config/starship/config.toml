@@ -1,0 +1,16 @@
+add_newline = false
+
+[aws]
+disabled = true
+
+[kubernetes]
+disabled = true
+
+[package]
+disabled = true
+
+[custom.sudo]
+command = "echo '(sudo)'"
+when = "sudo -n true"
+style = "#ffb05b"
+prefix = ""

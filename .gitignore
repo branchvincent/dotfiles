@@ -1,0 +1,25 @@
+/*
+
+### .config ###
+!.config/
+.config/.op/
+.config/brew/Brewfile.lock.json
+.config/docker/.buildNodeID
+.config/fish/conf.d/99-secrets.fish
+.config/gcloud/
+.config/ssh/*
+!.config/ssh/*.pub
+!.config/ssh/config
+# https://github.com/TheLocehiliosan/yadm/issues/208
+.config/yadm/repo.git/
+
+### .github ###
+!.github/
+
+### .local ###
+!.local/bin/kubectl-*
+
+### Library ###
+!Library/Application Support/Code/User/keybindings.json
+!Library/Application Support/Code/User/settings.json
+!Library/Application Support/iTerm2/DynamicProfiles/profiles.json

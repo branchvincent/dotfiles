@@ -1,0 +1,62 @@
+#!/bin/bash
+
+### Go ###
+
+layout_go() {
+    path_add GOPATH "$PWD"
+    PATH_add "${GOPATH//://bin:}"/bin
+}
+
+### Java ###
+
+use_java() {
+    JAVA_HOME=$(/usr/libexec/java_home --failfast --version "$1")
+    export JAVA_HOME
+    load_prefix "$JAVA_HOME"
+}
+
+### Node ###
+
+use_nodejs() {
+    version=${1:-$(cat .nvmrc)}
+    prefix="$NVM_DIR/versions/node/$version"
+
+    # Install and load it
+    if [ ! -d "$prefix" ]; then
+        has nvm || source "$(brew --prefix nvm)/nvm.sh" &>/dev/null
+        nvm install "$version"
+    fi
+    load_prefix "$prefix"
+    watch_file .nvmrc
+}
+
+### Python ###
+
+use_python() {
+    version=${1:-$(cat .python-version)}
+    prefix="$PYENV_ROOT/versions/$version"
+
+    # Install and load it
+    [ -d "$prefix" ] || pyenv install "$version"
+    load_prefix "$prefix"
+    watch_file .python-version
+}
+
+layout_poetry() {
+    # Create venv, if needed
+    poetry run true
+
+    # Activate venv
+    VIRTUAL_ENV=$(poetry env info --path)
+    export VIRTUAL_ENV
+    export POETRY_ACTIVE=1
+    PATH_add "$VIRTUAL_ENV/bin"
+
+    # Update pip and friends, every week
+    now=$(date +%s)
+    modified_at=$(date -r "$(which pip)" +%s)
+    if [ $((now - modified_at)) -gt $((60 * 60 * 24 * 7)) ]; then
+        poetry run pip install --upgrade pip setuptools wheel
+        touch "$(which pip)" # NOTE: ensure mtime is updated
+    fi
+}

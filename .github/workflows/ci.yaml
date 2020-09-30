@@ -1,0 +1,19 @@
+name: CI
+on:
+  push:
+    paths-ignore:
+      - "**.md"
+env:
+  HOMEBREW_NO_AUTO_UPDATE: 1
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up repo
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      - name: Install deps
+        run: brew install fish shellcheck shfmt
+      - name: Lint
+        uses: pre-commit/action@v2.0.0

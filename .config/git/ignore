@@ -1,0 +1,10 @@
+### macOS ###
+.DS_Store
+Icon?
+
+### Apps ###
+.env*
+.vscode
+
+### Misc ###
+tmp/

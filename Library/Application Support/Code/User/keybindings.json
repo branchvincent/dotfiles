@@ -1,0 +1,42 @@
+[
+  {
+    "command": "workbench.action.debug.start",
+    "key": "cmd+r",
+    "when": "!inDebugMode"
+  },
+  {
+    "command": "-workbench.action.debug.start",
+    "key": "f5",
+    "when": "!inDebugMode"
+  },
+  {
+    "command": "workbench.action.debug.restart",
+    "key": "cmd+r",
+    "when": "inDebugMode"
+  },
+  {
+    "command": "-workbench.action.debug.restart",
+    "key": "shift+cmd+f5",
+    "when": "inDebugMode"
+  },
+  {
+    "command": "git.stageSelectedRanges",
+    "key": "shift+cmd+s",
+    "when": "isInDiffEditor"
+  },
+  {
+    "command": "-git.stageSelectedRanges",
+    "key": "cmd+k alt+cmd+s",
+    "when": "isInDiffEditor"
+  },
+  {
+    "command": "git.unstageSelectedRanges",
+    "key": "shift+cmd+r",
+    "when": "isInDiffEditor"
+  },
+  {
+    "command": "-git.unstageSelectedRanges",
+    "key": "cmd+k cmd+n",
+    "when": "isInDiffEditor"
+  }
+]

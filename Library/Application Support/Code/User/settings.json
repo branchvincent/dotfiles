@@ -1,0 +1,65 @@
+{
+  // Core
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "editor.rulers": [100],
+  "editor.suggestSelection": "first",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "files.associations": {
+    "Brewfile": "ruby"
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "search.smartCase": true,
+  "search.useGlobalIgnoreFiles": true,
+  "terminal.integrated.fontFamily": "Fira Code",
+  "window.nativeTabs": true,
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.iconTheme": "file-icons",
+  // Extensions //
+  "prettier.disableLanguages": ["javascript", "yaml"],
+  // Langauges //
+  // Docker
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  // Git
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "gitlens.statusBar.enabled": false,
+  // Go
+  "go.useLanguageServer": true,
+  // Json: https://github.com/microsoft/vscode/issues/51935
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // Python
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "~/.local/bin/black", // https://github.com/microsoft/vscode-python/issues/4922
+  "python.languageServer": "Jedi",
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Path": "~/.local/bin/flake8",
+  "python.linting.mypyEnabled": true,
+  "python.linting.mypyPath": "~/.local/bin/mypy",
+  "python.linting.pylintEnabled": false,
+  "python.pythonPath": "python3",
+  "python.showStartPage": false,
+  "python.sortImports.path": "${env:HOME}/.local/bin/isort",
+  "python.terminal.activateEnvironment": false, // handled by direnv
+  "python.testing.pytestEnabled": true,
+  "python.testing.pytestPath": "~/.local/bin/pytest",
+  "[python]": {
+    "editor.formatOnPaste": false
+  }
+}
