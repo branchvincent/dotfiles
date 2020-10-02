@@ -30,7 +30,6 @@
     path = aliases
 [init]
     defaultBranch = main
-    templateDir = ~/.config/git/template
 [log]
     date = relative
 [pull]
