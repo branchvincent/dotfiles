@@ -30,6 +30,11 @@ repos:
     rev: v0.14.2
     hooks:
       - id: detect-secrets
+  - repo: https://github.com/codespell-project/codespell
+    rev: v1.17.1
+    hooks:
+      - id: codespell
+        args: [--ignore-words-list, "files',iterm"]
   - repo: meta
     hooks:
       - id: check-hooks-apply

@@ -25,7 +25,7 @@
   "workbench.iconTheme": "file-icons",
   // Extensions //
   "prettier.disableLanguages": ["javascript", "yaml"],
-  // Langauges //
+  // Languages //
   // Docker
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"

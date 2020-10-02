@@ -61,7 +61,7 @@ for name in (yadm introspect configs)
     complete -x -c yadm -n '__fish_yadm_using_command config' -a '$name' -d 'yadm config'
 end
 
-# yadm universial options
+# yadm universal options
 complete --force-files -c yadm -s Y -l yadm-dir -d 'Override location of yadm directory'
 complete --force-files -c yadm -l yadm-repo -d 'Override location of yadm repository'
 complete --force-files -c yadm -l yadm-config -d 'Override location of yadm configuration file'
