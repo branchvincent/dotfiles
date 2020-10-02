@@ -3,6 +3,9 @@ add_newline = false
 [aws]
 disabled = true
 
+[gcloud]
+disabled = true
+
 [kubernetes]
 disabled = true
 
@@ -11,6 +14,6 @@ disabled = true
 
 [custom.sudo]
 command = "echo '(sudo)'"
+description = "Sudo credentials are cached"
 when = "sudo -n true"
-style = "#ffb05b"
-prefix = ""
+style = "bold yellow"
