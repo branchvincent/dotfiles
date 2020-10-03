@@ -11,13 +11,13 @@ repos:
         entry: shfmt -i 4 -w
         language: system
         types: [shell]
-        exclude: \.p10k\.zsh$
+        exclude_types: [zsh] # https://github.com/mvdan/sh/issues/120
       - id: shellcheck
         name: Lint shell files
         entry: shellcheck -e SC1090,SC1091
         language: system
         types: [shell]
-        exclude: \.p10k\.zsh$
+        exclude_types: [zsh] # https://github.com/koalaman/shellcheck/issues/809
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.2.0
     hooks:

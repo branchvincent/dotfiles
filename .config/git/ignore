@@ -4,7 +4,7 @@ Icon?
 
 ### Apps ###
 .env*
-.vscode
+.vscode/
 
 ### Misc ###
 tmp/
