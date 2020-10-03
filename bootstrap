@@ -1,4 +1,5 @@
 #!/bin/bash
 
-source /dev/stdin <<<"$(curl -fsSL bootstrap.yadm.io)" # ensure yadm is available
+export YADM_OVERRIDE_REPO="$HOME/.local/share/yadm/repo.git" # override repo location
+source /dev/stdin <<<"$(curl -fsSL bootstrap.yadm.io)"       # ensure yadm is available
 yadm clone --bootstrap https://github.com/branchvincent/dotfiles.git

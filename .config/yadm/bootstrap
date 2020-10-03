@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-[ "${DEBUG:-}" = "true" ] && set -x
+[ -n "${DEBUG:-}" ] && set -x
 
 ### General ###
 
 # Ignore non-dotfiles on checkout: https://github.com/TheLocehiliosan/yadm/issues/93
 yadm gitconfig core.sparseCheckout true
-cat <<EOF >"$HOME/.config/yadm/repo.git/info/sparse-checkout"
+cat <<EOF >"$(yadm introspect repo)/info/sparse-checkout"
 /*
 !/bootstrap
 EOF

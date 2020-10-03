@@ -10,8 +10,6 @@
 .config/ssh/*
 !.config/ssh/*.pub
 !.config/ssh/config
-# https://github.com/TheLocehiliosan/yadm/issues/208
-.config/yadm/repo.git/
 
 ### .github ###
 !.github/
