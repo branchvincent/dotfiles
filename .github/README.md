@@ -34,8 +34,9 @@ curl -fsSL https://raw.githubusercontent.com/branchvincent/dotfiles/main/bootstr
 ## References
 
 - [Shell initialization](https://github.com/rbenv/rbenv/wiki/unix-shell-initialization)
+- [Shell comparisons](https://hyperpolyglot.org/unix-shells)
 
-## TODO
+## TODOs
 
 - Shorten bootstrap url (`bvincent`, `branchv`, `bvstrap`)
 - Make zsh more fish-like ([abbr](https://github.com/IlanCosman/zsh-abbr))
@@ -44,3 +45,4 @@ curl -fsSL https://raw.githubusercontent.com/branchvincent/dotfiles/main/bootstr
 - Investiate [NixOS](https://nixos.org)
 - Update [\$PATH for apps](https://docs.brew.sh/FAQ#my-mac-apps-dont-find-usrlocalbin-utilities): `sudo launchctl config user path $PATH`
 - Create own domain and [custom URL shorterner](https://github.com/seanbreckenridge/no-db-static-shorturl)
+- Try out different [deployment tools](https://documentation.codeship.com/#deploying)

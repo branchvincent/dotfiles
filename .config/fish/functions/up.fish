@@ -36,7 +36,6 @@ function up --description "Update software to the latest version"
                 softwareupdate --install --all
             case pipx
                 pipx upgrade-all
-                trash $XDG_BIN_HOME/{black-primer,ptipython*,ptpython3*,py.test,speedtest-cli,stub{gen,test}}
             case tex
                 tlmgr update --self --all
             case \*
