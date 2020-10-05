@@ -24,7 +24,11 @@ abbr -ag y "yadm"
 ### Aliases ###
 alias cat "bat"
 alias clrfmt "pbpaste | pbcopy" # clear formatting from clipboard
-alias la "ls -lAh"
+alias ls "exa"
+alias ll "exa --long"
+alias la "exa --long --all"
+alias lg "exa --long --all --git --git-ignore"
+alias lt "exa --tree"
 alias preview "fzf --preview 'bat --color always {}'"
 alias prvkey "pbcopy <$XDG_CONFIG_HOME/ssh/id_rsa | echo Private key copied to clipboard!"
 alias pubkey "pbcopy <$XDG_CONFIG_HOME/ssh/id_rsa.pub | echo Public key copied to clipboard!"
