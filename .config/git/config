@@ -4,9 +4,9 @@
 [github]
     user = branchvincent
 [core]
-    autocrlf = input				# normalize line endings on commit (but not checkout)
-    mergeoptions = --no-edit		# dont prompt for commit message on a merge
-    pager = diff-so-fancy | $PAGER	# use a better diff visualizer
+    autocrlf = input                # normalize line endings on commit (but not checkout)
+    mergeoptions = --no-edit        # dont prompt for commit message on merge
+    pager = diff-so-fancy | $PAGER  # use a better diff visualizer
 [color "diff"]
     meta = yellow
     frag = magenta bold
@@ -20,12 +20,12 @@
     newNormal = green bold
     newHighlight = green bold 22
 [commit]
-    template = ~/.config/git/commit-msg
+    template = ~/.config/git/commit
 [fetch]
-    prune = true			# prune deleted remote refs
-    pruneTags = true		# prune deleted remote tags
+    prune = true        # prune deleted remote refs
+    pruneTags = true    # prune deleted remote tags
 [format]
-    pretty = format:%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s
+    pretty = format:%C(magenta)%h %C(blue)%>(13,trunc)%ad %C(cyan)%<(15,trunc) %aN%C(red)%d %C(reset)%s
 [include]
     path = aliases
 [init]
@@ -35,7 +35,7 @@
 [pull]
     ff = only
 [push]
-    followTags = true		# push annotated tag(s) with commit(s)
+    followTags = true   # push annotated tag(s) with commit(s)
 [url "https://github.com/"]
     insteadOf = gh:
 [url "https://github.com/branchvincent/"]
