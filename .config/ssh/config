@@ -1,3 +1,4 @@
+# -*- mode: ssh-config -*-
 Include ~/.config/ssh/config.local
 
 Host *

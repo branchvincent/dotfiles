@@ -34,6 +34,7 @@
     ### Making changes ###
 
     # Stage
+    staged = diff --staged
     unstage = restore --staged
     discard = restore --staged --worktree
     discard-all = !git stash push -u && git stash drop

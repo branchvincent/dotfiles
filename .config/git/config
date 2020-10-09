@@ -1,3 +1,4 @@
+# -*- mode: gitconfig -*-
 [user]
     name = Branch Vincent
     email = branchevincent@gmail.com
@@ -33,13 +34,13 @@
 [log]
     date = relative
 [merge]
-	autoStash = true
+    autoStash = true
 [pull]
     ff = only
 [push]
     followTags = true   # always push annotated tag(s)
 [rebase]
-	autoStash = true
+    autoStash = true
 [url "https://github.com/"]
     insteadOf = gh:
 [url "https://github.com/branchvincent/"]
