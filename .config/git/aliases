@@ -1,39 +1,51 @@
+# -*- mode: gitconfig -*-
 [alias]
-# Existing commands
-ci = commit
-cl = clone --recurse-submodules
-co = checkout --quiet
-l = log
-ph = push --quiet
-pl = pull --quiet
-rs = restore
-s = status --short --branch
-st = stash push --include-untracked
-sw = switch --quiet
 
-# Custom commands
-aliases = "!git config --get-regexp '^alias\\.' | cut -c 7- | sed 's/ / = /' | sort"
-amend = commit --amend --no-edit
-branches = branch --all -vv
-discard = checkout --
-discard-all = !git reset --hard HEAD && git clean -d --force
-delete-tag = "!f() { git tag -d $1 && git push --quiet --delete origin $1; }; f"
-fixup = !git commit --amend --no-edit && git push --quiet --force
-graph = log --graph --all --decorate
-head = log -n1
-ignore = "!f() { curl -sL https://www.gitignore.io/api/$(echo $@ | tr ' ' ',') | sed '1,4d;$d;' ;}; f"
-ll = log --max-count=5
-pop = stash pop
-pr = !gh pr
-prune-branches = !git branch -vv | awk '/: gone]/ && !/\\*/ {print $1}' | xargs -pn1 git branch -D
-publish = push --quiet --set-upstream origin HEAD
-remotes = remote --verbose
-staged = diff --cached
-stashes = stash list
-sync = !git pull --all --rebase --autostash && git push --quiet
-tags = tag --list -n1 --sort=-version:refname
-uncommit = reset --soft HEAD~1
-unpublish = !git push --quiet origin --delete $(git branch --show-current)
-unreleased = "!f() { git fetch --tags && git diff $(git tag | tail -n 1) $@; }; f"
-unstage = reset --quiet HEAD --
-untrack = rm --cached
+    ### Frequent commands ###
+
+    ci = commit
+    cl = clone --recurse-submodules
+    co = checkout --quiet
+    ph = push --quiet
+    pl = pull --quiet
+    ls = log -5
+    ll = log
+    la = log --stat
+    lg = log --graph
+    st = status --short --branch
+    sl = stash list
+    ss = stash push --include-untracked
+    sp = stash pop
+    sw = switch --quiet
+
+    ### Inspecting repo ###
+
+    # Refs
+    aliases = !git config --list | sed -En \"s/^alias.([^=]+)=(.+)/$(tput setaf 6)\\1$(tput sgr0) $(printf '\\x60') \\2/p\" | column -t -s $(printf '\\x60') | sort
+    branches = branch --all -vv
+    remotes = remote --verbose
+    tags = tag --list -n1 --sort=-version:refname
+
+    # Maintenance
+    ignore = "!f() { curl -sL gitignore.io/api/$(echo $@ | tr ' ' ',') | sed '1,4d;$d;' ;}; f"
+    prune-branches = !git branch -vv | awk '/: gone]/ && !/\\*/ {print $1}' | xargs -pn1 git branch -D
+    delete-tag = "!f() { git tag -d $1 && git push -q --delete origin $1; }; f"
+
+    ### Making changes ###
+
+    # Stage
+    unstage = restore --staged
+    discard = restore --staged --worktree
+    discard-all = !git stash push -u && git stash drop
+    untrack = rm --cached
+
+    # Commit
+    amend = commit --amend --no-edit
+    fixup = !git amend && git push -q --force
+    uncommit = reset --soft HEAD~1
+
+    # Push
+    publish = push -q --set-upstream origin HEAD
+    unpublish = !git push -q origin --delete $(git branch --show-current)
+    sync = !git pull --rebase && git push -q
+    pr = !gh pr create --fill && gh pr view --web

@@ -25,17 +25,21 @@
     prune = true        # prune deleted remote refs
     pruneTags = true    # prune deleted remote tags
 [format]
-    pretty = format:%C(magenta)%h %C(blue)%>(13,trunc)%ad %C(cyan)%<(15,trunc) %aN%C(red)%d %C(reset)%s
+    pretty = format:%C(bold magenta)%h %C(blue)%>(13,trunc)%ad %C(cyan)%<(15,trunc)%aN %C(red)%d %C(reset)%s
 [include]
     path = aliases
 [init]
     defaultBranch = main
 [log]
     date = relative
+[merge]
+	autoStash = true
 [pull]
     ff = only
 [push]
-    followTags = true   # push annotated tag(s) with commit(s)
+    followTags = true   # always push annotated tag(s)
+[rebase]
+	autoStash = true
 [url "https://github.com/"]
     insteadOf = gh:
 [url "https://github.com/branchvincent/"]
