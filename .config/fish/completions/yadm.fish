@@ -1,3 +1,5 @@
+# TODO: remove when fish 3.2 drops, which ships this by default
+
 function __fish_yadm_universial_optspecs
     string join \n 'a-yadm-dir=' 'b-yadm-repo=' 'c-yadm-config=' \
         'd-yadm-encrypt=' 'e-yadm-archive=' 'f-yadm-bootstrap='

@@ -27,6 +27,6 @@ set -g fish_color_status red
 set -g fish_color_user brblue
 set -g fish_color_valid_path brred --underline
 set -g fish_pager_color_completion white
-set -g fish_pager_color_description white
+set -g fish_pager_color_description B3A06D yellow
 set -g fish_pager_color_prefix brgreen
 set -g fish_pager_color_progress white

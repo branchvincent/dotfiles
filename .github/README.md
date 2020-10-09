@@ -38,6 +38,7 @@ curl -fsSL https://raw.githubusercontent.com/branchvincent/dotfiles/main/bootstr
 
 ## TODOs
 
+- Move fish completions upstream ([example](https://github.com/Homebrew/homebrew-core/pull/59433))
 - Shorten bootstrap url (`bvincent`, `branchv`, `bvstrap`)
 - Make zsh more fish-like ([abbr](https://github.com/IlanCosman/zsh-abbr))
 - Consider [chezmoi](https://github.com/twpayne/chezmoi), `most` pager, and more [modern unix replacements](https://remysharp.com/2018/08/23/cli-improved)
