@@ -4,5 +4,5 @@ Include ~/.config/ssh/config.local
 Host *
     AddKeysToAgent yes
     UseKeychain yes
-    IdentityFile ~/.config/ssh/id_rsa
+    IdentityFile ~/.config/ssh/id
     UserKnownHostsFile ~/.config/ssh/known_hosts
