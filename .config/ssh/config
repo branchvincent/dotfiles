@@ -1,8 +1,9 @@
 # -*- mode: ssh-config -*-
-Include ~/.config/ssh/config.local
+Include ~/.config/ssh/conf.d/*.conf
 
 Host *
     AddKeysToAgent yes
     UseKeychain yes
-    IdentityFile ~/.config/ssh/id
+    IdentitiesOnly yes
+    IdentityFile ~/.config/ssh/keys/id
     UserKnownHostsFile ~/.config/ssh/known_hosts

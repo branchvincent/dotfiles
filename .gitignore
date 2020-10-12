@@ -8,8 +8,8 @@
 .config/fish/conf.d/99-secrets.fish
 .config/gcloud/
 .config/ssh/*
-!.config/ssh/*.pub
 !.config/ssh/config
+!.config/ssh/keys/*.pub
 
 ### .github ###
 !.github/
