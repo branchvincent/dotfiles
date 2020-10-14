@@ -2,6 +2,7 @@
 [user]
     name = Branch Vincent
     email = branchevincent@gmail.com
+    signingKey = AE66FEB122C01EDC
 [github]
     user = branchvincent
 [core]
@@ -22,6 +23,7 @@
     newHighlight = green bold 22
 [commit]
     template = ~/.config/git/commit
+    gpgSign = true
 [fetch]
     prune = true        # prune deleted remote refs
     pruneTags = true    # prune deleted remote tags

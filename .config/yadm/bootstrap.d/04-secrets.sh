@@ -20,7 +20,10 @@ EOF
 ### kubeconfig ###
 # TODO
 
-### ssh ###
+### gpg + ssh ###
+curl -fsSL https://github.com/branchvincent.gpg | gpg --import
+gpg --import "$(op get document "GPG Private Key")"
+
 prv_key_path="$HOME/.config/ssh/keys/default"
 if [ ! -f "$prv_key_path" ]; then
     op get document "SSH Private Key" --output "$prv_key_path"
