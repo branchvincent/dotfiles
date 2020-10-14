@@ -12,12 +12,12 @@
 1. Generate a new key pair
 
    ```sh
-   ssh-keygen -t ed25519 -f ~/.config/ssh/keys/id -C "branchevincent@gmail.com"
-   ssh-add ~/.config/ssh/keys/id
-   pbcopy ~/.config/ssh/keys/id.pub
+   ssh-keygen -t ed25519 -f ~/.config/ssh/keys/default -C "branchevincent@gmail.com"
+   ssh-add ~/.config/ssh/keys/default
+   pbcopy ~/.config/ssh/keys/default.pub
    ```
 
-1. Add the public key to [GitHub](https://github.com/settings/ssh/new).
+1. Add the public key to [GitHub](https://github.com/settings/ssh/new)
 
 1. Verify it works
 
@@ -26,3 +26,5 @@
    ```
 
 For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/connecting-to-github-with-ssh).
+
+**_Fun fact_**: GitHub exposes public keys at github.com/branchvincent.keys

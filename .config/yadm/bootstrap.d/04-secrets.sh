@@ -21,7 +21,7 @@ EOF
 # TODO
 
 ### ssh ###
-prv_key_path="$HOME/.config/ssh/keys/id"
+prv_key_path="$HOME/.config/ssh/keys/default"
 if [ ! -f "$prv_key_path" ]; then
     op get document "SSH Private Key" --output "$prv_key_path"
     ssh-add -K "$prv_key_path"

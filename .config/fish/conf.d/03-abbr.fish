@@ -32,6 +32,6 @@ alias lg "exa --header --long --all --git --git-ignore"
 alias lt "exa --tree"
 alias pbclean "pbpaste | pbcopy" # clear formatting
 alias preview "fzf --preview 'bat --color always {}'"
-alias prvkey "pbcopy <$XDG_CONFIG_HOME/ssh/keys/id && echo Copied private key!"
-alias pubkey "pbcopy <$XDG_CONFIG_HOME/ssh/keys/id.pub && echo Copied public key!"
+alias prvkey "pbcopy <$XDG_CONFIG_HOME/ssh/keys/default && echo Copied private key!"
+alias pubkey "pbcopy <$XDG_CONFIG_HOME/ssh/keys/default.pub && echo Copied public key!"
 alias reload "exec fish"
