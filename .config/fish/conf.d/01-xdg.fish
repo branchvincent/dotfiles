@@ -22,6 +22,8 @@ end
 # brew
 set -x HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/brew/Brewfile
 
+# code: https://github.com/microsoft/vscode/issues/3884
+
 # docker: https://github.com/docker/for-mac/issues/2635
 set -x DOCKER_CONFIG $XDG_CONFIG_HOME/docker
 

@@ -6,4 +6,5 @@ poetry
 ptpython
 pytest
 speedtest-cli
+tldr
 virtualenv
