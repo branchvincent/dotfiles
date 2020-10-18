@@ -44,6 +44,5 @@ curl -fsSL https://raw.githubusercontent.com/branchvincent/dotfiles/main/bootstr
 - Consider [chezmoi](https://github.com/twpayne/chezmoi), `most` pager, and more [modern unix replacements](https://remysharp.com/2018/08/23/cli-improved)
 - Backup more macOS settings (see [Mackup](https://github.com/lra/mackup))
 - Investiate [NixOS](https://nixos.org)
-- Update [\$PATH for apps](https://docs.brew.sh/FAQ#my-mac-apps-dont-find-usrlocalbin-utilities): `sudo launchctl config user path $PATH`
 - Create own domain and [custom URL shorterner](https://github.com/seanbreckenridge/no-db-static-shorturl)
 - Try out different [deployment tools](https://documentation.codeship.com/#deploying)

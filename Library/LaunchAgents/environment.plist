@@ -1,0 +1,42 @@
+<!-- Set launchd environment variables for GUI apps
+
+This defers to our default login shell to fetch and set XDG variables at startup. Note, if you only
+need to modify $PATH, then the following will suffice: `sudo launchctl config user path $PATH`.
+
+To use this:
+  1. Load: `launchctl load ~/Library/LaunchAgents/environment.plist`
+  2. Remove: `launchctl remove environment`
+  3. Debug: `launchctl start/stop environment`
+
+References:
+  - Inspiration: https://github.com/ersiner/osx-env-sync
+  - $PATH only: https://docs.brew.sh/FAQ#my-mac-apps-dont-find-usrlocalbin-utilities
+-->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>environment</string>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/local/bin/fish</string>
+    <string>-lc</string>
+    <string>
+      set | grep ^XDG_ | while read -l var val
+        echo Running launchctl setenv $var $val
+        launchctl setenv $var $val
+      end
+    </string>
+  </array>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/launchd/environment.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/launchd/environment.log</string>
+</dict>
+</plist>
