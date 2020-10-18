@@ -7,6 +7,7 @@
 .config/docker/.buildNodeID
 .config/fish/conf.d/99-secrets.fish
 .config/gcloud/
+.config/hyper/.hyper_plugins
 .config/ssh/*
 !.config/ssh/config
 !.config/ssh/keys/*.pub
