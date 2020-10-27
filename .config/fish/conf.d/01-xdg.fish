@@ -46,6 +46,9 @@ alias kubectl "kubectl --cache-dir=$XDG_CACHE_HOME/kube" # https://github.com/ku
 set -x LESSHISTFILE $XDG_DATA_HOME/less/history
 __maybe_mkdir (dirname $LESSHISTFILE)
 
+# maven: https://issues.apache.org/jira/browse/MNG-6603
+alias mvn "mvn --global-settings=$XDG_CONFIG_HOME/maven/settings.xml"
+
 # node
 set -x NODE_REPL_HISTORY $XDG_DATA_HOME/node/history
 __maybe_mkdir (dirname $NODE_REPL_HISTORY)
