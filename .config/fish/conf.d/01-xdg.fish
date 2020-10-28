@@ -38,6 +38,9 @@ set -x GOPATH $XDG_DATA_HOME/go
 # gradle
 set -x GRADLE_USER_HOME $XDG_DATA_HOME/gradle
 
+# jabba
+set -x JABBA_HOME $XDG_DATA_HOME/jabba
+
 # kube
 set -x KUBECONFIG $XDG_CONFIG_HOME/kube/config.yaml
 alias kubectl "kubectl --cache-dir=$XDG_CACHE_HOME/kube" # https://github.com/kubernetes/kubernetes/issues/80399
@@ -47,7 +50,6 @@ set -x LESSHISTFILE $XDG_DATA_HOME/less/history
 __maybe_mkdir (dirname $LESSHISTFILE)
 
 # maven
-alias mvn "mvn --global-settings=$XDG_CONFIG_HOME/maven/settings.xml"
 set -x MAVEN_OPTS "-Dmaven.repo.local=$XDG_CACHE_HOME/maven/repository"
 
 # node

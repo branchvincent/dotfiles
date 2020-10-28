@@ -13,6 +13,7 @@ brew bundle install --file=~/.config/brew/Brewfile
 sudo chown -R "$(whoami)":admin /usr/local/texlive                                                             # don't require sudo for tlmgr
 xattr -dr com.apple.quarantine ~/Library/QuickLook/                                                            # fix quicklook plugins: https://github.com/sindresorhus/quick-look-plugins#catalina-notes
 find "/Applications/Backup and Sync.app/Contents/Resources" -name folder-mac-yosemite.icns -exec trash "{}" \; # remove Google Drive icon
+sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk          # symlink default java
 
 ### Pipx ###
 echo "Installing pipx packages"

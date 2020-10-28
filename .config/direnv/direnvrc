@@ -10,15 +10,25 @@ layout_go() {
 ### Java ###
 
 use_java() {
-    JAVA_HOME=$(/usr/libexec/java_home --failfast --version "$1")
-    export JAVA_HOME
-    load_prefix "$JAVA_HOME"
+    # Get version and location
+    version_file=.java-version
+    version=${1:-$(cat $version_file)}
+    # shellcheck disable=SC2153
+    prefix="$JABBA_HOME/jdk/$version/Contents/Home"
+
+    # Install and load it
+    [ -d "$prefix" ] || jabba install "$version"
+    export JAVA_HOME="$prefix"
+    load_prefix "$prefix"
+    watch_file $version_file
 }
 
 ### Node ###
 
 use_nodejs() {
-    version=${1:-$(cat .nvmrc)}
+    # Get version and location
+    version_file=.nvmrc
+    version=${1:-$(cat $version_file)}
     prefix="$NVM_DIR/versions/node/$version"
 
     # Install and load it
@@ -27,19 +37,21 @@ use_nodejs() {
         nvm install "$version"
     fi
     load_prefix "$prefix"
-    watch_file .nvmrc
+    watch_file $version_file
 }
 
 ### Python ###
 
 use_python() {
-    version=${1:-$(cat .python-version)}
+    # Get version and location
+    version_file=.python-version
+    version=${1:-$(cat $version_file)}
     prefix="$PYENV_ROOT/versions/$version"
 
     # Install and load it
     [ -d "$prefix" ] || pyenv install "$version"
     load_prefix "$prefix"
-    watch_file .python-version
+    watch_file $version_file
 }
 
 layout_poetry() {
