@@ -42,7 +42,7 @@ set -x GRADLE_USER_HOME $XDG_DATA_HOME/gradle
 set -x JABBA_HOME $XDG_DATA_HOME/jabba
 
 # kube
-set -x KUBECONFIG $XDG_CONFIG_HOME/kube/config.yaml
+set -x KUBECONFIG $XDG_DATA_HOME/kube/config.yaml
 alias kubectl "kubectl --cache-dir=$XDG_CACHE_HOME/kube" # https://github.com/kubernetes/kubernetes/issues/80399
 
 # less

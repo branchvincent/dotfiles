@@ -57,3 +57,17 @@ For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-t
 For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/connecting-to-github-with-ssh).
 
 **_Fun fact_**: GitHub exposes the public keys at <https://github.com/branchvincent.keys>
+
+## AWS Elastic Kubernetes Service
+
+1. List available clusters
+
+   ```sh
+   aws eks list-clusters
+   ```
+
+2. Add a cluster to your kubeconfig
+
+   ```sh
+   aws eks update-kubeconfig --name <cluster_name> --alias <cluster_alias>
+   ```

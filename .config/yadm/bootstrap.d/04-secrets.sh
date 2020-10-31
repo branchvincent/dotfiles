@@ -17,9 +17,6 @@ set -x GITHUB_TOKEN $(op get item GitHub --fields token)
 set -x NPM_TOKEN $(op get item NPM --fields token)
 EOF
 
-### kubeconfig ###
-# TODO
-
 ### gpg + ssh ###
 curl -fsSL https://github.com/branchvincent.gpg | gpg --import
 gpg --import "$(op get document "GPG Private Key")"
