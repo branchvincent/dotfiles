@@ -29,7 +29,7 @@ alias ls "exa"
 alias ll "exa --header --long"
 alias la "exa --header --long --all"
 alias lg "exa --header --long --all --git --git-ignore"
-alias lt "exa --tree"
+alias lt "exa --tree --level=2"
 alias pbclean "pbpaste | pbcopy" # clear formatting
 alias preview "fzf --preview 'bat --color always {}'"
 alias prvkey "pbcopy <$XDG_CONFIG_HOME/ssh/keys/default && echo Copied private key!"

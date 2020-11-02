@@ -58,7 +58,7 @@ function __up_dotfiles --description "Update dotfiles"
     # Update package lists
     brew bundle dump --force
     code --list-extensions >$XDG_CONFIG_HOME/code/extensions.txt
-    pipx list | grep "   package " | cut -d' ' -f5 >$XDG_CONFIG_HOME/pipx/packages.txt
+    ls $PIPX_HOME/venvs >$XDG_CONFIG_HOME/pipx/packages.txt
     # Output local modifications
     yadm status --short --untracked-files=normal
     # Take out the trash
