@@ -55,16 +55,29 @@ end
 function __up_dotfiles --description "Update dotfiles"
     # Update repo
     yadm pull --quiet
+
     # Update package lists
     brew bundle dump --force
     code --list-extensions >$XDG_CONFIG_HOME/code/extensions.txt
     ls $PIPX_HOME/venvs >$XDG_CONFIG_HOME/pipx/packages.txt
-    # Output local modifications
-    yadm status --short --untracked-files=normal
-    # Take out the trash
+
+    # Trash non-xdg cache
     for path in ~/.{bash_history,docker,k3d,kube}
         test -e $path && trash $path
     end
+    # Trash Google Drive's folder icon
+    if test -f ~/Documents/Icon\r
+        trash ~/Documents/Icon\r
+        for icn in "/Applications/Backup and Sync.app/Contents/Resources"**/folder-mac-yosemite.icns
+            sudo mv $icn $icn.bak
+        end
+        trash /var/folders/*/*/*/com.apple.dock.iconcache
+        killall Dock
+    end
+
+    # Output local modifications
+    yadm status --short --untracked-files=normal
+
     echo "Everything is up-to-date"
 end
 
