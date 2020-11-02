@@ -1,12 +1,11 @@
-# Options
-complete -c up -s h -l help -d "Display help"
-
-# Subcommands
 complete -c up -f
-complete -c up -a brew -d "Update homebrew and its packages"
-complete -c up -a cmpl -d "Update fish completions"
-complete -c up -a dotfiles -d "Update dotfiles"
-complete -c up -a mas -d "Update apps from App Store"
-complete -c up -a os -d "Update macOS"
-complete -c up -a pipx -d "Update pipx packages"
-complete -c up -a tex -d "Update LaTeX packages"
+
+# Options
+up --help | string match -r -- '-(.), --(\S+) (.+)' | while read -Ll match short long desc
+    complete -c up -s $short -l $long -d $desc
+end
+
+# Commands
+up --help | sed -e '1,/^Commands:/d' | while read -l arg desc
+    complete -c up -a $arg -d $desc
+end
