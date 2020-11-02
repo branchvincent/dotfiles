@@ -11,6 +11,7 @@ foxundermoon.shell-format
 fwcd.kotlin
 GitHub.vscode-pull-request-github
 golang.go
+huntertran.auto-markdown-toc
 James-Yu.latex-workshop
 mathiasfrohlich.Kotlin
 mikestead.dotenv

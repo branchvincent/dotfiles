@@ -1,5 +1,13 @@
 # Notes
 
+<!-- TOC depthfrom:2 -->
+
+- [GPG Keys](#gpg-keys)
+- [SSH Keys](#ssh-keys)
+- [AWS Elastic Kubernetes Service](#aws-elastic-kubernetes-service)
+
+<!-- /TOC -->
+
 ## GPG Keys
 
 1. List and delete current keys
