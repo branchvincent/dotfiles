@@ -17,10 +17,12 @@ set -x GITHUB_TOKEN $(op get item GitHub --fields token)
 set -x NPM_TOKEN $(op get item NPM --fields token)
 EOF
 
-### gpg + ssh ###
+### gpg ###
 curl -fsSL https://github.com/branchvincent.gpg | gpg --import
 gpg --import "$(op get document "GPG Private Key")"
+echo "pinentry-program /usr/local/bin/pinentry-mac" >~/.local/share/gnupg/gpg-agent.conf
 
+### ssh ###
 prv_key_path="$HOME/.config/ssh/keys/default"
 if [ ! -f "$prv_key_path" ]; then
     op get document "SSH Private Key" --output "$prv_key_path"
