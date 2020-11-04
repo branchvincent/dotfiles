@@ -17,6 +17,7 @@ sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtua
 ### Pipx ###
 echo "Installing pipx packages"
 xargs -L1 pipx install <~/.config/pipx/packages.txt
+pipx inject httpie httpie-jwt-auth # TODO: how to store injected packages?
 
 ### VS Code ###
 echo "Installing vscode extensions"
