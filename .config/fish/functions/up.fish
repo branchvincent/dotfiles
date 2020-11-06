@@ -45,6 +45,7 @@ end
 function __up_brew --description "Update Homebrew and its packages"
     brew upgrade
     brew cleanup
+    brew autoremove
     brew doctor
 end
 
