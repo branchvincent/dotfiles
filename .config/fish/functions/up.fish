@@ -44,12 +44,12 @@ end
 
 function __up_brew --description "Update Homebrew and its packages"
     brew upgrade
-    brew cleanup
     brew autoremove
+    brew cleanup
     brew doctor
 end
 
-function __up_cmpl --description "Update fish completions"
+function __up_completions --description "Update fish completions"
     fish_update_completions
 end
 
