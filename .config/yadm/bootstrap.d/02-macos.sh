@@ -23,10 +23,10 @@ dockutil --no-restart --add /System/Applications/Mail.app
 dockutil --no-restart --add /System/Applications/Messages.app
 dockutil --no-restart --add /Applications/Slack.app
 dockutil --no-restart --add /Applications/Spotify.app
-dockutil --no-restart --add "/Applications/Google Chrome.app"
-dockutil --no-restart --add "/Applications/VS Code.app"
+dockutil --no-restart --add /Applications/Google\ Chrome.app
+dockutil --no-restart --add /Applications/VS\ Code.app
 dockutil --no-restart --add /Applications/iTerm.app
-dockutil --no-restart --add "/System/Applications/System Preferences.app"
+dockutil --no-restart --add /System/Applications/System\ Preferences.app
 dockutil --no-restart --add ~/Documents --sort name --display folder --view list
 dockutil --no-restart --add ~/Downloads --sort dateadded --display folder --view fan
 
@@ -38,6 +38,9 @@ defaults write com.apple.dock orientation -string bottom
 
 ### Siri ###
 defaults write com.apple.assistant.support "Assistant Enabled" -bool false
+
+### Software Update ###
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1 # Check for updates daily
 
 ### Trackpad ###
 defaults write -g com.apple.trackpad.scaling 3 # Max trackpad speed
