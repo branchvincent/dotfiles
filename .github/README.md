@@ -5,7 +5,7 @@
 - [fish shell](http://fishshell.com/) on macOS
 - [XDG spec](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)-compliant (where possible)
 - [yadm](https://yadm.io/) for management
-- [1Password CLI](https://1password.com/downloads/command-line/) and [Google Drive](https://drive.google.com/) for secrets
+- [1Password](https://1password.com/downloads/command-line/) for secrets
 
 ## Installation
 
