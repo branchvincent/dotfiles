@@ -4,7 +4,7 @@
 !.config/
 .config/brew/Brewfile.lock.json
 .config/docker/.buildNodeID
-.config/fish/conf.d/99-secrets.fish
+.config/fish/conf.d/secrets.fish
 .config/gcloud/
 .config/hyper/.hyper_plugins
 .config/op/
