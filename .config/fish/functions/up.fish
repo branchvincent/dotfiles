@@ -49,7 +49,8 @@ function __up_brew --description "Update Homebrew and its packages"
     brew doctor
 end
 
-function __up_completions --description "Update fish completions"
+function __up_shell --description "Update shell packages and completions"
+    fisher update
     fish_update_completions
 end
 

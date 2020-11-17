@@ -3,8 +3,8 @@
 # References:
 # - https://github.com/rkbk60/onedark-fish
 
-set -g fish_color_autosuggestion black
-set -g fish_color_cancel brblack
+set -g fish_color_autosuggestion 555 brblack
+set -g fish_color_cancel 555 brblack
 set -g fish_color_command brmagenta
 set -g fish_color_comment brblack
 set -g fish_color_cwd brred
