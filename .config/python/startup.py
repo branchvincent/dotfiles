@@ -3,9 +3,14 @@
 import readline
 import sys
 
-# common imports
-from dataclasses import dataclass
-from pathlib import Path
+# Common imports
+try:
+    from dataclasses import dataclass  # noqa: F401
+    from datetime import datetime, time, timedelta  # noqa: F401
+    from pathlib import Path  # noqa: F401
+    from pprint import pprint  # noqa: F401
+except ImportError:
+    pass
 
 # Disable default history file
 readline.write_history_file = lambda *args: None
@@ -25,7 +30,7 @@ def launch_repl():
         / "venvs"
         / "ptpython"
         / "lib"
-        / "python3.8"
+        / "python3.9"
         / "site-packages"
     )
     sys.path.append(str(lib))
@@ -48,7 +53,13 @@ def launch_repl():
     history_file.parent.mkdir(parents=True, exist_ok=True)
 
     # Launch
-    sys.exit(embed(configure=configure, history_filename=history_file))
+    sys.exit(
+        embed(
+            globals=globals(),
+            configure=configure,
+            history_filename=history_file,
+        )
+    )
 
 
 launch_repl()
