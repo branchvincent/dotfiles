@@ -86,7 +86,7 @@ cask "quicklook-json"
 cask "spotify"
 cask "tableplus"
 cask "visual-studio-code"
-cask "zoomus"
+cask "zoom"
 mas "1Password 7", id: 1333542190
 mas "Keynote", id: 409183694
 mas "Magnet", id: 441258766
