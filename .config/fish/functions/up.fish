@@ -14,12 +14,8 @@ function up --description "Update software to the latest version"
 end
 
 function __up_help --description "Print this help message"
-    set -l cmd (set_color $fish_color_command)
-    set -l param (set_color $fish_color_param)
-    set -l n (set_color normal)
-
     echo "\
-Usage:$cmd up$n [options]$param command$n
+Usage: up [options] command
 
   "(desc up)"
 
@@ -50,8 +46,9 @@ function __up_brew --description "Update Homebrew and its packages"
 end
 
 function __up_shell --description "Update shell packages and completions"
-    fisher update
-    fish_update_completions
+    fisher update >/dev/null
+    fish_update_completions >/dev/null
+    echo "Everything is up-to-date"
 end
 
 function __up_dotfiles --description "Update dotfiles"
@@ -77,9 +74,6 @@ function __up_dotfiles --description "Update dotfiles"
         killall Dock
     end
 
-    # Output local modifications
-    yadm status --short --untracked-files=normal
-
     echo "Everything is up-to-date"
 end
 
@@ -96,5 +90,6 @@ function __up_pipx --description "Update pipx packages"
 end
 
 function __up_tex --description "Update LaTeX packages"
-    tlmgr update --self --all
+    tlmgr update --self --all --reinstall-forcibly-removed >/dev/null
+    echo "Everything is up-to-date"
 end
