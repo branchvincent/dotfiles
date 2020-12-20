@@ -6,6 +6,7 @@ set -euo pipefail
 ### General ###
 
 # Ignore non-dotfiles on checkout: https://github.com/TheLocehiliosan/yadm/issues/93
+yadm gitconfig --unset status.showUntrackedFiles
 yadm gitconfig core.sparseCheckout true
 cat <<EOF >"$(yadm introspect repo)/info/sparse-checkout"
 /*
