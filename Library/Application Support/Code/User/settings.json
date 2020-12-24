@@ -1,3 +1,4 @@
+// -*- mode: jsonc -*-
 {
   // Core
   "diffEditor.ignoreTrimWhitespace": false,
