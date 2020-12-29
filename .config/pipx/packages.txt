@@ -3,7 +3,6 @@ flake8
 httpie
 isort
 mypy
-poetry
 ptpython
 pytest
 speedtest-cli

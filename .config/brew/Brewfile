@@ -45,6 +45,7 @@ brew "nvm"
 brew "pgcli"
 brew "pinentry-mac"
 brew "pipx"
+brew "poetry"
 brew "postgresql", restart_service: true
 brew "pre-commit"
 brew "pyenv"
