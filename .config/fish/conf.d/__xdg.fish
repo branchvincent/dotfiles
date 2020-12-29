@@ -84,6 +84,13 @@ set -x PYENV_ROOT "$XDG_DATA_HOME/pyenv"
 # python
 set -x PYTHONSTARTUP $XDG_CONFIG_HOME/python/startup.py
 
+# ruby
+set -x BUNDLE_USER_CACHE $XDG_CACHE_HOME/bundle
+set -x BUNDLE_USER_CONFIG $XDG_CONFIG_HOME/bundle
+set -x BUNDLE_USER_PLUGIN $XDG_DATA_HOME/bundle
+set -x GEM_HOME $XDG_DATA_HOME/gem
+set -x GEM_SPEC_CACHE $XDG_CACHE_HOME/gem
+
 # ssh
 set -l SSH "ssh -F $XDG_CONFIG_HOME/ssh/config"
 alias ssh $SSH
