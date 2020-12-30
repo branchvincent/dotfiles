@@ -4,7 +4,7 @@
 set -x EDITOR code --wait
 set -x PAGER less -RF --tabs=4
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
-path_add $npm_config_prefix/bin $XDG_BIN_HOME /usr/local/bin /usr/local/sbin
+path_add $CARGO_HOME/bin $NPM_CONFIG_PREFIX/bin $XDG_BIN_HOME /usr/local/bin /usr/local/sbin
 
 ### Tools ###
 set -x AWS_DEFAULT_REGION us-west-2

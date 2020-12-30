@@ -81,6 +81,10 @@ set -x BUNDLE_USER_PLUGIN $XDG_DATA_HOME/bundle
 set -x GEM_HOME $XDG_DATA_HOME/gem
 set -x GEM_SPEC_CACHE $XDG_CACHE_HOME/gem
 
+# rust
+set -x CARGO_HOME $XDG_DATA_HOME/cargo
+set -x RUSTUP_HOME $XDG_DATA_HOME/rustup
+
 # ssh
 set -x GIT_SSH_COMMAND "ssh -F $XDG_CONFIG_HOME/ssh/config"
 alias ssh $GIT_SSH_COMMAND

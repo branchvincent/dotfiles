@@ -19,6 +19,10 @@ echo "Installing pipx packages"
 xargs -L1 pipx install <~/.config/pipx/packages.txt
 pipx inject httpie httpie-jwt-auth # TODO: how to store injected packages?
 
+### Rust ###
+echo "Installing rust toolchain"
+fish -lc 'rustup-init -y --quiet --no-modify-path'
+
 ### VS Code ###
 echo "Installing vscode extensions"
 sed 's/^/--install-extension /' ~/.config/code/extensions.txt | xargs code
