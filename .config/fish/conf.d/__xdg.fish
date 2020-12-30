@@ -38,11 +38,10 @@ __maybe_mkdir $GNUPGHOME
 set -x GOBIN $XDG_BIN_HOME
 set -x GOPATH $XDG_DATA_HOME/go
 
-# gradle
+# java
 set -x GRADLE_USER_HOME $XDG_DATA_HOME/gradle
-
-# jabba
 set -x JABBA_HOME $XDG_DATA_HOME/jabba
+set -x MAVEN_OPTS "-Dmaven.repo.local=$XDG_CACHE_HOME/maven/repository"
 
 # kube
 set -x KUBECONFIG $XDG_DATA_HOME/kube/config.yaml
@@ -52,36 +51,27 @@ alias kubectl "kubectl --cache-dir=$XDG_CACHE_HOME/kube" # https://github.com/ku
 set -x LESSHISTFILE $XDG_DATA_HOME/less/history
 __maybe_mkdir (dirname $LESSHISTFILE)
 
-# maven
-set -x MAVEN_OPTS "-Dmaven.repo.local=$XDG_CACHE_HOME/maven/repository"
-
 # node
 set -x NODE_REPL_HISTORY $XDG_DATA_HOME/node/history
 __maybe_mkdir (dirname $NODE_REPL_HISTORY)
-
-# npm
+set -x NO_UPDATE_NOTIFIER 1 # used by npm: https://github.com/yeoman/update-notifier/issues/180
+set -x NPM_CONFIG_CACHE $XDG_CACHE_HOME/npm
+set -x NPM_CONFIG_DEVDIR $XDG_DATA_HOME/node-gyp
+set -x NPM_CONFIG_INIT_MODULE $XDG_CONFIG_HOME/npm/config/npm-init.js
+set -x NPM_CONFIG_PREFIX $XDG_DATA_HOME/npm
+set -x NPM_CONFIG_TMP $XDG_CACHE_HOME/npm
 set -x NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
-set -x npm_config_cache $XDG_CACHE_HOME/npm
-set -x npm_config_init_module $XDG_CONFIG_HOME/npm/config/npm-init.js
-set -x npm_config_prefix $XDG_DATA_HOME/npm
-set -x npm_config_tmp $XDG_CACHE_HOME/npm
-set -x NO_UPDATE_NOTIFIER 1 # package used by npm: https://github.com/yeoman/update-notifier/issues/180
-
-# nvm
-set -x NVM_DIR "$XDG_DATA_HOME/nvm"
-
-# pipx
-set -x PIPX_HOME $XDG_DATA_HOME/pipx
+set -x NVM_DIR $XDG_DATA_HOME/nvm
+alias yarn "yarn --use-yarnrc=$XDG_CONFIG_HOME/yarn/config.yaml" # https://github.com/yarnpkg/yarn/issues/2334
 
 # psql
 set -x PSQLRC $XDG_CONFIG_HOME/psql/config.sql
 set -x PSQL_HISTORY $XDG_DATA_HOME/psql/history
 __maybe_mkdir (dirname $PSQL_HISTORY)
 
-# pyenv
-set -x PYENV_ROOT "$XDG_DATA_HOME/pyenv"
-
 # python
+set -x PIPX_HOME $XDG_DATA_HOME/pipx
+set -x PYENV_ROOT $XDG_DATA_HOME/pyenv
 set -x PYTHONSTARTUP $XDG_CONFIG_HOME/python/startup.py
 
 # ruby
@@ -92,18 +82,14 @@ set -x GEM_HOME $XDG_DATA_HOME/gem
 set -x GEM_SPEC_CACHE $XDG_CACHE_HOME/gem
 
 # ssh
-set -l SSH "ssh -F $XDG_CONFIG_HOME/ssh/config"
-alias ssh $SSH
-set -x GIT_SSH_COMMAND $SSH
+set -x GIT_SSH_COMMAND "ssh -F $XDG_CONFIG_HOME/ssh/config"
+alias ssh $GIT_SSH_COMMAND
 
 # starship
 set -x STARSHIP_CONFIG $XDG_CONFIG_HOME/starship/config.toml
 
 # yadm: https://github.com/TheLocehiliosan/yadm/issues/208
 set -x YADM_OVERRIDE_REPO $XDG_DATA_HOME/yadm/repo.git
-
-# yarn: https://github.com/yarnpkg/yarn/issues/2334
-alias yarn "yarn --use-yarnrc=$XDG_CONFIG_HOME/yarn/config.yaml"
 
 # zsh
 set -x ZDOTDIR $XDG_CONFIG_HOME/zsh
