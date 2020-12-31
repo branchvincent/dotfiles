@@ -92,8 +92,5 @@ alias ssh $GIT_SSH_COMMAND
 # starship
 set -x STARSHIP_CONFIG $XDG_CONFIG_HOME/starship/config.toml
 
-# yadm: https://github.com/TheLocehiliosan/yadm/issues/208
-set -x YADM_OVERRIDE_REPO $XDG_DATA_HOME/yadm/repo.git
-
 # zsh
 set -x ZDOTDIR $XDG_CONFIG_HOME/zsh
