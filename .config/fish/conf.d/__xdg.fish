@@ -15,8 +15,8 @@ set -x XDG_CACHE_HOME ~/.cache
 set -x XDG_CONFIG_HOME ~/.config
 set -x XDG_DATA_HOME ~/.local/share
 
-for d in $XDG_BIN_HOME $XDG_CACHE_HOME $XDG_CONFIG_HOME $XDG_DATA_HOME
-    __maybe_mkdir $d
+for d in XDG_{BIN,CACHE,CONFIG,DATA}_HOME
+    __maybe_mkdir $$d
 end
 
 # brew

@@ -1,24 +1,24 @@
 /*
 
 ### .config ###
-!.config/
-.config/brew/Brewfile.lock.json
-.config/docker/.buildNodeID
-.config/fish/conf.d/secrets.fish
-.config/gcloud/
-.config/hyper/.hyper_plugins
-.config/op/
-.config/ssh/*
-!.config/ssh/config
-!.config/ssh/keys/*.pub
+!/.config/
+/.config/brew/Brewfile.lock.json
+/.config/docker/.buildNodeID
+/.config/fish/conf.d/secrets.fish
+/.config/gcloud/
+/.config/hyper/.hyper_plugins
+/.config/op/
+/.config/ssh/*
+!/.config/ssh/config
+!/.config/ssh/keys/*.pub
 
 ### .github ###
-!.github/
+!/.github/
 
 ### .local ###
-!.local/bin/kubectl-*
+!/.local/bin/kubectl-*
 
 ### Library ###
-!Library/Application Support/Code/User/keybindings.json
-!Library/Application Support/Code/User/settings.json
-!Library/Application Support/iTerm2/DynamicProfiles/profiles.json
+!/Library/Application Support/Code/User/keybindings.json
+!/Library/Application Support/Code/User/settings.json
+!/Library/Application Support/iTerm2/DynamicProfiles/profiles.json
