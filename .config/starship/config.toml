@@ -11,9 +11,3 @@ disabled = true
 
 [package]
 disabled = true
-
-[custom.sudo]
-command = "echo '(sudo)'"
-description = "Sudo credentials are cached"
-when = "sudo -n true"
-style = "bold yellow"
