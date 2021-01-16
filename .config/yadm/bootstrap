@@ -1,43 +1,12 @@
 #!/usr/bin/env bash
+#
+# Bootstraps the machine by sourcing all scripts in bootstrap.d/
 
 set -euo pipefail
 [ -n "${DEBUG:-}" ] && set -x
 
-### General ###
-
-# Ignore non-dotfiles on checkout: https://github.com/TheLocehiliosan/yadm/issues/93
-yadm gitconfig --unset status.showUntrackedFiles
-yadm gitconfig core.sparseCheckout true
-cat <<EOF >"$(yadm introspect repo)/info/sparse-checkout"
-/*
-!/bootstrap
-EOF
-yadm checkout --quiet
-
-# Ignore non-dotfiles in vscode: https://github.com/microsoft/vscode/issues/38878
-cat <<EOF >"$HOME/.vscode/settings.json"
-{
-    "files.exclude": {
-        "{[^.]*,.cache,.local,.Trash,.vscode}": true
-    }
-}
-EOF
-
-# File system
-mkdir -p ~/Code
-
-### Others ###
-
-checksums=~/.local/share/yadm/bootstrap.d
-mkdir -p "$checksums"
-
-for file in ~/.config/yadm/bootstrap.d/*.sh; do
-    checksum=$(shasum --algorithm 256 "$file" | cut -d' ' -f1)
-    checksum_file="$checksums/$(basename "$file".checksum)"
-    if [ -f "$checksum_file" ] && [ "$(cat "$checksum_file")" = "$checksum" ]; then
-        echo "Skipping $file"
-    else
-        source "$file"
-        echo "$checksum" >"$checksum_file"
-    fi
+for file in "${BASH_SOURCE[0]}.d"/*.sh; do
+    [[ $(basename "$file") =~ ${BOOTSTRAP_FILTER:-.*} ]] || continue
+    echo "Executing $file"
+    source "$file"
 done

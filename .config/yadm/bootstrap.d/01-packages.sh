@@ -2,9 +2,13 @@
 #
 # Install desired packages from package managers
 
+has() {
+    command -v "$1" &>/dev/null
+}
+
 ### Homebrew ###
 echo "Installing brew packages"
-if ! command -v brew &>/dev/null; then
+if ! has brew; then
     echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 brew bundle install --file=~/.config/brew/Brewfile
@@ -16,13 +20,16 @@ sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtua
 
 ### Pipx ###
 echo "Installing pipx packages"
-xargs -L1 pipx install <~/.config/pipx/packages.txt
+xargs -L1 pipx install <~/.config/pipx/packages.txt || true
 pipx inject httpie httpie-jwt-auth # TODO: how to store injected packages?
 
 ### Rust ###
-echo "Installing rust toolchain"
-fish -lc 'rustup-init -y --quiet --no-modify-path'
+if ! has rustc; then
+    echo "Installing rust toolchain"
+    fish -lc 'rustup-init -y --quiet --no-modify-path'
+fi
 
 ### VS Code ###
 echo "Installing vscode extensions"
+mkdir -p ~/Code
 sed 's/^/--install-extension /' ~/.config/code/extensions.txt | xargs code
