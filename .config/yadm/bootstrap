@@ -5,6 +5,10 @@
 set -euo pipefail
 [ -n "${DEBUG:-}" ] && set -x
 
+has() {
+    command -v "$1" &>/dev/null
+}
+
 for file in "${BASH_SOURCE[0]}.d"/*.sh; do
     [[ $(basename "$file") =~ ${BOOTSTRAP_FILTER:-.*} ]] || continue
     echo "Executing $file"
