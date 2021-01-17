@@ -27,9 +27,9 @@ References:
     <string>/usr/local/bin/fish</string>
     <string>-lc</string>
     <string>
-      set | grep '^XDG_\|^PATH ' | while read -l var val
-        echo Running launchctl setenv $var $val
-        launchctl setenv $var $val
+      env | grep '^XDG_\|^PATH' | while read -ld= var val
+        set -l cmd launchctl setenv $var $val
+        echo Running $cmd && $cmd
       end
     </string>
   </array>
