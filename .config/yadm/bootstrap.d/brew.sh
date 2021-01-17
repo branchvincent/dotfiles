@@ -2,12 +2,7 @@
 #
 # Install Homebrew and packages
 
-if ! has brew; then
-    echo "Installing Homebrew"
-    echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-fi
-
-echo "Installing brew packages"
+has brew || echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew bundle install --file=~/.config/brew/Brewfile
 
 # Don't require sudo for tlmgr

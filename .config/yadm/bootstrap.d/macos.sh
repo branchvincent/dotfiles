@@ -5,8 +5,6 @@
 # References
 # - Inspiration: https://mths.be/macos
 
-echo "Updating macOS preferences"
-
 ### General ###
 chflags nohidden ~/Library                                       # FIXME: not working on catalina
 defaults write NSGlobalDomain AppleInterfaceStyle -string Dark   # Dark mode

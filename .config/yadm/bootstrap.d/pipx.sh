@@ -2,6 +2,5 @@
 #
 # Install pipx packages
 
-echo "Installing pipx packages"
-xargs -L1 pipx install <~/.config/pipx/packages.txt || true
+xargs -L1 pipx install --force <~/.config/pipx/packages.txt
 pipx inject httpie httpie-jwt-auth # TODO: how to store injected packages?

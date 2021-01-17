@@ -10,7 +10,8 @@ has() {
 }
 
 for file in "${BASH_SOURCE[0]}.d"/*.sh; do
-    [[ $(basename "$file") =~ ${BOOTSTRAP_FILTER:-.*} ]] || continue
-    echo "Executing $file"
+    filename=$(basename "${file%.sh}")
+    [[ $filename =~ ${BOOTSTRAP_FILTER:-.*} ]] || continue
+    echo "Configuring $filename"
     source "$file"
 done
