@@ -24,7 +24,7 @@ repos:
       - id: end-of-file-fixer
       - id: pretty-format-json
         args: [--autofix]
-        exclude: Code/User/settings.json # jsonc
+        exclude: settings.json # jsonc
       - id: trailing-whitespace
   - repo: https://github.com/Yelp/detect-secrets
     rev: v0.14.3
