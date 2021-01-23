@@ -3,7 +3,7 @@
 ### .config ###
 !/.config/
 /.config/brew/Brewfile.lock.json
-/.config/docker/.buildNodeID
+/.config/docker/.*
 /.config/fish/conf.d/secrets.fish
 /.config/gcloud/
 /.config/hyper/.hyper_plugins
