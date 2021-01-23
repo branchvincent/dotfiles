@@ -5,6 +5,7 @@ Icon?
 
 ### Apps ###
 .env*
+!.env.example
 .vscode/
 
 ### Misc ###
