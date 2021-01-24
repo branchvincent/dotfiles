@@ -7,24 +7,10 @@ module.exports = {
     css: `.splitpane_divider { background-color: white !important; }`,
     cursorShape: 'BEAM',
     fontFamily: '"Fira Code", monospace',
-    hyperline: {
-      plugins: [
-        "battery",
-        "memory",
-        "cpu",
-        "network",
-        "spotify"
-      ]
-    }
   },
 
   // Plugins
-  plugins: [
-    "hyper-highlight-active-pane",
-    "hyper-one-dark",
-    "hyper-search",
-    "hyperline"
-  ],
+  plugins: ["hyper-highlight-active-pane", "hyper-one-dark", "hyper-search"],
   localPlugins: [],
 
   // Key bindings

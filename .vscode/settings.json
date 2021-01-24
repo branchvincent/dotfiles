@@ -2,6 +2,7 @@
 {
   // Duplicate .gitignore: https://github.com/microsoft/vscode/issues/38878
   "files.exclude": {
-    "{[^.]*,.cache,.local,.Trash,.vscode/extensions}": true
+    "{[^.]*,.cache,.local,.Trash,.vscode/extensions}": true,
+    "/.config/hyper/.hyper_plugins": true
   }
 }
