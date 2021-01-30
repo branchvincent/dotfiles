@@ -29,13 +29,10 @@ use_nodejs() {
     # Get version and location
     version_file=.nvmrc
     version=${1:-$(cat $version_file)}
-    prefix="$NVM_DIR/versions/node/$version"
+    prefix="$FNM_DIR/node-versions/$version/installation"
 
     # Install and load it
-    if [ ! -d "$prefix" ]; then
-        has nvm || source "$(brew --prefix nvm)/nvm.sh" &>/dev/null
-        nvm install "$version"
-    fi
+    [ -d "$prefix" ] || fnm install "$version"
     load_prefix "$prefix"
     watch_file $version_file
 }
