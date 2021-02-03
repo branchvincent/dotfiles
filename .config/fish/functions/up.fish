@@ -1,5 +1,5 @@
 function up --description "Update software to the latest version"
-    argparse --stop-nonopt "h/help" -- $argv || return
+    argparse --stop-nonopt h/help -- $argv || return
 
     if set -q _flag_help
         __up_help

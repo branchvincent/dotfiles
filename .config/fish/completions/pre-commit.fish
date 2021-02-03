@@ -64,7 +64,7 @@ complete -c pre-commit -n "__fish_seen_subcommand_from run try-repo" -l show-dif
 complete -c pre-commit -n "__fish_seen_subcommand_from run try-repo" -s a -l all-files -d "Run on all the files in the repo"
 complete -c pre-commit -n "__fish_seen_subcommand_from run try-repo" -s s -l source -l from-ref -x -d "Original ref"
 complete -c pre-commit -n "__fish_seen_subcommand_from run try-repo" -s o -l origin -l to-ref -x -d "Destination ref"
-complete -c pre-commit -n "__fish_seen_subcommand_from run try-repo" -s v -l verbose -d "Verbose"
+complete -c pre-commit -n "__fish_seen_subcommand_from run try-repo" -s v -l verbose -d Verbose
 complete -c pre-commit -n "__fish_seen_subcommand_from run" -a "(__fish_pre_commit_print_hook_ids)" -d "Hook id"
 complete -c pre-commit -n "__fish_seen_subcommand_from try-repo" -l ref -l rev -x -d "Ref to run against"
 
@@ -77,4 +77,4 @@ complete -c pre-commit -n "__fish_seen_subcommand_from uninstall" -s t -l hook-t
 
 # help
 complete -c pre-commit -n __fish_use_subcommand -a help -d "Show help for a specific command"
-complete -c pre-commit -n "__fish_seen_subcommand_from help" -a "$commands help" -d "Command"
+complete -c pre-commit -n "__fish_seen_subcommand_from help" -a "$commands help" -d Command

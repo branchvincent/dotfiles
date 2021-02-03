@@ -1,5 +1,5 @@
 function fish_log --description "Logger for fish scripts"
-    argparse --exclusive "i,w,e" "i/info" "w/warn" "e/error" -- $argv || return
+    argparse --exclusive="i,w,e" i/info w/warn e/error -- $argv || return
 
     if set -q _flag_error
         echo (set_color red)"Error: "(set_color normal)"$argv" >&2

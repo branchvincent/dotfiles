@@ -1,6 +1,6 @@
 function gitio --description "Create a shortened git.io URL"
     # Parse args
-    argparse --max-args 1 "h/help" "c/code=" -- $argv || return
+    argparse --max-args=1 h/help "c/code=" -- $argv || return
     set -l src https://git.io/$_flag_code
     set -l dest $argv[1]
 
