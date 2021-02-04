@@ -14,6 +14,7 @@ set -x XDG_BIN_HOME ~/.local/bin # ok, i made this one up
 set -x XDG_CACHE_HOME ~/.cache
 set -x XDG_CONFIG_HOME ~/.config
 set -x XDG_DATA_HOME ~/.local/share
+set -x XDG_BIN_DIRS $XDG_BIN_HOME # this too
 
 for d in XDG_{BIN,CACHE,CONFIG,DATA}_HOME
     __maybe_mkdir $$d
@@ -63,6 +64,7 @@ set -x NPM_CONFIG_TMP $XDG_CACHE_HOME/npm
 set -x NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 set -x FNM_DIR $XDG_DATA_HOME/fnm
 alias yarn "yarn --use-yarnrc=$XDG_CONFIG_HOME/yarn/config.yaml" # https://github.com/yarnpkg/yarn/issues/2334
+set -p XDG_BIN_DIRS $NPM_CONFIG_PREFIX/bin
 
 # psql
 set -x PSQLRC $XDG_CONFIG_HOME/psql/config.sql
@@ -84,6 +86,7 @@ set -x GEM_SPEC_CACHE $XDG_CACHE_HOME/gem
 # rust
 set -x CARGO_HOME $XDG_DATA_HOME/cargo
 set -x RUSTUP_HOME $XDG_DATA_HOME/rustup
+set -p XDG_BIN_DIRS $CARGO_HOME/bin
 
 # ssh
 set -x GIT_SSH_COMMAND "ssh -F $XDG_CONFIG_HOME/ssh/config"
