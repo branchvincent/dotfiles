@@ -5,6 +5,7 @@
 /.config/brew/Brewfile.lock.json
 /.config/docker/.*
 /.config/fish/conf.d/secrets.fish
+/.config/fish/fish_variables
 /.config/gcloud/
 /.config/hyper/.hyper_plugins
 /.config/op/
