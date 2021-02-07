@@ -1,3 +1,5 @@
+status is-login || exit
+
 set -x EDITOR code --wait
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x PAGER less -RF --tabs=4

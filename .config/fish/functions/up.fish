@@ -39,9 +39,9 @@ function __up_all --description "Update everything"
 end
 
 function __up_brew --description "Update Homebrew and its packages"
-    brew upgrade
-    brew autoremove
-    brew cleanup
+    brew upgrade -q
+    brew autoremove -q
+    brew cleanup -q
     brew doctor
 end
 
