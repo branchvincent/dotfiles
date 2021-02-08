@@ -14,7 +14,7 @@ end
 
 function _tide_item_shlvl --description "Show SHLVL"
     if set -q SHLVL && test "$SHLVL" -gt 2
-        echo (set_color blue) (math $SHLVL-1) # subtract one since we are in a subshell
+        echo (set_color blue) (math $SHLVL-1) # subtract one since we are in a subshell
     end
 end
 
@@ -54,7 +54,12 @@ end
 
 function _tide_show_on_command
     if test (count (commandline -poc)) -eq 0
-        switch (commandline -t)
+        set -l cmd (commandline -t)
+        if abbr -q $cmd
+            set -l var _fish_abbr_$cmd
+            set cmd $$var
+        end
+        switch $cmd
             case kubectl helm kubens kubectx
                 set -U tide_show_k8s
                 commandline -f repaint
@@ -65,4 +70,6 @@ function _tide_show_on_command
     end
 end
 
-bind ' ' '_tide_show_on_command; commandline -i " "'
+bind ' ' 'commandline -f expand-abbr; _tide_show_on_command; commandline -i " "'
+
+
