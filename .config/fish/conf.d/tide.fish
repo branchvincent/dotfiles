@@ -2,7 +2,13 @@
 
 # Configure prompt items
 set -g tide_left_prompt_items pwd git newline prompt_char
-set -g tide_right_prompt_items status cmd_duration context jobs k8s go java node python rust shlvl direnv
+set -g tide_right_prompt_items status cmd_duration context jobs k8s go java node python rust direnv
+
+# Set a default bg color
+set items tide_{left,right}_prompt_items
+for item in $$items
+    set -q tide_"$item"_bg_color || set -U tide_"$item"_bg_color normal
+end
 
 # Define custom prompt items
 function _tide_language_version
@@ -26,7 +32,7 @@ function _tide_item_direnv --description "Show Direnv status"
 end
 
 function _tide_item_k8s --description "Show Kubernetes context"
-    set -q tide_show_k8s || return
+    set -q tide_show_k8s_$_tide_fish_pid || return
     set -l namespace /(kubens --current)
     test $namespace = "/default" && set namespace ""
     echo (set_color magenta)⎈ (kubectl config current-context)$namespace
@@ -61,10 +67,10 @@ function _tide_show_on_command
         end
         switch $cmd
             case kubectl helm kubens kubectx
-                set -U tide_show_k8s
+                set -U tide_show_k8s_$_tide_fish_pid
                 commandline -f repaint
             case '*'
-                set -e tide_show_k8s
+                set -e tide_show_k8s_$_tide_fish_pid
                 commandline -f repaint
         end
     end
