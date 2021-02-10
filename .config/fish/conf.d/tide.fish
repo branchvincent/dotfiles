@@ -32,7 +32,7 @@ function _tide_item_direnv --description "Show Direnv status"
 end
 
 function _tide_item_k8s --description "Show Kubernetes context"
-    set -q tide_show_k8s_$_tide_fish_pid || return
+    set -q tide_show_k8s || return
     set -l namespace /(kubens --current)
     test $namespace = "/default" && set namespace ""
     echo (set_color magenta)⎈ (kubectl config current-context)$namespace
@@ -67,10 +67,10 @@ function _tide_show_on_command
         end
         switch $cmd
             case kubectl helm kubens kubectx
-                set -U tide_show_k8s_$_tide_fish_pid
+                set -gx tide_show_k8s
                 commandline -f repaint
             case '*'
-                set -e tide_show_k8s_$_tide_fish_pid
+                set -e tide_show_k8s
                 commandline -f repaint
         end
     end
