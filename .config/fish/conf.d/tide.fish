@@ -77,5 +77,3 @@ function _tide_show_on_command
 end
 
 bind ' ' 'commandline -f expand-abbr; _tide_show_on_command; commandline -i " "'
-
-
