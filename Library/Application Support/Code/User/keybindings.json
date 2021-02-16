@@ -38,5 +38,13 @@
     "command": "-git.unstageSelectedRanges",
     "key": "cmd+k cmd+n",
     "when": "isInDiffEditor"
+  },
+  {
+    "command": "workbench.action.terminal.toggleTerminal",
+    "key": "cmd+t"
+  },
+  {
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "key": "ctrl+`"
   }
 ]
