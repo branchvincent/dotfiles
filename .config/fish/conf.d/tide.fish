@@ -1,6 +1,6 @@
 # https://github.com/IlanCosman/tide
 
-# Configure prompt items
+### Prompt items ###
 set -g tide_left_prompt_items pwd git newline prompt_char
 set -g tide_right_prompt_items status cmd_duration context jobs k8s go java node python rust direnv
 
@@ -10,7 +10,7 @@ for item in $$items
     set -q tide_"$item"_bg_color || set -U tide_"$item"_bg_color normal
 end
 
-# Define custom prompt items
+### Custom items ###
 function _tide_language_version
     argparse --stop-nonopt "c/color=" "i/icon=" -- $argv || return
     set -l v ($argv | string match -r "\d+\.\d+\.\d+")
@@ -20,7 +20,7 @@ end
 
 function _tide_item_shlvl --description "Show SHLVL"
     if set -q SHLVL && test "$SHLVL" -gt 2
-        echo (set_color blue) (math $SHLVL-1) # subtract one since we are in a subshell
+        echo (set_color blue) (math $SHLVL-1) # subtract one since we are in a subshell
     end
 end
 
@@ -34,7 +34,7 @@ end
 function _tide_item_k8s --description "Show Kubernetes context"
     set -q tide_show_k8s || return
     set -l namespace /(kubens --current)
-    test $namespace = "/default" && set namespace ""
+    test $namespace = /default && set namespace ""
     echo (set_color magenta)⎈ (kubectl config current-context)$namespace
 end
 
@@ -58,6 +58,7 @@ function _tide_item_python --description "Show Python version"
     _tide_language_version -i python --version
 end
 
+### Show on command ###
 function _tide_show_on_command
     if test (count (commandline -poc)) -eq 0
         set -l cmd (commandline -t)
