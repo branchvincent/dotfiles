@@ -1,11 +1,16 @@
 name: CI
+
 on:
   push:
+    paths-ignore:
+      - "**.md"
+  pull_request:
     paths-ignore:
       - "**.md"
 env:
   HOMEBREW_CACHE: /home/runner/.cache/Homebrew
   HOMEBREW_NO_AUTO_UPDATE: 1
+
 jobs:
   lint:
     runs-on: ubuntu-latest
