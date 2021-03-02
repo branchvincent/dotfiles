@@ -5,8 +5,8 @@ module.exports = {
     bell: false,
     copyOnSelect: true,
     css: `.splitpane_divider { background-color: white !important; }`,
-    cursorShape: 'BEAM',
-    fontFamily: '"Fira Code", monospace',
+    cursorShape: "BEAM",
+    fontFamily: "'Fira Code', monospace",
   },
 
   // Plugins
