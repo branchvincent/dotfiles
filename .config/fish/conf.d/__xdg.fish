@@ -92,8 +92,5 @@ set -p XDG_BIN_DIRS $CARGO_HOME/bin
 set -x GIT_SSH_COMMAND "ssh -F $XDG_CONFIG_HOME/ssh/config"
 alias ssh $GIT_SSH_COMMAND
 
-# starship
-set -x STARSHIP_CONFIG $XDG_CONFIG_HOME/starship/config.toml
-
 # zsh
 set -x ZDOTDIR $XDG_CONFIG_HOME/zsh
