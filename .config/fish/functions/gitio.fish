@@ -21,9 +21,9 @@ function gitio --description "Create a shortened git.io URL"
         # Create url
         echo "Creating $src -> $dest"
         http --form --headers https://git.io url=$dest code=$_flag_code |
-        sed -En 's/^HTTP\/1.1 ([0-9]{3}) .*$/\1/p; s/^Location: //p' |
-        string trim |
-        read -lL http_code src_actual
+            sed -En 's/^HTTP\/1.1 ([0-9]{3}) .*$/\1/p; s/^Location: //p' |
+            string trim |
+            read -lL http_code src_actual
 
         switch "$http_code: $src_actual"
             case "201: $src"
