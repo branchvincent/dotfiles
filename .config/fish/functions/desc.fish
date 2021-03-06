@@ -1,4 +1,3 @@
-function desc --description "Print a function's description" --argument-names func
-    set -l details (functions --details --verbose $func)
-    echo $details[5]
+function desc --wraps functions --description "Print a function's description" --argument-names func
+    echo (functions --details --verbose $func)[5]
 end

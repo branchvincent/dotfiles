@@ -6,7 +6,7 @@ function up --description "Update software to the latest version"
     else if not set -q argv[1]
         __up_all
     else if functions -q __up_$argv[1]
-        __up_$argv[1] $argv[2..-1]
+        __up_$argv[1] $argv[2..]
     else
         fish_log -e "Unknown command '$argv[1]'"
         return 1
@@ -29,9 +29,7 @@ Commands:"
 end
 
 function __up_all --description "Update everything"
-    set -l ignored all help
-    for cmd in (functions -a | string replace -f "__up_" "")
-        contains $cmd $ignored && continue
+    for cmd in (functions -a | string replace -rf "^__up_(?!all|help)" "")
         fish_log "Updating $cmd..."
         __up_$cmd
         echo

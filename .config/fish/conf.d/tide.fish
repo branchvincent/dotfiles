@@ -4,12 +4,6 @@
 set -g tide_left_prompt_items pwd git newline prompt_char
 set -g tide_right_prompt_items status cmd_duration context jobs k8s go java node python rust direnv
 
-# Set a default bg color
-set items tide_{left,right}_prompt_items
-for item in $$items
-    set -q tide_"$item"_bg_color || set -U tide_"$item"_bg_color normal
-end
-
 ### Custom items ###
 function _tide_language_version
     argparse --stop-nonopt "c/color=" "i/icon=" -- $argv || return
