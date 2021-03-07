@@ -23,7 +23,7 @@ Options:
   -h, --help    "(desc __up_help)"
 
 Commands:"
-    for cmd in (functions -a | string replace -f "__up_" "")
+    for cmd in (functions -a | string replace -rf "^__up_" "")
         printf "  %-13""s %s\n" $cmd (desc __up_$cmd)
     end
 end

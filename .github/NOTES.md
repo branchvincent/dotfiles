@@ -51,10 +51,13 @@ For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-t
    ```sh
    ssh-keygen -t ed25519 -f ~/.config/ssh/keys/default -C "branchevincent@gmail.com"
    ssh-add ~/.config/ssh/keys/default
-   pbcopy ~/.config/ssh/keys/default.pub
    ```
 
 1. Add the public key to [GitHub](https://github.com/settings/ssh/new)
+
+   ```sh
+   gh ssh-key add --title cmd-line ~/.config/ssh/keys/default.pub
+   ```
 
 1. Verify it works
 
