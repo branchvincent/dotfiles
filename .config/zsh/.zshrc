@@ -1,5 +1,5 @@
 __maybe_source() {
-    [[ -r "$1" ]] && source "$1"
+  [[ -r "$1" ]] && source "$1"
 }
 
 ### Theme ###
@@ -12,7 +12,7 @@ export HISTFILE="$XDG_DATA_HOME/zsh/history"
 mkdir -p "$(dirname "$HISTFILE")"
 
 ### Completions ###
-fpath=($XDG_CONFIG_HOME/zsh/completions $fpath)
+fpath+=($XDG_CONFIG_HOME/zsh/completions)
 mkdir -p "$XDG_CACHE_HOME/zsh"
 autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 
