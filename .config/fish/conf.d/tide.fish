@@ -2,7 +2,7 @@
 
 ### Prompt items ###
 set -g tide_left_prompt_items pwd git newline prompt_char
-set -g tide_right_prompt_items status cmd_duration context jobs k8s go java node python rust direnv
+set -g tide_right_prompt_items status cmd_duration context jobs k8s go java node python rust docker direnv
 
 ### Custom items ###
 function _tide_language_version
@@ -23,6 +23,13 @@ function _tide_item_direnv --description "Show Direnv status"
     set -l color yellow
     direnv status | string match -rq '^Found RC allowed false$' && set color brred
     echo (set_color $color)▼
+end
+
+function _tide_item_docker --description "Show if docker containers are running"
+    test -f docker-compose.yaml -o -f docker-compose.yml || return
+    set -l containers (count (docker-compose ps -q 2>/dev/null)) || return
+    printf (set_color blue --bold)
+    test $containers -gt 1 && printf " $containers"
 end
 
 function _tide_item_k8s --description "Show Kubernetes context"
