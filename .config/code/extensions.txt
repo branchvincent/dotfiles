@@ -27,6 +27,5 @@ redhat.vscode-yaml
 rust-lang.rust
 sidneys1.gitconfig
 timonwong.shellcheck
-tomoki1207.pdf
 VisualStudioExptTeam.vscodeintellicode
 zhuangtongfa.material-theme
