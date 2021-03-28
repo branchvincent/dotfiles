@@ -47,6 +47,8 @@
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "gitlens.statusBar.enabled": false,
+  // JavaScript
+  "javascript.updateImportsOnFileMove.enabled": "always",
   // Python
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "~/.local/bin/black", // https://github.com/microsoft/vscode-python/issues/4922

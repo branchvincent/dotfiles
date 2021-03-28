@@ -53,11 +53,11 @@ use_python() {
 
 layout_poetry() {
     # Create venv, if needed
-    poetry run true
+    # poetry run true
 
     # Activate venv
-    VIRTUAL_ENV=$(poetry env info --path)
-    export VIRTUAL_ENV
+    # VIRTUAL_ENV=$(poetry env info --path) # FIXME: recently became very slow
+    export VIRTUAL_ENV="$PWD/.venv"
     export POETRY_ACTIVE=1
     PATH_add "$VIRTUAL_ENV/bin"
 
@@ -65,7 +65,7 @@ layout_poetry() {
     now=$(date +%s)
     modified_at=$(date -r "$(which pip)" +%s)
     if [ $((now - modified_at)) -gt $((60 * 60 * 24 * 7)) ]; then
-        poetry run pip install --upgrade pip setuptools wheel
+        pip install --upgrade pip setuptools wheel
         touch "$(which pip)" # NOTE: ensure mtime is updated
     fi
 }
