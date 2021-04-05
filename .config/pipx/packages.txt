@@ -1,3 +1,4 @@
+all-repos
 black
 copier
 flake8
