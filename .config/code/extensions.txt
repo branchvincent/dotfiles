@@ -28,4 +28,5 @@ rust-lang.rust
 sidneys1.gitconfig
 timonwong.shellcheck
 VisualStudioExptTeam.vscodeintellicode
+wholroyd.jinja
 zhuangtongfa.material-theme
