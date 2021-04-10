@@ -5,7 +5,7 @@ set fish_handle_reflow 0 # https://github.com/fish-shell/fish-shell/issues/1706#
 
 ### Prompt items ###
 set -g tide_left_prompt_items pwd git newline prompt_char
-set -g tide_right_prompt_items status cmd_duration context jobs k8s docker go java node python rust direnv
+set -g tide_right_prompt_items status cmd_duration context jobs k8s go java node python rust direnv
 
 ### Custom items ###
 function _tide_language_version
