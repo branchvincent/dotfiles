@@ -8,7 +8,7 @@
 \set PROMPT2 '... %R > '
 
 -- Show query time
-\timing
+-- \timing
 
 -- Use best available output format
 \x auto
