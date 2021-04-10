@@ -23,7 +23,7 @@ Options:
   -h, --help    "(desc __up_help)"
 
 Commands:"
-    for cmd in (functions -a | string replace -rf "^__up_" "")
+    for cmd in (functions -a | string replace -rf "^__up_(?!help)" "")
         printf "  %-13""s %s\n" $cmd (desc __up_$cmd)
     end
 end
@@ -41,12 +41,6 @@ function __up_brew --description "Update Homebrew and its packages"
     brew autoremove -q
     brew cleanup -q
     brew doctor
-end
-
-function __up_shell --description "Update shell packages and completions"
-    fisher update >/dev/null
-    fish_update_completions >/dev/null
-    echo "Everything is up-to-date"
 end
 
 function __up_dotfiles --description "Update dotfiles"
@@ -75,6 +69,10 @@ function __up_dotfiles --description "Update dotfiles"
     echo "Everything is up-to-date"
 end
 
+function __up_gcloud --description "Update gcloud components"
+    gcloud components update --quiet
+end
+
 function __up_mas --description "Update apps from App Store"
     mas upgrade
 end
@@ -85,6 +83,16 @@ end
 
 function __up_pipx --description "Update pipx packages"
     pipx upgrade-all
+end
+
+function __up_rust --description "Update Rust components"
+    rustup update
+end
+
+function __up_shell --description "Update shell packages and completions"
+    fisher update >/dev/null
+    fish_update_completions >/dev/null
+    echo "Everything is up-to-date"
 end
 
 function __up_tex --description "Update LaTeX packages"
