@@ -19,6 +19,7 @@
   "files.trimTrailingWhitespace": true,
   "search.smartCase": true,
   "search.useGlobalIgnoreFiles": true,
+  "terminal.integrated.fontFamily": "MesloLGS NF",
   "terminal.integrated.macOptionIsMeta": true, // TODO: not working?
   "terminal.integrated.cursorStyle": "line",
   "window.nativeTabs": true,

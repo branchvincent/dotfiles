@@ -38,6 +38,7 @@ curl -fsSL https://raw.githubusercontent.com/branchvincent/dotfiles/main/bootstr
 
 ## TODOs
 
+- Create Homebrew formula for [MesloLGS font](https://github.com/romkatv/powerlevel10k#automatic-font-installation)
 - Move fish completions upstream ([example](https://github.com/Homebrew/homebrew-core/pull/59433))
 - Shorten bootstrap url (`bvincent`, `branchv`, `bvstrap`)
 - Make zsh more fish-like ([abbr](https://github.com/IlanCosman/zsh-abbr))

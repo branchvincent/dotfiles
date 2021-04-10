@@ -142,6 +142,7 @@
         "Green Component": 0.6980392336845398,
         "Red Component": 0.6705882549285889
       },
+      "Bound Hosts": [],
       "Character Encoding": 4,
       "Close Sessions On End": true,
       "Columns": 80,
@@ -365,8 +366,8 @@
       "Name": "One Dark",
       "Non Ascii Font": "Monaco 12",
       "Non-ASCII Anti Aliased": true,
-      "Normal Font": "FiraCode-Retina 12",
-      "Option Key Sends": 0,
+      "Normal Font": "MesloLGS-NF-Regular 12",
+      "Option Key Sends": 2,
       "Prompt Before Closing 2": false,
       "Right Option Key Sends": 0,
       "Rows": 25,
@@ -458,7 +459,9 @@
         ]
       },
       "Sync Title": false,
-      "Tags": [],
+      "Tags": [
+        "Dynamic"
+      ],
       "Terminal Type": "xterm-256color",
       "Thin Strokes": 4,
       "Transparency": 0,
