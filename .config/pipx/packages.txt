@@ -1,6 +1,7 @@
 all-repos
 black
 copier
+docker-compose-wait
 flake8
 httpie
 isort
