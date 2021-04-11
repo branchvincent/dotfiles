@@ -1,3 +1,3 @@
 aliases:
-  clone-all: |
-    !gh api user/repos?affiliation=owner | jq '.[].full_name' | xargs -pL1 gh repo clone
+  clone: "![[ ${1?Repo required} =~ ([^/]+/[^/]+).git$ ]]; gh repo clone $1 ${2:-~/Code/${BASH_REMATCH[1]:-$1}} ${@:3}"
+  clone-all: "!gh api user/repos?affiliation=owner | jq '.[].full_name' | xargs -pL1 gh repo clone"
