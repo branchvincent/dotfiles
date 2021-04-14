@@ -5,7 +5,7 @@ status is-interactive || exit
 ### Abbreviations ###
 abbr -ag b brew
 abbr -ag d docker
-abbr -ag dc docker-compose
+abbr -ag dc "docker compose"
 abbr -ag df "yadm enter code ~"
 abbr -ag dprune "docker system prune --all --volumes --force"
 abbr -ag dstop "docker ps --quiet | xargs docker stop"
