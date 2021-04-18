@@ -27,7 +27,7 @@ repos:
         exclude: settings.json # jsonc
       - id: trailing-whitespace
   - repo: https://github.com/Yelp/detect-secrets
-    rev: v1.0.3
+    rev: v1.1.0
     hooks:
       - id: detect-secrets
   - repo: https://github.com/codespell-project/codespell
