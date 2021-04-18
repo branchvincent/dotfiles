@@ -25,9 +25,6 @@ set -x HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/brew/Brewfile
 
 # code: https://github.com/microsoft/vscode/issues/3884
 
-# cookiecutter: https://github.com/cookiecutter/cookiecutter/issues/104
-set -x COOKIECUTTER_CONFIG $XDG_CONFIG_HOME/cookiecutter/config.yaml
-
 # docker: https://github.com/docker/for-mac/issues/2635
 set -x DOCKER_CONFIG $XDG_CONFIG_HOME/docker
 
