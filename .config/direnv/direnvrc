@@ -28,7 +28,9 @@ use_java() {
 use_nodejs() {
     # Get version and location
     version_file=.nvmrc
-    version=${1:-$(cat $version_file)}
+    version=${1:-$(cat $version_file 2>/dev/null)}
+    log_status "using version ${version:-default}"
+    [ -z "$version" ] && return # no version specified, use default
     prefix="$FNM_DIR/node-versions/$version/installation"
 
     # Install and load it
@@ -42,7 +44,9 @@ use_nodejs() {
 use_python() {
     # Get version and location
     version_file=.python-version
-    version=${1:-$(cat $version_file)}
+    version=${1:-$(cat $version_file 2>/dev/null)}
+    log_status "using version ${version:-default}"
+    [ -z "$version" ] && return # no version specified, use default
     prefix="$PYENV_ROOT/versions/$version"
 
     # Install and load it
@@ -69,3 +73,15 @@ layout_poetry() {
         touch "$(which pip)" # NOTE: ensure mtime is updated
     fi
 }
+
+### Infer layout ###
+
+if [ -f poetry.lock ]; then
+    use python
+    layout poetry
+    dotenv_if_exists
+elif [ -f package.json ]; then
+    use nodejs
+    layout node
+    dotenv_if_exists
+fi
