@@ -51,6 +51,7 @@ brew "miller"
 brew "pdm"
 brew "pgcli"
 brew "pinentry-mac"
+brew "pipgrip"
 brew "pipx"
 brew "poetry"
 brew "postgresql", restart_service: true
