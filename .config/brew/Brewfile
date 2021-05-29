@@ -22,7 +22,7 @@ brew "docker-compose-completion"
 brew "dockutil"
 brew "exa"
 brew "fd"
-brew "fish", args: ["HEAD"]
+brew "fish"
 brew "fnm"
 brew "freetds"
 brew "fzf"
