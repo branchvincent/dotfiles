@@ -7,7 +7,6 @@
 /.config/fish/conf.d/secrets.fish
 /.config/fish/fish_variables
 /.config/gcloud/
-/.config/gh/state.yml
 /.config/hyper/.hyper_plugins
 /.config/op/
 /.config/ssh/*
