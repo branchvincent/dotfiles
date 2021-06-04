@@ -19,6 +19,12 @@ set -x NPM_TOKEN $(op get item NPM --fields token)
 EOF
 chmod 600 ~/.config/fish/conf.d/secrets.fish
 
+### git ###
+# shellcheck disable=SC2016
+GITHUB_TOKEN=$(fish -c 'echo $GITHUB_TOKEN')
+printf "protocol=https\nhost=github.com\n" | git credential-osxkeychain erase
+printf "protocol=https\nhost=github.com\nusername=branchvincent\npassword=%s\n" "$GITHUB_TOKEN" | git credential-osxkeychain store
+
 ### gpg ###
 curl -fsSL https://github.com/branchvincent.gpg | gpg --import
 gpg --import "$(op get document "GPG Private Key")"
