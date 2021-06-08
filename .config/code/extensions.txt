@@ -4,6 +4,7 @@ bungcip.better-toml
 chrislajoie.vscode-modelines
 DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
+denoland.vscode-deno
 eamodio.gitlens
 esbenp.prettier-vscode
 exiasr.hadolint
