@@ -67,7 +67,6 @@
   // Python
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "~/.local/bin/black", // https://github.com/microsoft/vscode-python/issues/4922
-  "python.languageServer": "Pylance",
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Path": "~/.local/bin/flake8",
   "python.linting.mypyEnabled": true,
