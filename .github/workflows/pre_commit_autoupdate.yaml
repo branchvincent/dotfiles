@@ -18,5 +18,6 @@ jobs:
         with:
           branch: chore/pre-commit-autoupdate
           title: "pre-commit: autoupdate"
+          body: ""
           commit-message: "pre-commit: autoupdate"
-          body: Updates pre-commit hooks to latest versions
+          labels: automerge
