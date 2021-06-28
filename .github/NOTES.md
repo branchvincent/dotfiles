@@ -30,7 +30,8 @@
 1. Verify it works
 
    ```sh
-   git commit --allow-empty --gpg-sign
+   echo test | gpg --clearsign
+   git commit -m 'test' --allow-empty --gpg-sign
    ```
 
 For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/managing-commit-signature-verification).
