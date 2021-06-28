@@ -1,14 +1,12 @@
 # Notes
 
-<!-- toc -->
+<!--TOC-->
 
-* [GPG Keys](#gpg-keys)
-* [SSH Keys](#ssh-keys)
-* [AWS Elastic Kubernetes Service](#aws-elastic-kubernetes-service)
+- [GPG Keys](#gpg-keys)
+- [SSH Keys](#ssh-keys)
+- [AWS Elastic Kubernetes Service](#aws-elastic-kubernetes-service)
 
-<!-- Regenerate with "pre-commit run -a markdown-toc" -->
-
-<!-- tocstop -->
+<!--TOC-->
 
 ## GPG Keys
 

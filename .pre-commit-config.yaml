@@ -26,10 +26,11 @@ repos:
         args: [--autofix]
         exclude: settings.json # jsonc
       - id: trailing-whitespace
-  - repo: https://github.com/trussworks/pre-commit-hooks
-    rev: v1.1.0
+  - repo: https://github.com/frnmst/md-toc
+    rev: "8.0.0"
     hooks:
-      - id: markdown-toc
+      - id: md-toc
+        args: [--in-place, --skip-lines=1, github]
   - repo: https://github.com/Yelp/detect-secrets
     rev: v1.1.0
     hooks:
