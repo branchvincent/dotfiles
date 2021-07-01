@@ -2,13 +2,17 @@
 
 <!--TOC-->
 
-- [GPG Keys](#gpg-keys)
-- [SSH Keys](#ssh-keys)
-- [AWS Elastic Kubernetes Service](#aws-elastic-kubernetes-service)
+- [GitHub](#github)
+  - [GPG Keys](#gpg-keys)
+  - [SSH Keys](#ssh-keys)
+- [Postgres](#postgres)
+- [Kubernetes](#kubernetes)
 
 <!--TOC-->
 
-## GPG Keys
+## GitHub
+
+### GPG Keys
 
 1. List and delete current keys
 
@@ -38,7 +42,7 @@ For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-t
 
 **_Fun fact_**: GitHub exposes the public key at <https://github.com/branchvincent.gpg>
 
-## SSH Keys
+### SSH Keys
 
 1. List and delete current keys
 
@@ -70,16 +74,26 @@ For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-t
 
 **_Fun fact_**: GitHub exposes the public keys at <https://github.com/branchvincent.keys>
 
-## AWS Elastic Kubernetes Service
+## Postgres
 
-1. List available clusters
+1. Log all queries
+
+   ```sql
+   alter system set log_statement = 'all';
+   select pg_reload_conf();
+   ```
+
+## Kubernetes
+
+1. Add EKS cluster to kubeconfig
 
    ```sh
    aws eks list-clusters
+   aws eks update-kubeconfig --name <cluster_name> --alias <cluster_alias>
    ```
 
-2. Add a cluster to your kubeconfig
+1. Dump secret to `.env`
 
    ```sh
-   aws eks update-kubeconfig --name <cluster_name> --alias <cluster_alias>
+   kubectl get secrets/<name> -o json | jq -r '.data | map_values(@base64d) | to_entries[] | "\(.key)=\(.value)"' >>.env
    ```
