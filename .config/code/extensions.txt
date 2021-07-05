@@ -11,6 +11,7 @@ exiasr.hadolint
 file-icons.file-icons
 foxundermoon.shell-format
 fwcd.kotlin
+GitHub.copilot
 GitHub.vscode-pull-request-github
 golang.go
 James-Yu.latex-workshop
