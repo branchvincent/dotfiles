@@ -48,7 +48,7 @@ function _tide_item_go --description "Show Go version"
 end
 
 function _tide_item_java --description "Show Java version"
-    test -f pom.xml || return
+    test -f pom.xml -o -f build.gradle -o -f build.gradle.kts || return
     _tide_language_version -i java -Xinternalversion
 end
 
@@ -58,7 +58,7 @@ function _tide_item_node --description "Show Node version"
 end
 
 function _tide_item_python --description "Show Python version"
-    set -q VIRTUAL_ENV || return
+    test -n "$VIRTUAL_ENV" -o -f pyproject.toml -o -f setup.py || return
     _tide_language_version -i python --version
 end
 
