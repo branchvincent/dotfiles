@@ -1,6 +1,5 @@
 # https://github.com/IlanCosman/tide
 
-set -g tide_right_prompt_suffix ' ' # FIXME: vscode trimming far right character
 set fish_handle_reflow 0 # https://github.com/fish-shell/fish-shell/issues/1706#issuecomment-803655785
 
 ### Prompt items ###
