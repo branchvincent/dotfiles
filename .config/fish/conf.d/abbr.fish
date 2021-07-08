@@ -22,7 +22,7 @@ abbr -ag pp pbpaste
 abbr -ag py python3
 abbr -ag urldecode "string unescape --style=url"
 abbr -ag urlencode "string escape --style=url"
-abbr -ag y yadm
+abbr -ag y yarn
 
 ### Aliases ###
 alias cat bat
