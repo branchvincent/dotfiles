@@ -17,7 +17,7 @@ readline.write_history_file = lambda *args: None
 
 
 def launch_repl():
-    """"Launch a better REPL (ptpython), if available"""
+    """Launch a better REPL (ptpython), if available"""
     if sys.version_info < (3, 6):
         # Not available
         return
