@@ -86,9 +86,9 @@ For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-t
 1. Show running queries
 
    ```sql
-   select pid, age(clock_timestamp(), query_start), usename, query
+   select pid, age(clock_timestamp(), query_start), datname, usename, query, state
    from pg_stat_activity
-   where query != '<IDLE>' and query not ilike '%pg_stat_activity%'
+   where state not like 'idle%' and query not ilike '%pg_stat_activity%'
    order by query_start desc;
    ```
 
