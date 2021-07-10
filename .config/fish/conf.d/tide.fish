@@ -70,7 +70,7 @@ function _tide_show_on_command
             set cmd $$var
         end
         switch $cmd
-            case kubectl helm kubens kubectx
+            case kubectl helm kubens kubectx stern
                 set -gx tide_show_k8s
                 commandline -f repaint
             case '*'
