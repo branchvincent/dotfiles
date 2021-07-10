@@ -7,6 +7,7 @@
   - [SSH Keys](#ssh-keys)
 - [Postgres](#postgres)
 - [Kubernetes](#kubernetes)
+- [Tricks](#tricks)
 
 <!--TOC-->
 
@@ -76,11 +77,32 @@ For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-t
 
 ## Postgres
 
+1. Clone database from another
+
+   ```sh
+   pg_dump -Ox <source> | psql <target>
+   ```
+
+1. Show running queries
+
+   ```sql
+   select pid, age(clock_timestamp(), query_start), usename, query
+   from pg_stat_activity
+   where query != '<IDLE>' and query not ilike '%pg_stat_activity%'
+   order by query_start desc;
+   ```
+
 1. Log all queries
 
    ```sql
    alter system set log_statement = 'all';
    select pg_reload_conf();
+   ```
+
+1. Show table stats
+
+   ```sql
+   select * from pg_stat_user_tables;
    ```
 
 ## Kubernetes
@@ -96,4 +118,18 @@ For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-t
 
    ```sh
    kubectl get secrets/<name> -o json | jq -r '.data | map_values(@base64d) | to_entries[] | "\(.key)=\(.value)"' >>.env
+   ```
+
+1. Dump pod environment to `.env`
+
+   ```sh
+   kubectl get pod/<name> -o json | jq -r '.spec.containers[0].env[] | "\(.name)=\(.value)"' >>.env
+   ```
+
+## Tricks
+
+1. Enable TouchID for `sudo` auth
+
+   ```sh
+   echo -e "auth sufficient pam_tid.so\n$(cat /etc/pam.d/sudo)" >/etc/pam.d/sudo
    ```
