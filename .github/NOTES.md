@@ -128,6 +128,12 @@ For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-t
 
 ## Tricks
 
+1. Publicly expose local port
+
+   ```sh
+   ngrok http 80
+   ```
+
 1. Enable TouchID for `sudo` auth
 
    ```sh
