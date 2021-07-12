@@ -3,8 +3,8 @@
 ### Go ###
 
 layout_go() {
-    path_add GOPATH "$PWD"
-    PATH_add "${GOPATH//://bin:}"/bin
+    export GOBIN="$PWD/bin"
+    PATH_add bin
 }
 
 ### Java ###
