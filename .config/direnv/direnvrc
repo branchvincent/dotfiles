@@ -1,5 +1,12 @@
 #!/bin/bash
 
+layout_auto() {
+    [ -f go.mod ] && layout go
+    [ -f package.json ] && use nodejs && layout node
+    [ -f poetry.lock ] && use python && layout poetry
+    dotenv_if_exists
+}
+
 ### Go ###
 
 layout_go() {
@@ -12,7 +19,9 @@ layout_go() {
 use_java() {
     # Get version and location
     version_file=.java-version
-    version=${1:-$(cat $version_file)}
+    version=${1:-$(cat $version_file 2>/dev/null)}
+    log_status "using version ${version:-default}"
+    [ -z "$version" ] && return # no version specified, use default
     # shellcheck disable=SC2153
     prefix="$JABBA_HOME/jdk/$version/Contents/Home"
 
@@ -74,14 +83,4 @@ layout_poetry() {
     fi
 }
 
-### Infer layout ###
-
-if [ -f poetry.lock ]; then
-    use python
-    layout poetry
-    dotenv_if_exists
-elif [ -f package.json ]; then
-    use nodejs
-    layout node
-    dotenv_if_exists
-fi
+layout auto
