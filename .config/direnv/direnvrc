@@ -65,14 +65,13 @@ use_python() {
 }
 
 layout_poetry() {
-    # Create venv, if needed
-    # poetry run true
-
     # Activate venv
-    # VIRTUAL_ENV=$(poetry env info --path) # FIXME: recently became very slow
     export VIRTUAL_ENV="$PWD/.venv"
     export POETRY_ACTIVE=1
     PATH_add "$VIRTUAL_ENV/bin"
+
+    # Create venv, if needed
+    [ -d "$VIRTUAL_ENV" ] || poetry install
 
     # Update pip and friends, every week
     now=$(date +%s)
