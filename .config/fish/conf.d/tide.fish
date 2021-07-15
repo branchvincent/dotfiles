@@ -4,7 +4,7 @@ set fish_handle_reflow 0 # https://github.com/fish-shell/fish-shell/issues/1706#
 
 ### Prompt items ###
 set -g tide_left_prompt_items pwd git newline prompt_char
-set -g tide_right_prompt_items status cmd_duration context jobs k8s go java node python rust direnv
+set -g tide_right_prompt_items status cmd_duration context jobs pulsar k8s go java node python rust direnv
 
 ### Custom items ###
 function _tide_language_version
@@ -41,6 +41,11 @@ function _tide_item_k8s --description "Show Kubernetes context"
     echo (set_color magenta)⎈ (kubectl config current-context)$namespace
 end
 
+function _tide_item_pulsar --description "Show Pulsar context"
+    set -q tide_show_pulsar || return
+    echo (set_color blue) (pulsarctl context current 2>&1)
+end
+
 function _tide_item_go --description "Show Go version"
     test -f go.mod || return
     _tide_language_version -i go version
@@ -65,18 +70,15 @@ end
 function _tide_show_on_command
     if test (count (commandline -poc)) -eq 0
         set -l cmd (commandline -t)
-        if abbr -q $cmd
-            set -l var _fish_abbr_$cmd
-            set cmd $$var
-        end
+        abbr -q $cmd && set -l var _fish_abbr_$cmd && set cmd $$var
+        set -e (set -n | string match -r '^tide_show_.*$') 2>/dev/null
         switch $cmd
             case kubectl helm kubens kubectx stern
                 set -gx tide_show_k8s
-                commandline -f repaint
-            case '*'
-                set -e tide_show_k8s
-                commandline -f repaint
+            case pulsarctl
+                set -gx tide_show_pulsar
         end
+        commandline -f repaint
     end
 end
 
