@@ -4,7 +4,7 @@ set fish_handle_reflow 0 # https://github.com/fish-shell/fish-shell/issues/1706#
 
 ### Prompt items ###
 set -g tide_left_prompt_items pwd git newline prompt_char
-set -g tide_right_prompt_items status cmd_duration context jobs pulsar k8s go java node python rust direnv
+set -g tide_right_prompt_items status cmd_duration context jobs pulsar_context kube_context go java node python rust direnv
 
 ### Custom items ###
 function _tide_language_version
@@ -34,13 +34,13 @@ function _tide_item_docker --description "Show if docker containers are running"
     test $containers -gt 1 && printf " $containers"
 end
 
-function _tide_item_k8s --description "Show Kubernetes context"
+function _tide_item_kube_context --description "Show Kubernetes context"
     set -l namespace /(kubens --current)
     test $namespace = /default && set namespace ""
     echo (set_color magenta)⎈ (kubectl config current-context)$namespace
 end
 
-function _tide_item_pulsar --description "Show Pulsar context"
+function _tide_item_pulsar_context --description "Show Pulsar context"
     echo (set_color blue) (pulsarctl context current 2>&1)
 end
 
@@ -66,8 +66,8 @@ end
 
 ### Show on command ###
 
-set -g tide_show_k8s_on kubectl helm kubens kubectx stern
-set -g tide_show_pulsar_on pulsarctl
+set -g tide_show_kube_context_on kubectl helm kubens kubectx stern
+set -g tide_show_pulsar_context_on pulsarctl
 
 set -n | string match -r '^tide_show_(.*)_on$' | while read -Ll match item
     set -l func _tide_item_$item
@@ -82,9 +82,8 @@ function _tide_show_on_command
     if test (count (commandline -poc)) -eq 0
         set -l cmd (commandline -t)
         abbr -q $cmd && set -l var _fish_abbr_$cmd && set cmd $$var
-        set -e (set -n | string match -r '^_tide_show_.*$') 2>/dev/null
         set -n | string match -r '^tide_show_(.*)_on$' | while read -Ll match item
-            contains $cmd $$match && set -gx _tide_show_$item
+            contains $cmd $$match && set -gx _tide_show_$item || set -e _tide_show_$item
         end
         commandline -f repaint
     end
