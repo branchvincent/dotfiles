@@ -2,11 +2,28 @@
 
 set fish_handle_reflow 0 # https://github.com/fish-shell/fish-shell/issues/1706#issuecomment-803655785
 
-### Prompt items ###
-set -g tide_left_prompt_items pwd git newline prompt_char
-set -g tide_right_prompt_items status cmd_duration context jobs pulsar_context kube_context go java node python rust direnv
+### Config ###
 
-### Custom items ###
+set -g tide_left_prompt_items pwd git newline prompt_char
+set -g tide_right_prompt_items \
+    status \
+    cmd_duration \
+    context \
+    jobs \
+    pulsar_context \
+    kube_context \
+    go \
+    java \
+    node \
+    python \
+    rust \
+    direnv
+
+set -g tide_show_kube_context_on kubectl helm kubens kubectx stern
+set -g tide_show_pulsar_context_on pulsarctl
+
+### Items ###
+
 function _tide_language_version
     argparse --stop-nonopt "c/color=" "i/icon=" -- $argv || return
     set -l v ($argv 2>&1 | string match -r "\d+\.\d+\.\d+")
@@ -65,9 +82,6 @@ function _tide_item_python --description "Show Python version"
 end
 
 ### Show on command ###
-
-set -g tide_show_kube_context_on kubectl helm kubens kubectx stern
-set -g tide_show_pulsar_context_on pulsarctl
 
 set -n | string match -r '^tide_show_(.*)_on$' | while read -Ll match item
     set -l func _tide_item_$item
