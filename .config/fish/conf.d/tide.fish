@@ -42,21 +42,21 @@ function _tide_item_shlvl --description "Show SHLVL"
     end
 end
 
-function _tide_item_direnv --description "Show Direnv status"
+function _tide_item_direnv --description "Show direnv status"
     set -q DIRENV_DIR || return
     set -l color yellow
     direnv status | string match -rq '^Found RC allowed false$' && set color brred
     echo (set_color $color)▼
 end
 
-function _tide_item_docker --description "Show if docker containers are running"
+function _tide_item_docker --description "Show Docker containers"
     test -f docker-compose.yaml -o -f docker-compose.yml || return
     set -l containers (count (docker-compose ps -q 2>/dev/null)) || return
     printf (set_color blue --bold)
     test $containers -gt 1 && printf " $containers"
 end
 
-function _tide_item_gcloud --description "Show current Google cloud project"
+function _tide_item_gcloud --description "Show Google cloud project"
     echo (set_color blue) (gcloud config get-value project)
 end
 
