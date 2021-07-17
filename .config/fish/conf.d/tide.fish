@@ -35,14 +35,12 @@ function _tide_item_docker --description "Show if docker containers are running"
 end
 
 function _tide_item_k8s --description "Show Kubernetes context"
-    set -q tide_show_k8s || return
     set -l namespace /(kubens --current)
     test $namespace = /default && set namespace ""
     echo (set_color magenta)⎈ (kubectl config current-context)$namespace
 end
 
 function _tide_item_pulsar --description "Show Pulsar context"
-    set -q tide_show_pulsar || return
     echo (set_color blue) (pulsarctl context current 2>&1)
 end
 
@@ -67,16 +65,26 @@ function _tide_item_python --description "Show Python version"
 end
 
 ### Show on command ###
+
+set -g tide_show_k8s_on kubectl helm kubens kubectx stern
+set -g tide_show_pulsar_on pulsarctl
+
+set -n | string match -r '^tide_show_(.*)_on$' | while read -Ll match item
+    set -l func _tide_item_$item
+    functions -c $func _$func
+    echo "
+function $func --description (desc $func)
+    set -q _tide_show_$item && __tide_item_$item
+end" | source
+end
+
 function _tide_show_on_command
     if test (count (commandline -poc)) -eq 0
         set -l cmd (commandline -t)
         abbr -q $cmd && set -l var _fish_abbr_$cmd && set cmd $$var
-        set -e (set -n | string match -r '^tide_show_.*$') 2>/dev/null
-        switch $cmd
-            case kubectl helm kubens kubectx stern
-                set -gx tide_show_k8s
-            case pulsarctl
-                set -gx tide_show_pulsar
+        set -e (set -n | string match -r '^_tide_show_.*$') 2>/dev/null
+        set -n | string match -r '^tide_show_(.*)_on$' | while read -Ll match item
+            contains $cmd $$match && set -gx _tide_show_$item
         end
         commandline -f repaint
     end
