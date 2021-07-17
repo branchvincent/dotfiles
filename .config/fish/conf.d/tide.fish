@@ -1,4 +1,7 @@
-# https://github.com/IlanCosman/tide
+# Terminal prompt: https://github.com/IlanCosman/tide
+#
+# References:
+# - Icons: https://www.nerdfonts.com/cheat-sheet
 
 set fish_handle_reflow 0 # https://github.com/fish-shell/fish-shell/issues/1706#issuecomment-803655785
 
@@ -10,6 +13,7 @@ set -g tide_right_prompt_items \
     cmd_duration \
     context \
     jobs \
+    gcloud \
     pulsar_context \
     kube_context \
     go \
@@ -19,6 +23,7 @@ set -g tide_right_prompt_items \
     rust \
     direnv
 
+set -g tide_show_gcloud_on gcloud
 set -g tide_show_kube_context_on kubectl helm kubens kubectx stern
 set -g tide_show_pulsar_context_on pulsarctl
 
@@ -49,6 +54,10 @@ function _tide_item_docker --description "Show if docker containers are running"
     set -l containers (count (docker-compose ps -q 2>/dev/null)) || return
     printf (set_color blue --bold)
     test $containers -gt 1 && printf " $containers"
+end
+
+function _tide_item_gcloud --description "Show current Google cloud project"
+    echo (set_color blue) (gcloud config get-value project)
 end
 
 function _tide_item_kube_context --description "Show Kubernetes context"
