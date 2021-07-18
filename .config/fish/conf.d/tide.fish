@@ -71,23 +71,27 @@ function _tide_item_pulsar_context --description "Show Pulsar context"
 end
 
 function _tide_item_go --description "Show Go version"
-    test -f go.mod || return
-    _tide_language_version -i go version
+    if set -q tide_go_always_display || test -f go.mod
+        _tide_language_version -i go version
+    end
 end
 
 function _tide_item_java --description "Show Java version"
-    test -f pom.xml -o -f build.gradle -o -f build.gradle.kts || return
-    _tide_language_version -i java -Xinternalversion
+    if set -q tide_java_always_display || test -f pom.xml -o -f build.gradle -o -f build.gradle.kts
+        _tide_language_version -i java -Xinternalversion
+    end
 end
 
 function _tide_item_node --description "Show Node version"
-    test -f package.json || return
-    _tide_language_version -i⬢ node --version
+    if set -q tide_node_always_display || test -f package.json
+        _tide_language_version -i⬢ node --version
+    end
 end
 
 function _tide_item_python --description "Show Python version"
-    test -n "$VIRTUAL_ENV" -o -f pyproject.toml -o -f setup.py || return
-    _tide_language_version -i python --version
+    if set -q tide_python_always_display || test -n "$VIRTUAL_ENV" -o -f pyproject.toml -o -f setup.py
+        _tide_language_version -i python --version
+    end
 end
 
 ### Show on command ###
@@ -97,7 +101,9 @@ set -n | string match -r '^tide_show_(.*)_on$' | while read -Ll match item
     functions -c $func _$func
     echo "
 function $func --description (desc $func)
-    set -q _tide_show_$item && __tide_item_$item
+    if set -q _tide_show_$item || set -q tide_"$item"_always_display
+        tide_"$item"_always_display=1 __tide_item_$item
+    end
 end" | source
 end
 
