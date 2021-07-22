@@ -8,6 +8,7 @@ abbr -ag d docker
 abbr -ag dc "docker compose"
 abbr -ag df "yadm enter code ~"
 abbr -ag dprune "docker system prune --all --volumes --force"
+abbr -ag drun "docker run --rm -it"
 abbr -ag dstop "docker ps --quiet | xargs docker stop"
 abbr -ag fish_clean 'sh -c \'env HOME=$(mktemp -d) fish\''
 abbr -ag g git
