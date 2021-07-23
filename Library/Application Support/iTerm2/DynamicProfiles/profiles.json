@@ -389,7 +389,7 @@
       },
       "Send Code When Idle": false,
       "Shortcut": "",
-      "Show Status Bar": true,
+      "Show Status Bar": false,
       "Silence Bell": false,
       "Status Bar Layout": {
         "advanced configuration": {
