@@ -7,8 +7,8 @@ set fish_handle_reflow 0 # https://github.com/fish-shell/fish-shell/issues/1706#
 
 ### Config ###
 
-set -g tide_left_prompt_items pwd git newline character
-set -g tide_right_prompt_items \
+set tide_left_prompt_items pwd git newline character
+set tide_right_prompt_items \
     status \
     cmd_duration \
     context \
@@ -34,12 +34,6 @@ function _tide_language_version
     set -l v ($argv 2>&1 | string match -r "\d+\.\d+\.\d+")
     set -q _flag_color[1] || set _flag_color 00AFAF
     echo (set_color $_flag_color)$_flag_icon $v
-end
-
-function _tide_item_shlvl --description "Show SHLVL"
-    if set -q SHLVL && test "$SHLVL" -gt 2
-        echo (set_color blue) (math $SHLVL-1) # subtract one since we are in a subshell
-    end
 end
 
 function _tide_item_direnv --description "Show direnv status"
