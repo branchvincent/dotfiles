@@ -6,7 +6,7 @@
 # - Inspiration: https://mths.be/macos
 
 ### General ###
-chflags nohidden ~/Library                                       # FIXME: not working on catalina
+chflags nohidden ~/Library
 defaults write NSGlobalDomain AppleInterfaceStyle -string Dark   # Dark mode
 defaults write com.apple.finder QLEnableTextSelection -bool true # Enable copy from quicklook
 launchctl load ~/Library/LaunchAgents/environment.plist          # Load launch agent
