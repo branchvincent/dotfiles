@@ -9,7 +9,6 @@
 /.config/fish/fish_variables
 /.config/gcloud/
 /.config/hyper/.hyper_plugins
-/.config/iterm2/AppSupport
 /.config/op/
 /.config/ssh/*
 !/.config/ssh/config
