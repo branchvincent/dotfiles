@@ -8,6 +8,10 @@ on:
     branches: [main]
     paths-ignore: ["**.md"]
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   HOMEBREW_CACHE: /home/runner/.cache/Homebrew
   HOMEBREW_NO_AUTO_UPDATE: 1
