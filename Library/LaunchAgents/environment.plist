@@ -27,8 +27,8 @@ References:
     <string>/usr/local/bin/fish</string>
     <string>-lc</string>
     <string>
-      env | string match -r '^(XDG_.*|PATH|GRADLE_USER_HOME|MAVEN_OPTS)=(.*)$' | while read -Ll match var val
-        set -l cmd launchctl setenv $var $val
+      set -n | string match -r '^(GRADLE_USER_HOME|MAVEN_OPTS|PATH|XDG_.*)$' | while read -Ll match var
+        set -l cmd launchctl setenv "$var" "$$var"
         echo Running $cmd && $cmd
       end
     </string>
