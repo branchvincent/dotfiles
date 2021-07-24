@@ -31,6 +31,8 @@ dockutil --no-restart --add ~/Downloads --sort dateadded --display folder --view
 ### iTerm2 ###
 # shellcheck disable=SC2088
 defaults write com.googlecode.iterm2.plist DynamicProfilesPath -string "~/.config/iterm2"
+# defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+# defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.config/iterm2"
 
 ### Mission Control ###
 defaults write com.apple.dock wvous-tl-corner -int 10 # Top left: Display sleep
