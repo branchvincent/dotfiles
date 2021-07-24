@@ -7,7 +7,7 @@ set fish_handle_reflow 0 # https://github.com/fish-shell/fish-shell/issues/1706#
 
 ### Config ###
 
-set -g tide_left_prompt_items pwd git newline prompt_char
+set -g tide_left_prompt_items pwd git newline character
 set -g tide_right_prompt_items \
     status \
     cmd_duration \
@@ -20,7 +20,7 @@ set -g tide_right_prompt_items \
     java \
     node \
     python \
-    rust \
+    rustc \
     direnv
 
 set -gx tide_show_gcloud_on gcloud
@@ -54,12 +54,6 @@ function _tide_item_docker --description "Show Docker containers"
     set -l containers (count (docker-compose ps -q 2>/dev/null)) || return
     printf (set_color blue --bold)
     test $containers -gt 1 && printf " $containers"
-end
-
-function _tide_item_go --description "Show Go version"
-    if set -q tide_go_always_display || test -f go.mod
-        _tide_language_version -i go version
-    end
 end
 
 function _tide_item_java --description "Show Java version"
