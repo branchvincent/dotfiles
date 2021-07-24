@@ -28,6 +28,10 @@ dockutil --no-restart --add /System/Applications/System\ Preferences.app
 dockutil --no-restart --add ~/Documents --sort name --display folder --view list
 dockutil --no-restart --add ~/Downloads --sort dateadded --display folder --view fan
 
+### iTerm2 ###
+# shellcheck disable=SC2088
+defaults write com.googlecode.iterm2.plist DynamicProfilesPath -string "~/.config/iterm"
+
 ### Mission Control ###
 defaults write com.apple.dock wvous-tl-corner -int 10 # Top left: Display sleep
 defaults write com.apple.dock wvous-tr-corner -int 12 # Top right: Notification center
