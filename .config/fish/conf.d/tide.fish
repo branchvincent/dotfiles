@@ -14,8 +14,8 @@ set -g tide_right_prompt_items \
     context \
     jobs \
     gcloud \
-    pulsar_context \
-    kube_context \
+    pulsarctl \
+    kubectl \
     go \
     java \
     node \
@@ -23,9 +23,9 @@ set -g tide_right_prompt_items \
     rust \
     direnv
 
-set -g tide_show_gcloud_on gcloud
-set -g tide_show_kube_context_on kubectl helm kubens kubectx stern
-set -g tide_show_pulsar_context_on pulsarctl
+set -gx tide_show_gcloud_on gcloud
+set -gx tide_show_kubectl_on kubectl helm kubens kubectx stern
+set -gx tide_show_pulsarctl_on pulsarctl
 
 ### Items ###
 
@@ -56,20 +56,6 @@ function _tide_item_docker --description "Show Docker containers"
     test $containers -gt 1 && printf " $containers"
 end
 
-function _tide_item_gcloud --description "Show Google cloud project"
-    echo (set_color blue) (gcloud config get-value project)
-end
-
-function _tide_item_kube_context --description "Show Kubernetes context"
-    set -l namespace /(kubens --current)
-    test $namespace = /default && set namespace ""
-    echo (set_color magenta)⎈ (kubectl config current-context)$namespace
-end
-
-function _tide_item_pulsar_context --description "Show Pulsar context"
-    echo (set_color blue) (pulsarctl context current 2>&1)
-end
-
 function _tide_item_go --description "Show Go version"
     if set -q tide_go_always_display || test -f go.mod
         _tide_language_version -i go version
@@ -93,29 +79,3 @@ function _tide_item_python --description "Show Python version"
         _tide_language_version -i python --version
     end
 end
-
-### Show on command ###
-
-set -n | string match -r '^tide_show_(.*)_on$' | while read -Ll match item
-    set -l func _tide_item_$item
-    functions -c $func _$func
-    echo "
-function $func --description (desc $func)
-    if set -q _tide_show_$item || set -q tide_"$item"_always_display
-        tide_"$item"_always_display=1 __tide_item_$item
-    end
-end" | source
-end
-
-function _tide_show_on_command
-    if test (count (commandline -poc)) -eq 0
-        set -l cmd (commandline -t)
-        abbr -q $cmd && set -l var _fish_abbr_$cmd && set cmd $$var
-        set -n | string match -r '^tide_show_(.*)_on$' | while read -Ll match item
-            contains $cmd $$match && set -gx _tide_show_$item || set -e _tide_show_$item
-        end
-        commandline -f repaint
-    end
-end
-
-bind ' ' 'commandline -f expand-abbr; _tide_show_on_command; commandline -i " "'
