@@ -1,3 +1,4 @@
 function _tide_item_pulsarctl --description "Show Pulsar context"
-    echo (set_color blue) (pulsarctl context current 2>&1)
+    tide_pulsarctl_color=blue tide_pulsarctl_bg_color=normal \
+        _tide_print_item pulsarctl ' ' (pulsarctl context current 2>&1)
 end
