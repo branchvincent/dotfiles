@@ -53,7 +53,7 @@ function __up_dotfiles --description "Update dotfiles"
     pipx list --json | jq -r '.venvs | keys[]' >$XDG_CONFIG_HOME/pipx/packages.txt
 
     # Trash non-xdg cache
-    for path in ~/.{bash_history,configstore,docker,k3d,k8slens,kube}
+    for path in ~/.{android,bash_history,bundle,config/configstore,docker,k3d,k8slens,kube,npm}
         test -e $path && trash $path
     end
     # Trash Google Drive's folder icon
