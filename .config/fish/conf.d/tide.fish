@@ -3,9 +3,10 @@
 # References:
 # - Icons: https://www.nerdfonts.com/cheat-sheet
 
-not status is-interactive && not status is-login && exit
+status is-interactive && status is-login || exit
 
 set fish_handle_reflow 0 # https://github.com/fish-shell/fish-shell/issues/1706#issuecomment-803655785
+set tide_kubectl_icon ﴱ
 
 # Items
 set tide_left_prompt_items pwd git newline character
