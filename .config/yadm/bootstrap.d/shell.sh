@@ -1,9 +1,19 @@
 # shellcheck shell=bash
 #
-# Update default login shell to `fish`
+# Configure fish shell
 
+# Update default login shell
 shell=$(command -v fish)
-[ "$SHELL" != "$shell" ] || return 0
+if [ "$SHELL" != "$shell" ]; then
+    echo "$shell" | sudo tee -a /etc/shells
+    chsh -s "$shell"
+fi
 
-echo "$shell" | sudo tee -a /etc/shells
-chsh -s "$shell"
+# Install fisher/plugins
+fish -c '
+if not functions -q fisher
+    curl -sL git.io/fisher | source
+    fisher install <~/.config/fish/fish_plugins >/dev/null
+    printf 1\n1\n1\n2\n1\n1\n1\ny | tide configure >/dev/null
+end
+'
