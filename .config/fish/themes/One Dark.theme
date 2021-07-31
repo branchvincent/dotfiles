@@ -1,6 +1,8 @@
 # -*- mode: fish -*-
-fish_color_autosuggestion '555'  'brblack'
-fish_color_cancel '555'  'brblack'
+# Based on https://github.com/rkbk60/onedark-fish
+
+fish_color_autosuggestion 555
+fish_color_cancel 555
 fish_color_command brmagenta
 fish_color_comment brblack
 fish_color_cwd brred
@@ -11,7 +13,7 @@ fish_color_escape brcyan
 fish_color_history_current --bold
 fish_color_host brgreen
 fish_color_host_remote yellow
-fish_color_match 'brcyan'  '--underline'
+fish_color_match --background=brcyan
 fish_color_normal white
 fish_color_operator brmagenta
 fish_color_param brcyan
@@ -21,8 +23,8 @@ fish_color_search_match --background=blue
 fish_color_selection --background=brblack
 fish_color_status red
 fish_color_user brblue
-fish_color_valid_path 'brred'  '--underline'
+fish_color_valid_path --underline
 fish_pager_color_completion white
-fish_pager_color_description 'B3A06D'  'yellow'
+fish_pager_color_description B3A06D
 fish_pager_color_prefix brgreen
 fish_pager_color_progress white
