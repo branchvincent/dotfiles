@@ -37,6 +37,8 @@
     date = relative
 [merge]
     autoStash = true
+[pretty]
+    stash = format:%C(bold magenta)%gd %C(blue)%>(13,trunc)%ad %C(reset)%s
 [pull]
     ff = only
 [push]

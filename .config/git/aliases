@@ -13,7 +13,7 @@
     la = log --stat
     lg = log --graph
     st = status --short --branch
-    sl = stash list
+    sl = stash list --pretty=stash
     ss = stash push --include-untracked
     sp = stash pop
     sw = switch --quiet
