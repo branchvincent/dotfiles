@@ -14,8 +14,7 @@ concurrency:
 
 env:
   HOMEBREW_CACHE: /home/runner/.cache/Homebrew
-  HOMEBREW_FORCE_HOMEBREW_ON_LINUX: 1
-  HOMEBREW_NO_AUTO_UPDATE: 1
+  # HOMEBREW_NO_AUTO_UPDATE: 1
 
 jobs:
   lint:
