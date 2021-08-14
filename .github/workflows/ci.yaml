@@ -31,6 +31,6 @@ jobs:
           key: ${{ runner.os }}-brew-1
           restore-keys: ${{ runner.os }}-brew-1
       - name: Install deps
-        run: brew install --verbose fish shellcheck shfmt
+        run: brew install fish shellcheck shfmt
       - name: Lint
         uses: pre-commit/action@v2.0.3
