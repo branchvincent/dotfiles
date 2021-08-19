@@ -2,5 +2,5 @@ jorgebucaran/fisher
 PatrickF1/fzf.fish
 jorgebucaran/replay.fish
 evanlucas/fish-kubectl-completions
-IlanCosman/tide@v5
-branchvincent/tide-show-on-cmd@v5
+branchvincent/tide@transient
+branchvincent/tide-show-on-cmd

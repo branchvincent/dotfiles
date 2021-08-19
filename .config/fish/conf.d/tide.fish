@@ -15,6 +15,7 @@ set -gx tide_kubectl_icon ﴱ
 set -gx tide_node_icon 
 set -gx tide_node_color 68A063
 set -gx tide_rustc_icon R
+set -gx tide_transient_prompt
 
 # Items
 set tide_left_prompt_items pwd git newline character
