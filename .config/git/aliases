@@ -43,7 +43,7 @@
     # Commit
     amend = commit -q --amend --no-edit
     commit-each = "!f() { for fn in $(git ls-files --modified); do git commit -nm \"$(basename \"${fn%.*}\"): $1\" \"$fn\"; done; }; f"
-    fixup = !git amend && git push -q --force
+    fixup = !git amend && git push -q --force-with-lease
     uncommit = reset --soft HEAD~1
 
     # Push
