@@ -14,6 +14,6 @@ fish -c '
 if not functions -q fisher
     curl -sL git.io/fisher | source
     fisher install <~/.config/fish/fish_plugins >/dev/null
-    printf 1\n1\n1\n2\n1\n1\n1\ny | tide configure >/dev/null
+    printf 1112111y | tide configure >/dev/null
 end
 '
