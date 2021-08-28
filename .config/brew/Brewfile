@@ -23,7 +23,6 @@ brew "exa"
 brew "fd"
 brew "fish", args: ["HEAD"]
 brew "fnm"
-brew "freetds"
 brew "fzf"
 brew "gh"
 brew "git"
