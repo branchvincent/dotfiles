@@ -6,7 +6,7 @@ module.exports = {
     copyOnSelect: true,
     css: `.splitpane_divider { background-color: white !important; }`,
     cursorShape: "BEAM",
-    fontFamily: "'MesloLGS Nerd Font', monospace",
+    fontFamily: "'MesloLGS NF', monospace",
   },
 
   // Plugins

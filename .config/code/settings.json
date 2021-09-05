@@ -5,7 +5,7 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
-  "editor.fontFamily": "'MesloLGS NF', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "MesloLGS NF",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
@@ -22,7 +22,7 @@
   "search.smartCase": true,
   "search.useGlobalIgnoreFiles": true,
   "security.workspace.trust.untrustedFiles": "open",
-  "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
+  "terminal.integrated.fontFamily": "MesloLGS NF",
   "terminal.integrated.macOptionIsMeta": true, // TODO: not working?
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.tabs.enabled": true,
