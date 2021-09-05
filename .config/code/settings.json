@@ -30,6 +30,8 @@
   "workbench.colorTheme": "One Dark Pro",
   "workbench.iconTheme": "file-icons",
   // Extensions
+  // Latex
+  "latex-workshop.view.pdf.viewer": "tab",
   // Prettier: https://github.com/microsoft/vscode/issues/51935
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
