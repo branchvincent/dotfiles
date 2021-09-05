@@ -21,6 +21,7 @@
   "files.trimTrailingWhitespace": true,
   "search.smartCase": true,
   "search.useGlobalIgnoreFiles": true,
+  "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
   "terminal.integrated.macOptionIsMeta": true, // TODO: not working?
   "terminal.integrated.cursorStyle": "line",
@@ -64,16 +65,9 @@
   // Go
   "go.toolsManagement.autoUpdate": true,
   // JavaScript / Typescript
-  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "javascript.inlayHints.parameterNames.enabled": "all",
-  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
-  "javascript.inlayHints.variableTypes.enabled": true,
+  "javascript.inlayHints.parameterNames.enabled": "literals",
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "typescript.inlayHints.parameterNames.enabled": "all",
-  "typescript.inlayHints.parameterTypes.enabled": true,
-  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
-  "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.inlayHints.parameterNames.enabled": "literals",
   "typescript.updateImportsOnFileMove.enabled": "always",
   // Python
   "python.defaultInterpreterPath": "python3",
