@@ -2,3 +2,5 @@ apiVersion: v1
 repositories:
   - name: bitnami
     url: https://charts.bitnami.com/bitnami
+  - name: ndustrial
+    url: https://ndustrialio.github.io/charts
