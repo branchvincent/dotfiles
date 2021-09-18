@@ -105,6 +105,18 @@ For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-t
    select * from pg_stat_user_tables;
    ```
 
+1. Truncate all tables in schema
+
+   ```sql
+   DO $$ DECLARE
+      r RECORD;
+   BEGIN
+      FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = current_schema()) LOOP
+         EXECUTE 'TRUNCATE TABLE ' || quote_ident(r.tablename) || '';
+      END LOOP;
+   END $$;
+   ```
+
 ## Kubernetes
 
 1. Add EKS cluster to kubeconfig
