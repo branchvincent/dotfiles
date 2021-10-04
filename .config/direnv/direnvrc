@@ -4,6 +4,7 @@ layout_auto() {
     [ -f go.mod ] && layout go
     [ -f package.json ] && use nodejs && layout node
     [ -f poetry.lock ] && use python && layout poetry
+    [ -f pdm.lock ] && layout pdm
     dotenv_if_exists
 }
 
@@ -80,6 +81,12 @@ layout_poetry() {
         pip install --upgrade pip setuptools wheel
         touch "$(which pip)" # NOTE: ensure mtime is updated
     fi
+}
+
+layout_pdm() {
+    # Activate PEP 582 (faster equivalent to `pdm --pep582`)
+    path_add PYTHONPATH "/usr/local/opt/pdm/libexec/lib/python3.9/site-packages/pdm/pep582/"
+    PATH_add "$PWD/__pypackages__/3.9/bin"
 }
 
 layout auto
