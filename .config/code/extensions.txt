@@ -12,6 +12,7 @@ file-icons.file-icons
 foxundermoon.shell-format
 fwcd.kotlin
 GitHub.copilot
+GitHub.remotehub
 GitHub.vscode-pull-request-github
 golang.go
 James-Yu.latex-workshop
@@ -22,13 +23,16 @@ ms-kubernetes-tools.vscode-kubernetes-tools
 ms-python.python
 ms-python.vscode-pylance
 ms-toolsai.jupyter
+ms-toolsai.jupyter-keymap
 ms-vscode-remote.remote-containers
 npxms.hide-gitignored
 Prisma.prisma
+rebornix.ruby
 redhat.vscode-yaml
 rust-lang.rust
 sidneys1.gitconfig
 timonwong.shellcheck
 vadimcn.vscode-lldb
 wholroyd.jinja
+wingrunr21.vscode-ruby
 zhuangtongfa.material-theme
