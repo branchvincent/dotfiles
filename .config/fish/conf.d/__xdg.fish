@@ -90,5 +90,9 @@ set -p XDG_BIN_DIRS $CARGO_HOME/bin
 set -x GIT_SSH_COMMAND "ssh -F $XDG_CONFIG_HOME/ssh/config"
 alias ssh $GIT_SSH_COMMAND
 
+# tlmgr
+set -x TEXMFHOME $XDG_DATA_HOME/tlmgr
+test -d "$TEXMFHOME/tlpkg" || tlmgr init-usertree
+
 # zsh
 set -x ZDOTDIR $XDG_CONFIG_HOME/zsh
