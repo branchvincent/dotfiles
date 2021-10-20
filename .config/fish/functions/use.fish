@@ -21,7 +21,7 @@ function __use_help --description "Print this help message"
     echo "\
 Usage: use [options] command
 
-  "(desc v)"
+  "(desc use)"
 
 Options:
   -h, --help       "(desc __use_help)"
