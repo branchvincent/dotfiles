@@ -23,6 +23,7 @@ use_java() {
     version=${1:-$(cat $version_file 2>/dev/null)}
     log_status "using version ${version:-default}"
     [ -z "$version" ] && return # no version specified, use default
+    version="openjdk@1.$version"
     # shellcheck disable=SC2153
     prefix="$JABBA_HOME/jdk/$version/Contents/Home"
 

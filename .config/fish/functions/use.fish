@@ -33,6 +33,12 @@ Commands:"
     end
 end
 
+function __use_java --description Java --no-scope-shadowing
+    set -l cmd ls-remote
+    set -q _flag_installed && set cmd ls
+    jabba $cmd | string match -rg 'openjdk@1.(\S+)' | fzf $fzf_opts
+end
+
 function __use_nodejs --description Node --no-scope-shadowing
     set -l cmd ls-remote
     set -q _flag_installed && set cmd ls
