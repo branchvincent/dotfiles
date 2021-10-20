@@ -34,19 +34,16 @@ Commands:"
 end
 
 function __use_java --description Java --no-scope-shadowing
-    set -l cmd ls-remote
-    set -q _flag_installed && set cmd ls
+    set -q _flag_installed && set -l cmd ls || set -l cmd ls-remote
     jabba $cmd | string match -rg 'openjdk@1.(\S+)' | fzf $fzf_opts
 end
 
 function __use_nodejs --description Node --no-scope-shadowing
-    set -l cmd ls-remote
-    set -q _flag_installed && set cmd ls
+    set -q _flag_installed && set -l cmd ls || set -l cmd ls-remote
     fnm $cmd | string match -r '\d+\.\d+\.\d+' | fzf $fzf_opts
 end
 
 function __use_python --description Python --no-scope-shadowing
-    set -l cmd install --list
-    set -q _flag_installed && set cmd versions
-    pyenv $cmd | string match -r '^\W+3\.\d+\.\d+' | string trim | fzf $fzf_opts
+    set -q _flag_installed && set -l cmd versions || set -l cmd install --list
+    pyenv $cmd | string match -rg '^\W+(3\.\d+\.\d+)' | fzf $fzf_opts
 end
