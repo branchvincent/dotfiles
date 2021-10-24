@@ -83,8 +83,6 @@
   "python.linting.pylintEnabled": false,
   "python.sortImports.path": "/usr/local/bin/isort",
   "python.terminal.activateEnvironment": false, // handled by direnv
-  "python.testing.pytestEnabled": true,
-  "python.testing.pytestPath": "~/.local/bin/pytest",
   "[python]": {
     "editor.formatOnPaste": false
   }
