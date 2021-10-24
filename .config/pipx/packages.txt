@@ -1,4 +1,3 @@
-all-repos
 babi
 contxt-sdk
 copier
