@@ -1,14 +1,6 @@
 all-repos
 babi
-black
+contxt-sdk
 copier
 docker-compose-wait
-flake8
-httpie
-isort
-mypy
-ptpython
 pytest
-speedtest-cli
-tldr
-virtualenv

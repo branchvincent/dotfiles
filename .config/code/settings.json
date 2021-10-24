@@ -75,14 +75,13 @@
   // Python
   "python.defaultInterpreterPath": "python3",
   "python.formatting.provider": "black",
-  "python.formatting.blackPath": "~/.local/bin/black", // https://github.com/microsoft/vscode-python/issues/4922
+  "python.formatting.blackPath": "/usr/local/bin/black", // https://github.com/microsoft/vscode-python/issues/4922
   "python.linting.flake8Enabled": true,
-  "python.linting.flake8Path": "~/.local/bin/flake8",
+  "python.linting.flake8Path": "/usr/local/bin/flake8",
   "python.linting.mypyEnabled": true,
-  "python.linting.mypyPath": "~/.local/bin/mypy",
+  "python.linting.mypyPath": "/usr/local/bin/mypy",
   "python.linting.pylintEnabled": false,
-  "python.showStartPage": false,
-  "python.sortImports.path": "${env:HOME}/.local/bin/isort",
+  "python.sortImports.path": "/usr/local/bin/isort",
   "python.terminal.activateEnvironment": false, // handled by direnv
   "python.testing.pytestEnabled": true,
   "python.testing.pytestPath": "~/.local/bin/pytest",
