@@ -3,4 +3,3 @@ babi
 contxt-sdk
 copier
 docker-compose-wait
-pytest
