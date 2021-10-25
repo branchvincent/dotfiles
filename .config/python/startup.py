@@ -19,21 +19,14 @@ readline.write_history_file = lambda *args: None
 def launch_repl():
     """Launch a better REPL (ptpython), if available"""
     if sys.version_info < (3, 6):
-        # Not available
+        # Not compatible
         return
 
-    from os import environ
-
-    # HACK: inject the pipx-managed ptpython
-    lib = (
-        Path(environ["PIPX_HOME"])
-        / "venvs"
-        / "ptpython"
-        / "lib"
-        / "python3.9"
-        / "site-packages"
-    )
-    sys.path.append(str(lib))
+    # HACK: inject ptpython
+    libs = list(Path("/usr/local/opt/ptpython/libexec/lib").glob("python*"))
+    if not libs:
+        return
+    sys.path.append(str(libs[0] / "site-packages"))
 
     try:
         from ptpython.repl import embed
@@ -49,6 +42,8 @@ def launch_repl():
         repl.use_code_colorscheme("monokai")
 
     # Enable history
+    from os import environ
+
     history_file = Path(environ["XDG_DATA_HOME"]) / "python" / "history"
     history_file.parent.mkdir(parents=True, exist_ok=True)
 
