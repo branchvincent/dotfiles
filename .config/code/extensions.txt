@@ -16,7 +16,6 @@ GitHub.remotehub
 GitHub.vscode-pull-request-github
 golang.go
 James-Yu.latex-workshop
-mathiasfrohlich.Kotlin
 mikestead.dotenv
 ms-azuretools.vscode-docker
 ms-kubernetes-tools.vscode-kubernetes-tools
@@ -30,7 +29,6 @@ redhat.vscode-yaml
 rust-lang.rust
 sidneys1.gitconfig
 timonwong.shellcheck
-vadimcn.vscode-lldb
 wholroyd.jinja
 wingrunr21.vscode-ruby
 zhuangtongfa.material-theme
