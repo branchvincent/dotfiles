@@ -87,8 +87,8 @@ layout_poetry() {
 layout_pdm() {
     # Activate PEP 582 (faster equivalent to `pdm --pep582`)
     # FIXME: infer python version
-    path_add PYTHONPATH "/usr/local/opt/pdm/libexec/lib/python3.9/site-packages/pdm/pep582/"
-    PATH_add "$PWD/__pypackages__/3.9/bin"
+    path_add PYTHONPATH "/usr/local/opt/pdm/libexec/lib/python3.10/site-packages/pdm/pep582/"
+    PATH_add "$PWD/__pypackages__/3.10/bin"
 
     # Install, if needed
     [ -d __pypackages__ ] || pdm install
