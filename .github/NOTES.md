@@ -27,10 +27,13 @@
 
    ```sh
    gpg --full-generate-key
-   gpg --armor --export branchevincent@gmail.com | pbcopy
    ```
 
 1. Add the public key to [GitHub](https://github.com/settings/gpg/new)
+
+   ```sh
+   gpg --armor --export branchevincent@gmail.com | gh gpg-key add -
+   ```
 
 1. Verify it works
 
