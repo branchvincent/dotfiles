@@ -42,7 +42,7 @@ use_nodejs() {
     version=${1:-$(cat $version_file 2>/dev/null)}
     log_status "using version ${version:-default}"
     [ -z "$version" ] && return # no version specified, use default
-    prefix="$FNM_DIR/node-versions/$version/installation"
+    prefix="$FNM_DIR/node-versions/v${version#v}/installation"
 
     # Install and load it
     [ -d "$prefix" ] || fnm install "$version"
