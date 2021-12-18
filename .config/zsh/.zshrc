@@ -18,9 +18,9 @@ autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 autoload -Uz bashcompinit && bashcompinit
 
 ### Plugins ###
-__maybe_source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-__maybe_source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-__maybe_source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+for plugin in autosuggestions syntax-highlighting history-substring-search; do
+  __maybe_source /usr/local/share/zsh-$plugin/zsh-$plugin.zsh
+done
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 eval "$(direnv hook zsh)"
