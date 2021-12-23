@@ -65,6 +65,7 @@
   "python.linting.pylintEnabled": false,
   "python.sortImports.path": "/usr/local/bin/isort",
   "python.terminal.activateEnvironment": false, // handled by direnv
+  // https://github.com/microsoft/vscode-python/issues/1883
   "[python]": {
     "editor.formatOnPaste": false
   }
