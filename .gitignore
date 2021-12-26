@@ -13,6 +13,7 @@
 /.config/ssh/*
 !/.config/ssh/config
 !/.config/ssh/keys/*.pub
+/.config/zsh/*.zwc
 
 ### .github ###
 !/.github/
