@@ -2,7 +2,7 @@
 #
 # References
 # - Spec: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
-# - Support: https://wiki.archlinux.org/index.php/XDG_Base_Directory
+# - Support: https://wiki.archlinux.org/title/XDG_Base_Directory
 
 # NOTE: faster than `mkdir -p` alone, since test is a builtin
 function __maybe_mkdir
@@ -20,6 +20,9 @@ set -x --path XDG_BIN_DIRS $XDG_BIN_HOME # this too
 for d in XDG_{BIN,CACHE,CONFIG,DATA,STATE}_HOME
     __maybe_mkdir $$d
 end
+
+# all-repos
+set -x ALL_REPOS_CONFIG_FILENAME $XDG_CONFIG_HOME/all-repos/config.json
 
 # brew
 set -x HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/brew/Brewfile
