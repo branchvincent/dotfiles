@@ -96,6 +96,6 @@ function __up_shell --description "Update shell packages and completions"
 end
 
 function __up_tex --description "Update LaTeX packages"
-    tlmgr update --self --all --reinstall-forcibly-removed >/dev/null
+    tlmgr update --usermode --self --all --reinstall-forcibly-removed >/dev/null
     echo "Everything is up-to-date"
 end

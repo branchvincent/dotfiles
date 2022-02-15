@@ -5,9 +5,6 @@
 has brew || NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew bundle install --file=~/.config/brew/Brewfile
 
-# Don't require sudo for tlmgr
-sudo chown -R "$(whoami)":admin /usr/local/texlive
-
 # Fix quicklook plugins: https://github.com/sindresorhus/quick-look-plugins#catalina-notes
 xattr -dr com.apple.quarantine ~/Library/QuickLook/
 

@@ -96,6 +96,7 @@ alias ssh $GIT_SSH_COMMAND
 # tlmgr
 set -x TEXMFHOME $XDG_DATA_HOME/tlmgr
 test -d "$TEXMFHOME/tlpkg" || tlmgr init-usertree
+__maybe_mkdir "$TEXMFHOME/tlpkg/backups"
 
 # zsh
 set -x ZDOTDIR $XDG_CONFIG_HOME/zsh
