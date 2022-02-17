@@ -43,6 +43,11 @@ function __up_brew --description "Update Homebrew and its packages"
     brew doctor
 end
 
+function __up_docker --description "Update Docker images"
+    docker images --format '{{.Repository}}:{{.Tag}}' | xargs -n1 docker pull
+    docker image prune -f
+end
+
 function __up_dotfiles --description "Update dotfiles"
     # Update repo
     yadm pull --quiet
