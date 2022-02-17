@@ -94,8 +94,3 @@ function __up_shell --description "Update shell packages and completions"
     fish_update_completions >/dev/null
     echo "Everything is up-to-date"
 end
-
-function __up_tex --description "Update LaTeX packages"
-    tlmgr update --usermode --self --all --reinstall-forcibly-removed >/dev/null
-    echo "Everything is up-to-date"
-end
