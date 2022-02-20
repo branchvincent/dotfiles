@@ -11,18 +11,15 @@ abbr -ag dprune "docker system prune --all --volumes --force"
 abbr -ag drun "docker run --rm -it"
 abbr -ag dstop "docker ps --quiet | xargs docker stop"
 abbr -ag g git
-abbr -ag h helm
 abbr -ag k kubectl
 abbr -ag kc kubectx
 abbr -ag kn kubens
-abbr -ag n npm
 abbr -ag p poetry
 abbr -ag pc pbcopy
 abbr -ag pp pbpaste
 abbr -ag py python3
 abbr -ag urldecode "string unescape --style=url"
 abbr -ag urlencode "string escape --style=url"
-abbr -ag y yarn
 
 ### Aliases ###
 alias cat bat
