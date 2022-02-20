@@ -44,7 +44,7 @@ function __up_brew --description "Update Homebrew and its packages"
 end
 
 function __up_docker --description "Update Docker images"
-    docker images --format '{{.Repository}}:{{.Tag}}' | xargs -n1 docker pull
+    docker images --format '{{.Repository}}:{{.Tag}}' | xargs -n1 docker pull -q
     docker image prune -f
 end
 
