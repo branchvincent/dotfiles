@@ -32,7 +32,7 @@ repos:
       - id: md-toc
         args: [--in-place, --skip-lines=1, github]
   - repo: https://github.com/Yelp/detect-secrets
-    rev: v1.1.0
+    rev: v1.2.0
     hooks:
       - id: detect-secrets
   - repo: https://github.com/codespell-project/codespell
