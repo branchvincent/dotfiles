@@ -35,6 +35,7 @@
     defaultBranch = main
 [log]
     date = relative
+	follow = true
 [merge]
     autoStash = true
 [pretty]
