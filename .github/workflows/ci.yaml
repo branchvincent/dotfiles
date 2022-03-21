@@ -24,7 +24,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
       - name: Set up cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ env.HOMEBREW_CACHE }}
           key: ${{ runner.os }}-brew-1
