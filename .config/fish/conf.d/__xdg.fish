@@ -43,7 +43,6 @@ set -x GOPATH $XDG_DATA_HOME/go
 # java
 set -x GRADLE_USER_HOME $XDG_DATA_HOME/gradle
 set -x JABBA_HOME $XDG_DATA_HOME/jabba
-set -x MAVEN_OPTS "-Dmaven.repo.local=$XDG_CACHE_HOME/maven/repository"
 
 # kube
 set -x KUBECONFIG $XDG_DATA_HOME/kube/config.yaml
