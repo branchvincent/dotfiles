@@ -10,7 +10,6 @@ esbenp.prettier-vscode
 exiasr.hadolint
 file-icons.file-icons
 foxundermoon.shell-format
-fwcd.kotlin
 GitHub.copilot
 GitHub.remotehub
 GitHub.vscode-pull-request-github
@@ -22,7 +21,9 @@ ms-kubernetes-tools.vscode-kubernetes-tools
 ms-python.python
 ms-python.vscode-pylance
 ms-vscode-remote.remote-containers
+ms-vscode.remote-repositories
 npxms.hide-gitignored
+Orta.vscode-jest
 Prisma.prisma
 rebornix.ruby
 redhat.vscode-yaml
