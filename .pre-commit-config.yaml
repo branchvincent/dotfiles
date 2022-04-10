@@ -19,7 +19,7 @@ repos:
         types: [shell]
         exclude_types: [zsh] # https://github.com/koalaman/shellcheck/issues/809
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: v4.2.0
     hooks:
       - id: end-of-file-fixer
       - id: pretty-format-json
@@ -27,7 +27,7 @@ repos:
         exclude: settings.json # jsonc
       - id: trailing-whitespace
   - repo: https://github.com/frnmst/md-toc
-    rev: "8.1.1"
+    rev: "8.1.2"
     hooks:
       - id: md-toc
         args: [--in-place, --skip-lines=1, github]
