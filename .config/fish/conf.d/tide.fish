@@ -25,7 +25,6 @@ set tide_right_prompt_items \
     context \
     jobs \
     gcloud \
-    pulsarctl \
     kubectl \
     go \
     java \
@@ -37,4 +36,3 @@ set tide_right_prompt_items \
 # Show on command
 set -gx tide_show_gcloud_on gcloud
 set -gx tide_show_kubectl_on kubectl helm kubens kubectx stern
-set -gx tide_show_pulsarctl_on pulsarctl
