@@ -25,7 +25,6 @@ curl -fsSL https://raw.githubusercontent.com/branchvincent/dotfiles/main/bootstr
 
 - [@benmezger](https://github.com/benmezger/dotfiles)
 - [@davidosomething](https://github.com/davidosomething/dotfiles)
-- [@joeyhoer](https://github.com/joeyhoer/starter)
 - [@matchai](https://github.com/matchai/dotfiles)
 - [@mathiasbynens](https://github.com/mathiasbynens/dotfiles)
 - [@MikeMcQuaid](https://github.com/MikeMcQuaid/dotfiles)
