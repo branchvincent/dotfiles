@@ -2,6 +2,7 @@
 
 ### .config ###
 !/.config/
+/.config/AWSVPNClient
 /.config/brew/Brewfile.lock.json
 /.config/configstore/
 /.config/docker/.*
