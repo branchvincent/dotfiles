@@ -27,7 +27,7 @@ printf "protocol=https\nhost=github.com\nusername=branchvincent\npassword=%s\n" 
 ### gpg ###
 curl -fsSL https://github.com/branchvincent.gpg | gpg --import
 gpg --import "$(op get document "GPG Private Key")"
-echo "pinentry-program /usr/local/bin/pinentry-mac" >~/.local/share/gnupg/gpg-agent.conf
+echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" >~/.local/share/gnupg/gpg-agent.conf
 
 ### ssh ###
 prv_key_path="$HOME/.config/ssh/keys/default"

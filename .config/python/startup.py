@@ -2,6 +2,7 @@
 
 import readline
 import sys
+from os import getenv
 
 # Common imports
 try:
@@ -23,7 +24,8 @@ def launch_repl():
         return
 
     # HACK: inject ptpython
-    libs = list(Path("/usr/local/opt/ptpython/libexec/lib").glob("python*"))
+    prefix = Path(getenv("HOMEBREW_PREFIX", "/usr/local"))
+    libs = list(prefix.joinpath("opt/ptpython/libexec/lib").glob("python*"))
     if not libs:
         return
     sys.path.append(str(libs[0] / "site-packages"))
@@ -42,9 +44,7 @@ def launch_repl():
         repl.use_code_colorscheme("monokai")
 
     # Enable history
-    from os import environ
-
-    history_file = Path(environ["XDG_DATA_HOME"]) / "python" / "history"
+    history_file = Path(getenv("XDG_DATA_HOME")) / "python" / "history"
     history_file.parent.mkdir(parents=True, exist_ok=True)
 
     # Launch
