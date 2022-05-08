@@ -37,10 +37,8 @@ curl -fsSL https://raw.githubusercontent.com/branchvincent/dotfiles/main/bootstr
 
 ## TODOs
 
-- Shorten bootstrap url (`bvincent`, `branchv`, `bvstrap`)
+- Try [NixOS](https://nixos.org)
 - Make zsh more fish-like ([abbr](https://github.com/IlanCosman/zsh-abbr))
 - Consider [chezmoi](https://github.com/twpayne/chezmoi), `most` pager, and more [modern unix replacements](https://remysharp.com/2018/08/23/cli-improved)
 - Backup more macOS settings (see [Mackup](https://github.com/lra/mackup))
-- Investiate [NixOS](https://nixos.org)
-- Create own domain and [custom URL shorterner](https://github.com/seanbreckenridge/no-db-static-shorturl)
-- Try out different [deployment tools](https://documentation.codeship.com/#deploying)
+- Create [custom URL shortener](https://github.com/seanbreckenridge/no-db-static-shorturl)
