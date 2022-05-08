@@ -3,14 +3,21 @@
 # Install Homebrew and packages
 
 has brew || NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-eval "$(brew shellenv)"
+
+# Ensure `brew` is in PATH
+case "$(uname -sm)" in
+"Darwin arm64") eval "$(/opt/homebrew/bin/brew shellenv)" ;;
+"Darwin x86_64") eval "$(/usr/local/bin/brew shellenv)" ;;
+"Linux x86_64") eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" ;;
+esac
+
 brew bundle install --file=~/.config/brew/Brewfile
 
 # Fix quicklook plugins: https://github.com/sindresorhus/quick-look-plugins#catalina-notes
 xattr -dr com.apple.quarantine ~/Library/QuickLook/
 
 # Symlink default java
-sudo ln -sfn "$HOMEBREW_PREFIX"/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+sudo ln -sfn "$(brew --prefix openjdk)"/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
 # Symlink repos for development
 mkdir -p ~/Code/Homebrew
