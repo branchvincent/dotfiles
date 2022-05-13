@@ -2,7 +2,7 @@
 #
 # Install Homebrew and packages
 
-has brew || NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+has brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Ensure `brew` is in PATH
 case "$(uname -sm)" in

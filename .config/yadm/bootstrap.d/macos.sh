@@ -12,7 +12,7 @@ defaults write com.apple.finder QLEnableTextSelection -bool true                
 launchctl list environment &>/dev/null || launchctl load ~/Library/LaunchAgents/environment.plist # Load launch agent
 
 ### Desktop ###
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Library/Desktop Pictures/Mojave Night.jpg"'
+osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/System/Library/Desktop Pictures/Monterey Graphic.heic"'
 
 ### Dock ###
 dockutil --no-restart --remove all
