@@ -7,9 +7,9 @@
 
 ### General ###
 chflags nohidden ~/Library
-defaults write NSGlobalDomain AppleInterfaceStyle -string Dark   # Dark mode
-defaults write com.apple.finder QLEnableTextSelection -bool true # Enable copy from quicklook
-launchctl load ~/Library/LaunchAgents/environment.plist          # Load launch agent
+defaults write NSGlobalDomain AppleInterfaceStyle -string Dark                                    # Dark mode
+defaults write com.apple.finder QLEnableTextSelection -bool true                                  # Enable copy from quicklook
+launchctl list environment &>/dev/null || launchctl load ~/Library/LaunchAgents/environment.plist # Load launch agent
 
 ### Desktop ###
 osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Library/Desktop Pictures/Mojave Night.jpg"'
