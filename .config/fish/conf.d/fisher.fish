@@ -2,8 +2,15 @@
 
 # Isolate fisher-managed packages
 set -g fisher_path $XDG_DATA_HOME/fish/vendor
-set fish_function_path $fish_function_path[1] $fisher_path/functions $fish_function_path[2..-1]
-set fish_complete_path $fish_complete_path[1] $fisher_path/completions $fish_complete_path[2..-1]
+set fish_function_path $fish_function_path[1] $fisher_path/functions $fish_function_path[2..]
+set fish_complete_path $fish_complete_path[1] $fisher_path/completions $fish_complete_path[2..]
+
+# Install
+if not functions -q fisher && status is-login
+    curl -sL git.io/fisher | source
+    fisher install <~/.config/fish/fish_plugins >/dev/null
+    printf 1112111y | COLUMNS=55 LINES=21 tide configure
+end
 
 # Source conf.d snippets
 for file in $fisher_path/conf.d/*.fish
