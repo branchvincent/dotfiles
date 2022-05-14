@@ -29,11 +29,11 @@ GNUPGHOME=$(fish -c 'echo $GNUPGHOME')
 GPG_TTY=$(tty)
 export GNUPGHOME GPG_TTY
 curl -fsSL https://github.com/branchvincent.gpg | gpg --import
-op document get "GPG Private Key" | gpg --import
+op document get GPG | gpg --import
 echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" >~/.local/share/gnupg/gpg-agent.conf
 
 ### ssh ###
-op document get "SSH Private Key" >~/.config/ssh/keys/default
+op document get SSH >~/.config/ssh/keys/default
 ssh-add --apple-use-keychain ~/.config/ssh/keys/default
 
 ### all-repos ###

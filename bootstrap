@@ -1,4 +1,8 @@
 #!/bin/bash
 
-source /dev/stdin <<<"$(curl -fsSL bootstrap.yadm.io)" # ensure yadm is available
+# Install brew (to install git, which yadm needs)
+command -v brew &>/dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install yadm and run bootstrap
+source /dev/stdin <<<"$(curl -fsSL bootstrap.yadm.io)"
 yadm clone --bootstrap https://github.com/branchvincent/dotfiles.git
