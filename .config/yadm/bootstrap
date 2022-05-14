@@ -15,6 +15,10 @@ has() {
     command -v "$1" &>/dev/null
 }
 
+debug() {
+    printf "${green}[bootstrap]${reset} %s...\n" "$@"
+}
+
 log() {
     printf "${bold}${green}==>${white} %s${reset}\n" "$@"
 }
@@ -26,15 +30,15 @@ warn() {
 for file in "${BASH_SOURCE[0]}.d"/*.sh; do
     filename=$(basename "${file%.sh}")
 
-    # Allow skipping certain scripts (e.g. BOOTSTRAP_FILTER='^(brew|macos)$')
-    if [[ ! $filename =~ ${BOOTSTRAP_FILTER:-.*} ]]; then
+    # Allow skipping certain scripts (e.g. YADM_BOOTSTRAP_FILTER='^(brew|macos)$')
+    if [[ ! $filename =~ ${YADM_BOOTSTRAP_FILTER:-.*} ]]; then
         warn "Skipping ${filename}"
         continue
     fi
 
     log "Configuring $filename"
     source "$file"
-    printf "\n\n"
+    echo
 done
 
 log "Bootstrap done!"

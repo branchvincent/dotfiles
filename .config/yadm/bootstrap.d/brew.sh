@@ -2,7 +2,10 @@
 #
 # Install Homebrew and packages
 
-has brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if ! has brew; then
+    debug "Installing Homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
 # Ensure `brew` is in PATH
 case "$(uname -sm)" in
@@ -11,12 +14,19 @@ case "$(uname -sm)" in
 "Linux x86_64") eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" ;;
 esac
 
-brew bundle install --file=~/.config/brew/Brewfile
+debug "Checking Homebrew packages"
+export HOMEBREW_BUNDLE_FILE=~/.config/brew/Brewfile
+if ! brew bundle check &>/dev/null; then
+    debug "Installing Homebrew packages"
+    brew bundle install
+fi
 
 # Symlink default java
+debug "Linking java"
 sudo ln -sfn "$(brew --prefix openjdk)"/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
 # Symlink repos for development
+debug "Linking repos"
 mkdir -p ~/Code/Homebrew
 ln -sfn "$(brew --repo branchvincent/tap)" ~/Code/Homebrew/homebrew-tap
 ln -sfn "$(brew --repo homebrew/core)" ~/Code/Homebrew/homebrew-core
