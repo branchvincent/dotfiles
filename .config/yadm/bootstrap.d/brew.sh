@@ -13,9 +13,6 @@ esac
 
 brew bundle install --file=~/.config/brew/Brewfile
 
-# Fix quicklook plugins: https://github.com/sindresorhus/quick-look-plugins#catalina-notes
-xattr -dr com.apple.quarantine ~/Library/QuickLook/
-
 # Symlink default java
 sudo ln -sfn "$(brew --prefix openjdk)"/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
