@@ -1,17 +1,40 @@
 #!/usr/bin/env bash
 #
-# Bootstraps the machine by sourcing all scripts in bootstrap.d/
+# Bootstraps the machine by sourcing all scripts in ./bootstrap.d/
 
 set -euo pipefail
 [ -n "${DEBUG:-}" ] && set -x
+
+bold=$(tput bold)
+green=$(tput setaf 2)
+white=$(tput setaf 7)
+yellow=$(tput setaf 3)
+reset=$(tput sgr0)
 
 has() {
     command -v "$1" &>/dev/null
 }
 
+log() {
+    printf "${bold}${green}==>${white} %s${reset}\n" "$@"
+}
+
+warn() {
+    printf "${bold}${yellow}==>${white} %s${reset}\n" "$@"
+}
+
 for file in "${BASH_SOURCE[0]}.d"/*.sh; do
     filename=$(basename "${file%.sh}")
-    [[ $filename =~ ${BOOTSTRAP_FILTER:-.*} ]] || continue
-    echo "Configuring $filename"
+
+    # Allow skipping certain scripts (e.g. BOOTSTRAP_FILTER='^(brew|macos)$')
+    if [[ ! $filename =~ ${BOOTSTRAP_FILTER:-.*} ]]; then
+        warn "Skipping ${filename}"
+        continue
+    fi
+
+    log "Configuring $filename"
     source "$file"
+    printf "\n\n"
 done
+
+log "Bootstrap done!"
