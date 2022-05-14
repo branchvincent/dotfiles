@@ -1,4 +1,3 @@
 babi
 contxt-sdk
 copier
-httpie
