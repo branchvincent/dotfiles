@@ -21,6 +21,9 @@ if ! brew bundle check &>/dev/null; then
     brew bundle install
 fi
 
+# Ensure `docker` is in PATH (bundled with Docker.app, which creates symlinks on first boot)
+has docker || PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin"
+
 # Symlink default java
 debug "Linking java"
 sudo ln -sfn "$(brew --prefix openjdk)"/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
