@@ -15,6 +15,7 @@ launchctl list environment &>/dev/null || launchctl load ~/Library/LaunchAgents/
 osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/System/Library/Desktop Pictures/Monterey Graphic.heic"'
 
 ### Dock ###
+defaults write com.apple.dock show-recents -bool false # Hide recent apps
 dockutil --no-restart --remove all
 dockutil --no-restart --add /System/Applications/Calendar.app
 dockutil --no-restart --add /System/Applications/Mail.app
@@ -27,6 +28,14 @@ dockutil --no-restart --add /Applications/iTerm.app
 dockutil --no-restart --add /System/Applications/System\ Preferences.app
 dockutil --no-restart --add ~/Documents --sort name --display folder --view list
 dockutil --no-restart --add ~/Downloads --sort dateadded --display folder --view fan
+
+### Finder ###
+defaults write com.apple.finder NewWindowTarget -string "PfHm"             # Set default path to $HOME
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"        # Use column view
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false # Don't warn when changing an extension
+for ext in public.{data,json,plain-text,python-script,shell-script,source-code,text,unix-executable} .go .java .{j,t}s{,x} .json .md .py .rb .txt .toml .y{,a}ml; do
+    duti -s com.microsoft.VSCode "$ext" all # Set VSCode as default app for code
+done
 
 ### iTerm2 ###
 # shellcheck disable=SC2088

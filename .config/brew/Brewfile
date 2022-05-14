@@ -19,6 +19,7 @@ brew "diff-so-fancy"
 brew "direnv"
 brew "dive"
 brew "dockutil"
+brew "duti"
 brew "exa"
 brew "fd"
 brew "fish", args: ["HEAD"]
