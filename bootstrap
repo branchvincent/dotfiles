@@ -1,8 +1,10 @@
 #!/bin/bash
 
+unset GIT_DIR GIT_WORK_TREE
+
 # Install brew (to install git, which yadm needs)
 command -v brew &>/dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install yadm and run bootstrap
 source /dev/stdin <<<"$(curl -fsSL bootstrap.yadm.io)"
-yadm clone --bootstrap https://github.com/branchvincent/dotfiles.git
+yadm clone --bootstrap https://github.com/branchvincent/dotfiles.git -f
