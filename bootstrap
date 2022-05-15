@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -euo pipefail
 unset GIT_DIR GIT_WORK_TREE
 
 # Install brew (to install git, which yadm needs)
