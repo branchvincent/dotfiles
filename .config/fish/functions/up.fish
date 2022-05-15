@@ -61,15 +61,6 @@ function __up_dotfiles --description "Update dotfiles"
     for path in ~/.{android,bash_history,bundle,config/configstore,docker,k3d,k8slens,kube,npm}
         test -e $path && trash $path
     end
-    # Trash Google Drive's folder icon
-    if test -f ~/Documents/Icon\r
-        trash ~/Documents/Icon\r
-        for icn in "/Applications/Backup and Sync.app/Contents/Resources"**/folder-mac-yosemite.icns
-            sudo mv $icn $icn.bak
-        end
-        trash /var/folders/*/*/*/com.apple.dock.iconcache
-        killall Dock
-    end
 
     echo "Everything is up-to-date"
 end

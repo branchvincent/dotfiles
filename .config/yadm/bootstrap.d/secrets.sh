@@ -31,7 +31,7 @@ printf "protocol=https\nhost=github.com\nusername=branchvincent\npassword=%s\n" 
 debug "Fetching GPG key"
 # shellcheck disable=SC2016
 GNUPGHOME=$(fish -c 'echo $GNUPGHOME')
-GPG_TTY=$(tty)
+GPG_TTY=$(tty || true)
 export GNUPGHOME GPG_TTY
 curl -fsSL https://github.com/branchvincent.gpg | gpg -q --import
 op document get GPG | gpg -q --import

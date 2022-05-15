@@ -25,8 +25,10 @@ fi
 has docker || PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin"
 
 # Symlink default java
-debug "Linking java"
-sudo ln -sfn "$(brew --prefix openjdk)"/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+if ! test -L /Library/Java/JavaVirtualMachines/openjdk.jdk; then
+    debug "Linking java"
+    sudo ln -sfn "$(brew --prefix openjdk)"/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+fi
 
 # Symlink repos for development
 debug "Linking repos"
