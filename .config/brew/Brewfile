@@ -13,6 +13,7 @@ brew "awscli"
 brew "bat"
 brew "black"
 brew "cargo-edit"
+brew "copier"
 brew "curl"
 brew "deno"
 brew "diff-so-fancy"
@@ -86,7 +87,6 @@ brew "zsh"
 cask "1password"
 cask "1password-cli"
 cask "appcleaner"
-cask "aws-vpn-client"
 cask "beekeeper-studio"
 cask "docker"
 cask "font-meslo-lg-nerd-font"
@@ -99,9 +99,9 @@ cask "iterm2"
 cask "lens"
 cask "ngrok"
 cask "omnidisksweeper"
-cask "qlmarkdown", args: { no_quarantine: true }
+cask "qlmarkdown"
 cask "spotify"
-cask "syntax-highlight", args: { no_quarantine: true }
+cask "syntax-highlight"
 cask "tableplus"
 cask "visual-studio-code"
 mas "Keynote", id: 409183694
@@ -109,3 +109,4 @@ mas "Magnet", id: 441258766
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Slack", id: 803453959
+mas "Xcode", id: 497799835
