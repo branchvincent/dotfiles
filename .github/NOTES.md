@@ -148,9 +148,3 @@ For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-t
    ```sh
    ngrok http 80
    ```
-
-1. Enable TouchID for `sudo` auth
-
-   ```sh
-   echo -e "auth sufficient pam_tid.so\n$(cat /etc/pam.d/sudo)" >/etc/pam.d/sudo
-   ```
