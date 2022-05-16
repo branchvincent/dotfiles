@@ -7,9 +7,8 @@
 
 ### General ###
 debug "General"
-chflags nohidden ~/Library
 defaults write NSGlobalDomain AppleInterfaceStyle -string Dark                                    # Dark mode
-defaults write com.apple.finder QLEnableTextSelection -bool true                                  # Enable copy from quicklook
+defaults write NSGlobalDomain AppleWindowTabbingMode -string always                               # Prefer tabs
 launchctl list environment &>/dev/null || launchctl load ~/Library/LaunchAgents/environment.plist # Load launch agent
 
 ### Desktop ###
@@ -34,8 +33,11 @@ dockutil --no-restart --add ~/Downloads --sort dateadded --display folder --view
 
 ### Finder ###
 debug "Finder"
+chflags nohidden ~/Library
 defaults write com.apple.finder NewWindowTarget -string "PfHm"             # Set default path to $HOME
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"        # Use column view
+defaults write com.apple.finder QLEnableTextSelection -bool true           # Enable copy from quicklook
+defaults write com.apple.finder WarnOnEmptyTrash -bool false               # Don't warn when emptying trash
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false # Don't warn when changing an extension
 for ext in public.{data,json,plain-text,python-script,shell-script,source-code,text,unix-executable} .go .java .{j,t}s{,x} .json .md .py .rb .txt .toml .y{,a}ml; do
     duti -s com.microsoft.VSCode "$ext" all # Set VSCode as default app for code
@@ -45,6 +47,8 @@ done
 debug "iTerm"
 # shellcheck disable=SC2088
 defaults write com.googlecode.iterm2.plist DynamicProfilesPath -string "~/.config/iterm2"
+defaults write com.googlecode.iterm2.plist "Default Bookmark Guid" -string 382C82BD-43A8-4CF0-95F4-B75123F1F8DC
+defaults write com.googlecode.iterm2.plist PromptOnQuit -int 0
 
 ### Mission Control ###
 debug "Mission Control"
