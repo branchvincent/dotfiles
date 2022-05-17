@@ -16,4 +16,4 @@ set -gx HOMEBREW_CELLAR $HOMEBREW_PREFIX/Cellar
 set -gx HOMEBREW_REPOSITORY $HOMEBREW_PREFIX/Homebrew
 set -gxp MANPATH $HOMEBREW_PREFIX/share/man
 set -gxp INFOPATH $HOMEBREW_PREFIX/share/info
-fish_add_path -gmP $XDG_BIN_DIRS $HOMEBREW_PREFIX/{,s}bin
+status is-login && fish_add_path -gmP $XDG_BIN_DIRS $HOMEBREW_PREFIX/{,s}bin
