@@ -17,7 +17,8 @@ osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/S
 
 ### Dock ###
 debug "Dock"
-defaults write com.apple.dock show-recents -bool false # Hide recent apps
+defaults write com.apple.dock show-recents -bool false       # Hide recent apps
+defaults write com.apple.dock minimize-to-application -int 1 # Minimize apps into itself
 dockutil --no-restart --remove all
 dockutil --no-restart --add /System/Applications/Calendar.app
 dockutil --no-restart --add /System/Applications/Mail.app
@@ -36,6 +37,7 @@ debug "Finder"
 chflags nohidden ~/Library
 defaults write com.apple.finder NewWindowTarget -string "PfHm"             # Set default path to $HOME
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"        # Use column view
+defaults write com.apple.finder _FXSortFoldersFirst -int 1                 # Sort folders first
 defaults write com.apple.finder QLEnableTextSelection -bool true           # Enable copy from quicklook
 defaults write com.apple.finder WarnOnEmptyTrash -bool false               # Don't warn when emptying trash
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false # Don't warn when changing an extension
@@ -56,6 +58,11 @@ defaults write com.apple.dock wvous-tl-corner -int 10 # Top left: Display sleep
 defaults write com.apple.dock wvous-tr-corner -int 12 # Top right: Notification center
 defaults write com.apple.dock magnification -int 1
 defaults write com.apple.dock orientation -string bottom
+
+### Sharing ###
+debug "Sharing"
+scutil --set ComputerName "Branch's MacBook Pro"
+scutil --set LocalHostName "Branchs-MacBook-Pro"
 
 ### Siri ###
 debug "Siri"
