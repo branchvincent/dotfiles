@@ -3,10 +3,19 @@
 set -euo pipefail
 unset GIT_DIR GIT_WORK_TREE
 
+# Prompt for and remember password
+echo "Prompting for sudo password"
+sudo --validate
+while true; do
+    sudo -n true
+    sleep 60
+    kill -0 "$$" || exit
+done &>/dev/null &
+
 # Install brew (to install git, which yadm needs)
 if ! command -v brew &>/dev/null; then
     echo "Installing Homebrew"
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Install yadm and run bootstrap
