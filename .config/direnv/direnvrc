@@ -1,10 +1,31 @@
 #!/bin/bash
 
+[ -z "${DIRENV_DEBUG:-}" ] || set -x
+
+# Copy of stdlib's `__dump_at_exit`, but logs on failure
+# https://github.com/direnv/direnv/issues/893
+__my_dump_at_exit() {
+    local ret=$?
+    [[ $ret == 0 ]] || echo -e "\033[31mDIRENV FAILED! To debug: export DIRENV_DEBUG=1\033[0m" >&2
+    # shellcheck disable=SC2154
+    "$direnv" dump json "" >&3
+    trap - EXIT
+    exit "$ret"
+}
+trap __my_dump_at_exit EXIT
+
 layout_auto() {
-    [ -f go.mod ] && layout go
-    [ -f package.json ] && use nodejs && layout nodejs
-    [ -f poetry.lock ] && use python && layout poetry
-    [ -f pdm.lock ] && layout pdm
+    if [[ -f go.mod ]]; then
+        layout go
+    elif [[ -f package.json ]]; then
+        use nodejs
+        layout nodejs
+    elif [[ -f poetry.lock ]]; then
+        use python
+        layout poetry
+    elif [[ -f pdm.lock ]]; then
+        layout pdm
+    fi
     dotenv_if_exists
 }
 
@@ -20,7 +41,7 @@ layout_go() {
 use_java() {
     # Get version and location
     version_file=.java-version
-    version=${1:-$(cat $version_file 2>/dev/null)}
+    version=${1:-$(cat $version_file 2>/dev/null || true)}
     log_status "using version ${version:-default}"
     [ -z "$version" ] && return # no version specified, use default
     version="openjdk@1.$version"
@@ -39,7 +60,7 @@ use_java() {
 use_nodejs() {
     # Get version and location
     version_file=.nvmrc
-    version=${1:-$(cat $version_file 2>/dev/null)}
+    version=${1:-$(cat $version_file 2>/dev/null || true)}
     log_status "using version ${version:-default}"
     [ -z "$version" ] && return # no version specified, use default
     prefix="$FNM_DIR/node-versions/v${version#v}/installation"
@@ -67,7 +88,7 @@ layout_nodejs() {
 use_python() {
     # Get version and location
     version_file=.python-version
-    version=${1:-$(cat $version_file 2>/dev/null)}
+    version=${1:-$(cat $version_file 2>/dev/null || true)}
     log_status "using version ${version:-default}"
     [ -z "$version" ] && return # no version specified, use default
     prefix="$PYENV_ROOT/versions/$version"
@@ -79,36 +100,39 @@ use_python() {
 }
 
 layout_poetry() {
+    # Install, if deps are outdated
+    if [[ ! -d .venv || poetry.lock -nt "$(echo .venv/lib/python*/site-packages)" ]]; then
+        poetry install
+    fi
+    watch_file poetry.lock
+
     # Activate venv
     export VIRTUAL_ENV="$PWD/.venv"
     export POETRY_ACTIVE=1
     PATH_add "$VIRTUAL_ENV/bin"
 
-    # Install, if deps are outdated
-    if [[ ! -d "$VIRTUAL_ENV" || poetry.lock -nt "$(echo .venv/lib/python*/site-packages)" ]]; then
-        poetry install
-    fi
-    watch_file poetry.lock
-
     # Update pip and friends, every week
+    pip="$VIRTUAL_ENV/bin/pip"
     now=$(date +%s)
-    modified_at=$(date -r "$(which pip)" +%s)
-    if [[ $((now - modified_at)) -gt $((60 * 60 * 24 * 7)) ]]; then
-        pip install --upgrade pip setuptools wheel
-        touch "$(which pip)" # NOTE: ensure mtime is updated
+    modified_at=$(date -r "$pip" +%s)
+    if [[ -x "$pip" && $((now - modified_at)) -gt $((60 * 60 * 24 * 7)) ]]; then
+        $pip install --upgrade pip setuptools wheel
+        touch "$pip" # NOTE: ensure mtime is updated
     fi
 }
 
 layout_pdm() {
-    # Activate PEP 582 (faster equivalent to `pdm --pep582`)
-    path_add PYTHONPATH "$HOMEBREW_PREFIX"/opt/pdm/libexec/lib/python3.*/site-packages/pdm/pep582
-    PATH_add "$PWD"/__pypackages__/*/bin
-
     # Install, if deps are outdated
     if [[ ! -d __pypackages__ || pdm.lock -nt "$(echo __pypackages__/*/lib)" ]]; then
         pdm install
     fi
     watch_file pdm.lock
+
+    # Activate PEP 582 (faster equivalent to `pdm --pep582`)
+    path_add PYTHONPATH "$HOMEBREW_PREFIX"/opt/pdm/libexec/lib/python*/site-packages/pdm/pep582
+    PATH_add "$PWD"/__pypackages__/*/bin
 }
+
+### Main ###
 
 layout auto
