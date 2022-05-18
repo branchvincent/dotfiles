@@ -2,7 +2,7 @@
 
 layout_auto() {
     [ -f go.mod ] && layout go
-    [ -f package.json ] && use nodejs && layout node
+    [ -f package.json ] && use nodejs && layout nodejs
     [ -f poetry.lock ] && use python && layout poetry
     [ -f pdm.lock ] && layout pdm
     dotenv_if_exists
@@ -50,6 +50,18 @@ use_nodejs() {
     watch_file $version_file
 }
 
+layout_nodejs() {
+    PATH_add node_modules/.bin
+
+    # Install, if deps are outdated
+    if [[ -f package-lock.json && package-lock.json -nt node_modules/.package-lock.json ]]; then
+        npm install
+    elif [[ -f yarn.lock && yarn.lock -nt node_modules ]]; then
+        yarn install
+    fi
+    watch_file package-lock.json yarn.lock
+}
+
 ### Python ###
 
 use_python() {
@@ -72,13 +84,16 @@ layout_poetry() {
     export POETRY_ACTIVE=1
     PATH_add "$VIRTUAL_ENV/bin"
 
-    # Create venv, if needed
-    [ -d "$VIRTUAL_ENV" ] || poetry install
+    # Install, if deps are outdated
+    if [[ ! -d "$VIRTUAL_ENV" || poetry.lock -nt "$(echo .venv/lib/python*/site-packages)" ]]; then
+        poetry install
+    fi
+    watch_file poetry.lock
 
     # Update pip and friends, every week
     now=$(date +%s)
     modified_at=$(date -r "$(which pip)" +%s)
-    if [ $((now - modified_at)) -gt $((60 * 60 * 24 * 7)) ]; then
+    if [[ $((now - modified_at)) -gt $((60 * 60 * 24 * 7)) ]]; then
         pip install --upgrade pip setuptools wheel
         touch "$(which pip)" # NOTE: ensure mtime is updated
     fi
@@ -86,12 +101,14 @@ layout_poetry() {
 
 layout_pdm() {
     # Activate PEP 582 (faster equivalent to `pdm --pep582`)
-    # FIXME: infer python version
-    path_add PYTHONPATH "$HOMEBREW_PREFIX/opt/pdm/libexec/lib/python3.10/site-packages/pdm/pep582/"
-    PATH_add "$PWD/__pypackages__/3.10/bin"
+    path_add PYTHONPATH "$HOMEBREW_PREFIX"/opt/pdm/libexec/lib/python3.*/site-packages/pdm/pep582
+    PATH_add "$PWD"/__pypackages__/*/bin
 
-    # Install, if needed
-    [ -d __pypackages__ ] || pdm install
+    # Install, if deps are outdated
+    if [[ ! -d __pypackages__ || pdm.lock -nt "$(echo __pypackages__/*/lib)" ]]; then
+        pdm install
+    fi
+    watch_file pdm.lock
 }
 
 layout auto
