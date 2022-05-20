@@ -2,6 +2,7 @@
 
 status is-interactive || exit
 
+bind \cO workon
 bind \cc 'commandline ""' # Ctrl-C -> clear line
 bind \cP '
 if not set -e GIT_DIR GIT_WORK_TREE
