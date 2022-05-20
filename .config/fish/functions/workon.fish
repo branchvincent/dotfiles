@@ -1,4 +1,5 @@
 function workon --description "Open a project"
+    set -e GIT_DIR GIT_WORK_TREE || true
     set choices ./Homebrew/homebrew-{cask,core} (git workspace list)
     set chosen (echo $choices | string split ' ' | fzf -q "$argv")
     switch "$chosen"
