@@ -17,3 +17,11 @@ set -gx HOMEBREW_REPOSITORY $HOMEBREW_PREFIX/Homebrew
 set -gxp MANPATH $HOMEBREW_PREFIX/share/man
 set -gxp INFOPATH $HOMEBREW_PREFIX/share/info
 status is-login && fish_add_path -gmP $XDG_BIN_DIRS $HOMEBREW_PREFIX/{,s}bin
+
+# Tell build tools about our special prefix
+# https://docs.brew.sh/Homebrew-and-Python#brewed-python-modules
+if test $HOMEBREW_PREFIX != /usr/local
+    set -gx CFLAGS -I$HOMEBREW_PREFIX/include
+    set -gx CPPFLAGS -I$HOMEBREW_PREFIX/include
+    set -gx LDFLAGS -L$HOMEBREW_PREFIX/lib
+end
