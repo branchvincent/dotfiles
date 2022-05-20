@@ -26,6 +26,9 @@
 ### .vscode ###
 !/.vscode/settings.json
 
+### Code ###
+!/Code/workspace.toml
+
 ### Library ###
 !/Library/Application Support/Code/User/keybindings.json
 !/Library/Application Support/Code/User/settings.json

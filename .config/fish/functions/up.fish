@@ -69,6 +69,11 @@ function __up_gcloud --description "Update gcloud components"
     gcloud components update --quiet
 end
 
+function __up_git --description "Update git repositories"
+    git workspace update
+    git workspace switch-and-pull
+end
+
 function __up_mas --description "Update apps from App Store"
     mas upgrade
 end

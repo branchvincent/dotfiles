@@ -1,0 +1,20 @@
+[[provider]]
+provider = "github"
+name = "branchvincent"
+path = "."
+env_var = "GITHUB_TOKEN"
+skip_forks = true
+
+[[provider]]
+provider = "github"
+name = "ndustrialio"
+path = "."
+env_var = "GITHUB_TOKEN"
+skip_forks = true
+
+[[provider]]
+provider = "github"
+name = "python-poetry"
+path = "."
+env_var = "GITHUB_TOKEN"
+skip_forks = true

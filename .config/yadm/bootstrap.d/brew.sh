@@ -29,10 +29,3 @@ if ! test -L /Library/Java/JavaVirtualMachines/openjdk.jdk; then
     debug "Linking java"
     sudo ln -sfn "$(brew --prefix openjdk)"/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 fi
-
-# Symlink repos for development
-debug "Linking repos"
-mkdir -p ~/Code/Homebrew
-ln -sfn "$(brew --repo branchvincent/tap)" ~/Code/Homebrew/homebrew-tap
-ln -sfn "$(brew --repo homebrew/core)" ~/Code/Homebrew/homebrew-core
-ln -sfn "$(brew --repo homebrew/cask)" ~/Code/Homebrew/homebrew-cask
