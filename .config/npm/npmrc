@@ -1,4 +1,6 @@
+# -*- mode: ini -*-
 audit=false
 fund=false
 update-notifier=false
+# pragma: allowlist nextline secret
 //registry.npmjs.org/:_authToken='${NPM_TOKEN}'
