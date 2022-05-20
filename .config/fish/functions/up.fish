@@ -72,6 +72,7 @@ end
 function __up_git --description "Update git repositories"
     git workspace update
     git workspace switch-and-pull
+    git workspace run touch .envrc
 end
 
 function __up_mas --description "Update apps from App Store"
