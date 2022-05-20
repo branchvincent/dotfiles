@@ -17,7 +17,7 @@ brew "copier"
 brew "curl"
 brew "deno"
 brew "diff-so-fancy"
-brew "direnv"
+brew "direnv", args: ["HEAD"]
 brew "dive"
 brew "dockutil"
 brew "duti"
