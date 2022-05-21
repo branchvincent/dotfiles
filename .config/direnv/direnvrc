@@ -17,13 +17,16 @@ trap __my_dump_at_exit EXIT
 layout_auto() {
     if [[ -f go.mod ]]; then
         layout go
-    elif [[ -f package.json ]]; then
+    fi
+    if [[ -f package.json ]]; then
         use nodejs
         layout nodejs
-    elif [[ -f poetry.lock ]]; then
+    fi
+    if [[ -f poetry.lock ]]; then
         use python
         layout poetry
-    elif [[ -f pdm.lock ]]; then
+    fi
+    if [[ -f pdm.lock ]]; then
         layout pdm
     fi
     dotenv_if_exists
