@@ -47,6 +47,6 @@
 [rebase]
     autoStash = true
 [url "https://"]
-	insteadOf = git://
+    insteadOf = git://
 [url "https://github.com/"]
-	insteadOf = git@github.com:
+    insteadOf = git@github.com:
