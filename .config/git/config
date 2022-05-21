@@ -46,7 +46,7 @@
     followTags = true   # always push annotated tag(s)
 [rebase]
     autoStash = true
+[url "https://"]
+	insteadOf = git://
 [url "https://github.com/"]
-    insteadOf = gh:
-[url "https://github.com/branchvincent/"]
-    insteadOf = me:
+	insteadOf = git@github.com:
