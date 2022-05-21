@@ -1,5 +1,7 @@
 """Executed on startup of an interactive Python session"""
 
+from __future__ import annotations
+
 import readline
 import sys
 from os import getenv
