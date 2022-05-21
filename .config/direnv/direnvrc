@@ -14,19 +14,24 @@ __my_dump_at_exit() {
 }
 trap __my_dump_at_exit EXIT
 
+# Detects and loads project based on file structure
 layout_auto() {
     if [[ -f go.mod ]]; then
+        log_status "detected go project"
         layout go
     fi
     if [[ -f package.json ]]; then
+        log_status "detected node project"
         use nodejs
         layout nodejs
     fi
-    if [[ -f poetry.lock ]]; then
+    if [[ -f poetry.lock ]] || grep -Fq '[tool.poetry]' pyproject.toml &>/dev/null; then
+        log_status "detected poetry project"
         use python
         layout poetry
     fi
-    if [[ -f pdm.lock ]]; then
+    if [[ -f pdm.lock ]] || grep -Fq '[tool.pdm' pyproject.toml &>/dev/null; then
+        log_status "detected pdm project"
         layout pdm
     fi
     dotenv_if_exists
