@@ -2,4 +2,5 @@
 #
 # Install pipx packages
 
-xargs -L1 pipx install --force <~/.config/pipx/packages.txt
+missing=$(comm -13 <(pipx list --json | jq -r '.venvs | keys[]' | sort) <(sort ~/.config/pipx/packages.txt))
+echo "$missing" | xargs -rL1 pipx install

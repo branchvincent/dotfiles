@@ -8,5 +8,8 @@ ln -sfn ~/.config/code/settings.json ~/Library/Application\ Support/Code/User/se
 ln -sfn ~/.config/code/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 
 # Extensions
-debug "Installing extensions"
-sed 's/^/--install-extension /' ~/.config/code/extensions.txt | xargs code
+missing=$(comm -13 <(code --list-extensions | sort) <(sort ~/.config/code/extensions.txt))
+if [ -n "$missing" ]; then
+    debug "Installing extensions"
+    echo "$missing" | sed 's/^/--install-extension /' | xargs code
+fi

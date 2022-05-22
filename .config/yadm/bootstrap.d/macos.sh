@@ -61,8 +61,10 @@ defaults write com.apple.dock orientation -string bottom
 
 ### Sharing ###
 debug "Sharing"
-scutil --set ComputerName "Branch's MacBook Pro"
-scutil --set LocalHostName "Branchs-MacBook-Pro"
+if [ "$(scutil --get ComputerName)" != "Branch's MacBook Pro" ]; then
+    scutil --set ComputerName "Branch's MacBook Pro"
+    scutil --set LocalHostName "Branchs-MacBook-Pro"
+fi
 
 ### Siri ###
 debug "Siri"
