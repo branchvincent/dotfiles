@@ -29,6 +29,9 @@ set -x HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/brew/Brewfile
 
 # code: https://github.com/microsoft/vscode/issues/3884
 
+# deno
+set -x DENO_INSTALL_ROOT $XDG_BIN_HOME/..
+
 # docker: https://github.com/docker/for-mac/issues/2635
 set -x DOCKER_CONFIG $XDG_CONFIG_HOME/docker
 
