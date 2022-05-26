@@ -20,9 +20,6 @@
 ### .github ###
 !/.github/
 
-### .local ###
-!/.local/bin/kubectl-*
-
 ### .vscode ###
 !/.vscode/settings.json
 
