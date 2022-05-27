@@ -7,8 +7,7 @@ set fish_complete_path $fish_complete_path[1] $fisher_path/completions $fish_com
 
 # Install
 if not functions -q fisher && status is-login
-    curl -sL git.io/fisher | source
-    fisher install <~/.config/fish/fish_plugins >/dev/null
+    curl -sL git.io/fisher | source && fisher update >/dev/null
     printf 1112111y | COLUMNS=55 LINES=21 tide configure
 end
 
