@@ -63,7 +63,6 @@ set -x NPM_CONFIG_CACHE $XDG_CACHE_HOME/npm
 set -x NPM_CONFIG_DEVDIR $XDG_DATA_HOME/node-gyp
 set -x NPM_CONFIG_INIT_MODULE $XDG_CONFIG_HOME/npm/config/npm-init.js
 set -x NPM_CONFIG_PREFIX $XDG_DATA_HOME/npm
-set -x NPM_CONFIG_TMP $XDG_CACHE_HOME/npm
 set -x NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 set -x FNM_DIR $XDG_DATA_HOME/fnm
 alias yarn "yarn --use-yarnrc=$XDG_CONFIG_HOME/yarn/config.yaml" # https://github.com/yarnpkg/yarn/issues/2334
