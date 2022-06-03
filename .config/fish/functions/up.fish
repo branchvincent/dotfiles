@@ -55,7 +55,7 @@ function __up_dotfiles --description "Update dotfiles"
     # Update package lists
     brew bundle dump --force
     code --list-extensions >$XDG_CONFIG_HOME/code/extensions.txt
-    pipx list --json | jq -r '.venvs | keys[]' >$XDG_CONFIG_HOME/pipx/packages.txt
+    pipx list --json | jq -r '.venvs | values[].metadata.main_package.package_or_url' >$XDG_CONFIG_HOME/pipx/packages.txt
 
     # Trash non-xdg cache
     for path in ~/.{android,bash_history,bundle,config/configstore,docker,k3d,k8slens,kube,npm}
