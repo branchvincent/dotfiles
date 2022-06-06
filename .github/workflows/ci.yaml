@@ -32,4 +32,4 @@ jobs:
       - name: Install deps
         run: brew install fish shellcheck shfmt
       - name: Lint
-        uses: pre-commit/action@v2.0.3
+        uses: pre-commit/action@v3.0.0
