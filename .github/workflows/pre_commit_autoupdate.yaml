@@ -10,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-      - run: pip install pre-commit
+      - run: pipx install pre-commit
       - run: pre-commit autoupdate
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
