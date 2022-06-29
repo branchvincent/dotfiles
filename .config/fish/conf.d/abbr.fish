@@ -32,3 +32,4 @@ alias prvkey "pbcopy <$XDG_CONFIG_HOME/ssh/keys/default && echo Copied private k
 alias pubkey "pbcopy <$XDG_CONFIG_HOME/ssh/keys/default.pub && echo Copied public key!"
 alias reload "exec fish"
 alias top glances
+alias watch viddy
