@@ -8,10 +8,8 @@
   "editor.fontFamily": "MesloLGS NF",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "editor.inlineSuggest.enabled": true,
   "editor.minimap.enabled": false,
   "editor.rulers": [100],
-  "editor.suggestSelection": "first",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.excludeGitIgnore": true,
@@ -28,7 +26,6 @@
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "terminal.integrated.fontFamily": "MesloLGS NF",
   "terminal.integrated.macOptionIsMeta": true, // TODO: not working?
-  "terminal.integrated.tabs.enabled": true,
   "window.nativeTabs": true,
   "workbench.colorTheme": "One Dark Pro",
   "workbench.iconTheme": "file-icons",
@@ -36,7 +33,7 @@
   // Latex
   "latex-workshop.view.pdf.viewer": "tab",
   // Prettier
-  "[dockercompose][javascript][javascriptreact][json][jsonc][markdown][typescript][typescriptreact][yaml]": {
+  "[dockercompose][html][javascript][javascriptreact][json][jsonc][markdown][typescript][typescriptreact][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   // Languages //
