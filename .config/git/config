@@ -43,6 +43,7 @@
 [pull]
     ff = only
 [push]
+    autoSetupRemote = true
     followTags = true   # always push annotated tag(s)
 [rebase]
     autoStash = true
