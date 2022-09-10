@@ -12,7 +12,6 @@
   "editor.rulers": [100],
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  "explorer.excludeGitIgnore": true,
   "files.associations": {
     "Brewfile": "ruby",
     "pdm.lock": "toml"
@@ -30,6 +29,8 @@
   "workbench.colorTheme": "One Dark Pro",
   "workbench.iconTheme": "file-icons",
   // Extensions
+  // Jest
+  "jest.autoRun": "off",
   // Latex
   "latex-workshop.view.pdf.viewer": "tab",
   // Prettier
@@ -49,9 +50,7 @@
   // Go
   "go.toolsManagement.autoUpdate": true,
   // JavaScript / Typescript
-  "javascript.inlayHints.parameterNames.enabled": "literals",
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.inlayHints.parameterNames.enabled": "literals",
   "typescript.updateImportsOnFileMove.enabled": "always",
   // Python
   "python.defaultInterpreterPath": "python3",
