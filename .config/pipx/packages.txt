@@ -1,3 +1,0 @@
-babi
-contxt-sdk
-git+https://github.com/python-poetry/poetry.git
