@@ -19,6 +19,7 @@ cat <<EOF >~/.config/fish/conf.d/secrets.fish
 set -x AWS_ACCESS_KEY_ID $(op item get AWS --fields api.key)
 set -x AWS_SECRET_ACCESS_KEY $(op item get AWS --fields api.secret)
 set -x GITHUB_TOKEN $GITHUB_TOKEN
+set -x NGROK_AUTHTOKEN $(op item get ngrok --fields token)
 set -x NPM_TOKEN $(op item get NPM --fields token)
 EOF
 chmod 600 ~/.config/fish/conf.d/secrets.fish
