@@ -1,4 +1,4 @@
-# -*- mode: gitconfig -*-
+# -*- mode: ini -*-
 [user]
     name = Branch Vincent
     email = branchevincent@gmail.com
