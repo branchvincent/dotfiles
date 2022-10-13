@@ -3,7 +3,7 @@
 status is-interactive || exit
 
 bind \cc 'commandline ""'
-bind \a 'gh repo view --web &>/dev/null'
+bind \a 'gh pr view --web &>/dev/null || gh repo view --web &>/dev/null'
 bind \cO workon
 bind \cP 'workon --exec cd; commandline -f repaint'
 bind \cU '
