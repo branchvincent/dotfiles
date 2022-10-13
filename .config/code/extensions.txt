@@ -8,9 +8,7 @@ denoland.vscode-deno
 eamodio.gitlens
 esbenp.prettier-vscode
 exiasr.hadolint
-file-icons.file-icons
 foxundermoon.shell-format
-GitHub.copilot
 golang.go
 James-Yu.latex-workshop
 ms-azuretools.vscode-docker

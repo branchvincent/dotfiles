@@ -29,7 +29,7 @@
   "terminal.integrated.macOptionIsMeta": true, // TODO: not working?
   "window.nativeTabs": true,
   "workbench.colorTheme": "One Dark Pro",
-  "workbench.iconTheme": "file-icons",
+  "workbench.iconTheme": "vs-seti",
   // Extensions
   // Jest
   "jest.autoRun": "off",
