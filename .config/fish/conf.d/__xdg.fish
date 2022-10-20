@@ -21,9 +21,6 @@ for d in XDG_{BIN,CACHE,CONFIG,DATA,STATE}_HOME
     __maybe_mkdir $$d
 end
 
-# all-repos
-set -x ALL_REPOS_CONFIG_FILENAME $XDG_DATA_HOME/all-repos/config.json
-
 # brew
 set -x HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/brew/Brewfile
 

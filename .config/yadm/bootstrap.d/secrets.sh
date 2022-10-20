@@ -28,6 +28,7 @@ chmod 600 ~/.config/fish/conf.d/secrets.fish
 debug "Fetching git credentials"
 printf "protocol=https\nhost=github.com\n" | git credential-osxkeychain erase
 printf "protocol=https\nhost=github.com\nusername=branchvincent\npassword=%s\n" "$GITHUB_TOKEN" | git credential-osxkeychain store
+fish -c 'git workspace update'
 
 ### gpg ###
 debug "Fetching GPG key"
@@ -43,26 +44,3 @@ echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" >~/.local/share/gnupg/
 debug "Fetching SSH key"
 op document get SSH >~/.config/ssh/keys/default
 ssh-add -q --apple-use-keychain ~/.config/ssh/keys/default
-
-### repos ###
-debug "Cloning git repos"
-mkdir -p ~/.local/share/all-repos
-cat <<EOF >~/.local/share/all-repos/config.json
-{
-  "output_dir": ".",
-  "source": "all_repos.source.github_org",
-  "source_settings": {
-    "api_key": "$GITHUB_TOKEN",
-    "org": "ndustrialio",
-    "private": true
-  },
-  "push": "all_repos.push.github_pull_request",
-  "push_settings": {
-    "api_key": "$GITHUB_TOKEN",
-    "username": "branchvincent",
-    "fork": false
-  }
-}
-EOF
-chmod 600 ~/.local/share/all-repos/config.json
-fish -c 'git workspace update'
