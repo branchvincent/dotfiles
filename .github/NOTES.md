@@ -7,7 +7,7 @@
   - [SSH Keys](#ssh-keys)
 - [Postgres](#postgres)
 - [Kubernetes](#kubernetes)
-- [Tricks](#tricks)
+- [Local Dev](#local-dev)
 
 <!--TOC-->
 
@@ -141,7 +141,7 @@ For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-t
    kubectl get pod/<name> -o json | jq -r '.spec.containers[0].env[] | "\(.name)=\(.value)"' >>.env
    ```
 
-## Tricks
+## Local Dev
 
 1. Publicly expose local port
 
