@@ -4,4 +4,4 @@
 
 debug "Updating settings"
 yadm gitconfig status.showUntrackedFiles normal
-(cd ~ && yadm sparse-checkout set '/*' '!/bootstrap')
+(cd ~ && yadm sparse-checkout set --no-cone '/*' '!/bootstrap')
