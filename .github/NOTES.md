@@ -8,6 +8,7 @@
 - [Postgres](#postgres)
 - [Kubernetes](#kubernetes)
 - [Local Dev](#local-dev)
+- [TODOs](#todos)
 
 <!--TOC-->
 
@@ -148,3 +149,9 @@ For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-t
    ```sh
    ngrok http 80
    ```
+
+## TODOs
+
+- Try [NixOS](https://nixos.org)
+- Consider [chezmoi](https://github.com/twpayne/chezmoi) and [Mackup](https://github.com/lra/mackup)
+- Create [custom URL shortener](https://github.com/seanbreckenridge/no-db-static-shorturl)

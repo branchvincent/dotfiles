@@ -1,7 +1,5 @@
 # Dotfiles [![CI](https://github.com/branchvincent/dotfiles/workflows/CI/badge.svg)](https://github.com/branchvincent/dotfiles/actions?query=workflow%3ACI)
 
-## Overview
-
 - [fish shell](http://fishshell.com/) on macOS
 - [XDG spec](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)-compliant (where possible)
 - [yadm](https://yadm.io/) for management
@@ -34,11 +32,3 @@ curl -fsSL https://raw.githubusercontent.com/branchvincent/dotfiles/main/bootstr
 
 - [Shell initialization](https://github.com/rbenv/rbenv/wiki/unix-shell-initialization)
 - [Shell comparisons](https://hyperpolyglot.org/unix-shells)
-
-## TODOs
-
-- Try [NixOS](https://nixos.org)
-- Make zsh more fish-like ([abbr](https://github.com/IlanCosman/zsh-abbr))
-- Consider [chezmoi](https://github.com/twpayne/chezmoi), `most` pager, and more [modern unix replacements](https://remysharp.com/2018/08/23/cli-improved)
-- Backup more macOS settings (see [Mackup](https://github.com/lra/mackup))
-- Create [custom URL shortener](https://github.com/seanbreckenridge/no-db-static-shorturl)
