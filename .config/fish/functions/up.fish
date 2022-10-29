@@ -58,9 +58,7 @@ function __up_dotfiles --description "Update dotfiles"
     pipx list --json | jq -r '.venvs | values[].metadata.main_package.package_or_url' >$XDG_CONFIG_HOME/pipx/packages.txt
 
     # Trash non-xdg cache
-    for path in ~/.{android,bash_history,bundle,config/configstore,docker,k3d,k8slens,kube,npm}
-        test -e $path && trash $path
-    end
+    command rm -rf ~/.{android,bash_history,bundle,config/configstore,docker,k3d,k8slens,kube,node,npm,rustup,yarnrc}
 
     echo "Everything is up-to-date"
 end
