@@ -43,7 +43,7 @@ def launch_repl():
         repl.confirm_exit = False
         repl.highlight_matching_parenthesis = True
         repl.show_signature = True
-        repl.use_code_colorscheme("monokai")
+        repl.use_code_colorscheme("one-dark")
 
     # Enable history
     history_file = Path(getenv("XDG_DATA_HOME")) / "python" / "history"
