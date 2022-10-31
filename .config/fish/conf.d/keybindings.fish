@@ -3,10 +3,11 @@
 status is-interactive || exit
 
 bind \cc 'commandline ""'
-bind \a 'gh pr view --web &>/dev/null || gh repo view --web &>/dev/null'
-bind \cO workon
-bind \cP 'workon --exec cd; commandline -f repaint'
-bind \cU '
+bind \cl "clear; printf '\e[3J'; commandline -f repaint"
+bind \cg 'gh pr view --web &>/dev/null || gh repo view --web &>/dev/null'
+bind \co workon
+bind \cp 'workon --exec cd; commandline -f repaint'
+bind \cu '
 if not set -e GIT_DIR GIT_WORK_TREE
     set -gx GIT_DIR "$XDG_DATA_HOME/yadm/repo.git"
     set -gx GIT_WORK_TREE ~
