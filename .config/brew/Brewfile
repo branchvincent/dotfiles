@@ -93,9 +93,9 @@ cask "google-cloud-sdk"
 cask "google-drive"
 cask "hyper"
 cask "iterm2"
-cask "lens"
 cask "ngrok"
 cask "omnidisksweeper"
+cask "openlens"
 cask "qlmarkdown", args: { no_quarantine: true }
 cask "spotify"
 cask "syntax-highlight", args: { no_quarantine: true }
