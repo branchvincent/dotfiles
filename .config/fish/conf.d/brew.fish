@@ -6,14 +6,16 @@ if not set -q HOMEBREW_PREFIX
     switch "$(uname -sm)"
         case "Darwin arm64"
             set -U HOMEBREW_PREFIX /opt/homebrew
+            set -U HOMEBREW_REPOSITORY $HOMEBREW_PREFIX
         case "Linux x86_64"
             set -U HOMEBREW_PREFIX /home/linuxbrew/.linuxbrew
+            set -U HOMEBREW_REPOSITORY $HOMEBREW_PREFIX/Homebrew
         case '*'
             set -U HOMEBREW_PREFIX /usr/local
+            set -U HOMEBREW_REPOSITORY $HOMEBREW_PREFIX/Homebrew
     end
 end
 set -gx HOMEBREW_CELLAR $HOMEBREW_PREFIX/Cellar
-set -gx HOMEBREW_REPOSITORY $HOMEBREW_PREFIX
 set -gxp MANPATH $HOMEBREW_PREFIX/share/man
 set -gxp INFOPATH $HOMEBREW_PREFIX/share/info
 status is-login && fish_add_path -gmP $XDG_BIN_DIRS $HOMEBREW_PREFIX/{,s}bin

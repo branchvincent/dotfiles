@@ -6,7 +6,7 @@ function workon --description "Open a project"
         set cmd code
     end
 
-    set taps (string replace $HOMEBREW_PREFIX/Library/Taps/ ./  $HOMEBREW_PREFIX/Library/Taps/*/*)
+    set taps (string replace $HOMEBREW_REPOSITORY/Library/Taps/ ./  $HOMEBREW_REPOSITORY/Library/Taps/*/*)
     set choices ./homebrew/brew $taps (git workspace list)
     set chosen (string split ' ' $choices | sort -u | fzf -q "$argv")
     set -e GIT_DIR GIT_WORK_TREE
@@ -18,7 +18,7 @@ function workon --description "Open a project"
         case ./homebrew/brew
             $cmd $HOMEBREW_REPOSITORY
         case $taps
-            $cmd $HOMEBREW_PREFIX/Library/Taps/$chosen
+            $cmd $HOMEBREW_REPOSITORY/Library/Taps/$chosen
         case ''
             return
         case \*
