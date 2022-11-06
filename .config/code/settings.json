@@ -55,6 +55,7 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
   // Python
+  "python.analysis.autoImportCompletions": true,
   "python.defaultInterpreterPath": "python3",
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "${env:HOMEBREW_PREFIX}/bin/black", // https://github.com/microsoft/vscode-python/issues/4922
@@ -63,7 +64,6 @@
   "python.linting.mypyEnabled": true,
   "python.linting.mypyPath": "${env:HOMEBREW_PREFIX}/bin/mypy",
   "python.linting.pylintEnabled": false,
-  "python.sortImports.path": "${env:HOMEBREW_PREFIX}/bin/isort",
   "python.terminal.activateEnvironment": false, // handled by direnv
   // https://github.com/microsoft/vscode-python/issues/1883
   "[python]": {
