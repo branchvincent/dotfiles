@@ -9,15 +9,12 @@ eval "$(op signin)"
 ### docker ###
 debug "Fetching Docker credentials"
 op item get docker --fields token | docker login --username branchvincent --password-stdin
-op item get quay --fields password | docker login quay.io --username branchevincent --password-stdin
 
 ## env ###
 debug "Creating shell secrets"
 GITHUB_TOKEN=$(op item get GitHub --fields token)
 export GITHUB_TOKEN
 cat <<EOF >~/.config/fish/conf.d/secrets.fish
-set -x AWS_ACCESS_KEY_ID $(op item get AWS --fields api.key)
-set -x AWS_SECRET_ACCESS_KEY $(op item get AWS --fields api.secret)
 set -x GITHUB_TOKEN $GITHUB_TOKEN
 set -x NGROK_AUTHTOKEN $(op item get ngrok --fields token)
 set -x NPM_TOKEN $(op item get NPM --fields token)

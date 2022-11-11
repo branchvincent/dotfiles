@@ -1,4 +1,0 @@
-apiVersion: v1
-repositories:
-  - name: ndustrial
-    url: https://ndustrialio.github.io/charts

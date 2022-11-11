@@ -27,7 +27,7 @@
     tags = tag --list -n1 --sort=-version:refname
 
     # Maintenance
-    grep-all = "!f() { rg --hidden --glob=!.git/ \"${@:1}\" $GIT_WORKSPACE/ndustrialio; }; f"
+    grep-all = "!f() { rg --hidden --glob=!.git/ \"${@:1}\" $GIT_WORKSPACE/python-poetry; }; f"
     ignore = "!f() { curl -sL gitignore.io/api/$(echo $@ | tr ' ' ',') | sed '1,4d;$d;' ;}; f"
     prune-branches = !git fetch --all --prune && git branch -vv | awk '/: gone]/ && !/\\*/ {print $1}' | xargs git branch -D
     delete-tag = "!f() { git tag -d $1 && git push -q --delete origin $1; }; f"
