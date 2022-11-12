@@ -45,7 +45,7 @@ end
 
 function __up_docker --description "Update Docker images"
     docker images --format '{{.Repository}}:{{.Tag}}' | xargs -n1 docker pull -q
-    docker image prune -f
+    docker system prune -f
 end
 
 function __up_dotfiles --description "Update dotfiles"
