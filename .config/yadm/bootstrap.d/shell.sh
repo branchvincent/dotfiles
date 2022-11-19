@@ -4,7 +4,7 @@
 
 # Update default login shell
 shell=$(command -v fish)
-if [ "$SHELL" != "$shell" ]; then
+if ! grep -q "$shell" /etc/shells; then
     debug "Updating login shell"
     echo "$shell" | sudo tee -a /etc/shells
     chsh -s "$shell"

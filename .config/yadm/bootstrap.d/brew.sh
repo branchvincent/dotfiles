@@ -22,7 +22,10 @@ if ! brew bundle check &>/dev/null; then
 fi
 
 # Ensure `docker` is in PATH (bundled with Docker.app, which creates symlinks on first boot)
-has docker || PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin"
+if ! has docker; then
+    export PATH="${PATH+$PATH:}/Applications/Docker.app/Contents/Resources/bin"
+    open -a Docker
+fi
 
 # Symlink default java
 if ! test -L /Library/Java/JavaVirtualMachines/openjdk.jdk; then

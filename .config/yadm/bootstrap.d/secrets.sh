@@ -33,11 +33,14 @@ debug "Fetching GPG key"
 GNUPGHOME=$(fish -c 'echo $GNUPGHOME')
 GPG_TTY=$(tty || true)
 export GNUPGHOME GPG_TTY
+echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" >"$GNUPGHOME"/gpg-agent.conf
 curl -fsSL https://github.com/branchvincent.gpg | gpg -q --import
 op document get GPG | gpg -q --import
-echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" >~/.local/share/gnupg/gpg-agent.conf
+gpgconf --kill gpg-agent
+echo test | gpg --clearsign &>/dev/null
 
 ### ssh ###
 debug "Fetching SSH key"
 op document get SSH >~/.config/ssh/keys/default
+chmod 600 ~/.config/ssh/keys/default
 ssh-add -q --apple-use-keychain ~/.config/ssh/keys/default

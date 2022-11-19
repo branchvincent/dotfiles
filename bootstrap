@@ -13,6 +13,7 @@ while true; do
 done &>/dev/null &
 
 # Install brew (to install git, which yadm needs)
+export PATH="/opt/homebrew/bin:/usr/local/bin${PATH+:$PATH}"
 if ! command -v brew &>/dev/null; then
     echo "Installing Homebrew"
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
