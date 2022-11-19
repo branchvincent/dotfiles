@@ -17,8 +17,11 @@ osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/S
 
 ### Dock ###
 debug "Dock"
+defaults write com.apple.dock orientation -string bottom     # Place at bottom
 defaults write com.apple.dock show-recents -bool false       # Hide recent apps
 defaults write com.apple.dock minimize-to-application -int 1 # Minimize apps into itself
+defaults write com.apple.dock magnification -int 1           # Enable magnification
+defaults write com.apple.dock largesize -int 80
 dockutil --no-restart --remove all
 dockutil --no-restart --add /System/Applications/Calendar.app
 dockutil --no-restart --add /System/Applications/Mail.app
@@ -56,8 +59,6 @@ defaults write com.googlecode.iterm2.plist PromptOnQuit -int 0
 debug "Mission Control"
 defaults write com.apple.dock wvous-tl-corner -int 10 # Top left: Display sleep
 defaults write com.apple.dock wvous-tr-corner -int 12 # Top right: Notification center
-defaults write com.apple.dock magnification -int 1
-defaults write com.apple.dock orientation -string bottom
 
 ### Sharing ###
 debug "Sharing"
