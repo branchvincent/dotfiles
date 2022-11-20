@@ -22,10 +22,12 @@ abbr -ag urlencode "string escape --style=url"
 
 ### Aliases ###
 alias cat bat
-alias ls "lsd --icon=never"
-alias ll "ls -l --header --date=relative --blocks=permission,size,user,date,name"
-alias la "ll -A"
-alias lt "ls --tree --depth=1"
+if type -q lsd
+    alias ls "lsd --icon=never"
+    alias ll "ls -l --header --date=relative --blocks=permission,size,user,date,name"
+    alias la "ll -A"
+    alias lt "ls --tree --depth=1"
+end
 alias rm trash
 alias top glances
 alias watch viddy
