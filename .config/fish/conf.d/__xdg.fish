@@ -54,7 +54,6 @@ __maybe_mkdir (dirname $LESSHISTFILE)
 
 # node
 set -x NODE_REPL_HISTORY $XDG_DATA_HOME/node/history
-__maybe_mkdir (dirname $NODE_REPL_HISTORY)
 set -x NO_UPDATE_NOTIFIER 1 # used by npm: https://github.com/yeoman/update-notifier/issues/180
 set -x NPM_CONFIG_CACHE $XDG_CACHE_HOME/npm
 set -x NPM_CONFIG_DEVDIR $XDG_DATA_HOME/node-gyp
@@ -63,6 +62,8 @@ set -x NPM_CONFIG_PREFIX $XDG_DATA_HOME/npm
 set -x NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 set -x FNM_DIR $XDG_DATA_HOME/fnm
 set -p XDG_BIN_DIRS $NPM_CONFIG_PREFIX/bin
+__maybe_mkdir (dirname $NODE_REPL_HISTORY)
+__maybe_mkdir $NPM_CONFIG_PREFIX/lib
 
 # psql
 set -x PSQLRC $XDG_CONFIG_HOME/psql/config.sql
