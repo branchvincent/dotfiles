@@ -11,10 +11,6 @@ defaults write NSGlobalDomain AppleInterfaceStyle -string Dark                  
 defaults write NSGlobalDomain AppleWindowTabbingMode -string always                               # Prefer tabs
 launchctl list environment &>/dev/null || launchctl load ~/Library/LaunchAgents/environment.plist # Load launch agent
 
-### Desktop ###
-debug "Desktop"
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/System/Library/Desktop Pictures/Monterey Graphic.heic"'
-
 ### Dock ###
 debug "Dock"
 defaults write com.apple.dock orientation -string bottom     # Place at bottom
@@ -78,6 +74,10 @@ defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1 # Check for upd
 ### Trackpad ###
 debug "Trackpad"
 defaults write -g com.apple.trackpad.scaling 3 # Max trackpad speed
+
+### Wallpaper ###
+debug "Wallpaper"
+osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/System/Library/Desktop Pictures/Monterey Graphic.heic"'
 
 # Restart affected apps
 debug "Restarting apps"
