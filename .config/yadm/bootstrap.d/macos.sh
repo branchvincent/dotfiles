@@ -62,9 +62,9 @@ defaults write com.apple.dock wvous-tr-corner -int 12 # Top right: Notification 
 
 ### Sharing ###
 debug "Sharing"
-if [ "$(scutil --get ComputerName)" != "Branch's MacBook Pro" ]; then
-    scutil --set ComputerName "Branch's MacBook Pro"
-    scutil --set LocalHostName "Branchs-MacBook-Pro"
+if [ "$(scutil --get ComputerName)" != "Branch's MacBook" ]; then
+    scutil --set ComputerName "Branch's MacBook"
+    scutil --set LocalHostName "Branchs-MacBook"
 fi
 
 ### Siri ###
