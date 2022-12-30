@@ -93,3 +93,8 @@ alias ssh $GIT_SSH_COMMAND
 
 # zsh
 set -x ZDOTDIR $XDG_CONFIG_HOME/zsh
+
+# PATH
+if status is-login
+    fish_add_path -g --move --path $XDG_BIN_DIRS $HOMEBREW_PREFIX/{,s}bin
+end

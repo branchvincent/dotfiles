@@ -18,7 +18,6 @@ end
 set -gx HOMEBREW_CELLAR $HOMEBREW_PREFIX/Cellar
 set -gxp MANPATH $HOMEBREW_PREFIX/share/man
 set -gxp INFOPATH $HOMEBREW_PREFIX/share/info
-status is-login && fish_add_path -gmP $XDG_BIN_DIRS $HOMEBREW_PREFIX/{,s}bin
 
 # Register completions (for non-brewed fish)
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-fish
