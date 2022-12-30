@@ -21,13 +21,16 @@ abbr -ag urldecode "string unescape --style=url"
 abbr -ag urlencode "string escape --style=url"
 
 ### Aliases ###
-alias cat bat
+function _alias
+    type -q $argv[2] && alias $argv
+end
+_alias cat bat
 if type -q lsd
     alias ls "lsd --icon=never"
     alias ll "ls -l --header --date=relative --blocks=permission,size,user,date,name"
     alias la "ll -A"
     alias lt "ls --tree --depth=1"
 end
-alias rm trash
-alias top glances
-alias watch viddy
+_alias rm trash
+_alias top glances
+_alias watch viddy
