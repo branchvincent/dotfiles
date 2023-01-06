@@ -1,3 +1,5 @@
+type -q brew || exit
+
 set -gx HOMEBREW_BAT 1
 set -gx HOMEBREW_NO_ENV_HINTS 1
 
@@ -16,7 +18,9 @@ if not set -q HOMEBREW_PREFIX
     end
 end
 set -gx HOMEBREW_CELLAR $HOMEBREW_PREFIX/Cellar
+set -q MANPATH || set MANPATH ''
 set -gxp MANPATH $HOMEBREW_PREFIX/share/man
+set -q INFOPATH || set INFOPATH
 set -gxp INFOPATH $HOMEBREW_PREFIX/share/info
 
 # Register completions (for non-brewed fish)
