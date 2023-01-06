@@ -6,9 +6,9 @@
 [github]
     user = branchvincent
 [core]
-    autocrlf = input                # normalize line endings on commit (but not checkout)
-    mergeoptions = --no-edit        # dont prompt for commit message on merge
-    pager = diff-so-fancy | $PAGER  # use a better diff visualizer
+    autocrlf = input                            # normalize line endings on commit (but not checkout)
+    mergeoptions = --no-edit                    # dont prompt for commit message on merge
+    pager = delta --diff-so-fancy --navigate    # use a better diff visualizer
 [color "diff"]
     meta = yellow
     frag = magenta bold
@@ -24,6 +24,8 @@
 [commit]
     template = ~/.config/git/commit
     gpgSign = true
+[diff]
+    colorMoved = default    # color moved lines differently
 [fetch]
     prune = true        # prune deleted remote refs
     pruneTags = true    # prune deleted remote tags
