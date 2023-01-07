@@ -7,7 +7,6 @@
     user = branchvincent
 [core]
     autocrlf = input                            # normalize line endings on commit (but not checkout)
-    mergeoptions = --no-edit                    # dont prompt for commit message on merge
     pager = delta --diff-so-fancy --navigate    # use a better diff visualizer
 [color "diff"]
     meta = yellow
