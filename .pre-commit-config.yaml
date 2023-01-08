@@ -29,7 +29,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/frnmst/md-toc
-    rev: "8.1.7"
+    rev: "8.1.8"
     hooks:
       - id: md-toc
         args: [--in-place, --skip-lines=1, github]
