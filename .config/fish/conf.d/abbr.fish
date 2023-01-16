@@ -3,22 +3,22 @@
 status is-interactive || exit
 
 ### Abbreviations ###
-abbr -ag b brew
-abbr -ag d docker
-abbr -ag dc "docker compose"
-abbr -ag dprune "docker system prune --all --volumes --force"
-abbr -ag drun "docker run --rm -it"
-abbr -ag dstop "docker ps --quiet | xargs docker stop"
-abbr -ag g git
-abbr -ag k kubectl
-abbr -ag kc kubectx
-abbr -ag kn kubens
-abbr -ag p poetry
-abbr -ag pc pbcopy
-abbr -ag pp pbpaste
-abbr -ag py python3
-abbr -ag urldecode "string unescape --style=url"
-abbr -ag urlencode "string escape --style=url"
+abbr b brew
+abbr d docker
+abbr dc "docker compose"
+abbr dprune "docker system prune --all --volumes --force"
+abbr drun "docker run --rm -it"
+abbr dstop "docker ps --quiet | xargs docker stop"
+abbr g git
+abbr k kubectl
+abbr kc kubectx
+abbr kn kubens
+abbr p poetry
+abbr pc pbcopy
+abbr pp pbpaste
+abbr py python3
+abbr urldecode "string unescape --style=url"
+abbr urlencode "string escape --style=url"
 
 ### Aliases ###
 function _alias
