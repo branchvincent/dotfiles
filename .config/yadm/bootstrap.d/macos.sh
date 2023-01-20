@@ -9,10 +9,9 @@ test "$(uname -s)" = "Darwin" || return
 
 ### General ###
 debug "General"
-defaults write NSGlobalDomain AppleInterfaceStyle -string Dark              # Dark mode
-defaults write NSGlobalDomain AppleWindowTabbingMode -string always         # Prefer tabs
-ln -sf ~/.config/launchd/startup.plist ~/Library/LaunchAgents/startup.plist # Load launch agent
-launchctl list startup &>/dev/null || launchctl load ~/Library/LaunchAgents/startup.plist
+defaults write NSGlobalDomain AppleInterfaceStyle -string Dark                            # Dark mode
+defaults write NSGlobalDomain AppleWindowTabbingMode -string always                       # Prefer tabs
+launchctl list startup &>/dev/null || launchctl load ~/Library/LaunchAgents/startup.plist # Load launch agent
 # Touch ID for sudo
 if ! grep -q pam_tid.so /etc/pam.d/sudo; then
     sudo sed -i .bak -e "2s/^/auth       sufficient     pam_tid.so\n/" /etc/pam.d/sudo
