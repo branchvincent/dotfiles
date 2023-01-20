@@ -5,9 +5,9 @@ This defers to our default login shell to fetch and set XDG variables at startup
 need to modify $PATH, then the following will suffice: `sudo launchctl config user path $PATH`.
 
 To use this:
-  1. Load:    launchctl load ~/Library/LaunchAgents/environment.plist
-  2. Unload:  launchctl unload ~/Library/LaunchAgents/environment.plist
-  3. Debug:   launchctl start/stop environment
+  1. Load:    launchctl load ~/Library/LaunchAgents/startup.plist
+  2. Unload:  launchctl unload ~/Library/LaunchAgents/startup.plist
+  3. Debug:   launchctl start/stop startup
 
 References:
   - Inspiration: https://github.com/ersiner/osx-env-sync
@@ -18,7 +18,7 @@ References:
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>environment</string>
+  <string>startup</string>
 
   <key>RunAtLoad</key>
   <true/>
@@ -36,8 +36,8 @@ References:
   </array>
 
   <key>StandardOutPath</key>
-  <string>/tmp/launchd/environment.log</string>
+  <string>/tmp/launchd/startup.log</string>
   <key>StandardErrorPath</key>
-  <string>/tmp/launchd/environment.log</string>
+  <string>/tmp/launchd/startup.log</string>
 </dict>
 </plist>
