@@ -25,7 +25,12 @@ chmod 600 ~/.config/fish/conf.d/secrets.fish
 debug "Fetching git credentials"
 printf "protocol=https\nhost=github.com\n" | git credential-osxkeychain erase
 printf "protocol=https\nhost=github.com\nusername=branchvincent\npassword=%s\n" "$GITHUB_TOKEN" | git credential-osxkeychain store
-fish -c 'git workspace update'
+# shellcheck disable=SC2016
+GIT_WORKSPACE=$(fish -c 'echo $GIT_WORKSPACE')
+export GIT_WORKSPACE
+mkdir -p "$GIT_WORKSPACE"
+ln -sf ~/.config/git/workspace.toml "$GIT_WORKSPACE"/workspace.toml
+git workspace update
 
 ### gpg ###
 debug "Fetching GPG key"
