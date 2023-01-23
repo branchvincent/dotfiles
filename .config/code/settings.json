@@ -5,7 +5,7 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
-  "editor.fontFamily": "MesloLGS NF",
+  "editor.fontFamily": "MesloLGS Nerd Font",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
@@ -25,7 +25,7 @@
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.enableMultiLinePasteWarning": false,
-  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
   "terminal.integrated.macOptionIsMeta": true, // TODO: not working?
   "window.nativeTabs": true,
   "workbench.colorTheme": "One Dark Pro",
