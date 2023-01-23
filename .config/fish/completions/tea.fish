@@ -15,6 +15,7 @@ complete tea -s h -l help -d 'print help'
 complete tea -l magic -d 'print shell hook magic'
 complete tea -l version -d 'print version'
 complete tea -l prefix -d 'print prefix'
+complete tea -l provides -d 'check if packages are provided'
 
 # Flags
 complete tea -s S -l sync -d 'sync pantries'

@@ -141,6 +141,12 @@ layout_pdm() {
     PATH_add "$PWD"/__pypackages__/*/bin
 }
 
+### Tea ###
+
+use_tea() {
+    eval "$(SHELL=bash tea --env --keep-going --silent --dry-run=w/trace)"
+}
+
 ### Main ###
 
 layout auto
