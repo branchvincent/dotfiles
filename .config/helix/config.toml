@@ -1,1 +1,4 @@
 theme = "onedark"
+
+[editor.cursor-shape]
+insert = "bar"
