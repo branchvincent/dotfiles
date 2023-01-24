@@ -55,6 +55,7 @@ debug "iTerm"
 # shellcheck disable=SC2088
 defaults write com.googlecode.iterm2.plist DynamicProfilesPath -string "~/.config/iterm2"
 defaults write com.googlecode.iterm2.plist "Default Bookmark Guid" -string 382C82BD-43A8-4CF0-95F4-B75123F1F8DC
+defaults write com.googlecode.iterm2.plist OptionIsMetaForSpecialChars -int 0
 defaults write com.googlecode.iterm2.plist PromptOnQuit -int 0
 
 ### Mission Control ###
