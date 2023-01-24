@@ -34,7 +34,8 @@ set tide_right_prompt_items \
     python \
     rustc \
     tea \
-    direnv
+    direnv \
+    && :
 
 # Show on command
 set -gx tide_show_gcloud_on gcloud

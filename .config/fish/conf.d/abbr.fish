@@ -19,6 +19,7 @@ abbr pp pbpaste
 abbr py python3
 abbr urldecode "string unescape --style=url"
 abbr urlencode "string escape --style=url"
+abbr y yadm
 
 ### Aliases ###
 function _alias
