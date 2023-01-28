@@ -10,89 +10,89 @@ function __maybe_mkdir
 end
 
 # Core directories
-set -x XDG_BIN_HOME ~/.local/bin # ok, i made this one up
-set -x XDG_CACHE_HOME ~/.cache
-set -x XDG_CONFIG_HOME ~/.config
-set -x XDG_DATA_HOME ~/.local/share
-set -x XDG_STATE_HOME ~/.local/state
-set -x --path XDG_BIN_DIRS $XDG_BIN_HOME # this too
+set -gx XDG_BIN_HOME ~/.local/bin # ok, i made this one up
+set -gx XDG_CACHE_HOME ~/.cache
+set -gx XDG_CONFIG_HOME ~/.config
+set -gx XDG_DATA_HOME ~/.local/share
+set -gx XDG_STATE_HOME ~/.local/state
+set -gx --path XDG_BIN_DIRS $XDG_BIN_HOME # this too
 
 for d in XDG_{BIN,CACHE,CONFIG,DATA,STATE}_HOME
     __maybe_mkdir $$d
 end
 
 # brew
-set -x HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/brew/Brewfile
+set -gx HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/brew/Brewfile
 
 # code: https://github.com/microsoft/vscode/issues/3884
 
 # deno
-set -x DENO_INSTALL_ROOT $XDG_BIN_HOME/..
+set -gx DENO_INSTALL_ROOT $XDG_BIN_HOME/..
 
 # docker: https://github.com/docker/for-mac/issues/2635
-set -x DOCKER_CONFIG $XDG_CONFIG_HOME/docker
+set -gx DOCKER_CONFIG $XDG_CONFIG_HOME/docker
 
 # gnupg
-set -x GNUPGHOME $XDG_DATA_HOME/gnupg
+set -gx GNUPGHOME $XDG_DATA_HOME/gnupg
 __maybe_mkdir $GNUPGHOME
 
 # go
-set -x GOBIN $XDG_BIN_HOME
-set -x GOPATH $XDG_DATA_HOME/go
+set -gx GOBIN $XDG_BIN_HOME
+set -gx GOPATH $XDG_DATA_HOME/go
 
 # java
-set -x GRADLE_USER_HOME $XDG_DATA_HOME/gradle
-set -x JABBA_HOME $XDG_DATA_HOME/jabba
+set -gx GRADLE_USER_HOME $XDG_DATA_HOME/gradle
+set -gx JABBA_HOME $XDG_DATA_HOME/jabba
 
 # kube
-set -x KUBECONFIG $XDG_DATA_HOME/kube/config.yaml
-set -x KUBECACHEDIR $XDG_CACHE_HOME/kube
+set -gx KUBECONFIG $XDG_DATA_HOME/kube/config.yaml
+set -gx KUBECACHEDIR $XDG_CACHE_HOME/kube
 
 # less
-set -x LESSHISTFILE $XDG_DATA_HOME/less/history
+set -gx LESSHISTFILE $XDG_DATA_HOME/less/history
 __maybe_mkdir (dirname $LESSHISTFILE)
 
 # node
-set -x NODE_REPL_HISTORY $XDG_DATA_HOME/node/history
-set -x NO_UPDATE_NOTIFIER 1 # used by npm: https://github.com/yeoman/update-notifier/issues/180
-set -x NPM_CONFIG_CACHE $XDG_CACHE_HOME/npm
-set -x NPM_CONFIG_DEVDIR $XDG_DATA_HOME/node-gyp
-set -x NPM_CONFIG_INIT_MODULE $XDG_CONFIG_HOME/npm/config/npm-init.js
-set -x NPM_CONFIG_PREFIX $XDG_DATA_HOME/npm
-set -x NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
-set -x FNM_DIR $XDG_DATA_HOME/fnm
+set -gx NODE_REPL_HISTORY $XDG_DATA_HOME/node/history
+set -gx NO_UPDATE_NOTIFIER 1 # used by npm: https://github.com/yeoman/update-notifier/issues/180
+set -gx NPM_CONFIG_CACHE $XDG_CACHE_HOME/npm
+set -gx NPM_CONFIG_DEVDIR $XDG_DATA_HOME/node-gyp
+set -gx NPM_CONFIG_INIT_MODULE $XDG_CONFIG_HOME/npm/config/npm-init.js
+set -gx NPM_CONFIG_PREFIX $XDG_DATA_HOME/npm
+set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
+set -gx FNM_DIR $XDG_DATA_HOME/fnm
 set -p XDG_BIN_DIRS $NPM_CONFIG_PREFIX/bin
 __maybe_mkdir (dirname $NODE_REPL_HISTORY)
 __maybe_mkdir $NPM_CONFIG_PREFIX/lib
 
 # psql
-set -x PSQLRC $XDG_CONFIG_HOME/psql/config.sql
-set -x PSQL_HISTORY $XDG_DATA_HOME/psql/history
+set -gx PSQLRC $XDG_CONFIG_HOME/psql/config.sql
+set -gx PSQL_HISTORY $XDG_DATA_HOME/psql/history
 __maybe_mkdir (dirname $PSQL_HISTORY)
 
 # python
-set -x PIPX_HOME $XDG_DATA_HOME/pipx
-set -x PYENV_ROOT $XDG_DATA_HOME/pyenv
-set -x PYTHONSTARTUP $XDG_CONFIG_HOME/python/startup.py
+set -gx PIPX_HOME $XDG_DATA_HOME/pipx
+set -gx PYENV_ROOT $XDG_DATA_HOME/pyenv
+set -gx PYTHONSTARTUP $XDG_CONFIG_HOME/python/startup.py
 
 # ruby
-set -x BUNDLE_USER_CACHE $XDG_CACHE_HOME/bundle
-set -x BUNDLE_USER_CONFIG $XDG_CONFIG_HOME/bundle
-set -x BUNDLE_USER_PLUGIN $XDG_DATA_HOME/bundle
-set -x GEM_HOME $XDG_DATA_HOME/gem
-set -x GEM_SPEC_CACHE $XDG_CACHE_HOME/gem
+set -gx BUNDLE_USER_CACHE $XDG_CACHE_HOME/bundle
+set -gx BUNDLE_USER_CONFIG $XDG_CONFIG_HOME/bundle
+set -gx BUNDLE_USER_PLUGIN $XDG_DATA_HOME/bundle
+set -gx GEM_HOME $XDG_DATA_HOME/gem
+set -gx GEM_SPEC_CACHE $XDG_CACHE_HOME/gem
 
 # rust
-set -x CARGO_HOME $XDG_DATA_HOME/cargo
-set -x RUSTUP_HOME $XDG_DATA_HOME/rustup
+set -gx CARGO_HOME $XDG_DATA_HOME/cargo
+set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
 set -p XDG_BIN_DIRS $CARGO_HOME/bin
 
 # ssh
-set -x GIT_SSH_COMMAND "ssh -F $XDG_CONFIG_HOME/ssh/config"
+set -gx GIT_SSH_COMMAND "ssh -F $XDG_CONFIG_HOME/ssh/config"
 alias ssh $GIT_SSH_COMMAND
 
 # zsh
-set -x ZDOTDIR $XDG_CONFIG_HOME/zsh
+set -gx ZDOTDIR $XDG_CONFIG_HOME/zsh
 
 # PATH
 if status is-login

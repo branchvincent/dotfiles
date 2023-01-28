@@ -15,9 +15,9 @@ debug "Creating shell secrets"
 GITHUB_TOKEN=$(op item get GitHub --fields token)
 export GITHUB_TOKEN
 cat <<EOF >~/.config/fish/conf.d/secrets.fish
-set -x GITHUB_TOKEN $GITHUB_TOKEN
-set -x NGROK_AUTHTOKEN $(op item get ngrok --fields token)
-set -x NPM_TOKEN $(op item get NPM --fields token)
+set -gx GITHUB_TOKEN $GITHUB_TOKEN
+set -gx NGROK_AUTHTOKEN $(op item get ngrok --fields token)
+set -gx NPM_TOKEN $(op item get NPM --fields token)
 EOF
 chmod 600 ~/.config/fish/conf.d/secrets.fish
 

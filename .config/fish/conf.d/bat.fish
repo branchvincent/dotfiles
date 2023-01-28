@@ -1,1 +1,1 @@
-set -x BAT_THEME TwoDark
+set -gx BAT_THEME TwoDark
