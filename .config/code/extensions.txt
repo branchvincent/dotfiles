@@ -16,7 +16,6 @@ ms-python.isort
 ms-python.python
 ms-python.vscode-pylance
 ms-vscode-remote.remote-containers
-Orta.vscode-jest
 Prisma.prisma
 rebornix.ruby
 redhat.vscode-yaml
@@ -24,4 +23,3 @@ rust-lang.rust-analyzer
 timonwong.shellcheck
 wingrunr21.vscode-ruby
 zhuangtongfa.material-theme
-ZixuanChen.vitest-explorer

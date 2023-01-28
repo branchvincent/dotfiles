@@ -31,10 +31,6 @@
   "workbench.colorTheme": "One Dark Pro",
   "workbench.iconTheme": "vs-seti",
   // Extensions
-  // Jest
-  "jest.autoRun": "off",
-  // Latex
-  "latex-workshop.view.pdf.viewer": "tab",
   // Prettier
   "[dockercompose][html][javascript][javascriptreact][json][jsonc][markdown][typescript][typescriptreact][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -63,7 +59,6 @@
   "python.linting.flake8Path": "${env:HOMEBREW_PREFIX}/bin/flake8",
   "python.linting.mypyEnabled": true,
   "python.linting.mypyPath": "${env:HOMEBREW_PREFIX}/bin/mypy",
-  "python.linting.pylintEnabled": false,
   "python.terminal.activateEnvironment": false, // handled by direnv
   // https://github.com/microsoft/vscode-python/issues/1883
   "[python]": {
