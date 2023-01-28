@@ -15,7 +15,6 @@ brew "direnv"
 brew "duti"
 brew "fd"
 brew "fish", args: ["HEAD"]
-brew "flake8"
 brew "fnm"
 brew "fzf"
 brew "gh"

@@ -55,8 +55,6 @@
   "python.defaultInterpreterPath": "python3",
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "${env:HOMEBREW_PREFIX}/bin/black", // https://github.com/microsoft/vscode-python/issues/4922
-  "python.linting.flake8Enabled": true,
-  "python.linting.flake8Path": "${env:HOMEBREW_PREFIX}/bin/flake8",
   "python.linting.mypyEnabled": true,
   "python.linting.mypyPath": "${env:HOMEBREW_PREFIX}/bin/mypy",
   "python.terminal.activateEnvironment": false, // handled by direnv
