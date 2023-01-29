@@ -26,7 +26,7 @@ def launch_repl():
         return
 
     # HACK: inject ptpython
-    prefix = Path(getenv("HOMEBREW_PREFIX", "/usr/local"))
+    prefix = Path(getenv("HOMEBREW_PREFIX", "/opt/homebrew"))
     libs = list(prefix.joinpath("opt/ptpython/libexec/lib").glob("python*"))
     if not libs:
         return
@@ -46,7 +46,8 @@ def launch_repl():
         repl.use_code_colorscheme("one-dark")
 
     # Enable history
-    history_file = Path(getenv("XDG_DATA_HOME")) / "python" / "history"
+    xdg_data = Path(getenv("XDG_DATA_HOME", "~/.local/share")).expanduser()
+    history_file = xdg_data / "python" / "history"
     history_file.parent.mkdir(parents=True, exist_ok=True)
 
     # Launch

@@ -52,9 +52,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   // Python
   "python.analysis.autoImportCompletions": true,
-  "python.defaultInterpreterPath": "python3",
-  "python.linting.mypyEnabled": true,
-  "python.linting.mypyPath": "${env:HOMEBREW_PREFIX}/bin/mypy",
+  "python.analysis.typeCheckingMode": "basic",
   "python.terminal.activateEnvironment": false, // handled by direnv
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"

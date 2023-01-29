@@ -36,7 +36,6 @@ brew "latexindent"
 brew "libpq", link: true
 brew "lsd"
 brew "mas"
-brew "mypy"
 brew "node"
 brew "openjdk"
 brew "pdm"
