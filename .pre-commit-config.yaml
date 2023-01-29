@@ -9,7 +9,8 @@ repos:
       - id: shfmt
         name: Format shell files
         entry: shfmt -i 4 -w
-        language: system
+        language: golang
+        additional_dependencies: [mvdan.cc/sh/v3/cmd/shfmt@v3.6.0]
         types: [shell]
         exclude_types: [zsh] # https://github.com/mvdan/sh/issues/120
       - id: shellcheck
