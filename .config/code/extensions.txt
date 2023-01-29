@@ -1,10 +1,8 @@
-apollographql.vscode-apollo
 bmalehorn.vscode-fish
 bungcip.better-toml
 charliermarsh.ruff
 chrislajoie.vscode-modelines
 DavidAnson.vscode-markdownlint
-dbaeumer.vscode-eslint
 denoland.vscode-deno
 eamodio.gitlens
 esbenp.prettier-vscode
@@ -17,8 +15,6 @@ ms-python.black-formatter
 ms-python.python
 ms-python.vscode-pylance
 ms-vscode-remote.remote-containers
-Prisma.prisma
-rebornix.ruby
 redhat.vscode-yaml
 rust-lang.rust-analyzer
 timonwong.shellcheck
