@@ -1,25 +1,4 @@
 repos:
-  - repo: local
-    hooks:
-      - id: fish_indent
-        name: Format fish files
-        entry: fish_indent -w
-        language: system
-        types: [fish]
-      - id: shfmt
-        name: Format shell files
-        entry: shfmt -i 4 -w
-        language: golang
-        additional_dependencies: [mvdan.cc/sh/v3/cmd/shfmt@v3.6.0]
-        types: [shell]
-        exclude_types: [zsh] # https://github.com/mvdan/sh/issues/120
-      - id: shellcheck
-        name: Lint shell files
-        entry: shellcheck -e SC1090,SC1091
-        language: system
-        types: [shell]
-        exclude_types: [zsh] # https://github.com/koalaman/shellcheck/issues/809
-
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
@@ -29,6 +8,13 @@ repos:
         args: [--autofix]
         exclude: settings.json # jsonc
       - id: trailing-whitespace
+
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.9.0.2
+    hooks:
+      - id: shellcheck
+        args: [-e, "SC1090,SC1091"]
+        exclude_types: [zsh] # https://github.com/koalaman/shellcheck/issues/809
 
   - repo: https://github.com/frnmst/md-toc
     rev: "8.1.8"
@@ -46,6 +32,21 @@ repos:
     hooks:
       - id: codespell
         args: [--ignore-words-list, iterm]
+
+  - repo: local
+    hooks:
+      - id: fish_indent
+        name: Format fish files
+        entry: fish_indent -w
+        language: system
+        types: [fish]
+      - id: shfmt
+        name: Format shell files
+        entry: shfmt -i 4 -w
+        language: golang
+        additional_dependencies: [mvdan.cc/sh/v3/cmd/shfmt@v3.6.0]
+        types: [shell]
+        exclude_types: [zsh] # https://github.com/mvdan/sh/issues/120
 
   - repo: meta
     hooks:
