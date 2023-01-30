@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/vercel/hyper/canary/app/config/schema.json",
+  "config": {
+    "bell": false,
+    "copyOnSelect": true,
+    "css": ".splitpane_divider { background-color: white !important; }",
+    "cursorShape": "BEAM",
+    "fontFamily": "'MesloLGS Nerd Font'",
+    "updateChannel": "canary"
+  },
+  "keymaps": {},
+  "plugins": [
+    "hyper-highlight-active-pane",
+    "hyper-one-dark",
+    "hyper-search"
+  ]
+}
