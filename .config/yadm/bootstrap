@@ -17,10 +17,8 @@ confirm() {
     fi
     printf "Configure ${bold}${white}%s${reset}? (y/n)" "$1"
     read -rn1
-    [[ $REPLY =~ ^[Yy]$ ]]
-    status=$?
     printf "\e[2K\r" # clear line
-    return $status
+    [[ $REPLY =~ ^[Yy]$ ]]
 }
 
 has() {

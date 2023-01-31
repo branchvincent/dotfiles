@@ -12,7 +12,7 @@ fi
 ### rust ###
 if ! has rustup; then
     debug "Rust"
-    fish -lc 'rustup-init -y --quiet --no-modify-path'
+    fish -lc 'curl -fsS https://sh.rustup.rs | sh -s -- -y --quiet --no-modify-path'
 fi
 
 ### vscode ###
