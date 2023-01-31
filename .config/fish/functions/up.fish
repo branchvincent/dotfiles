@@ -36,7 +36,13 @@ function __up_all --description "Update everything"
     end
 end
 
-function __up_brew --description "Update Homebrew and its packages"
+function __up_apt --description "Update apt packages"
+    sudo apt update
+    sudo apt upgrade
+    sudo apt autoremove
+end
+
+function __up_brew --description "Update Homebrew packages"
     brew upgrade -q
     brew autoremove -q
     brew cleanup -q
@@ -63,6 +69,12 @@ function __up_dotfiles --description "Update dotfiles"
     echo "Everything is up-to-date"
 end
 
+function __up_fisher --description "Update fish packages and completions"
+    fisher update >/dev/null
+    fish_update_completions >/dev/null
+    echo "Everything is up-to-date"
+end
+
 function __up_gcloud --description "Update gcloud components"
     gcloud components update --quiet
 end
@@ -85,12 +97,20 @@ function __up_pipx --description "Update pipx packages"
     pipx upgrade-all
 end
 
-function __up_rust --description "Update Rust components"
+function __up_rustup --description "Update Rust components"
     rustup update
 end
 
-function __up_shell --description "Update shell packages and completions"
-    fisher update >/dev/null
-    fish_update_completions >/dev/null
-    echo "Everything is up-to-date"
+# Remove any unfound items
+for item in (functions -a | string replace -rf "^__up_(?!all|dotfiles|help)" "")
+    set -l cmd $item
+    switch $item
+        case apt
+            set cmd apt-get
+        case git
+            set cmd git-workspace
+        case os
+            set cmd softwareupdate
+    end
+    type -q $cmd || functions -e __up_$item
 end
