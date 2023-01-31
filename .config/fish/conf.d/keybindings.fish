@@ -14,3 +14,4 @@ if not set -e GIT_DIR GIT_WORK_TREE
 end
 commandline -f repaint
 '
+fzf_configure_bindings --directory=\cf
