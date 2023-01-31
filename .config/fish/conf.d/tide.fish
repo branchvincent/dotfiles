@@ -40,3 +40,10 @@ set tide_right_prompt_items \
 # Show on command
 set -gx tide_show_gcloud_on gcloud
 set -gx tide_show_kubectl_on kubectl helm kubens kubectx stern
+
+# Keep prompt at bottom
+if type -q tput
+    function tide_prompt_at_bottom --on-event fish_prompt
+        tput cup $LINES
+    end
+end
