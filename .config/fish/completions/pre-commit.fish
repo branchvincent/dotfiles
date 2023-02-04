@@ -2,8 +2,11 @@ set -l commands autoupdate clean gc init-templatedir install install-hooks migra
 set -l hook_stages commit merge-commit prepare-commit-msg commit-msg post-commit manual post-checkout push post-merge post-rewrite
 set -l hook_types pre-commit pre-merge-commit pre-push prepare-commit-msg commit-msg post-commit post-checkout post-merge post-rewrite
 
+functions -q __fish_git || source $__fish_data_dir/completions/git.fish
+
 function __fish_pre_commit_config_print -a key
-    test -r .pre-commit-config.yaml; and string match -rg " $key: (.*)" <.pre-commit-config.yaml
+    set -l config (__fish_git rev-parse --show-toplevel 2>/dev/null)/.pre-commit-config.yaml
+    test -r "$config" && string match -rg "\s+$key:\s+(\S+)" <$config | string unescape
 end
 
 # Global options
@@ -28,7 +31,7 @@ complete pre-commit -n __fish_use_subcommand -a gc -d "Clean unused cached repos
 
 # help
 complete pre-commit -n __fish_use_subcommand -a help -d "Show help for a specific command"
-complete pre-commit -n "__fish_seen_subcommand_from help" -a "$commands help" -d Command
+complete pre-commit -n "__fish_seen_subcommand_from help" -a "$commands" -d Command
 
 # init-templatedir
 complete pre-commit -n __fish_use_subcommand -a init-templatedir -d "Install hook script in a directory"
@@ -52,25 +55,25 @@ complete pre-commit -n __fish_use_subcommand -a migrate-config -d "Migrate to ne
 # run / try-repo
 complete pre-commit -n __fish_use_subcommand -a run -d "Run hooks"
 complete pre-commit -n __fish_use_subcommand -a try-repo -d "Try the hooks in a repository"
-complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l checkout-type -xa "0 1" -d "Either branch or file checkout"
-complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l commit-msg-filename -x -d "Filename to check when running during `commit-msg`"
-complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l commit-object-name -x -d "Commit object name"
+complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l checkout-type -xa "0 1" -d "Indicate either branch or file checkout"
+complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l commit-msg-filename -r -d "Filename to check when running during `commit-msg`"
+complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l commit-object-name -d "Commit object name"
 complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l files -r -d "Filenames to run hooks on"
 complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l hook-stage -xa "$hook_stages" -d "The stage during which the hook is fired"
-complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l is-squash-merge -x -d "Whether the merge was a squash merge"
-complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l local-branch -x -d "Local branch ref used by `git push`"
-complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l prepare-commit-message-source -x -d "Source of the commit message"
-complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l remote-branch -x -d "Remote branch ref used by `git push`"
-complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l remote-name -x -d "Remote name used by `git push`"
-complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l remote-url -x -d "Remote url used by `git push`"
-complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l rewrite-command -x -d "The command that invoked the rewrite"
+complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l is-squash-merge -d "Whether the merge was a squash merge"
+complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l local-branch -d "Local branch ref used by `git push`"
+complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l prepare-commit-message-source -d "Source of the commit message"
+complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l remote-branch -d "Remote branch ref used by `git push`"
+complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l remote-name -d "Remote name used by `git push`"
+complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l remote-url -d "Remote url used by `git push`"
+complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l rewrite-command -d "The command that invoked the rewrite"
 complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -l show-diff-on-failure -d "Show `git diff` on hook failure"
 complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -s a -l all-files -d "Run on all the files in the repo"
-complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -s s -l source -l from-ref -x -d "Original ref"
-complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -s o -l origin -l to-ref -x -d "Destination ref"
+complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -s s -l source -l from-ref -xa '(__fish_git_refs)' -d "Original ref"
+complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -s o -l origin -l to-ref -xa '(__fish_git_refs)' -d "Destination ref"
 complete pre-commit -n "__fish_seen_subcommand_from run try-repo" -s v -l verbose -d Verbose
 complete pre-commit -n "__fish_seen_subcommand_from run" -a "(__fish_pre_commit_config_print id)" -d "Hook id"
-complete pre-commit -n "__fish_seen_subcommand_from try-repo" -l ref -l rev -x -d "Ref to run against"
+complete pre-commit -n "__fish_seen_subcommand_from try-repo" -l ref -l rev -xa '(__fish_git_refs)' -d "Ref to run against"
 
 # sample-config
 complete pre-commit -n __fish_use_subcommand -a sample-config -d "Produce sample config file"
@@ -81,6 +84,8 @@ complete pre-commit -n "__fish_seen_subcommand_from uninstall" -s t -l hook-type
 
 # validate-config
 complete pre-commit -n __fish_use_subcommand -a validate-config -d "Validate .pre-commit-config.yaml files"
+complete pre-commit -n "__fish_seen_subcommand_from validate-config" --force-files
 
 # validate-manifest
 complete pre-commit -n __fish_use_subcommand -a validate-manifest -d "Validate .pre-commit-hooks.yaml files"
+complete pre-commit -n "__fish_seen_subcommand_from validate-manifest" --force-files
