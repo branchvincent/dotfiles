@@ -7,14 +7,14 @@ set -gx HOMEBREW_NO_ENV_HINTS 1
 if not set -q HOMEBREW_PREFIX
     switch "$(uname -sm)"
         case "Darwin arm64"
-            set -U HOMEBREW_PREFIX /opt/homebrew
-            set -U HOMEBREW_REPOSITORY $HOMEBREW_PREFIX
+            set -Ux HOMEBREW_PREFIX /opt/homebrew
+            set -Ux HOMEBREW_REPOSITORY $HOMEBREW_PREFIX
         case "Linux x86_64"
-            set -U HOMEBREW_PREFIX /home/linuxbrew/.linuxbrew
-            set -U HOMEBREW_REPOSITORY $HOMEBREW_PREFIX/Homebrew
+            set -Ux HOMEBREW_PREFIX /home/linuxbrew/.linuxbrew
+            set -Ux HOMEBREW_REPOSITORY $HOMEBREW_PREFIX/Homebrew
         case '*'
-            set -U HOMEBREW_PREFIX /usr/local
-            set -U HOMEBREW_REPOSITORY $HOMEBREW_PREFIX/Homebrew
+            set -Ux HOMEBREW_PREFIX /usr/local
+            set -Ux HOMEBREW_REPOSITORY $HOMEBREW_PREFIX/Homebrew
     end
 end
 set -gx HOMEBREW_CELLAR $HOMEBREW_PREFIX/Cellar
