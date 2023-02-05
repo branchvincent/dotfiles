@@ -31,7 +31,7 @@
   "workbench.colorTheme": "One Dark Pro",
   "workbench.iconTheme": "vs-seti",
   // Extensions
-  // Prettier
+  "redhat.telemetry.enabled": false,
   "[dockercompose][html][javascript][javascriptreact][json][jsonc][markdown][typescript][typescriptreact][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
