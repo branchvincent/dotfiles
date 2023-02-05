@@ -29,10 +29,9 @@ Commands:"
 end
 
 function __up_all --description "Update everything"
-    for cmd in (functions -a | string replace -rf "^__up_(?!all|help)" "")
-        fish_log "Updating $cmd..."
+    for cmd in (functions -a | string replace -rf "^__up_(?!all|docker|help)" "")
+        echo (set_color blue)"dotfiles"(set_color normal): updating (set_color --bold)$cmd(set_color normal) >&2
         __up_$cmd
-        echo
     end
 end
 
@@ -46,7 +45,7 @@ function __up_brew --description "Update Homebrew packages"
     brew upgrade -q
     brew autoremove -q
     brew cleanup -q
-    brew doctor
+    brew doctor -q >/dev/null # FIXME
 end
 
 function __up_docker --description "Update Docker images"
@@ -61,48 +60,45 @@ function __up_dotfiles --description "Update dotfiles"
     # Update package lists
     brew bundle dump --force
     code --list-extensions >$XDG_CONFIG_HOME/code/extensions.txt
-    pipx list --json | jq -r '.venvs | values[].metadata.main_package.package_or_url' >$XDG_CONFIG_HOME/pipx/packages.txt
+    pipx list --json 2>/dev/null | jq -r '.venvs | values[].metadata.main_package.package_or_url' >$XDG_CONFIG_HOME/pipx/packages.txt
 
     # Trash non-xdg cache
     command rm -rf ~/.{android,bash_history,bundle,config/configstore,docker,k3d,k8slens,kube,node,npm,rustup,yarnrc}
-
-    echo "Everything is up-to-date"
 end
 
 function __up_fisher --description "Update fish packages and completions"
     fisher update >/dev/null
     fish_update_completions >/dev/null
-    echo "Everything is up-to-date"
 end
 
 function __up_gcloud --description "Update gcloud components"
-    gcloud components update --quiet
+    gcloud components update -q &>/dev/null
 end
 
 function __up_git --description "Update git repositories"
-    git workspace update
-    env -u GIT_DIR -u GIT_WORK_TREE git workspace switch-and-pull
-    git workspace run touch .envrc
+    git workspace update >/dev/null
+    env -u GIT_DIR -u GIT_WORK_TREE git workspace switch-and-pull >/dev/null
+    git workspace run touch .envrc >/dev/null
 end
 
 function __up_mas --description "Update apps from App Store"
-    mas upgrade
+    mas outdated | grep " " && mas upgrade
 end
 
 function __up_os --description "Update macOS"
-    softwareupdate --install --all
+    softwareupdate --list &| grep -q "No new" || softwareupdate --install --all
 end
 
 function __up_pipx --description "Update pipx packages"
-    pipx upgrade-all
+    pipx upgrade-all >/dev/null
 end
 
 function __up_rustup --description "Update Rust components"
-    rustup update
+    rustup check &| grep -q available && rustup update
 end
 
 function __up_tea --description "Update tea"
-    env -u GIT_DIR -u GIT_WORK_TREE tea --sync +tea.xyz true
+    env -u GIT_DIR -u GIT_WORK_TREE tea --sync --silent +tea.xyz true
 end
 
 # Remove any unfound items
