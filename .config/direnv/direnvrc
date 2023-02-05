@@ -14,10 +14,13 @@ __my_dump_at_exit() {
 }
 trap __my_dump_at_exit EXIT
 
+# Usage: layout auto
+#
 # Detects and loads project based on file structure
 layout_auto() {
     if [[ -f go.mod ]]; then
         log_status "detected go project"
+        use go
         layout go
     fi
     if [[ -f package.json ]]; then
@@ -39,44 +42,23 @@ layout_auto() {
 
 ### Go ###
 
+# Usage: use go [<version>]
+use_go() {
+    version=$(parse_version .go-version "$@")
+    use_tea +go.dev"$version"
+}
+
 layout_go() {
     export GOBIN="$PWD/bin"
     PATH_add bin
 }
 
-### Java ###
-
-use_java() {
-    # Get version and location
-    version_file=.java-version
-    version=${1:-$(cat $version_file 2>/dev/null || true)}
-    log_status "using version ${version:-default}"
-    [ -z "$version" ] && return # no version specified, use default
-    version="openjdk@1.$version"
-    # shellcheck disable=SC2153
-    prefix="$JABBA_HOME/jdk/$version/Contents/Home"
-
-    # Install and load it
-    [ -d "$prefix" ] || jabba install "$version"
-    export JAVA_HOME="$prefix"
-    load_prefix "$prefix"
-    watch_file $version_file
-}
-
 ### Node ###
 
+# Usage: use nodejs [<version>]
 use_nodejs() {
-    # Get version and location
-    version_file=.nvmrc
-    version=${1:-$(cat $version_file 2>/dev/null || true)}
-    log_status "using version ${version:-default}"
-    [ -z "$version" ] && return # no version specified, use default
-    prefix="$FNM_DIR/node-versions/v${version#v}/installation"
-
-    # Install and load it
-    [ -d "$prefix" ] || fnm install "$version"
-    load_prefix "$prefix"
-    watch_file $version_file
+    version=$(parse_version .nvmrc "$@")
+    use_tea +nodejs.org"$version" +npmjs.com
 }
 
 layout_nodejs() {
@@ -93,18 +75,10 @@ layout_nodejs() {
 
 ### Python ###
 
+# Usage: use python [<version>]
 use_python() {
-    # Get version and location
-    version_file=.python-version
-    version=${1:-$(cat $version_file 2>/dev/null || true)}
-    log_status "using version ${version:-default}"
-    [ -z "$version" ] && return # no version specified, use default
-    prefix="$PYENV_ROOT/versions/$version"
-
-    # Install and load it
-    [ -d "$prefix" ] || pyenv install "$version"
-    load_prefix "$prefix"
-    watch_file $version_file
+    version=$(parse_version .python-version "$@")
+    use_tea +python.org"$version" +pip.pypa.io
 }
 
 layout_poetry() {
@@ -143,8 +117,41 @@ layout_pdm() {
 
 ### Tea ###
 
+tea() {
+    SHELL=bash command tea "$@" | sed 's|:/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/contrib/xdg_data||'
+}
+
+# Usage: parse_version <filename> [version]
+#
+# Returns a version constraint for tea, constructed from either the given version or file
+parse_version() {
+    version_file=$1
+    version=${2:-any}
+    via=".envrc"
+
+    if [[ "$version" = "any" && -f "$version_file" ]]; then
+        version=$(<"$version_file")
+        via="$version_file"
+    fi
+
+    log_status "resolved version $version (via $via)"
+    watch_file "$version_file"
+    [[ "$version" = "any" ]] || echo "~${version#v}"
+}
+
+# Usage: use tea [<pkg> ...]
+#
+# Loads the given packages or falls back to .tea-versions
 use_tea() {
-    eval "$(SHELL=bash tea --env --keep-going --silent --dry-run=w/trace)"
+    if (($#)); then
+        eval "$("$direnv" dotenv bash <(tea "$@"))"
+    elif [[ -f .tea-versions ]]; then
+        args=$(sed '/^[^+]/ s/^/+/' .tea-versions | tr '\n' ' ')
+        # shellcheck disable=SC2086
+        eval "$("$direnv" dotenv bash <(tea $args))"
+    else
+        eval "$(tea --env --keep-going --silent --dry-run=w/trace)"
+    fi
 }
 
 ### Main ###

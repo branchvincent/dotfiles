@@ -28,22 +28,25 @@ Options:
   -i, --installed  Use installed version
 
 Commands:"
-    for cmd in (functions -a | string replace -rf "^__use_(?!help)" "")
+    for cmd in (functions -a | string replace -rf "^__use_(?!tea|help)" "")
         printf "  %-13""s %s\n" $cmd (desc __use_$cmd)
     end
 end
 
-function __use_java --description Java --no-scope-shadowing
-    set -q _flag_installed && set -l cmd ls || set -l cmd ls-remote
-    jabba $cmd | string match -rg 'openjdk@1.(\S+)' | fzf $fzf_opts
+function __use_tea -a pkg --no-scope-shadowing
+    if set -q _flag_installed
+        path filter --type=dir (tea --prefix)/$pkg/* | string match -r '\d+\.\d+\.\d+'
+    else
+        set -l os (uname | string lower)
+        set -l arch (uname -m | string replace "arm64" "aarch64")
+        curl -fsSL https://dist.tea.xyz/$pkg/$os/$arch/versions.txt
+    end
 end
 
 function __use_nodejs --description Node --no-scope-shadowing
-    set -q _flag_installed && set -l cmd ls || set -l cmd ls-remote
-    fnm $cmd | string match -r '\d+\.\d+\.\d+' | fzf $fzf_opts
+    __use_tea nodejs.org | fzf $fzf_opts
 end
 
 function __use_python --description Python --no-scope-shadowing
-    set -q _flag_installed && set -l cmd versions || set -l cmd install --list
-    pyenv $cmd | string match -rg '^\W+(3\.\d+\.\d+)' | fzf $fzf_opts
+    __use_tea python.org | fzf $fzf_opts
 end

@@ -35,7 +35,7 @@ complete tea -n __fish_use_subcommand -l chaste -d 'abstain from networking'
 
 # Packages
 complete tea -f -n __fish_use_subcommand -a '(__fish_tea_bins)'
-complete tea -f -n '__fish_use_subcommand && string match "+*" -- (commandline -ct)' -a '+(__fish_tea_packages)'
+complete tea -f -n 'string match "+*" -- (commandline -ct)' -a '+(__fish_tea_packages)'
 for bin in (__fish_tea_bins)
     complete tea -n "__fish_seen_subcommand_from $bin" -a '(__fish_tea_complete_command '(string escape $bin)')'
 end
