@@ -18,6 +18,7 @@ trap __my_dump_at_exit EXIT
 #
 # Detects and loads project based on file structure
 layout_auto() {
+    log_status "detecting layout"
     if [[ -f go.mod ]]; then
         log_status "detected go project"
         use go
@@ -157,4 +158,6 @@ use_tea() {
 
 ### Main ###
 
-layout auto
+if [[ ! -s .envrc ]]; then # empty .envrc
+    layout auto
+fi
