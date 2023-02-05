@@ -20,6 +20,7 @@ set -gx tide_rustc_icon R
 set -gx tide_tea_color cyan
 set -gx tide_tea_bg_color normal
 set -gx tide_transient_prompt
+string match -q "$TERM_PROGRAM" vscode && set -gx tide_shlvl_threshold "$SHLVL"
 
 # Items
 set tide_left_prompt_items pwd git newline character
