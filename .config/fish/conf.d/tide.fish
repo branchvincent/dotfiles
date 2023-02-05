@@ -11,6 +11,8 @@ set -g fish_handle_reflow 0 # https://github.com/fish-shell/fish-shell/issues/17
 set -gx tide_direnv_color yellow
 set -gx tide_direnv_bg_color normal
 set -gx tide_direnv_denied_color brred
+set -gx tide_gcloud_color blue
+set -gx tide_gcloud_bg_color normal
 set -gx tide_kubectl_icon ﴱ
 set -gx tide_node_icon 
 set -gx tide_node_color 68A063
