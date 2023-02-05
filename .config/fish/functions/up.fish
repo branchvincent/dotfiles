@@ -29,6 +29,7 @@ Commands:"
 end
 
 function __up_all --description "Update everything"
+    touch ~/.cache/fish/last-update
     for cmd in (functions -a | string replace -rf "^__up_(?!all|docker|help)" "")
         echo (set_color blue)"dotfiles"(set_color normal): updating (set_color --bold)$cmd(set_color normal) >&2
         __up_$cmd
@@ -82,7 +83,7 @@ function __up_git --description "Update git repositories"
 end
 
 function __up_mas --description "Update apps from App Store"
-    mas outdated | grep " " && mas upgrade
+    mas outdated | grep -q " " && mas upgrade
 end
 
 function __up_os --description "Update macOS"
