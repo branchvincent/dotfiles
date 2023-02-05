@@ -26,9 +26,3 @@ if ! has docker; then
     export PATH="${PATH+$PATH:}/Applications/Docker.app/Contents/Resources/bin"
     open -a Docker
 fi
-
-# Symlink default java
-if ! test -L /Library/Java/JavaVirtualMachines/openjdk.jdk; then
-    debug "Linking java"
-    sudo ln -sfn "$(brew --prefix openjdk)"/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
-fi

@@ -29,12 +29,12 @@ set tide_right_prompt_items \
     gcloud \
     kubectl \
     go \
-    java \
     node \
     python \
     rustc \
     tea \
     direnv \
+    shlvl \
     && :
 
 # Show on command

@@ -36,7 +36,6 @@ brew "libpq", link: true
 brew "lsd"
 brew "mas"
 brew "node"
-brew "openjdk"
 brew "pdm"
 brew "pinentry-mac"
 brew "pipgrip"

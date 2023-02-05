@@ -40,9 +40,6 @@ __maybe_mkdir $GNUPGHOME
 set -gx GOBIN $XDG_BIN_HOME
 set -gx GOPATH $XDG_DATA_HOME/go
 
-# java
-set -gx GRADLE_USER_HOME $XDG_DATA_HOME/gradle
-
 # kube
 set -gx KUBECONFIG $XDG_DATA_HOME/kube/config.yaml
 set -gx KUBECACHEDIR $XDG_CACHE_HOME/kube
