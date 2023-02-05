@@ -101,6 +101,10 @@ function __up_rustup --description "Update Rust components"
     rustup update
 end
 
+function __up_tea --description "Update tea"
+    env -u GIT_DIR -u GIT_WORK_TREE tea --sync +tea.xyz true
+end
+
 # Remove any unfound items
 for item in (functions -a | string replace -rf "^__up_(?!all|dotfiles|help)" "")
     set -l cmd $item
