@@ -15,7 +15,7 @@
   "files.associations": {
     ".env": "properties",
     ".env.*": "properties",
-    "Brewfile": "ruby",
+    "Brewfile*": "ruby",
     "pdm.lock": "toml"
   },
   "files.insertFinalNewline": true,
