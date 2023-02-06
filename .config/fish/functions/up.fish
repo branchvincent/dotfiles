@@ -29,7 +29,8 @@ Commands:"
 end
 
 function __up_all --description "Update everything"
-    touch ~/.cache/fish/last-update
+    mkdir -p ~/.cache/fish
+    touch ~/.cache/fish/last-updated
     for cmd in (functions -a | string replace -rf "^__up_(?!all|docker|help)" "")
         echo (set_color blue)"dotfiles"(set_color normal): updating (set_color --bold)$cmd(set_color normal) >&2
         __up_$cmd
@@ -37,9 +38,9 @@ function __up_all --description "Update everything"
 end
 
 function __up_apt --description "Update apt packages"
-    sudo apt update
-    sudo apt upgrade
-    sudo apt autoremove
+    sudo apt update -qqq
+    sudo apt upgrade -qqq
+    sudo apt autoremove -qqq
 end
 
 function __up_brew --description "Update Homebrew packages"
@@ -56,7 +57,7 @@ end
 
 function __up_dotfiles --description "Update dotfiles"
     # Update repo
-    yadm pull --quiet
+    yadm pull -q
 
     # Update package lists
     brew bundle dump --force
@@ -77,9 +78,9 @@ function __up_gcloud --description "Update gcloud components"
 end
 
 function __up_git --description "Update git repositories"
-    git workspace update >/dev/null
-    env -u GIT_DIR -u GIT_WORK_TREE git workspace switch-and-pull >/dev/null
-    git workspace run touch .envrc >/dev/null
+    git workspace update &>/dev/null
+    env -u GIT_DIR -u GIT_WORK_TREE git workspace switch-and-pull &>/dev/null
+    git workspace run touch .envrc &>/dev/null
 end
 
 function __up_mas --description "Update apps from App Store"

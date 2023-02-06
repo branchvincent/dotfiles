@@ -18,6 +18,6 @@ type -q bat && set -gx MANPAGER "MANROFFOPT=-c sh -c 'col -bx | bat -l man -p'"
 type -q delta || set -gx GIT_PAGER $PAGER
 
 # Daily update
-if status is-interactive && [ "$(path mtime -R ~/.cache/fish/last-update)" -gt 86400 ] 2>/dev/null
+if status is-interactive && [ "$(path mtime -R ~/.cache/fish/last-updated)" -gt 86400 ] 2>/dev/null
     up
 end
