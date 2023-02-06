@@ -1,7 +1,11 @@
 #!/bin/bash
+#
+# Minimal script to bootstrap https://yadm.io before it clones our dotfiles
 
 set -euo pipefail
 unset GIT_DIR GIT_WORK_TREE
+command -v bash &>/dev/null || { echo >&2 "ERROR: bash must be installed!" && exit 1; }
+command -v git &>/dev/null || { echo >&2 "ERROR: git must be installed!" && exit 1; }
 
 # Prompt for and remember password
 echo "Prompting for sudo password"
@@ -12,11 +16,10 @@ while true; do
     kill -0 "$$" || exit
 done &>/dev/null &
 
-# Install brew (to install git, which yadm needs)
-export PATH="/opt/homebrew/bin:/usr/local/bin${PATH+:$PATH}"
-if ! command -v brew &>/dev/null; then
+# On macOS, the default git needs CLT. Let brew install them headlessly.
+if [ "$(uname)" = "Darwin" ] && ! [ -e "/Library/Developer/CommandLineTools/usr/bin/git" ]; then
     echo "Installing Homebrew"
-    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    NONINTERACTIVE=1 HOMEBREW_INSTALL_FROM_API=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Install yadm and run bootstrap
