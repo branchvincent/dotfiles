@@ -1,5 +1,5 @@
 function _tide_item_gcloud --description "Show Google cloud project"
-    type -q gcloud || return
+    command -q gcloud || return
     set -q CLOUDSDK_CONFIG || set -l CLOUDSDK_CONFIG ~/.config/gcloud
     # Get active config
     path is $CLOUDSDK_CONFIG/active_config || return

@@ -73,8 +73,8 @@ function __up_dotfiles --description "Update dotfiles"
     yadm pull -q
 
     # Update package lists
-    type -q brew && brew bundle dump --force
-    type -q code && code --list-extensions >$XDG_CONFIG_HOME/code/extensions.txt
+    command -q brew && brew bundle dump --force
+    command -q code && code --list-extensions >$XDG_CONFIG_HOME/code/extensions.txt
 
     # Trash non-xdg cache
     command rm -rf ~/.{android,bash_history,bundle,config/configstore,docker,k3d,k8slens,kube,node,npm,rustup,yarnrc}
@@ -119,10 +119,12 @@ for item in (functions -a | string replace -rf "^__up_(?!all|auto|help)" "")
             set cmd apt-get
         case dotfiles
             set cmd yadm
+        case fisher
+            set cmd fish
         case git
             set cmd git-workspace
         case os
             set cmd softwareupdate
     end
-    type -q $cmd || functions -e __up_$item
+    command -q $cmd || functions -e __up_$item
 end

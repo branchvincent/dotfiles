@@ -23,10 +23,10 @@ abbr y yadm
 
 ### Aliases ###
 function _alias
-    type -q $argv[2] && alias $argv
+    command -q $argv[2] && alias $argv
 end
 _alias cat bat
-if type -q lsd
+if command -q lsd
     alias ls "lsd --icon=never"
     alias ll "ls -l --header --date=relative --blocks=permission,size,user,date,name"
     alias la "ll -A"
