@@ -45,7 +45,7 @@ set -gx KUBECACHEDIR $XDG_CACHE_HOME/kube
 set -gx LESSHISTFILE /dev/null
 
 # node
-set -gx NODE_REPL_HISTORY $XDG_DATA_HOME/node/history
+set -gx NODE_REPL_HISTORY /dev/null
 set -gx NO_UPDATE_NOTIFIER 1 # used by npm: https://github.com/yeoman/update-notifier/issues/180
 set -gx NPM_CONFIG_CACHE $XDG_CACHE_HOME/npm
 set -gx NPM_CONFIG_DEVDIR $XDG_DATA_HOME/node-gyp
@@ -53,7 +53,6 @@ set -gx NPM_CONFIG_INIT_MODULE $XDG_CONFIG_HOME/npm/config/npm-init.js
 set -gx NPM_CONFIG_PREFIX $XDG_DATA_HOME/npm
 set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 set -p XDG_BIN_DIRS $NPM_CONFIG_PREFIX/bin
-__maybe_mkdir (dirname $NODE_REPL_HISTORY)
 __maybe_mkdir $NPM_CONFIG_PREFIX/lib
 
 # psql
