@@ -59,6 +59,7 @@ defaults write com.googlecode.iterm2.plist PromptOnQuit -int 0
 
 ### Mission Control ###
 debug "Mission Control"
+defaults write com.apple.dock mru-spaces -bool false
 defaults write com.apple.dock wvous-tl-corner -int 10 # Top left: Display sleep
 defaults write com.apple.dock wvous-tr-corner -int 12 # Top right: Notification center
 
