@@ -45,8 +45,7 @@ set -gx KUBECONFIG $XDG_DATA_HOME/kube/config.yaml
 set -gx KUBECACHEDIR $XDG_CACHE_HOME/kube
 
 # less
-set -gx LESSHISTFILE $XDG_DATA_HOME/less/history
-__maybe_mkdir (dirname $LESSHISTFILE)
+set -gx LESSHISTFILE /dev/null
 
 # node
 set -gx NODE_REPL_HISTORY $XDG_DATA_HOME/node/history
