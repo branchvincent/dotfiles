@@ -1,8 +1,10 @@
 function up --description "Update software to the latest version"
-    argparse --stop-nonopt h/help -- $argv || return
+    argparse --stop-nonopt h/help auto -- $argv || return
 
     if set -q _flag_help
         __up_help
+    else if set -q _flag_auto
+        __up_auto
     else if not set -q argv[1]
         __up_all
     else if functions -q __up_$argv[1]
@@ -23,15 +25,26 @@ Options:
   -h, --help    "(desc __up_help)"
 
 Commands:"
-    for cmd in (functions -a | string replace -rf "^__up_(?!help)" "")
+    for cmd in (functions -a | string replace -rf "^__up_(?!auto|help)" "")
         printf "  %-13""s %s\n" $cmd (desc __up_$cmd)
     end
+end
+
+function __up_auto --description "Update everything daily"
+    status is-login && status is-interactive || return
+    set -l file ~/.cache/fish/last-updated
+    if [ -e "$file" ] && find "$file" -mtime +1d | not string match -q "$file"
+        return
+    end
+    __up_all
+    set -l fish (status fish-path)
+    exec "$fish" -il
 end
 
 function __up_all --description "Update everything"
     mkdir -p ~/.cache/fish
     touch ~/.cache/fish/last-updated
-    for cmd in (functions -a | string replace -rf "^__up_(?!all|docker|help)" "")
+    for cmd in (functions -a | string replace -rf "^__up_(?!all|auto|docker|help)" "")
         echo (set_color blue)"dotfiles"(set_color normal): updating (set_color --bold)$cmd(set_color normal) >&2
         __up_$cmd
     end
@@ -60,9 +73,9 @@ function __up_dotfiles --description "Update dotfiles"
     yadm pull -q
 
     # Update package lists
-    brew bundle dump --force
-    code --list-extensions >$XDG_CONFIG_HOME/code/extensions.txt
-    pipx list --json 2>/dev/null | jq -r '.venvs | values[].metadata.main_package.package_or_url' >$XDG_CONFIG_HOME/pipx/packages.txt
+    type -q brew && brew bundle dump --force
+    type -q code && code --list-extensions >$XDG_CONFIG_HOME/code/extensions.txt
+    type -q pipx && pipx list --json 2>/dev/null | jq -r '.venvs | values[].metadata.main_package.package_or_url' >$XDG_CONFIG_HOME/pipx/packages.txt
 
     # Trash non-xdg cache
     command rm -rf ~/.{android,bash_history,bundle,config/configstore,docker,k3d,k8slens,kube,node,npm,rustup,yarnrc}
@@ -104,11 +117,13 @@ function __up_tea --description "Update tea"
 end
 
 # Remove any unfound items
-for item in (functions -a | string replace -rf "^__up_(?!all|dotfiles|help)" "")
+for item in (functions -a | string replace -rf "^__up_(?!all|auto|help)" "")
     set -l cmd $item
     switch $item
         case apt
             set cmd apt-get
+        case dotfiles
+            set cmd yadm
         case git
             set cmd git-workspace
         case os

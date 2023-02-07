@@ -7,8 +7,8 @@ command -q docker || functions -e docker
 set -gx EDITOR vim
 if type -q code
     set -gx EDITOR code --wait
-else if type -q helix
-    set -gx EDITOR helix
+else if type -q hx
+    set -gx EDITOR hx
 end
 
 # Pagers
@@ -18,6 +18,4 @@ type -q bat && set -gx MANPAGER "MANROFFOPT=-c sh -c 'col -bx | bat -l man -p'"
 type -q delta || set -gx GIT_PAGER $PAGER
 
 # Daily update
-if status is-interactive && [ "$(path mtime -R ~/.cache/fish/last-updated)" -gt 86400 ] 2>/dev/null
-    up
-end
+up --auto
