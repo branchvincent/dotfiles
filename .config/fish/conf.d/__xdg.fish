@@ -29,9 +29,6 @@ set -gx HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/brew/Brewfile
 # deno
 set -gx DENO_INSTALL_ROOT $XDG_BIN_HOME/..
 
-# docker: https://github.com/docker/for-mac/issues/2635
-set -gx DOCKER_CONFIG $XDG_CONFIG_HOME/docker
-
 # gnupg
 set -gx GNUPGHOME $XDG_DATA_HOME/gnupg
 __maybe_mkdir $GNUPGHOME

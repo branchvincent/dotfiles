@@ -4,8 +4,6 @@
 !/.config/
 /.config/brew/Brewfile
 /.config/configstore/
-/.config/docker/.*
-/.config/docker/contexts/
 /.config/fish/conf.d/secrets.fish
 /.config/fish/fish_variables
 /.config/gcloud/
