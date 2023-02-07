@@ -57,9 +57,7 @@ __maybe_mkdir (dirname $NODE_REPL_HISTORY)
 __maybe_mkdir $NPM_CONFIG_PREFIX/lib
 
 # psql
-set -gx PSQLRC $XDG_CONFIG_HOME/psql/config.sql
-set -gx PSQL_HISTORY $XDG_DATA_HOME/psql/history
-__maybe_mkdir (dirname $PSQL_HISTORY)
+set -gx PSQL_HISTORY /dev/null
 
 # python
 set -gx PIPX_HOME $XDG_DATA_HOME/pipx
