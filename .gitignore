@@ -3,7 +3,6 @@
 ### .config ###
 !/.config/
 /.config/brew/Brewfile
-/.config/brew/Brewfile.lock.json
 /.config/configstore/
 /.config/docker/.*
 /.config/docker/contexts/
