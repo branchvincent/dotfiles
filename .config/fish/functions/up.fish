@@ -75,7 +75,6 @@ function __up_dotfiles --description "Update dotfiles"
     # Update package lists
     type -q brew && brew bundle dump --force
     type -q code && code --list-extensions >$XDG_CONFIG_HOME/code/extensions.txt
-    type -q pipx && pipx list --json 2>/dev/null | jq -r '.venvs | values[].metadata.main_package.package_or_url' >$XDG_CONFIG_HOME/pipx/packages.txt
 
     # Trash non-xdg cache
     command rm -rf ~/.{android,bash_history,bundle,config/configstore,docker,k3d,k8slens,kube,node,npm,rustup,yarnrc}
@@ -102,10 +101,6 @@ end
 
 function __up_os --description "Update macOS"
     softwareupdate --list &| grep -q "No new" || softwareupdate --install --all
-end
-
-function __up_pipx --description "Update pipx packages"
-    pipx upgrade-all >/dev/null
 end
 
 function __up_rustup --description "Update Rust components"
