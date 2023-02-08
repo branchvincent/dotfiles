@@ -14,7 +14,6 @@ end
 # Pagers
 set -gx LESS --ignore-case --Raw-control-chars --quit-if-one-screen
 set -gx PAGER less
-command -q bat && set -gx MANPAGER "MANROFFOPT=-c sh -c 'col -bx | bat -l man -p'"
 command -q delta || set -gx GIT_PAGER $PAGER
 
 # Daily update
