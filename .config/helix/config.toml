@@ -1,4 +1,10 @@
 theme = "onedark"
 
+[editor]
+color-modes = true
+
 [editor.cursor-shape]
 insert = "bar"
+
+[editor.file-picker]
+hidden = false
