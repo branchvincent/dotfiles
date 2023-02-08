@@ -1,6 +1,5 @@
 /*
-
-### .config ###
+!/.bashrc
 !/.config/
 /.config/brew/Brewfile
 /.config/configstore/
@@ -10,11 +9,17 @@
 /.config/op/
 /.config/ssh/*
 !/.config/ssh/config
+/.config/ssh/*/*
+!/.config/ssh/conf.d/default.conf
 !/.config/ssh/keys/*.pub
 /.config/zsh/*.zwc
-
-### .github ###
 !/.github/
-
-### .vscode ###
+!/.gitignore
+!/.hushlogin
+!/.pre-commit-config.yaml
+!/.profile
+!/.vscode/
+/.vscode/*
 !/.vscode/settings.json
+!/.zprofile
+!/bootstrap
