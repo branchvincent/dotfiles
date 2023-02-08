@@ -33,7 +33,8 @@ end
 function __up_auto --description "Update everything daily"
     status is-login && status is-interactive || return
     set -l file ~/.cache/fish/last-updated
-    if [ -e "$file" ] && find "$file" -mtime +1d | not string match -q "$file"
+    # Check if our last run was >1 day ago
+    if [ -e "$file" ] && find "$file" -mtime +0 | not string match -q "$file"
         return
     end
     __up_all
