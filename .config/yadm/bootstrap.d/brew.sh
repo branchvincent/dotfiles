@@ -17,7 +17,7 @@ esac
 
 debug "Checking Homebrew packages"
 export HOMEBREW_BUNDLE_FILE=~/.config/brew/Brewfile
-if ! brew bundle check &>/dev/null; then
+if [ ! -e "$HOMEBREW_PREFIX/bin/yadm" ] || ! brew bundle check &>/dev/null; then
     debug "Installing Homebrew packages"
     brew bundle install --no-lock
 fi
