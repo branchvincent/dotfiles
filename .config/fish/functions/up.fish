@@ -23,9 +23,10 @@ Usage: up [options] command
 
 Options:
   -h, --help    "(desc __up_help)"
+  --auto        "(desc __up_auto)"
 
 Commands:"
-    for cmd in (functions -a | string replace -rf "^__up_(?!auto|help)" "")
+    for cmd in (functions -a | string replace -rf "^__up_(?!all|auto|help)" "")
         printf "  %-13""s %s\n" $cmd (desc __up_$cmd)
     end
 end
@@ -61,7 +62,7 @@ function __up_brew --description "Update Homebrew packages"
     brew upgrade -q
     brew autoremove -q
     brew cleanup -q
-    brew doctor -q >/dev/null # FIXME
+    brew doctor -q
 end
 
 function __up_docker --description "Update Docker images"
