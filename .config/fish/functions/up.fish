@@ -44,7 +44,7 @@ function __up_auto --description "Update everything daily"
 end
 
 function __up_all --description "Update everything"
-    mkdir -p ~/.cache/fish
+    test -e ~/.cache/fish || mkdir -p ~/.cache/fish
     touch ~/.cache/fish/last-updated
     for cmd in (functions -a | string replace -rf "^__up_(?!all|auto|docker|help)" "")
         echo (set_color blue)"dotfiles"(set_color normal): updating (set_color --bold)$cmd(set_color normal) >&2
@@ -82,30 +82,30 @@ function __up_dotfiles --description "Update dotfiles"
     command rm -rf ~/.{android,bash_history,bundle,config/configstore,docker,k3d,k8slens,kube,node,npm,rustup,yarnrc}
 end
 
-function __up_fisher --description "Update fish packages and completions"
+function __up_fisher --description "Update fish packages"
     fisher update >/dev/null
     fish_update_completions >/dev/null
 end
 
-function __up_gcloud --description "Update gcloud components"
+function __up_gcloud --description "Update gcloud"
     gcloud components update -q &>/dev/null
 end
 
-function __up_git --description "Update git repositories"
+function __up_git --description "Update git repos"
     git workspace update &>/dev/null
     env -u GIT_DIR -u GIT_WORK_TREE git workspace switch-and-pull &>/dev/null
     git workspace run touch .envrc &>/dev/null
 end
 
-function __up_mas --description "Update apps from App Store"
+function __up_mas --description "Update macOS apps"
     mas outdated | grep -q " " && mas upgrade
 end
 
-function __up_os --description "Update macOS"
+function __up_macos --description "Update macOS"
     softwareupdate --list &| grep -q "No new" || softwareupdate --install --all
 end
 
-function __up_rustup --description "Update Rust components"
+function __up_rustup --description "Update Rust"
     rustup check &| grep -q available && rustup update
 end
 
@@ -125,7 +125,7 @@ for item in (functions -a | string replace -rf "^__up_(?!all|auto|help)" "")
             set cmd fish
         case git
             set cmd git-workspace
-        case os
+        case macos
             set cmd softwareupdate
     end
     command -q $cmd || functions -e __up_$item
