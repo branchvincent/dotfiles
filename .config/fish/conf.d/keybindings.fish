@@ -10,8 +10,7 @@ if functions -q tide_prompt_at_bottom
 end
 "
 bind \cg 'gh pr view --web &>/dev/null || gh repo view --web &>/dev/null'
-bind \co workon
-bind \cp 'workon --exec cd; commandline -f repaint'
+bind \cp workon
 bind \cu '
 if not set -e GIT_DIR GIT_WORK_TREE
     set -gx GIT_DIR "$XDG_DATA_HOME/yadm/repo.git"

@@ -1,19 +1,18 @@
 function workon --description "Open a project"
-    argparse --stop-nonopt exec= -- $argv || return
-    if set -q _flag_exec
-        set cmd $_flag_exec
+    set taps (string replace $HOMEBREW_REPOSITORY/Library/Taps/ ./  $HOMEBREW_REPOSITORY/Library/Taps/*/*)
+    set choices ./homebrew/brew $taps (git workspace list 2>/dev/null)
+    set chosen (string split ' ' $choices | sort -u | fzf -q "$argv")
+
+    if string length -q -- (commandline)
+        set cmd commandline --current-token --replace
+    else if string match -q ./branchvincent/dotfiles "$chosen"
+        set cmd yadm enter code
     else
-        set cmd code
+        set cmd env -u GIT_DIR -u GIT_WORK_TREE code
     end
 
-    set taps (string replace $HOMEBREW_REPOSITORY/Library/Taps/ ./  $HOMEBREW_REPOSITORY/Library/Taps/*/*)
-    set choices ./homebrew/brew $taps (git workspace list)
-    set chosen (string split ' ' $choices | sort -u | fzf -q "$argv")
-    set -e GIT_DIR GIT_WORK_TREE
     switch "$chosen"
         case ./branchvincent/dotfiles
-            set -gx GIT_DIR "$XDG_DATA_HOME/yadm/repo.git"
-            set -gx GIT_WORK_TREE ~
             $cmd ~
         case ./homebrew/brew
             $cmd $HOMEBREW_REPOSITORY
