@@ -26,21 +26,3 @@ debug "Fetching git credentials"
 printf "protocol=https\nhost=github.com\n" | git credential-osxkeychain erase
 printf "protocol=https\nhost=github.com\nusername=branchvincent\npassword=%s\n" "$GITHUB_TOKEN" | git credential-osxkeychain store
 test -f ~/Code/workspace.toml && fish -c 'git workspace update'
-
-### gpg ###
-debug "Fetching GPG key"
-# shellcheck disable=SC2016
-GNUPGHOME=$(fish -c 'echo $GNUPGHOME')
-GPG_TTY=$(tty || true)
-export GNUPGHOME GPG_TTY
-echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" >"$GNUPGHOME"/gpg-agent.conf
-curl -fsSL https://github.com/branchvincent.gpg | gpg -q --import
-op document get GPG | gpg -q --import
-gpgconf --kill gpg-agent
-echo test | gpg --clearsign &>/dev/null
-
-### ssh ###
-debug "Fetching SSH key"
-op document get SSH >~/.config/ssh/keys/default
-chmod 600 ~/.config/ssh/keys/default
-ssh-add -q --apple-use-keychain ~/.config/ssh/keys/default

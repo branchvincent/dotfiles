@@ -29,10 +29,6 @@ set -gx HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/brew/Brewfile
 # deno
 set -gx DENO_INSTALL_ROOT $XDG_BIN_HOME/..
 
-# gnupg
-set -gx GNUPGHOME $XDG_DATA_HOME/gnupg
-__maybe_mkdir $GNUPGHOME
-
 # go
 set -gx GOBIN $XDG_BIN_HOME
 set -gx GOPATH $XDG_DATA_HOME/go
