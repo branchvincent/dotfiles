@@ -5,8 +5,6 @@
 # References
 # - Inspiration: https://mths.be/macos
 
-test "$(uname -s)" = "Darwin" || return
-
 ### General ###
 debug "General"
 defaults write NSGlobalDomain AppleInterfaceStyle -string Dark      # Dark mode
