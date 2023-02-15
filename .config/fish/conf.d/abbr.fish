@@ -34,4 +34,3 @@ if command -q lsd
 end
 _alias rm trash
 _alias top glances
-_alias watch viddy
