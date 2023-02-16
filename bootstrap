@@ -19,7 +19,7 @@ done &>/dev/null &
 # On macOS, the default git needs CLT. Let brew install them headlessly.
 if [ "$(uname)" = "Darwin" ] && ! [ -e "/Library/Developer/CommandLineTools/usr/bin/git" ]; then
     echo "Installing Homebrew"
-    NONINTERACTIVE=1 HOMEBREW_INSTALL_FROM_API=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Install yadm and run bootstrap
