@@ -1,29 +1,8 @@
-# Header: <type>(<scope>): <description>
-# |<--------------- Max 50 chars --------------->|
+# build|chore|ci|docs|feat|fix|perf|refactor|style|test(<scope>): <description>
+# |<--- https://www.conventionalcommits.org/ --->|
 
 
-# Body: (BREAKING CHANGE: ) reason for change
-# |<-------------------------- Max 72 chars -------------------------->|
+# |<---------- Body: (BREAKING CHANGE: ) reason for change ----------->|
 
 
-# Footer: External references/links
-
-# NOTES
-#
-# For <type>:
-#   build     Build or dependency changes
-#   chore     Other non-code changes
-#   ci        CI changes
-#   docs      Documentation changes
-#   feat      New feature
-#   fix       Bug fix
-#   perf      Performance improvement
-#   refactor  Refactor existing code
-#   style     Formatting changes
-#   test      Test changes
-#
-# For a breaking change:
-#   (header) refactor!: describe the change
-#   (footer) BREAKING CHANGE: describe the change
-#
-# See more at https://www.conventionalcommits.org/
+# Footer: References/links
