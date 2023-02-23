@@ -5,7 +5,8 @@
 ### rust ###
 if ! has rustup; then
     debug "Rust"
-    fish -lc 'curl -fsS https://sh.rustup.rs | sh -s -- -y --quiet --no-modify-path'
+    export CARGO_HOME=~/.local/share/cargo RUSTUP_HOME=~/.local/share/rustup
+    curl -fsS https://sh.rustup.rs | sh -s -- -y --quiet --no-modify-path
 fi
 
 ### vscode ###
