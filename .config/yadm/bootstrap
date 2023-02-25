@@ -39,11 +39,12 @@ warn() {
 
 log "Running bootstrap"
 
-for file in $(GLOBIGNORE='*##*' && echo "${BASH_SOURCE[0]}.d"/*.sh); do
+for file in "${BASH_SOURCE[0]}.d"/*.sh; do
+    [[ $file =~ "##" ]] && continue
     filename=$(basename "${file%.sh}")
 
-    # Allow skipping certain scripts (e.g. YADM_BOOTSTRAP_FILTER='^(brew|macos)$')
-    if ! confirm "$filename" || [[ ! $filename =~ ${YADM_BOOTSTRAP_FILTER:-.*} ]]; then
+    # Allow skipping certain scripts
+    if ! confirm "$filename"; then
         warn "Skipping $filename"
         continue
     fi
