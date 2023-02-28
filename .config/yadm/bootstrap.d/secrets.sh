@@ -8,6 +8,7 @@ eval "$(op signin)"
 
 ### docker ###
 debug "Fetching Docker credentials"
+export PATH="${PATH+$PATH:}/Applications/Docker.app/Contents/Resources/bin"
 op item get docker --fields token | docker login --username branchvincent --password-stdin
 
 ## env ###

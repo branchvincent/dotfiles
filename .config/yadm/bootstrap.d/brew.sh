@@ -14,9 +14,3 @@ if ! has yadm || ! brew bundle check &>/dev/null; then
     debug "Installing Homebrew packages"
     brew bundle install --no-lock
 fi
-
-# Ensure `docker` is in PATH (bundled with Docker.app, which creates symlinks on first boot)
-if ! has docker; then
-    export PATH="${PATH+$PATH:}/Applications/Docker.app/Contents/Resources/bin"
-    open -a Docker
-fi

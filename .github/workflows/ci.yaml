@@ -37,8 +37,8 @@ jobs:
       #   run: DEBUG=1 bash -x bootstrap
       - run: echo "DEBUG=1" >> $GITHUB_ENV
       - run: echo "HOME=$(mktemp -d)" >> $GITHUB_ENV
-      - run: brew install yadm
-      - run: yadm clone --bootstrap https://github.com/branchvincent/dotfiles
-      - run: yadm status
-      - run: yadm rev-parse --show-toplevel
-      - run: yadm --yadm-bootstrap $HOME/.config/yadm/bootstrap bootstrap
+      # - run: brew install yadm
+      # - run: yadm clone --bootstrap https://github.com/branchvincent/dotfiles
+      # - run: yadm status
+      # - run: yadm rev-parse --show-toplevel
+      # - run: yadm --yadm-bootstrap $HOME/.config/yadm/bootstrap bootstrap
