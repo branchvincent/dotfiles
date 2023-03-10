@@ -7,7 +7,7 @@ set -gx GIT_MERGE_AUTOEDIT no # accept default merge commit message
 set -gx GIT_WORKSPACE ~/Code
 set -gx LESS --ignore-case --Raw-control-chars --quit-if-one-screen
 set -gx man_bold --bold $fish_color_command
-set -gx man_standout --reverse F0CB02
+set -gx man_standout --reverse $fish_color_search_match
 set -gx man_underline --underline $fish_color_param
 set -gx PAGER less
 
