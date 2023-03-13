@@ -1,6 +1,6 @@
 # https://github.com/direnv/direnv
 
-status is-interactive || exit
+status is-interactive && command -q direnv || exit
 
 set -gx DIRENV_LOG_FORMAT
-command -q direnv && direnv hook fish | source
+direnv hook fish | source
