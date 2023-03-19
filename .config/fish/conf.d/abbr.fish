@@ -30,7 +30,7 @@ if command -q lsd
     alias ls "lsd --icon=never"
     alias ll "ls -l --header --date=relative --blocks=permission,size,user,date,name"
     alias la "ll -A"
-    alias lt "ls --tree --depth=1"
+    alias lt "ls --tree --depth=2"
 end
 _alias rm trash
 _alias top glances
