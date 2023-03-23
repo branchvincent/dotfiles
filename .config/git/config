@@ -1,8 +1,6 @@
 # -*- mode: ini -*-
 [user]
     name = Branch Vincent
-    email = branchevincent@gmail.com
-    signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFztuCzjcL+pTP38y6h7SsLEXMKXPwTgbe7GOYh5PbKM
 [github]
     user = branchvincent
 [core]
@@ -30,12 +28,9 @@
     pruneTags = true    # prune deleted remote tags
 [format]
     pretty = format:%C(bold magenta)%h %C(blue)%>(13,trunc)%ad %C(cyan)%<(15,trunc)%aN %C(red)%d %C(reset)%s
-[gpg]
-    format = ssh
-[gpg "ssh"]
-    program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [include]
-    path = aliases
+    path = config.aliases
+    path = config.user
 [init]
     defaultBranch = main
 [log]
