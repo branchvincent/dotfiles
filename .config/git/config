@@ -20,7 +20,6 @@
     newHighlight = green bold 22
 [commit]
     template = ~/.config/git/commit
-    gpgSign = true
 [diff]
     colorMoved = default    # color moved lines differently
 [fetch]
