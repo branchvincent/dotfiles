@@ -1,4 +1,6 @@
 # -*- mode: ssh-config -*-
+Include ~/.config/ssh/conf.d/*.conf
+
 Host *
     ControlMaster auto
     ControlPath ~/.local/state/ssh-%C
