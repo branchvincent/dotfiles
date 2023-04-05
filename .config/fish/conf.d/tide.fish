@@ -7,9 +7,6 @@ status is-interactive && status is-login || exit
 
 set -gx fish_greeting
 set -g fish_handle_reflow 0 # https://github.com/fish-shell/fish-shell/issues/1706#issuecomment-803655785
-set -gx tide_direnv_color yellow
-set -gx tide_direnv_bg_color normal
-set -gx tide_direnv_denied_color brred
 set -gx tide_gcloud_icon 󱇶
 set -gx tide_kubectl_icon ﴱ
 set -gx tide_node_icon 
