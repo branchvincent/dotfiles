@@ -10,9 +10,12 @@ set -g fish_handle_reflow 0 # https://github.com/fish-shell/fish-shell/issues/17
 set -gx tide_gcloud_icon 󱇶
 set -gx tide_kubectl_icon ﴱ
 set -gx tide_node_icon 
+set -gx tide_python_color 4584B6
+set -gx tide_python_bg_color $tide_virtual_env_bg_color
+set -gx tide_python_icon 
 set -gx tide_rustc_icon 󱘗
 set -gx tide_tea_color cyan
-set -gx tide_tea_bg_color normal
+set -gx tide_tea_bg_color $tide_jobs_bg_color
 set -gx tide_transient_prompt
 string match -q "$TERM_PROGRAM" vscode && set -gx tide_shlvl_threshold "$SHLVL"
 

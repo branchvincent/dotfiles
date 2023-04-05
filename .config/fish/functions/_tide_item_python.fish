@@ -1,6 +1,13 @@
 function _tide_item_python --description 'Show Python version'
-    if set -q tide_python_always_display || test -n "$VIRTUAL_ENV" -o -f pyproject.toml -o -f setup.py
-        test -n "$VIRTUAL_ENV" -o -d __pypackages__ && set color 4584B6 || set color red
-        _tide_language_version -i -c$color python3 --version
+    set -l context ''
+    if set -q VIRTUAL_ENV
+        path dirname $VIRTUAL_ENV | path resolve | read -l dirname
+        path basename $dirname | read -l basename
+        contains -- $dirname (path resolve $_tide_parent_dirs) || set context (set_color bryellow)"  $basename"
+    else if path is $_tide_parent_dirs/{pyproject.toml,setup.py}
+        set context (set_color bryellow)"  venv"
+    else
+        return
     end
+    _tide_print_item python $tide_python_icon' ' (python3 --version | string match -r "[\d.]+")$context
 end
