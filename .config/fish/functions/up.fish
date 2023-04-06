@@ -88,10 +88,6 @@ function __up_fisher --description "Update fish packages"
     fish_update_completions >/dev/null
 end
 
-function __up_gcloud --description "Update gcloud"
-    gcloud components update -q &>/dev/null
-end
-
 function __up_git --description "Update git repos"
     git workspace update &>/dev/null
     env -u GIT_DIR -u GIT_WORK_TREE git workspace switch-and-pull &>/dev/null
