@@ -47,6 +47,9 @@
   "gitlens.statusBar.enabled": false,
   // Go
   "go.toolsManagement.autoUpdate": true,
+  "gopls": {
+    "importShortcut": "Definition"
+  },
   // JavaScript / Typescript
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
