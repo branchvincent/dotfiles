@@ -131,10 +131,6 @@ layout_pdm() {
 
 ### Tea ###
 
-tea() {
-    SHELL=bash command tea "$@" | sed 's|:/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/contrib/xdg_data||'
-}
-
 # Usage: parse_version <filename> <regex> [version]
 #
 # Returns a version constraint for tea, constructed from either the given version or file
@@ -159,13 +155,13 @@ parse_version() {
 # Loads the given packages or falls back to .tea-versions
 use_tea() {
     if (($#)); then
-        eval "$("$direnv" dotenv bash <(tea "$@"))"
+        eval "$("$direnv" dotenv bash <(SHELL=bash tea "$@"))"
     elif [[ -f .tea-versions ]]; then
         args=$(sed '/^[^+]/ s/^/+/' .tea-versions | tr '\n' ' ')
         # shellcheck disable=SC2086
-        eval "$("$direnv" dotenv bash <(tea $args))"
+        eval "$("$direnv" dotenv bash <(SHELL=bash tea $args))"
     else
-        eval "$(tea --env --keep-going --silent --dry-run=w/trace)"
+        eval "$(SHELL=bash tea --env --keep-going --silent --dry-run=w/trace)"
     fi
 }
 
