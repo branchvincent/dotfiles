@@ -86,12 +86,13 @@ use_python() {
 layout_python() {
     # Activate venv
     export VIRTUAL_ENV="$PWD/.venv"
+    export PIP_PYTHON="$VIRTUAL_ENV/bin/python"
     PATH_add "$VIRTUAL_ENV/bin"
 
     # Install
     if [[ ! -d "$VIRTUAL_ENV" ]]; then
-        python3 -m venv "$VIRTUAL_ENV"
-        "$VIRTUAL_ENV"/bin/python3 -m pip install -e .
+        python3 -m venv "$VIRTUAL_ENV" --without-pip
+        pip3 install -e .
     fi
 }
 
@@ -104,17 +105,9 @@ layout_poetry() {
 
     # Activate venv
     export VIRTUAL_ENV="$PWD/.venv"
+    export PIP_PYTHON="$VIRTUAL_ENV/bin/python"
     export POETRY_ACTIVE=1
     PATH_add "$VIRTUAL_ENV/bin"
-
-    # Update pip and friends, every week
-    pip="$VIRTUAL_ENV/bin/pip"
-    now=$(date +%s)
-    modified_at=$(date -r "$pip" +%s)
-    if [[ -x "$pip" && $((now - modified_at)) -gt $((60 * 60 * 24 * 7)) ]]; then
-        $pip install --upgrade pip setuptools wheel
-        touch "$pip" # NOTE: ensure mtime is updated
-    fi
 }
 
 layout_pdm() {
