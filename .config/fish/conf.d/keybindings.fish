@@ -11,6 +11,7 @@ end
 "
 bind \cg 'gh pr view --web &>/dev/null || gh repo view --web &>/dev/null'
 bind \cp workon
+bind \ct 'pushd 2>/dev/null || pushd (mktemp -d) && commandline -f repaint'
 bind \cu '
 if not set -e GIT_DIR GIT_WORK_TREE
     set -gx GIT_DIR "$XDG_DATA_HOME/yadm/repo.git"
