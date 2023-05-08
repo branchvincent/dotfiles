@@ -23,6 +23,8 @@ end
 
 # brew
 set -gx HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/brew/Brewfile
+set -gx HOMEBREW_CACHE $XDG_CACHE_HOME/brew
+set -gx HOMEBREW_LOGS $XDG_CACHE_HOME/brew/logs
 
 # code: https://github.com/microsoft/vscode/issues/3884
 
@@ -50,6 +52,10 @@ set -gx NPM_CONFIG_PREFIX $XDG_DATA_HOME/npm
 set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 set -p XDG_BIN_DIRS $NPM_CONFIG_PREFIX/bin
 __maybe_mkdir $NPM_CONFIG_PREFIX/lib
+
+# pip
+set -gx PIP_CACHE_DIR $XDG_CACHE_HOME/pip
+set -gx PIP_CONFIG_FILE $XDG_CONFIG_HOME/pip/pip.conf
 
 # poetry
 set -gx POETRY_CACHE_DIR $XDG_CACHE_HOME/poetry
