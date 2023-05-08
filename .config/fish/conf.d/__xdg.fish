@@ -51,6 +51,11 @@ set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 set -p XDG_BIN_DIRS $NPM_CONFIG_PREFIX/bin
 __maybe_mkdir $NPM_CONFIG_PREFIX/lib
 
+# poetry
+set -gx POETRY_CACHE_DIR $XDG_CACHE_HOME/poetry
+set -gx POETRY_CONFIG_DIR $XDG_CONFIG_HOME/poetry
+set -gx POETRY_DATA_DIR $XDG_DATA_HOME/poetry
+
 # psql
 set -gx PSQL_HISTORY /dev/null
 
