@@ -77,7 +77,6 @@ function __up_dotfiles --description "Update dotfiles"
     # Update package lists
     command -q brew && brew bundle dump --force
     cat $HOMEBREW_BUNDLE_FILE | string replace -r '("qlmarkdown"|"syntax-highlight")$' '$1, args: { no_quarantine: true }' | tee $HOMEBREW_BUNDLE_FILE >/dev/null
-    command -q code && code --list-extensions >$XDG_CONFIG_HOME/code/extensions.txt
 
     # Trash non-xdg cache
     command rm -rf ~/.{android,bash_history,bundle,config/configstore,docker,k3d,k8slens,kube,node,npm,rustup,yarnrc}

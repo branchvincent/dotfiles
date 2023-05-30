@@ -22,12 +22,3 @@ if ! has rustup; then
     export CARGO_HOME=~/.local/share/cargo RUSTUP_HOME=~/.local/share/rustup
     curl -fsS https://sh.rustup.rs | sh -s -- -y --quiet --no-modify-path
 fi
-
-### vscode ###
-if has code; then
-    missing=$(comm -13 <(code --list-extensions | sort) <(sort ~/.config/code/extensions.txt))
-    if [ -n "$missing" ]; then
-        debug "Installing VSCode extensions"
-        echo "$missing" | sed 's/^/--install-extension /' | xargs code
-    fi
-fi
