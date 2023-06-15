@@ -3,6 +3,7 @@ status is-login || exit
 # Environment
 set -gx BAT_THEME TwoDark
 set -gx EDITOR hx
+set -gx FZF_DEFAULT_OPTS --marker="*" --preview-window=wrap
 set -gx GIT_MERGE_AUTOEDIT no # accept default merge commit message
 set -gx GIT_WORKSPACE ~/Code
 set -gx LESS --ignore-case --Raw-control-chars --quit-if-one-screen
