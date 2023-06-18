@@ -1,5 +1,5 @@
 ### Z4H ###
-# https://github.com/romkatv/zsh4humans/blob/v5/README.md
+# https://github.com/romkatv/zsh4humans/tree/v5#readme
 zstyle ':z4h:' auto-update 'yes'
 zstyle ':z4h:' auto-update-days '7'
 zstyle ':z4h:' prompt-at-bottom 'yes'
