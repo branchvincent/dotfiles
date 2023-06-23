@@ -11,7 +11,7 @@ case "$-" in
     fish="$(command -v fish)"
     if [ -x "$fish" ] && [ "$fish" != "$SHELL" ]; then
         printf "\e[33mNOTICE\e[0m: Replacing %s with fish\n" "$0"
-        exec env SHELL="$fish" SHLVL=0 "$fish" -il
+        exec env SHELL="$fish" "$fish" -il
     fi
     ;;
 esac
