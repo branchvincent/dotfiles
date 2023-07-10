@@ -50,6 +50,7 @@ for file in "${BASH_SOURCE[0]}.d"/*.sh; do
     fi
 
     log "Configuring $filename"
+    # shellcheck source=/dev/null
     source "$file"
     echo
 done

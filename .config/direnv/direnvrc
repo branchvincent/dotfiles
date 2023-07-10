@@ -7,8 +7,7 @@
 __my_dump_at_exit() {
     local ret=$?
     [[ $ret == 0 ]] || echo -e "\033[31mDIRENV FAILED! To debug: export DIRENV_DEBUG=1\033[0m" >&2
-    # shellcheck disable=SC2154
-    "$direnv" dump json "" >&3
+    "${direnv:?}" dump json "" >&3
     trap - EXIT
     exit "$ret"
 }
@@ -149,7 +148,7 @@ parse_version() {
 use_tea() {
     log_status "using tea packages $*"
     if (($#)); then
-        eval "$("$direnv" dotenv bash <(SHELL=bash tea "$@" | sed -E 's|^(.+)=(.*)$|\1="\2"|g'))"
+        eval "$("${direnv:?}" dotenv bash <(SHELL=bash tea "$@" | sed -E 's|^(.+)=(.*)$|\1="\2"|g'))"
     else
         eval "$(SHELL=bash tea +tea.xyz/magic -Esk --chaste env)"
     fi
