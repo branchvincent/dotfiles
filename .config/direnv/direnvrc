@@ -145,16 +145,13 @@ parse_version() {
 
 # Usage: use tea [<pkg> ...]
 #
-# Loads the given packages or falls back to .tea-versions
+# Loads the given packages or falls back to tea's autodetection
 use_tea() {
+    log_status "using tea packages $*"
     if (($#)); then
-        eval "$("$direnv" dotenv bash <(SHELL=bash tea "$@"))"
-    elif [[ -f .tea-versions ]]; then
-        args=$(sed '/^[^+]/ s/^/+/' .tea-versions | tr '\n' ' ')
-        # shellcheck disable=SC2086
-        eval "$("$direnv" dotenv bash <(SHELL=bash tea $args))"
+        eval "$("$direnv" dotenv bash <(SHELL=bash tea "$@" | sed -E 's|^(.+)=(.*)$|\1="\2"|g'))"
     else
-        eval "$(SHELL=bash tea --env --keep-going --silent --dry-run=w/trace)"
+        eval "$(SHELL=bash tea +tea.xyz/magic -Esk --chaste env)"
     fi
 }
 
