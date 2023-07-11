@@ -33,12 +33,16 @@ jobs:
         run: brew install fish
       - name: Lint
         uses: pre-commit/action@v3.0.0
-      # - name: Run bootstrap
-      #   run: DEBUG=1 bash -x bootstrap
-      - run: echo "DEBUG=1" >> $GITHUB_ENV
-      - run: echo "HOME=$(mktemp -d)" >> $GITHUB_ENV
-      # - run: brew install yadm
-      # - run: yadm clone --bootstrap https://github.com/branchvincent/dotfiles
-      # - run: yadm status
-      # - run: yadm rev-parse --show-toplevel
-      # - run: yadm --yadm-bootstrap $HOME/.config/yadm/bootstrap bootstrap
+  bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -Lo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm
+          chmod a+x /usr/local/bin/yadm
+          echo "DEBUG=1" >> $GITHUB_ENV
+          echo "HOME=$PWD/tmp" >> $GITHUB_ENV
+          echo "XDG_CONFIG_HOME=" >> $GITHUB_ENV
+      - run: yadm clone https://github.com/${{ github.repository }}
+      - run: yadm checkout ${{ github.sha }}
+      - run: yadm status && tree -a ~
+      - run: yadm bootstrap

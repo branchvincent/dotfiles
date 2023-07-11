@@ -9,10 +9,11 @@ if ! has brew; then
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-debug "Checking Homebrew packages"
+debug "Installing Homebrew packages"
 export HOMEBREW_BUNDLE_FILE=~/.config/brew/Brewfile
-if ! has yadm || ! brew bundle check &>/dev/null; then
-    debug "Installing Homebrew packages"
+if [ -n "${CI:-}" ]; then
+    debugw "Skipping due to \$CI"
+elif ! has yadm || ! brew bundle check &>/dev/null; then
     brew bundle install --no-lock
 fi
 
