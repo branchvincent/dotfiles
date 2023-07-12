@@ -3,13 +3,17 @@
 # Minimal script to bootstrap https://yadm.io before it clones our dotfiles
 
 set -euo pipefail
-unset GIT_DIR GIT_WORK_TREE
-command -v bash &>/dev/null || { echo >&2 "ERROR: bash must be installed!" && exit 1; }
-command -v git &>/dev/null || { echo >&2 "ERROR: git must be installed!" && exit 1; }
+unset GIT_DIR GIT_WORK_TREE XDG_CONFIG_HOME
+command -v bash &>/dev/null || { printf >&2 "\e[31mERROR\e[0m: bash must be installed!\n" && exit 1; }
+command -v git &>/dev/null || { printf >&2 "\e[31mERROR\e[0m: git must be installed!\n" && exit 1; }
 
 # Prompt for and remember password
 echo "Prompting for sudo password"
-sudo --validate
+if [ -t 0 ]; then
+    sudo --validate
+else
+    sudo -n true
+fi
 while true; do
     sudo -n true
     sleep 60

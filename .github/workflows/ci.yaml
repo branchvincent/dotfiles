@@ -33,16 +33,18 @@ jobs:
         run: brew install fish
       - name: Lint
         uses: pre-commit/action@v3.0.0
+
   bootstrap:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos, ubuntu]
     steps:
       - run: |
           curl -Lo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm
           chmod a+x /usr/local/bin/yadm
-          echo "DEBUG=1" >> $GITHUB_ENV
-          echo "HOME=$PWD/tmp" >> $GITHUB_ENV
-          echo "XDG_CONFIG_HOME=" >> $GITHUB_ENV
-      - run: yadm clone https://github.com/${{ github.repository }}
-      - run: yadm checkout ${{ github.sha }}
-      - run: yadm status && tree -a ~
-      - run: yadm bootstrap
+      - run: |
+          export PATH=$HOME/.cargo/bin:/usr/local/bin:/usr/bin:/bin
+          export HOME=$PWD/tmp DEBUG=1
+          curl -fsSL https://raw.githubusercontent.com/${{ github.repository }}/${{ github.sha }}/bootstrap | bash

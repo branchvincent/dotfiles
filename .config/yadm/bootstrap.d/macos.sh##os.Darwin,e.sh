@@ -5,6 +5,11 @@
 # References
 # - Inspiration: https://mths.be/macos
 
+if [ -n "${CI:-}" ]; then
+    debugw "Skipping due to \$CI"
+    return
+fi
+
 ### General ###
 debug "General"
 defaults write NSGlobalDomain AppleInterfaceStyle -string Dark      # Dark mode
