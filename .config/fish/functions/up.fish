@@ -72,7 +72,7 @@ end
 
 function __up_dotfiles --description "Update dotfiles"
     # Update repo
-    yadm pull -q
+    yadm pull -q --rebase
 
     # Update package lists
     command -q brew && brew bundle dump --force
