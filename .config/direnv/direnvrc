@@ -2,17 +2,6 @@
 
 [ -z "${DIRENV_DEBUG:-}" ] || set -x
 
-# Copy of stdlib's `__dump_at_exit`, but logs on failure
-# https://github.com/direnv/direnv/issues/893
-__my_dump_at_exit() {
-    local ret=$?
-    [[ $ret == 0 ]] || echo -e "\033[31mDIRENV FAILED! To debug: export DIRENV_DEBUG=1\033[0m" >&2
-    "${direnv:?}" dump json "" >&3
-    trap - EXIT
-    exit "$ret"
-}
-trap __my_dump_at_exit EXIT
-
 # Usage: layout auto
 #
 # Detects and loads project based on file structure
