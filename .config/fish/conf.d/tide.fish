@@ -93,7 +93,7 @@ set -U tide_kubectl_bg_color normal
 set -U tide_kubectl_color 326CE5
 set -U tide_kubectl_icon 󰠳
 set -U tide_left_prompt_frame_enabled false
-set -U tide_left_prompt_items pwd git newline character
+set -U tide_left_prompt_items pwd git hg newline character
 set -U tide_left_prompt_prefix
 set -U tide_left_prompt_separator_diff_color ' '
 set -U tide_left_prompt_separator_same_color ' '
