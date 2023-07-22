@@ -15,10 +15,8 @@ if command -q tput
 end
 
 # Check if we need to update universal variables
-set -q __tide_init || set -U __tide_init 0
-set -l v 2
-test $__tide_init -lt $v || exit
-set -U __tide_init $v
+set -q __tide_init && exit
+set -U __tide_init
 
 # Complete tide config. To update:
 #   set -UL | string replace -rf "^tide" "set -U tide"

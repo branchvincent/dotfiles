@@ -72,6 +72,7 @@ end
 
 function __up_dotfiles --description "Update dotfiles"
     # Update repo
+    set -e __tide_init
     yadm pull -q --rebase
 
     # Update package lists
