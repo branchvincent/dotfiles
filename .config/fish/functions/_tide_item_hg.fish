@@ -15,6 +15,8 @@ function _tide_item_hg
     # Operation
     if test -f $root/shelvedstate
         set -f operation merge
+    else if test -f $root/merge/state
+        set -f operation merge
     end
 
     # Status
@@ -25,6 +27,12 @@ function _tide_item_hg
         string match -r ^[ACDMR!] $stat | count
         string match -r '^\?' $stat | count
         : 2>/dev/null)" # TODO: hg log -r "draft()" | string match -r ^changeset: | count
+
+    if test -n "$operation$conflicted"
+        set -g tide_git_bg_color $tide_git_bg_color_urgent
+    else if test -n "$staged$dirty$untracked"
+        set -g tide_git_bg_color $tide_git_bg_color_unstable
+    end
 
     _tide_print_item git $_tide_location_color$tide_git_icon' ' (set_color white; echo -ns $location
         set_color $tide_git_color_operation; echo -ns ' '$operation ' '$step/$total_steps
