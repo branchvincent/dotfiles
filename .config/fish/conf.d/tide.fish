@@ -45,7 +45,7 @@ set -U tide_context_color_ssh D7AF87
 set -U tide_context_hostname_parts 1
 set -U tide_crystal_bg_color normal
 set -U tide_crystal_color FFFFFF
-set -U tide_crystal_icon ⬢
+set -U tide_crystal_icon 
 set -U tide_direnv_bg_color normal
 set -U tide_direnv_bg_color_denied normal
 set -U tide_direnv_color D7AF00
@@ -53,7 +53,7 @@ set -U tide_direnv_color_denied FF0000
 set -U tide_direnv_icon ▼
 set -U tide_distrobox_bg_color normal
 set -U tide_distrobox_color FF00FF
-set -U tide_distrobox_icon ⬢
+set -U tide_distrobox_icon 󰆧
 set -U tide_docker_bg_color normal
 set -U tide_docker_color 2496ED
 set -U tide_docker_default_contexts default colima
@@ -162,8 +162,8 @@ set -U tide_time_color 5F8787
 set -U tide_time_format
 set -U tide_toolbox_bg_color normal
 set -U tide_toolbox_color 613583
-set -U tide_toolbox_icon ⬢
-set -U tide_transient_prompt
+set -U tide_toolbox_icon 
+set -U tide_transient_enabled true
 set -U tide_vi_mode_bg_color_default normal
 set -U tide_vi_mode_bg_color_insert normal
 set -U tide_vi_mode_bg_color_replace normal
@@ -178,4 +178,4 @@ set -U tide_vi_mode_icon_replace R
 set -U tide_vi_mode_icon_visual V
 set -U tide_virtual_env_bg_color normal
 set -U tide_virtual_env_color 00AFAF
-set -U tide_virtual_env_icon 
+set -U tide_virtual_env_icon 󰌠
