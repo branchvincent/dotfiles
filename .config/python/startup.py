@@ -39,6 +39,7 @@ def launch_repl():
 
     # Configure repl
     def configure(repl):
+        repl.color_depth = "DEPTH_24_BIT"
         repl.complete_while_typing = True
         repl.confirm_exit = False
         repl.highlight_matching_parenthesis = True
