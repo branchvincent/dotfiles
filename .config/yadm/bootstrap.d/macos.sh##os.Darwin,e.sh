@@ -60,6 +60,7 @@ defaults write com.googlecode.iterm2.plist "Default Bookmark Guid" -string 382C8
 defaults write com.googlecode.iterm2.plist DimOnlyText -int 1
 defaults write com.googlecode.iterm2.plist OptionIsMetaForSpecialChars -int 0
 defaults write com.googlecode.iterm2.plist PromptOnQuit -int 0
+defaults write com.googlecode.iterm2.plist TabStyleWithAutomaticOption -int 5
 
 ### Mission Control ###
 debug "Mission Control"
