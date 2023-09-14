@@ -29,9 +29,6 @@ set -U tide_character_icon ❯
 set -U tide_character_vi_icon_default ❮
 set -U tide_character_vi_icon_replace ▶
 set -U tide_character_vi_icon_visual V
-set -U tide_chruby_bg_color normal
-set -U tide_chruby_color B31209
-set -U tide_chruby_icon 
 set -U tide_cmd_duration_bg_color normal
 set -U tide_cmd_duration_color 87875F
 set -U tide_cmd_duration_decimals 0
@@ -132,11 +129,14 @@ set -U tide_python_bg_color normal
 set -U tide_python_color 4584B6
 set -U tide_python_icon 󰌠
 set -U tide_right_prompt_frame_enabled false
-set -U tide_right_prompt_items status cmd_duration context jobs node python rustc java php pulumi chruby go gcloud kubectl distrobox toolbox terraform aws nix_shell crystal elixir tea direnv shlvl
+set -U tide_right_prompt_items status cmd_duration context jobs node python rustc java php pulumi ruby go gcloud kubectl distrobox toolbox terraform aws nix_shell crystal elixir tea direnv shlvl
 set -U tide_right_prompt_prefix ' '
 set -U tide_right_prompt_separator_diff_color ' '
 set -U tide_right_prompt_separator_same_color ' '
 set -U tide_right_prompt_suffix
+set -U tide_ruby_bg_color normal
+set -U tide_ruby_color B31209
+set -U tide_ruby_icon 
 set -U tide_rustc_bg_color normal
 set -U tide_rustc_color F74C00
 set -U tide_rustc_icon 󱘗
