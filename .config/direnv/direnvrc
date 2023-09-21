@@ -133,14 +133,10 @@ parse_version() {
 
 # Usage: use tea [<pkg> ...]
 #
-# Loads the given packages or falls back to tea's autodetection
+# Loads the given packages
 use_tea() {
-    log_status "using tea packages $*"
-    if (($#)); then
-        eval "$("${direnv:?}" dotenv bash <(SHELL=bash tea "$@" | sed -E 's|^(.+)=(.*)$|\1="\2"|g'))"
-    else
-        eval "$(SHELL=bash tea +tea.xyz/magic -Esk --chaste env)"
-    fi
+    log_status "using tea $*"
+    eval "$("${direnv:?}" dotenv bash <(SHELL=bash tea --quiet "$@" | sed -E 's|^(.+)=(.*)$|\1="\2"|g'))"
 }
 
 ### Main ###
