@@ -106,8 +106,8 @@ function __up_rustup --description "Update Rust"
     rustup check &| grep -q available && rustup update
 end
 
-function __up_tea --description "Update tea"
-    env -u GIT_DIR -u GIT_WORK_TREE tea --sync --silent +tea.xyz true
+function __up_pkgx --description "Update pkgx"
+    env -u GIT_DIR -u GIT_WORK_TREE pkgx --sync --silent +pkgx.sh true
 end
 
 # Remove any unfound items

@@ -35,7 +35,7 @@ layout_auto() {
 # Usage: use go [<version>]
 use_go() {
     version=$(parse_version go.mod 'go[[:space:]](.*)' "$@")
-    use_tea +go.dev"$version"
+    use_pkgx +go"$version"
 }
 
 layout_go() {
@@ -48,7 +48,7 @@ layout_go() {
 # Usage: use nodejs [<version>]
 use_nodejs() {
     version=$(parse_version .nvmrc '(.*)' "$@")
-    use_tea +nodejs.org"$version" +npmjs.com
+    use_pkgx +node"$version" +npm
 }
 
 layout_nodejs() {
@@ -68,7 +68,7 @@ layout_nodejs() {
 # Usage: use python [<version>]
 use_python() {
     version=$(parse_version .python-version '(.*)' "$@")
-    use_tea +python.org"$version" +pip.pypa.io
+    use_pkgx +python"$version" +pip
 }
 
 layout_python() {
@@ -110,11 +110,11 @@ layout_pdm() {
     PATH_add "$PWD"/__pypackages__/*/bin
 }
 
-### Tea ###
+### Pkgx ###
 
 # Usage: parse_version <filename> <regex> [version]
 #
-# Returns a version constraint for tea, constructed from either the given version or file
+# Returns a version constraint for pkgx, constructed from either the given version or file
 parse_version() {
     version_file=$1
     version_regex=$2
@@ -131,12 +131,12 @@ parse_version() {
     [[ "$version" = "any" ]] || echo "~${version#v}"
 }
 
-# Usage: use tea [<pkg> ...]
+# Usage: use pkgx [<pkg> ...]
 #
 # Loads the given packages
-use_tea() {
-    log_status "using tea $*"
-    eval "$("${direnv:?}" dotenv bash <(SHELL=bash tea --quiet "$@" | sed -E 's|^(.+)=(.*)$|\1="\2"|g'))"
+use_pkgx() {
+    log_status "using pkgx $*"
+    eval "$("${direnv:?}" dotenv bash <(SHELL=bash pkgx --quiet "$@" | sed -E 's|^(.+)=(.*)$|\1="\2"|g'))"
 }
 
 ### Main ###

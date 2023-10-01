@@ -28,25 +28,25 @@ Options:
   -i, --installed  Use installed version
 
 Commands:"
-    for cmd in (functions -a | string replace -rf "^__use_(?!tea|help)" "")
+    for cmd in (functions -a | string replace -rf "^__use_(?!pkgx|help)" "")
         printf "  %-13""s %s\n" $cmd (desc __use_$cmd)
     end
 end
 
-function __use_tea -a pkg --no-scope-shadowing
+function __use_pkgx -a pkg --no-scope-shadowing
     if set -q _flag_installed
-        path filter --type=dir (tea --prefix)/$pkg/* | string match -r '\d+\.\d+\.\d+'
+        path filter --type=dir $PKGX_DIR/$pkg/* | string match -r '\d+\.\d+\.\d+'
     else
         set -l os (uname | string lower)
         set -l arch (uname -m | string replace "arm64" "aarch64")
-        curl -fsSL https://dist.tea.xyz/$pkg/$os/$arch/versions.txt
+        curl -fsSL https://dist.pkgx.dev/$pkg/$os/$arch/versions.txt
     end
 end
 
 function __use_nodejs --description Node --no-scope-shadowing
-    __use_tea nodejs.org | fzf $fzf_opts
+    __use_pkgx nodejs.org | fzf $fzf_opts
 end
 
 function __use_python --description Python --no-scope-shadowing
-    __use_tea python.org | fzf $fzf_opts
+    __use_pkgx python.org | fzf $fzf_opts
 end

@@ -105,6 +105,8 @@ set -U tide_os_icon 
 set -U tide_php_bg_color normal
 set -U tide_php_color 617CBE
 set -U tide_php_icon 
+set -U tide_pkgx_bg_color normal
+set -U tide_pkgx_color cyan
 set -U tide_private_mode_bg_color normal
 set -U tide_private_mode_color FFFFFF
 set -U tide_private_mode_icon 󰗹
@@ -129,7 +131,7 @@ set -U tide_python_bg_color normal
 set -U tide_python_color 4584B6
 set -U tide_python_icon 󰌠
 set -U tide_right_prompt_frame_enabled false
-set -U tide_right_prompt_items status cmd_duration context jobs node python rustc java php pulumi ruby go gcloud kubectl distrobox toolbox terraform aws nix_shell crystal elixir tea direnv shlvl
+set -U tide_right_prompt_items status cmd_duration context jobs node python rustc java php pulumi ruby go gcloud kubectl distrobox toolbox terraform aws nix_shell crystal elixir pkgx direnv shlvl
 set -U tide_right_prompt_prefix ' '
 set -U tide_right_prompt_separator_diff_color ' '
 set -U tide_right_prompt_separator_same_color ' '
@@ -152,8 +154,6 @@ set -U tide_status_color 5FAF00
 set -U tide_status_color_failure D70000
 set -U tide_status_icon ✔
 set -U tide_status_icon_failure ✘
-set -U tide_tea_bg_color normal
-set -U tide_tea_color cyan
 set -U tide_terraform_bg_color normal
 set -U tide_terraform_color 844FBA
 set -U tide_terraform_icon
