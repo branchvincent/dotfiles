@@ -116,6 +116,7 @@ set -U tide_prompt_color_separator_same_color 949494
 set -U tide_prompt_icon_connection ' '
 set -U tide_prompt_min_cols 34
 set -U tide_prompt_pad_items false
+set -U tide_prompt_transient_enabled true
 set -U tide_pulumi_bg_color normal
 set -U tide_pulumi_color F7BF2A
 set -U tide_pulumi_icon 
@@ -163,7 +164,6 @@ set -U tide_time_format
 set -U tide_toolbox_bg_color normal
 set -U tide_toolbox_color 613583
 set -U tide_toolbox_icon 
-set -U tide_transient_enabled true
 set -U tide_vi_mode_bg_color_default normal
 set -U tide_vi_mode_bg_color_insert normal
 set -U tide_vi_mode_bg_color_replace normal
@@ -176,6 +176,3 @@ set -U tide_vi_mode_icon_default D
 set -U tide_vi_mode_icon_insert I
 set -U tide_vi_mode_icon_replace R
 set -U tide_vi_mode_icon_visual V
-set -U tide_virtual_env_bg_color normal
-set -U tide_virtual_env_color 00AFAF
-set -U tide_virtual_env_icon 󰌠

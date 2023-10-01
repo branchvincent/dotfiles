@@ -8,7 +8,7 @@ set fish_function_path $fish_function_path[1] $fisher_path/functions $fish_funct
 # Install
 if not functions -q fisher && status is-login
     curl -sL git.io/fisher | source && fisher update >/dev/null
-    printf 1112111y | COLUMNS=55 LINES=21 tide configure
+    printf 11121112y | COLUMNS=55 LINES=21 tide configure
 end
 
 # Source conf.d snippets
