@@ -52,5 +52,8 @@
   "python.analysis.autoImportCompletions": true,
   "python.analysis.typeCheckingMode": "basic",
   "python.terminal.activateEnvironment": false, // handled by direnv
-  "[python]": { "editor.defaultFormatter": "charliermarsh.ruff" }
+  "[python]": { "editor.defaultFormatter": "charliermarsh.ruff" },
+  // Ruby
+  "rubyLsp.rubyVersionManager": "custom",
+  "rubyLsp.customRubyCommand": "export PATH=\"$(brew ruby -e \"puts RbConfig.ruby\" | path dirname):$PATH\""
 }
