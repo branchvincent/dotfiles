@@ -1,32 +1,31 @@
-"""Executed on startup of an interactive Python session"""
+"""Executed on startup of an interactive Python session."""
 
 from __future__ import annotations
 
+import os
 import readline
 import sys
-from os import getenv
 
-# Common imports
-try:
-    from dataclasses import dataclass  # noqa: F401
-    from datetime import datetime, time, timedelta  # noqa: F401
-    from pathlib import Path  # noqa: F401
-    from pprint import pprint  # noqa: F401
-except ImportError:
-    pass
+# Exported for convenience
+from dataclasses import dataclass as dataclass
+from datetime import datetime as datetime
+from datetime import time as time
+from datetime import timedelta as timedelta
+from pathlib import Path as Path
+from pprint import pprint as pprint
 
 # Disable default history file
-readline.write_history_file = lambda *args: None
+readline.write_history_file = lambda *_: None
 
 
 def launch_repl():
-    """Launch a better REPL (ptpython), if available"""
-    if sys.version_info < (3, 6):
+    """Launch a better REPL (ptpython), if available."""
+    if sys.version_info < (3, 7):
         # Not compatible
         return
 
     # HACK: inject ptpython
-    prefix = Path(getenv("HOMEBREW_PREFIX", "/opt/homebrew"))
+    prefix = Path(os.getenv("HOMEBREW_PREFIX", "/opt/homebrew"))
     libs = list(prefix.joinpath("opt/ptpython/libexec/lib").glob("python*"))
     if not libs:
         return
@@ -47,7 +46,7 @@ def launch_repl():
         repl.use_code_colorscheme("one-dark")
 
     # Enable history
-    xdg_data = Path(getenv("XDG_DATA_HOME", "~/.local/share")).expanduser()
+    xdg_data = Path(os.getenv("XDG_DATA_HOME", "~/.local/share")).expanduser()
     history_file = xdg_data / "python" / "history"
     history_file.parent.mkdir(parents=True, exist_ok=True)
 
