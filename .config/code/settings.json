@@ -2,9 +2,7 @@
 {
   // Core
   "diffEditor.ignoreTrimWhitespace": false,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": true
-  },
+  "editor.codeActionsOnSave": { "source.organizeImports": true },
   "editor.fontFamily": "MesloLGS Nerd Font",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
@@ -38,9 +36,7 @@
   },
   // Languages //
   // Docker
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-  },
+  "[dockerfile]": { "editor.defaultFormatter": "ms-azuretools.vscode-docker" },
   // Git
   "git.autofetch": true,
   "git.confirmSync": false,
@@ -48,9 +44,7 @@
   "gitlens.statusBar.enabled": false,
   // Go
   "go.toolsManagement.autoUpdate": true,
-  "gopls": {
-    "importShortcut": "Definition"
-  },
+  "gopls": { "importShortcut": "Definition" },
   // JavaScript / Typescript
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -58,7 +52,5 @@
   "python.analysis.autoImportCompletions": true,
   "python.analysis.typeCheckingMode": "basic",
   "python.terminal.activateEnvironment": false, // handled by direnv
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
-  }
+  "[python]": { "editor.defaultFormatter": "charliermarsh.ruff" }
 }
