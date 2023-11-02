@@ -30,6 +30,14 @@ layout_auto() {
     dotenv_if_exists
 }
 
+# Usage: export_alias zz "ls -la" "$PWD/bin"
+export_alias() {
+    local name=$1 cmd=$2 target=$3
+    echo "#!/usr/bin/env bash" >"$target/$name"
+    echo "$cmd" >>"$target/$name"
+    chmod +x "$target/$name"
+}
+
 ### Go ###
 
 # Usage: use go [<version>]
@@ -74,13 +82,15 @@ use_python() {
 layout_python() {
     # Activate venv
     export VIRTUAL_ENV="$PWD/.venv"
-    export PIP_PYTHON="$VIRTUAL_ENV/bin/python"
     PATH_add "$VIRTUAL_ENV/bin"
 
     # Install
     if [[ ! -d "$VIRTUAL_ENV" ]]; then
         python3 -m venv "$VIRTUAL_ENV" --without-pip
         pip3 install -e .
+        # shellcheck disable=SC2016
+        export_alias pip '"${VIRTUAL_ENV:?}/bin/python" -m pip "$@"' "$VIRTUAL_ENV/bin"
+        (cd "$VIRTUAL_ENV/bin" && ln -s pip pip3)
     fi
 }
 
@@ -93,7 +103,6 @@ layout_poetry() {
 
     # Activate venv
     export VIRTUAL_ENV="$PWD/.venv"
-    export PIP_PYTHON="$VIRTUAL_ENV/bin/python"
     export POETRY_ACTIVE=1
     PATH_add "$VIRTUAL_ENV/bin"
 }
