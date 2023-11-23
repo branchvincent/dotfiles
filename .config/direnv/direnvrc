@@ -87,6 +87,7 @@ layout_python() {
     # Install
     if [[ ! -d "$VIRTUAL_ENV" ]]; then
         python3 -m venv "$VIRTUAL_ENV" --without-pip
+        echo "*" >"$VIRTUAL_ENV"/.gitignore
         pip3 install -e .
         # shellcheck disable=SC2016
         export_alias pip '"${VIRTUAL_ENV:?}/bin/python" -m pip "$@"' "$VIRTUAL_ENV/bin"
