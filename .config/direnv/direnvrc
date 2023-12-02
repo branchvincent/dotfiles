@@ -22,7 +22,7 @@ layout_auto() {
     elif [[ -f pdm.lock ]]; then
         log_status "detected pdm project"
         layout pdm
-    elif [[ -f pyproject.toml ]]; then
+    elif [[ -f pyproject.toml || -f setup.py ]]; then
         log_status "detected python project"
         use python
         layout python
@@ -88,7 +88,7 @@ layout_python() {
     if [[ ! -d "$VIRTUAL_ENV" ]]; then
         python3 -m venv "$VIRTUAL_ENV" --without-pip
         echo "*" >"$VIRTUAL_ENV"/.gitignore
-        pip3 install -e .
+        pip3 install -e '.[dev]'
         # shellcheck disable=SC2016
         export_alias pip '"${VIRTUAL_ENV:?}/bin/python" -m pip "$@"' "$VIRTUAL_ENV/bin"
         (cd "$VIRTUAL_ENV/bin" && ln -s pip pip3)
