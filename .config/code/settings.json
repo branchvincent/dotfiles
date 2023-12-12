@@ -1,8 +1,8 @@
 // -*- mode: jsonc -*-
 {
-  // Core
+  "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
-  "editor.codeActionsOnSave": { "source.organizeImports": true },
+  "editor.codeActionsOnSave": { "source.organizeImports": "explicit" },
   "editor.fontFamily": "MesloLGS Nerd Font",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
