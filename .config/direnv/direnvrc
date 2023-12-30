@@ -34,7 +34,7 @@ layout_auto() {
 export_alias() {
     local name=$1 cmd=$2 target=$3
     echo "#!/usr/bin/env bash" >"$target/$name"
-    echo "$cmd" >>"$target/$name"
+    echo "exec $cmd" >>"$target/$name"
     chmod +x "$target/$name"
 }
 
@@ -86,12 +86,13 @@ layout_python() {
 
     # Install
     if [[ ! -d "$VIRTUAL_ENV" ]]; then
-        python3 -m venv "$VIRTUAL_ENV" --without-pip
+        python=$(command -v python3)
+        "$python" -m venv "$VIRTUAL_ENV" --without-pip
         echo "*" >"$VIRTUAL_ENV"/.gitignore
-        pip3 install -e '.[dev]'
         # shellcheck disable=SC2016
-        export_alias pip '"${VIRTUAL_ENV:?}/bin/python" -m pip "$@"' "$VIRTUAL_ENV/bin"
+        export_alias pip "$python"' -m pip --python="${0%/*}/python" "$@"' "$VIRTUAL_ENV/bin"
         (cd "$VIRTUAL_ENV/bin" && ln -s pip pip3)
+        pip3 install -e '.[dev]'
     fi
 }
 

@@ -1,5 +1,6 @@
 // -*- mode: jsonc -*-
 {
+  // Core
   "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.codeActionsOnSave": { "source.organizeImports": "explicit" },
