@@ -22,7 +22,7 @@ jobs:
       - name: Set up repo
         uses: actions/checkout@v4
       - name: Set up cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ env.HOMEBREW_CACHE }}
           key: ${{ runner.os }}-brew-1
