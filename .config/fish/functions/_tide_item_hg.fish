@@ -20,7 +20,7 @@ function _tide_item_hg
     end
 
     # Status
-    set -l stat (HGPLAIN=1 hg status 2>/dev/null)
+    set -l stat (HGPLAIN=1 chg status 2>/dev/null)
     string match -qr '(0|(?<stash>.*))\n(0|(?<conflicted>.*))\n(0|(?<dirty>.*))\n(0|(?<untracked>.*))(\n(0|(?<behind>.*))\t(0|(?<ahead>.*)))?' \
         "$(path filter -f $root/shelved/*.shelve | count
         string match -r ^UU $stat | count
