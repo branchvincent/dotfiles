@@ -16,7 +16,7 @@ repos:
         exclude_types: [zsh] # https://github.com/koalaman/shellcheck/issues/809
 
   - repo: https://github.com/frnmst/md-toc
-    rev: "8.2.2"
+    rev: "8.2.3"
     hooks:
       - id: md-toc
         args: [--in-place, --skip-lines=1, github]
