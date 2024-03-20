@@ -45,6 +45,7 @@
     autoSetupRemote = true
     followTags = true   # always push annotated tag(s)
 [rebase]
+    autoSquash = true
     autoStash = true
 [url "https://"]
     insteadOf = git://
