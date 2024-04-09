@@ -30,14 +30,6 @@ layout_auto() {
     dotenv_if_exists
 }
 
-# Usage: export_alias zz "ls -la" "$PWD/bin"
-export_alias() {
-    local name=$1 cmd=$2 target=$3
-    echo "#!/usr/bin/env bash" >"$target/$name"
-    echo "exec $cmd" >>"$target/$name"
-    chmod +x "$target/$name"
-}
-
 ### Go ###
 
 # Usage: use go [<version>]
@@ -86,13 +78,8 @@ layout_python() {
 
     # Install
     if [[ ! -d "$VIRTUAL_ENV" ]]; then
-        python=$(command -v python3)
-        "$python" -m venv "$VIRTUAL_ENV" --without-pip
-        echo "*" >"$VIRTUAL_ENV"/.gitignore
-        # shellcheck disable=SC2016
-        export_alias pip "$python"' -m pip --python="${0%/*}/python" "$@"' "$VIRTUAL_ENV/bin"
-        (cd "$VIRTUAL_ENV/bin" && ln -s pip pip3)
-        pip3 install -e '.[dev]'
+        uv venv -q
+        uv pip install -e '.[dev]'
     fi
 }
 
