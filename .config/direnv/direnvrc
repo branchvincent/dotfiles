@@ -9,7 +9,6 @@ layout_auto() {
     log_status "detecting layout"
     if [[ -f go.mod ]]; then
         log_status "detected go project"
-        use go
         layout go
     elif [[ -f package.json ]]; then
         log_status "detected node project"
@@ -32,14 +31,9 @@ layout_auto() {
 
 ### Go ###
 
-# Usage: use go [<version>]
-use_go() {
-    version=$(parse_version go.mod 'go[[:space:]](.*)' "$@")
-    use_pkgx +go"$version"
-}
-
 layout_go() {
     export GOBIN="$PWD/bin"
+    export GOTOOLCHAIN=auto
     PATH_add bin
 }
 
