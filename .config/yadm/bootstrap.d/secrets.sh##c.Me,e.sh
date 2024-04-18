@@ -9,16 +9,16 @@ eval "$(op signin)"
 ### docker ###
 debug "Fetching Docker credentials"
 export PATH="${PATH+$PATH:}/Applications/Docker.app/Contents/Resources/bin"
-op item get docker --fields token | docker login --username branchvincent --password-stdin
+op read op://personal/docker/token | docker login --username branchvincent --password-stdin
 
 ## env ###
 debug "Creating shell secrets"
-GITHUB_TOKEN=$(op item get GitHub --fields token)
+GITHUB_TOKEN=$(op read op://personal/github/token)
 export GITHUB_TOKEN
 cat <<EOF >~/.config/fish/conf.d/secrets.fish
 set -gx GITHUB_TOKEN $GITHUB_TOKEN
-set -gx NGROK_AUTHTOKEN $(op item get ngrok --fields token)
-set -gx NPM_TOKEN $(op item get NPM --fields token)
+set -gx NGROK_AUTHTOKEN $(op read op://personal/ngrok/token)
+set -gx NPM_TOKEN $(op read op://personal/npm/token)
 EOF
 chmod 600 ~/.config/fish/conf.d/secrets.fish
 
