@@ -5,7 +5,7 @@ function _tide_item_python --description 'Show Python version'
         path basename $dirname | read -l basename
         contains -- $dirname (path resolve $_tide_parent_dirs) || set context (set_color bryellow)"  $basename"
     else if path is $_tide_parent_dirs/{pyproject.toml,setup.py}
-        set context (set_color bryellow)"  venv"
+        set context (set_color bryellow)" "
     else
         return
     end
