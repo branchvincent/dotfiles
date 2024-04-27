@@ -1,7 +1,7 @@
 function docker --description "Docker wrapper to ensure the daemon is running"
-    if ! pgrep -q Docker
+    if ! pgrep -q OrbStack
         # Boot daemon
-        open -jga Docker || exit 1
+        open -jga OrbStack || exit 1
         while ! curl -f --unix-socket /var/run/docker.sock localhost/_ping &>/dev/null
             sleep 0.5
         end
