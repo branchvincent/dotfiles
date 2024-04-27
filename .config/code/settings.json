@@ -55,6 +55,6 @@
   "python.terminal.activateEnvironment": false, // handled by direnv
   "[python]": { "editor.defaultFormatter": "charliermarsh.ruff" },
   // Ruby
-  "rubyLsp.rubyVersionManager": "custom",
+  "rubyLsp.rubyVersionManager": { "identifier": "custom" },
   "rubyLsp.customRubyCommand": "export PATH=\"$(brew ruby -e \"puts RbConfig.ruby\" | path dirname):$PATH\""
 }
