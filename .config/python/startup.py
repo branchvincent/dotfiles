@@ -18,7 +18,7 @@ from pprint import pprint as pprint
 readline.write_history_file = lambda *_: None
 
 
-def launch_repl():
+def launch_repl() -> None:
     """Launch a better REPL (ptpython), if available."""
     if sys.version_info < (3, 7):
         # Not compatible
@@ -32,12 +32,12 @@ def launch_repl():
     sys.path.append(str(libs[0] / "site-packages"))
 
     try:
-        from ptpython.repl import embed
+        from ptpython.repl import PythonRepl, embed
     except ImportError:
         return
 
     # Configure repl
-    def configure(repl):
+    def configure(repl: PythonRepl) -> None:
         repl.color_depth = "DEPTH_24_BIT"
         repl.complete_while_typing = True
         repl.confirm_exit = False
@@ -55,8 +55,8 @@ def launch_repl():
         embed(
             globals=globals(),
             configure=configure,
-            history_filename=history_file,
-        )
+            history_filename=str(history_file),
+        ),
     )
 
 
