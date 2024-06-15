@@ -32,6 +32,7 @@
   "workbench.iconTheme": "vs-seti",
   // Extensions
   "redhat.telemetry.enabled": false,
+  "ruff.nativeServer": true,
   "[dockercompose][html][javascript][javascriptreact][json][jsonc][markdown][typescript][typescriptreact][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -56,5 +57,5 @@
   "[python]": { "editor.defaultFormatter": "charliermarsh.ruff" },
   // Ruby
   "rubyLsp.rubyVersionManager": { "identifier": "custom" },
-  "rubyLsp.customRubyCommand": "export PATH=\"$(brew ruby -e \"puts RbConfig.ruby\" | path dirname):$PATH\""
+  "rubyLsp.customRubyCommand": "export PATH=\"$(brew ruby -e 'puts RbConfig.ruby' | path dirname):$PATH\""
 }
