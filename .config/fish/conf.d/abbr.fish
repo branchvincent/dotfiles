@@ -36,3 +36,4 @@ if command -q lsd
 end
 _alias rm trash
 _alias top glances
+alias uvx "uv tool run -q"

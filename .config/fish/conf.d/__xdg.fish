@@ -66,7 +66,6 @@ set -gx POETRY_DATA_DIR $XDG_DATA_HOME/poetry
 set -gx PSQL_HISTORY /dev/null
 
 # python
-set -gx PIPX_HOME $XDG_DATA_HOME/pipx
 set -gx PYTHONSTARTUP $XDG_CONFIG_HOME/python/startup.py
 
 # ruby
