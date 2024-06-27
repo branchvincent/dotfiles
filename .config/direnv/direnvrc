@@ -18,9 +18,6 @@ layout_auto() {
         log_status "detected poetry project"
         use python
         layout poetry
-    elif [[ -f pdm.lock ]]; then
-        log_status "detected pdm project"
-        layout pdm
     elif [[ -f pyproject.toml || -f setup.py ]]; then
         log_status "detected python project"
         use python
@@ -88,18 +85,6 @@ layout_poetry() {
     export VIRTUAL_ENV="$PWD/.venv"
     export POETRY_ACTIVE=1
     PATH_add "$VIRTUAL_ENV/bin"
-}
-
-layout_pdm() {
-    # Install, if deps are outdated
-    if [[ ! -d __pypackages__ || pdm.lock -nt "$(echo __pypackages__/*/lib)" ]]; then
-        pdm install
-    fi
-    watch_file pdm.lock
-
-    # Activate PEP 582 (faster equivalent to `pdm --pep582`)
-    path_add PYTHONPATH "$HOMEBREW_PREFIX"/opt/pdm/libexec/lib/python*/site-packages/pdm/pep582
-    PATH_add "$PWD"/__pypackages__/*/bin
 }
 
 ### Pkgx ###
