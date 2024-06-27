@@ -84,6 +84,11 @@ set -p XDG_BIN_DIRS $CARGO_HOME/bin
 set -gx GIT_SSH_COMMAND "ssh -F $XDG_CONFIG_HOME/ssh/config"
 alias ssh $GIT_SSH_COMMAND
 
+# uv
+set -gx UV_CACHE_DIR $XDG_CACHE_HOME/uv
+set -gx UV_TOOL_DIR $XDG_DATA_HOME/uv/tools
+set -gx UV_TOOLCHAIN_DIR $XDG_DATA_HOME/uv/toolchains
+
 # zsh
 set -gx ZDOTDIR $XDG_CONFIG_HOME/zsh
 
