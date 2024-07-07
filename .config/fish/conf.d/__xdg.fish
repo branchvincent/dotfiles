@@ -29,7 +29,7 @@ set -gx HOMEBREW_LOGS $XDG_CACHE_HOME/brew/logs
 # code: https://github.com/microsoft/vscode/issues/3884
 
 # deno
-set -gx DENO_INSTALL_ROOT $XDG_BIN_HOME/..
+set -gx DENO_INSTALL_ROOT ~/.local
 
 # go
 set -gx GOBIN $XDG_BIN_HOME
@@ -77,6 +77,7 @@ set -gx GEM_SPEC_CACHE $XDG_CACHE_HOME/gem
 
 # rust
 set -gx CARGO_HOME $XDG_DATA_HOME/cargo
+set -gx CARGO_INSTALL_ROOT ~/.local
 set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
 set -p XDG_BIN_DIRS $CARGO_HOME/bin
 
