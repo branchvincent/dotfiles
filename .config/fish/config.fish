@@ -15,7 +15,7 @@ set -gx PAGER less
 set -Uq fish_features || set -U fish_features all
 string match -q "$TERM_PROGRAM" vscode && set -gx EDITOR code --wait
 command -q delta || set -gx GIT_PAGER $PAGER
-command -q docker || functions -e docker
+command -q docker podman || functions -e docker
 
 # Daily update
 up --auto
