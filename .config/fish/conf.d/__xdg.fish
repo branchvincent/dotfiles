@@ -88,6 +88,9 @@ set -gx UV_TOOL_DIR $XDG_DATA_HOME/uv/tools
 # zsh
 set -gx ZDOTDIR $XDG_CONFIG_HOME/zsh
 
+# MANPATH
+set -gxp MANPATH : # defer to $PATH
+
 # PATH
 if status is-login
     fish_add_path -g --move --path $XDG_BIN_DIRS $HOMEBREW_PREFIX/{,s}bin
