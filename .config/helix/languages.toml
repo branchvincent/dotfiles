@@ -1,0 +1,9 @@
+# TODO: add to helix
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[[language]]
+name = "python"
+language-servers = ["ruff", "pylsp"]
+auto-format = true
