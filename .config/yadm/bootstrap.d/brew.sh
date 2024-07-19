@@ -2,7 +2,6 @@
 #
 # Install Homebrew and packages
 
-### brew ###
 export PATH="/opt/homebrew/bin:/usr/local/bin:/home/linuxbrew/.linuxbrew/bin${PATH+:$PATH}"
 if ! has brew; then
     debug "Installing Homebrew"
@@ -15,11 +14,5 @@ if [ -n "${CI:-}" ]; then
     debugw "Skipping due to \$CI"
 elif ! has yadm || ! brew bundle check &>/dev/null; then
     brew bundle install --no-lock
-fi
-
-### rust ###
-if ! has rustup; then
-    debug "Installing Rust"
-    export CARGO_HOME=~/.local/share/cargo RUSTUP_HOME=~/.local/share/rustup
-    curl -fsS https://sh.rustup.rs | sh -s -- -y --quiet --no-modify-path
+    RUSTUP_HOME=~/.local/share/rustup rustup default stable
 fi
