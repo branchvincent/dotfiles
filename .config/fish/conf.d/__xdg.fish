@@ -75,10 +75,6 @@ set -gx CARGO_HOME $XDG_DATA_HOME/cargo
 set -gx CARGO_INSTALL_ROOT ~/.local
 set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
 
-# ssh
-set -gx GIT_SSH_COMMAND "ssh -F $XDG_CONFIG_HOME/ssh/config"
-alias ssh $GIT_SSH_COMMAND
-
 # uv
 set -gx UV_CACHE_DIR $XDG_CACHE_HOME/uv
 set -gx UV_PYTHON_INSTALL_DIR $XDG_DATA_HOME/uv/python

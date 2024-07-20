@@ -7,13 +7,15 @@
 /.config/fish/fish_variables
 /.config/gcloud/
 /.config/op/
-/.config/ssh/known_hosts
 /.config/zsh/*.zwc
 !/.github/
 !/.gitignore
 !/.hushlogin
 !/.pre-commit-config.yaml
 !/.profile
+!/.ssh/
+/.ssh/*
+!/.ssh/config
 !/.vscode/
 /.vscode/*
 !/.vscode/settings.json
