@@ -116,6 +116,8 @@ for item in (functions -a | string replace -rf "^__up_(?!all|auto|help)" "")
     switch $item
         case apt
             set cmd apt-get
+        case docker
+            set cmd docker podman
         case dotfiles
             set cmd yadm
         case fisher
