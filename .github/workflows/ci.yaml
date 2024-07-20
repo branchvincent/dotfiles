@@ -45,6 +45,5 @@ jobs:
           curl -Lo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm
           chmod a+x /usr/local/bin/yadm
       - run: |
-          export PATH=$HOME/.cargo/bin:/usr/local/bin:/usr/bin:/bin
           export HOME=$PWD/tmp DEBUG=1
           curl -fsSL https://raw.githubusercontent.com/${{ github.repository }}/${{ github.sha }}/bootstrap | bash
