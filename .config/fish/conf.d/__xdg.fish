@@ -74,7 +74,6 @@ set -gx GEM_SPEC_CACHE $XDG_CACHE_HOME/gem
 set -gx CARGO_HOME $XDG_DATA_HOME/cargo
 set -gx CARGO_INSTALL_ROOT ~/.local
 set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
-set -p XDG_BIN_DIRS $CARGO_HOME/bin
 
 # ssh
 set -gx GIT_SSH_COMMAND "ssh -F $XDG_CONFIG_HOME/ssh/config"
@@ -94,4 +93,5 @@ set -gxp MANPATH : # defer to $PATH
 # PATH
 if status is-login
     fish_add_path -g --move --path $XDG_BIN_DIRS $HOMEBREW_PREFIX/{,s}bin
+    set PATH (path filter -d $PATH)
 end
