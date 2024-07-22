@@ -16,7 +16,6 @@ path is $socket && set -gx SSH_AUTH_SOCK $socket
 
 set -Uq fish_features || set -U fish_features all
 string match -q "$TERM_PROGRAM" vscode && set -gx EDITOR code --wait
-command -q delta || set -gx GIT_PAGER $PAGER
 command -q docker podman || functions -e docker
 
 # Daily update

@@ -4,8 +4,8 @@
 [github]
     user = branchvincent
 [core]
-    autocrlf = input                            # normalize line endings on commit (but not checkout)
-    pager = delta --diff-so-fancy --navigate    # use a better diff visualizer
+    autocrlf = input    # normalize line endings on commit (but not checkout)
+    pager = command -v delta &>/dev/null && delta --diff-so-fancy --navigate || ${PAGER:-less}  # use a better diff visualizer
 [color "diff"]
     meta = yellow
     frag = magenta bold
