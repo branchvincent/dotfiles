@@ -1,0 +1,3 @@
+# -*- mode: ini -*-
+[yadm]
+    auto-private-dirs = false
