@@ -1,6 +1,6 @@
 #!/bin/bash
 
 yadm sparse-checkout set --no-cone '/*' '!/bootstrap'
-if [ "$(yadm config local.class)" = "Me" ]; then
+if [ "$(yadm config local.class)" = "Home" ]; then
     yadm gitconfig status.showUntrackedFiles normal
 fi
