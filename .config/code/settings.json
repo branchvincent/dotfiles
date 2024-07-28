@@ -12,10 +12,9 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "files.associations": {
-    ".env": "properties",
-    ".env.*": "properties",
+    ".env{,.*}": "properties",
     "Brewfile*": "ruby",
-    "pdm.lock": "toml"
+    "{pdm,uv}.lock": "toml"
   },
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
@@ -24,7 +23,7 @@
   "search.useGlobalIgnoreFiles": true,
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.cursorStyle": "line",
-  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
   "terminal.integrated.macOptionIsMeta": true, // TODO: not working?
   "window.nativeTabs": true,
