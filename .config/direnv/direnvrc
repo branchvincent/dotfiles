@@ -59,7 +59,10 @@ layout_nodejs() {
 # Usage: use python [<version>]
 use_python() {
     version=$(parse_version .python-version '(.*)' "$@")
-    use_pkgx +python"$version" +pip
+    version=${version#'~'}
+    version=${version:-3}
+    uv python install -q "$version"
+    PATH_add "$(uv python find "$version")"/..
 }
 
 layout_python() {
