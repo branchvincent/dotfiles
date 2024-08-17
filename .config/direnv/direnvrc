@@ -17,6 +17,9 @@ layout_auto() {
     elif [[ -f poetry.lock ]]; then
         log_status "detected poetry project"
         layout poetry
+    elif [[ -f uv.lock ]]; then
+        log_status "detected uv project"
+        layout uv
     elif [[ -f pyproject.toml || -f setup.py ]]; then
         log_status "detected python project"
         layout python
@@ -69,7 +72,7 @@ layout_python() {
 layout_poetry() {
     # Install, if deps are outdated
     if [[ ! -d .venv || poetry.lock -nt "$(echo .venv/lib/python*/site-packages)" ]]; then
-        uv venv -q
+        [ -d .venv ] || uv venv -q
         poetry install
     fi
     watch_file poetry.lock
@@ -78,6 +81,19 @@ layout_poetry() {
     export VIRTUAL_ENV="$PWD/.venv"
     export POETRY_ACTIVE=1
     PATH_add "$VIRTUAL_ENV/bin"
+}
+
+layout_uv() {
+    # Activate venv
+    export VIRTUAL_ENV="$PWD/.venv"
+    PATH_add "$VIRTUAL_ENV/bin"
+
+    # Install, if deps are outdated
+    if [[ ! -d .venv || uv.lock -nt "$(echo .venv/lib/python*/site-packages)" ]]; then
+        uv sync --frozen
+        touch .venv/lib/python*/site-packages
+    fi
+    watch_file uv.lock
 }
 
 ### Pkgx ###
