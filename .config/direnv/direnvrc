@@ -16,11 +16,9 @@ layout_auto() {
         layout nodejs
     elif [[ -f poetry.lock ]]; then
         log_status "detected poetry project"
-        use python
         layout poetry
     elif [[ -f pyproject.toml || -f setup.py ]]; then
         log_status "detected python project"
-        use python
         layout python
     fi
     dotenv_if_exists
@@ -56,15 +54,6 @@ layout_nodejs() {
 
 ### Python ###
 
-# Usage: use python [<version>]
-use_python() {
-    version=$(parse_version .python-version '(.*)' "$@")
-    version=${version#'~'}
-    version=${version:-3}
-    uv python install -q "$version"
-    PATH_add "$(uv python find "$version")"/..
-}
-
 layout_python() {
     # Activate venv
     export VIRTUAL_ENV="$PWD/.venv"
@@ -80,6 +69,7 @@ layout_python() {
 layout_poetry() {
     # Install, if deps are outdated
     if [[ ! -d .venv || poetry.lock -nt "$(echo .venv/lib/python*/site-packages)" ]]; then
+        uv venv -q
         poetry install
     fi
     watch_file poetry.lock
