@@ -80,7 +80,7 @@ function __up_dotfiles --description "Update dotfiles"
     cat $HOMEBREW_BUNDLE_FILE | string replace -r '("qlmarkdown"|"syntax-highlight")$' '$1, args: { no_quarantine: true }' | tee $HOMEBREW_BUNDLE_FILE >/dev/null
 
     # Trash non-xdg cache
-    command rm -rf ~/.{android,bash_history,bundle,config/configstore,docker,k3d,k8slens,kube,node,npm,rustup,yarnrc}
+    # command rm -rf ~/.{node,npm,rustup,yarnrc}
 end
 
 function __up_fisher --description "Update fish packages"
