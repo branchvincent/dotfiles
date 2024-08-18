@@ -14,12 +14,6 @@ layout_auto() {
         log_status "detected node project"
         use nodejs
         layout nodejs
-    elif [[ -f poetry.lock ]]; then
-        log_status "detected poetry project"
-        layout poetry
-    elif [[ -f uv.lock ]]; then
-        log_status "detected uv project"
-        layout uv
     elif [[ -f pyproject.toml || -f setup.py ]]; then
         log_status "detected python project"
         layout python
@@ -47,9 +41,9 @@ layout_nodejs() {
     PATH_add node_modules/.bin
 
     # Install, if deps are outdated
-    if [[ -f package-lock.json && package-lock.json -nt node_modules/.package-lock.json ]]; then
+    if [[ package-lock.json -nt node_modules/.package-lock.json ]]; then
         npm install
-    elif [[ -f yarn.lock && yarn.lock -nt node_modules ]]; then
+    elif [[ yarn.lock -nt node_modules ]]; then
         yarn install
     fi
     watch_file package-lock.json yarn.lock
@@ -61,39 +55,25 @@ layout_python() {
     # Activate venv
     export VIRTUAL_ENV="$PWD/.venv"
     PATH_add "$VIRTUAL_ENV/bin"
+    watch_file .python-version poetry.lock uv.lock
 
-    # Install
-    if [[ ! -d "$VIRTUAL_ENV" ]]; then
+    # Install, if deps are outdated
+    if [[ ! -f poetry.lock && ! -f uv.lock && ! -d .venv ]]; then
+        log_status "using uv pip"
         uv venv -q
         uv pip install -e '.[dev]'
-    fi
-}
-
-layout_poetry() {
-    # Install, if deps are outdated
-    if [[ ! -d .venv || poetry.lock -nt "$(echo .venv/lib/python*/site-packages)" ]]; then
+    elif [[ poetry.lock -nt "$(echo .venv/lib/python*/site-packages)" ]]; then
+        log_status "using poetry"
         [ -d .venv ] || uv venv -q
-        poetry install
-    fi
-    watch_file poetry.lock
-
-    # Activate venv
-    export VIRTUAL_ENV="$PWD/.venv"
-    export POETRY_ACTIVE=1
-    PATH_add "$VIRTUAL_ENV/bin"
-}
-
-layout_uv() {
-    # Activate venv
-    export VIRTUAL_ENV="$PWD/.venv"
-    PATH_add "$VIRTUAL_ENV/bin"
-
-    # Install, if deps are outdated
-    if [[ ! -d .venv || uv.lock -nt "$(echo .venv/lib/python*/site-packages)" ]]; then
+        # Poetry writes lock after site-packages, check mtimes are within 1 sec
+        lock=$(date -r poetry.lock +%s)
+        site=$(date -r .venv/lib/python*/site-packages +%s)
+        [ $((lock - site)) -le 1 ] || poetry install
+    elif [[ uv.lock -nt "$(echo .venv/lib/python*/site-packages)" ]]; then
+        log_status "using uv"
         uv sync --frozen
-        touch .venv/lib/python*/site-packages
     fi
-    watch_file uv.lock
+    touch .venv/lib/python*/site-packages
 }
 
 ### Pkgx ###
