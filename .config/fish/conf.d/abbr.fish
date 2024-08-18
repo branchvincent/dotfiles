@@ -26,7 +26,7 @@ function _alias
     command -q $argv[2] && alias $argv
 end
 _alias cat bat
-_alias docker podman
+command -q docker || _alias docker podman
 _alias hg chg
 if command -q lsd
     alias ls "lsd --icon=never"
