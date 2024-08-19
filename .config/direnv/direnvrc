@@ -21,6 +21,17 @@ layout_auto() {
     dotenv_if_exists
 }
 
+# Usage: approx_newer_than <file1> <file2> [<tolerance>]
+#
+# Returns 0 if <file1> is approximately newer than <file2>, within a tolerance
+# of <tolerance> seconds.
+approx_newer_than() {
+    tolerance=${3:-1}
+    mtime1=$(date -r "$1" +%s 2>/dev/null || echo 0)
+    mtime2=$(date -r "$2" +%s 2>/dev/null || echo 0)
+    [ $((mtime1 - mtime2)) -gt "$tolerance" ]
+}
+
 ### Go ###
 
 layout_go() {
@@ -43,8 +54,9 @@ layout_nodejs() {
     # Install, if deps are outdated
     if [[ package-lock.json -nt node_modules/.package-lock.json ]]; then
         npm install
-    elif [[ yarn.lock -nt node_modules ]]; then
+    elif approx_newer_than yarn.lock node_modules; then
         yarn install
+        touch node_modules
     fi
     watch_file package-lock.json yarn.lock
 }
@@ -62,16 +74,13 @@ layout_python() {
         log_status "using uv pip"
         uv venv -q
         uv pip install -e '.[dev]'
-    elif [[ poetry.lock -nt "$(echo .venv/lib/python*/site-packages)" ]]; then
-        log_status "using poetry"
-        [ -d .venv ] || uv venv -q
-        # Poetry writes lock after site-packages, check mtimes are within 1 sec
-        lock=$(date -r poetry.lock +%s)
-        site=$(date -r .venv/lib/python*/site-packages +%s)
-        [ $((lock - site)) -le 1 ] || poetry install
     elif [[ uv.lock -nt "$(echo .venv/lib/python*/site-packages)" ]]; then
         log_status "using uv"
         uv sync --frozen
+    elif approx_newer_than poetry.lock .venv/lib/python*/site-packages; then
+        log_status "using poetry"
+        [ -d .venv ] || uv venv -q
+        poetry install
     fi
     touch .venv/lib/python*/site-packages
 }
