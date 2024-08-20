@@ -10,12 +10,15 @@ set -euo pipefail
 
 # Prompt for and remember password
 echo "Prompting for sudo password"
-if [ -t 0 ]; then
+if [ "${EUID:-$(id -u)}" -eq 0 ]; then
+    :
+elif [ -t 0 ]; then
     sudo --validate
 else
     sudo -n true
 fi
 while true; do
+    command -v sudo &>/dev/null || exit
     sudo -n true
     sleep 60
     kill -0 "$$" || exit
