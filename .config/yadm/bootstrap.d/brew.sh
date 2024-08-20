@@ -14,5 +14,5 @@ if [ -n "${CI:-}" ]; then
     debugw "Skipping due to \$CI"
 elif ! has yadm || ! brew bundle check &>/dev/null; then
     brew bundle install --no-lock
-    RUSTUP_HOME=~/.local/share/rustup rustup default stable
+    ! has rustup || RUSTUP_HOME=~/.local/share/rustup rustup default stable
 fi
