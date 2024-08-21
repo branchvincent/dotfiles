@@ -2,7 +2,7 @@
 #
 # Minimal script to bootstrap https://yadm.io before it clones our dotfiles
 
-unset GIT_DIR GIT_WORK_TREE XDG_CONFIG_HOME
+unset GIT_DIR GIT_WORK_TREE INTERACTIVE XDG_CONFIG_HOME
 command -v bash >/dev/null 2>&1 || { printf >&2 "\e[31mERROR\e[0m: bash must be installed!\n" && exit 1; }
 command -v git >/dev/null 2>&1 || { printf >&2 "\e[31mERROR\e[0m: git must be installed!\n" && exit 1; }
 [ -n "$BASH_VERSION" ] || { printf >&2 "\e[31mERROR\e[0m: must be executed using bash!\n" && exit 1; }
