@@ -8,7 +8,7 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
-  "editor.rulers": [100],
+  "editor.rulers": [80],
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "files.associations": {
@@ -53,8 +53,5 @@
   "python.analysis.autoImportCompletions": true,
   "python.analysis.typeCheckingMode": "basic",
   "python.terminal.activateEnvironment": false, // handled by direnv
-  "[python]": { "editor.defaultFormatter": "charliermarsh.ruff" },
-  // Ruby
-  "rubyLsp.rubyVersionManager": { "identifier": "custom" },
-  "rubyLsp.customRubyCommand": "export PATH=\"$(brew ruby -e 'puts RbConfig.ruby' | path dirname):$PATH\""
+  "[python]": { "editor.defaultFormatter": "charliermarsh.ruff" }
 }

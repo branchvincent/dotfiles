@@ -41,9 +41,6 @@ jobs:
       matrix:
         os: [macos, ubuntu]
     steps:
-      - run: |
-          curl -Lo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm
-          chmod a+x /usr/local/bin/yadm
-      - run: |
-          export HOME=$PWD/tmp DEBUG=1
-          curl -fsSL https://raw.githubusercontent.com/${{ github.repository }}/${{ github.sha }}/bootstrap | bash
+      - run: curl -Lo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm
+      - run: chmod a+x /usr/local/bin/yadm
+      - run: curl -fsSL https://raw.githubusercontent.com/${{ github.repository }}/${{ github.sha }}/bootstrap | HOME=$PWD/tmp bash

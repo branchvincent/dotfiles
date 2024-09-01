@@ -9,7 +9,7 @@ eval "$(op signin)"
 ### docker ###
 debug "Fetching Docker credentials"
 export PATH="${PATH+$PATH:}/Applications/OrbStack.app/Contents/MacOS/xbin"
-op read op://personal/docker/token | docker login --username branchvincent --password-stdin
+op read op://personal/docker/token | docker login --username branchv --password-stdin
 
 ## env ###
 debug "Creating shell secrets"
