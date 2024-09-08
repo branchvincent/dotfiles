@@ -36,11 +36,16 @@ jobs:
 
   bootstrap:
     runs-on: ${{ matrix.os }}-latest
+    container: ${{ matrix.container }}
     strategy:
       fail-fast: false
       matrix:
-        os: [macos, ubuntu]
+        include:
+          - os: macos
+          - os: ubuntu
+          - os: ubuntu
+            container: alpine
     steps:
-      - run: curl -Lo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm
-      - run: chmod a+x /usr/local/bin/yadm
+      - run: apk add bash curl git
+        if: matrix.container == 'alpine'
       - run: curl -fsSL https://raw.githubusercontent.com/${{ github.repository }}/${{ github.sha }}/bootstrap | HOME=$PWD/tmp bash
