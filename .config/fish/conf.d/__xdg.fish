@@ -16,6 +16,7 @@ set -gx XDG_CONFIG_HOME ~/.config
 set -gx XDG_DATA_HOME ~/.local/share
 set -gx XDG_STATE_HOME ~/.local/state
 set -gx --path XDG_BIN_DIRS $XDG_BIN_HOME # this too
+set -gx --path XDG_DATA_DIRS /usr/local/share /usr/share
 
 for d in XDG_{BIN,CACHE,CONFIG,DATA,STATE}_HOME
     __maybe_mkdir $$d

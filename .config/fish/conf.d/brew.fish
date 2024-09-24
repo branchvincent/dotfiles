@@ -17,6 +17,7 @@ if not set -q HOMEBREW_PREFIX
     end
 end
 set -gx HOMEBREW_CELLAR $HOMEBREW_PREFIX/Cellar
+set --prepend XDG_DATA_DIRS $HOMEBREW_PREFIX/share
 
 # Register completions (for non-brewed fish)
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-fish
