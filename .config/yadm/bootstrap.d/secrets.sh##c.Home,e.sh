@@ -19,6 +19,7 @@ cat <<EOF >~/.config/fish/conf.d/secrets.fish
 set -gx GITHUB_TOKEN $GITHUB_TOKEN
 set -gx NGROK_AUTHTOKEN $(op read op://personal/ngrok/token)
 set -gx NPM_TOKEN $(op read op://personal/npm/token)
+set -gx UV_PUBLISH_TOKEN $(op read op://personal/pypi/token)
 EOF
 chmod 600 ~/.config/fish/conf.d/secrets.fish
 
