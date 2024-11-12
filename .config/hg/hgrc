@@ -1,3 +1,5 @@
 # -*- mode: ini -*-
 [alias]
-ssync = !$HG shelve && $HG sync && $HG unshelve
+aliases = !$HG config | sed -En "s/^alias.([^=]+)=(.+)/$(tput setaf 6)\1$(tput sgr0) $(printf '\x60') \2/p" | column -t -s $(printf '\x60') | sort
+discard-all = !$HG shelve -A && $HG shelve --delete "$(hg shelve --list | head -1 | cut -d' ' -f1)"
+ssync = !$HG shelve -A && $HG sync && $HG unshelve
