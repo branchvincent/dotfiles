@@ -1,0 +1,3 @@
+# -*- mode: ini -*-
+[alias]
+ssync = !$HG shelve && $HG sync && $HG unshelve
