@@ -1,9 +1,23 @@
 # TODO: add to helix
-[language-server.ruff]
-command = "ruff"
-args = ["server"]
+[language-server]
+ruff = { command = "ruff", args = ["server"] }
+
+[language-server.deno]
+command = "deno"
+args = ["lsp"]
+config = { deno = { enable = true } }
 
 [[language]]
 name = "python"
 language-servers = ["ruff", "pylsp"]
+auto-format = true
+
+[[language]]
+name = "javascript"
+language-servers = ["deno"]
+auto-format = true
+
+[[language]]
+name = "typescript"
+language-servers = ["deno"]
 auto-format = true
