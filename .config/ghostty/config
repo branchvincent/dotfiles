@@ -1,0 +1,4 @@
+# -*- mode: ini -*-
+theme = OneHalfDark
+font-family = MesloLGS Nerd Font Mono
+macos-titlebar-style = tabs
