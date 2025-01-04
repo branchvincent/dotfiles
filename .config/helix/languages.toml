@@ -1,6 +1,6 @@
 # TODO: add to helix
 [language-server]
-ruff = { command = "ruff", args = ["server"] }
+fish-lsp = { command = "fish-lsp", args = ["start"] }
 
 [language-server.deno]
 command = "deno"
@@ -8,8 +8,11 @@ args = ["lsp"]
 config = { deno = { enable = true } }
 
 [[language]]
+name = "fish"
+language-servers = ["fish-lsp"]
+
+[[language]]
 name = "python"
-language-servers = ["ruff", "pylsp"]
 auto-format = true
 
 [[language]]
