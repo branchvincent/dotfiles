@@ -1,11 +1,13 @@
 # TODO: add to helix
-[language-server]
-fish-lsp = { command = "fish-lsp", args = ["start"] }
-
 [language-server.deno]
 command = "deno"
 args = ["lsp"]
 config = { deno = { enable = true } }
+
+[language-server.fish-lsp]
+command = "fish-lsp"
+args = ["start"]
+environment = { "fish_lsp_show_client_popups" = "false" }
 
 [[language]]
 name = "fish"
