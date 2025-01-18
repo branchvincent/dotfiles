@@ -1,10 +1,14 @@
+function __fish_pkgx_cache_dir
+    path filter -d ~/Library/Caches/pkgx ~/.cache/pkgx
+end
+
 function __fish_pkgx_bins
-    set dir $PKGX_DIR/pantry/projects
+    set -l dir (__fish_pkgx_cache_dir)/pantry/projects || return
     pkgx --silent yq .provides "$dir"/**/package.yml | string match -rg -- '^- bin/([^{}]*)$'
 end
 
 function __fish_pkgx_packages
-    set dir $PKGX_DIR/pantry/projects
+    set -l dir (__fish_pkgx_cache_dir)/pantry/projects || return
     string match -rg "$dir/(.*)/package.yml" "$dir"/**/package.yml
 end
 
@@ -16,19 +20,12 @@ end
 
 complete pkgx -f
 
-# Modes
-complete pkgx -n __fish_use_subcommand -l help -d 'print help'
-complete pkgx -n __fish_use_subcommand -l provider -d 'prints provider'
-complete pkgx -n __fish_use_subcommand -l shell-completion -d 'prints shell completions'
-complete pkgx -n __fish_use_subcommand -l shellcode -d 'print shellcode'
-complete pkgx -n __fish_use_subcommand -l version -d 'print version'
-
 # Flags
-complete pkgx -n __fish_use_subcommand -l sync -d 'sync pantry'
-complete pkgx -n __fish_use_subcommand -l update -d 'update the pkg env'
-complete pkgx -n __fish_use_subcommand -l verbose -d 'enable verbosity'
+complete pkgx -n __fish_use_subcommand -l help -d 'print help'
 complete pkgx -n __fish_use_subcommand -l silent -d 'no chat, no errors'
-complete pkgx -n __fish_use_subcommand -l quiet -d 'minimal chat'
+complete pkgx -n __fish_use_subcommand -l version -d 'print version'
+complete pkgx -n __fish_use_subcommand -s j -l json -d 'json output'
+complete pkgx -n __fish_use_subcommand -s q -l quiet -d 'minimal chat'
 
 # Packages
 complete pkgx -f -n __fish_use_subcommand -a '(__fish_pkgx_bins)'

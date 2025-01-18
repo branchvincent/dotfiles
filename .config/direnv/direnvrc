@@ -112,7 +112,7 @@ parse_version() {
 use_pkgx() {
     log_status "using pkgx $*"
     # shellcheck disable=SC2016
-    eval "$("${direnv:?}" dotenv bash <(SHELL=bash pkgx --quiet "$@" | sed 's|${PATH:+:$PATH}|:${PATH}|g'))"
+    eval "$("${direnv:?}" dotenv bash <(SHELL=bash pkgx -q "$@" | sed 's|${PATH:+:$PATH}|:${PATH}|g'))"
 }
 
 ### Main ###

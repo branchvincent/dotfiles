@@ -106,10 +106,6 @@ function __up_rustup --description "Update Rust"
     rustup check &| grep -q available && rustup update
 end
 
-function __up_pkgx --description "Update pkgx"
-    env -u GIT_DIR -u GIT_WORK_TREE pkgx --sync --silent +pkgx.sh true
-end
-
 # Remove any unfound items
 for item in (functions -a | string replace -rf "^__up_(?!all|auto|help)" "")
     set -l cmd $item
