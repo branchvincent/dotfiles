@@ -34,7 +34,7 @@ dockutil --no-restart --add /Applications/Slack.app
 dockutil --no-restart --add /Applications/Spotify.app
 dockutil --no-restart --add /Applications/Google\ Chrome.app
 dockutil --no-restart --add /Applications/Visual\ Studio\ Code.app
-dockutil --no-restart --add /Applications/iTerm.app
+dockutil --no-restart --add /Applications/Ghostty.app
 dockutil --no-restart --add /System/Applications/System\ Settings.app
 dockutil --no-restart --add ~/Documents --sort name --display folder --view list
 dockutil --no-restart --add ~/Downloads --sort dateadded --display folder --view fan
