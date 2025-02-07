@@ -31,7 +31,6 @@
   "workbench.iconTheme": "vs-seti",
   // Extensions
   "redhat.telemetry.enabled": false,
-  "ruff.nativeServer": true,
   "[dockercompose][html][javascript][javascriptreact][json][jsonc][markdown][typescript][typescriptreact][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -52,6 +51,7 @@
   // Python
   "python.analysis.autoImportCompletions": true,
   "python.analysis.typeCheckingMode": "basic",
+  "python.experiments.optOutFrom": ["pythonTerminalEnvVarActivation"],
   "python.terminal.activateEnvironment": false, // handled by direnv
   "[python]": { "editor.defaultFormatter": "charliermarsh.ruff" }
 }
