@@ -7,7 +7,7 @@ config = { deno = { enable = true } }
 [language-server.fish-lsp]
 command = "fish-lsp"
 args = ["start"]
-environment = { "fish_lsp_show_client_popups" = "false" }
+environment = { fish_lsp_show_client_popups = "false" }
 
 [[language]]
 name = "fish"
@@ -16,6 +16,18 @@ language-servers = ["fish-lsp"]
 [[language]]
 name = "python"
 auto-format = true
+
+[language.debugger]
+name = "debugpy"
+transport = "stdio"
+command = "python3"
+args = ["-m", "debugpy.adapter"]
+
+[[language.debugger.templates]]
+name = "source"
+request = "launch"
+completion = [{ name = "entrypoint", completion = "filename", default = "." }]
+args = { mode = "debug", program = "{0}" }
 
 [[language]]
 name = "javascript"
