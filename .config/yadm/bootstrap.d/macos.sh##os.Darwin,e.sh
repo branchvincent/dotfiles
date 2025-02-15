@@ -52,16 +52,6 @@ for ext in public.{data,json,plain-text,python-script,shell-script,source-code,t
     duti -s com.microsoft.VSCode "$ext" all # Set VSCode as default app for code
 done
 
-### iTerm2 ###
-debug "iTerm"
-# shellcheck disable=SC2088
-defaults write com.googlecode.iterm2.plist DynamicProfilesPath -string "~/.config/iterm2"
-defaults write com.googlecode.iterm2.plist "Default Bookmark Guid" -string 382C82BD-43A8-4CF0-95F4-B75123F1F8DC
-defaults write com.googlecode.iterm2.plist DimOnlyText -int 1
-defaults write com.googlecode.iterm2.plist OptionIsMetaForSpecialChars -int 0
-defaults write com.googlecode.iterm2.plist PromptOnQuit -int 0
-defaults write com.googlecode.iterm2.plist TabStyleWithAutomaticOption -int 5
-
 ### Mission Control ###
 debug "Mission Control"
 defaults write com.apple.dock mru-spaces -bool false

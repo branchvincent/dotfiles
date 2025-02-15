@@ -1,8 +1,0 @@
-{
-  "Profiles": [
-    {
-      "Name": "",
-      "Guid": "This is another hack to stop iTerm from creating a symlink here to ~/Library/Application Support/iTerm2"
-    }
-  ]
-}
