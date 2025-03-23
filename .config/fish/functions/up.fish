@@ -85,7 +85,7 @@ end
 
 function __up_fisher --description "Update fish packages"
     fisher update >/dev/null
-    fish_update_completions >/dev/null
+    fish_update_completions &>/dev/null || true
 end
 
 function __up_git --description "Update git repos"

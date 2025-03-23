@@ -31,7 +31,7 @@ confirm() {
 
 log "Running bootstrap"
 
-if interactive && confirm "Is this your ${bold}${white}home${reset} computer? (y/n)"; then
+if [ -z "$(yadm config local.class)" ] && interactive && confirm "Is this your ${bold}${white}home${reset} computer? (y/n)"; then
     yadm config local.class Home
 fi
 
@@ -51,4 +51,8 @@ for file in "${BASH_SOURCE[0]}.d"/*.sh; do
     echo
 done
 
-log "Bootstrap done!"
+log "Bootstrap done! Entering fish..."
+
+if has fish; then
+    exec fish -il
+fi
