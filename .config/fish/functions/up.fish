@@ -27,7 +27,7 @@ Options:
 
 Commands:"
     for cmd in (functions -a | string replace -rf "^__up_(?!all|auto|help)" "")
-        printf "  %-13""s %s\n" $cmd (desc __up_$cmd)
+        printf "  %-13s %s\n" "$cmd" (desc __up_$cmd)
     end
 end
 
@@ -77,7 +77,7 @@ function __up_dotfiles --description "Update dotfiles"
 
     # Update package lists
     command -q brew && brew bundle dump --force
-    cat $HOMEBREW_BUNDLE_FILE | string replace -r '("qlmarkdown"|"syntax-highlight")$' '$1, args: { no_quarantine: true }' | tee $HOMEBREW_BUNDLE_FILE >/dev/null
+    cat "$HOMEBREW_BUNDLE_FILE" | string replace -r '("qlmarkdown"|"syntax-highlight")$' '$1, args: { no_quarantine: true }' | tee "$HOMEBREW_BUNDLE_FILE" >/dev/null
 
     # Trash non-xdg cache
     # command rm -rf ~/.{node,npm,rustup,yarnrc}
@@ -95,7 +95,7 @@ function __up_git --description "Update git repos"
 end
 
 function __up_mas --description "Update macOS apps"
-    mas outdated | grep -q " " && mas upgrade
+    mas outdated | grep -qvz " " || mas upgrade
 end
 
 function __up_macos --description "Update macOS"
@@ -103,7 +103,7 @@ function __up_macos --description "Update macOS"
 end
 
 function __up_rustup --description "Update Rust"
-    rustup check &| grep -q available && rustup update
+    rustup check &| grep -qvz available || rustup update
 end
 
 # Remove any unfound items
