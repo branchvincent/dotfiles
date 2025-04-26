@@ -2,9 +2,10 @@ theme = "onedark"
 
 [editor]
 color-modes = true
+cursor-shape = { insert = "bar" }
+file-picker = { hidden = false }
 
-[editor.cursor-shape]
-insert = "bar"
-
-[editor.file-picker]
-hidden = false
+[keys.normal]
+space.i = ":toggle lsp.display-inlay-hints"
+"C-f" = [":new", ":insert-output yazi --chooser-file=/dev/stdout", ":buffer-close!", ":redraw"]
+"C-g" = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw"]
