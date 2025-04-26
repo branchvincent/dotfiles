@@ -3,8 +3,7 @@ function __fish_pkgx_cache_dir
 end
 
 function __fish_pkgx_bins
-    set -l dir (__fish_pkgx_cache_dir)/pantry/projects || return
-    pkgx --silent yq .provides "$dir"/**/package.yml | string match -rg -- '^- bin/([^{}]*)$'
+    pkgx --query | string match -v '*{{*'
 end
 
 function __fish_pkgx_packages
@@ -24,6 +23,7 @@ complete pkgx -f
 complete pkgx -n __fish_use_subcommand -l help -d 'print help'
 complete pkgx -n __fish_use_subcommand -l silent -d 'no chat, no errors'
 complete pkgx -n __fish_use_subcommand -l version -d 'print version'
+complete pkgx -n __fish_use_subcommand -s Q -l query -d 'query for packages'
 complete pkgx -n __fish_use_subcommand -s j -l json -d 'json output'
 complete pkgx -n __fish_use_subcommand -s q -l quiet -d 'minimal chat'
 
