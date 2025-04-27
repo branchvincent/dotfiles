@@ -1,5 +1,5 @@
-function __fish_pkgx_cache_dir
-    path filter -d ~/Library/Caches/pkgx ~/.cache/pkgx
+function __fish_pkgx_data_dir
+    path filter -d ~/Library/Application\ Support/pkgx ~/.local/share/pkgx
 end
 
 function __fish_pkgx_bins
@@ -7,7 +7,7 @@ function __fish_pkgx_bins
 end
 
 function __fish_pkgx_packages
-    set -l dir (__fish_pkgx_cache_dir)/pantry/projects || return
+    set -l dir (__fish_pkgx_data_dir)[1]/pantry/projects || return
     string match -rg "$dir/(.*)/package.yml" "$dir"/**/package.yml
 end
 
