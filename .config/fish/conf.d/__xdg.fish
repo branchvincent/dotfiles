@@ -53,6 +53,9 @@ set -gx npm_config_userconfig $XDG_CONFIG_HOME/npm/npmrc
 set -gx PIP_CACHE_DIR $XDG_CACHE_HOME/pip
 set -gx PIP_CONFIG_FILE $XDG_CONFIG_HOME/pip/pip.conf
 
+# pkgx
+set -gx PKGX_DIR $XDG_DATA_HOME/pkgx
+
 # poetry
 set -gx POETRY_CACHE_DIR $XDG_CACHE_HOME/poetry
 set -gx POETRY_CONFIG_DIR $XDG_CONFIG_HOME/poetry
