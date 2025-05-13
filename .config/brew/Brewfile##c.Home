@@ -57,6 +57,7 @@ cask "spotify"
 cask "syntax-highlight", args: { no_quarantine: true }
 cask "visual-studio-code"
 vscode "angular.ng-template"
+vscode "astral-sh.ty"
 vscode "bmalehorn.vscode-fish"
 vscode "charliermarsh.ruff"
 vscode "chrislajoie.vscode-modelines"
