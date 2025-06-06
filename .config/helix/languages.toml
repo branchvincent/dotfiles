@@ -1,12 +1,8 @@
 # TODO: add to helix
 [language-server]
+deno = { command = "deno", args = ["lsp"], config.deno.enable = true }
 pkl-lsp = { command = "pkl-lsp" }
 ty = { command = "ty", args = ["server"] }
-
-[language-server.deno]
-command = "deno"
-args = ["lsp"]
-config = { deno = { enable = true } }
 
 [language-server.fish-lsp]
 command = "fish-lsp"
@@ -24,7 +20,7 @@ language-servers = ["pkl-lsp"]
 [[language]]
 name = "python"
 auto-format = true
-language-servers = ["ruff", "jedi", "pylsp", "ty"]
+language-servers = ["ty", "ruff", "jedi", "pylsp"]
 
 [language.debugger]
 name = "debugpy"
