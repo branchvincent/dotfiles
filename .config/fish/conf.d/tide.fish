@@ -88,7 +88,7 @@ set -U tide_kubectl_bg_color normal
 set -U tide_kubectl_color 326CE5
 set -U tide_kubectl_icon 󰠳
 set -U tide_left_prompt_frame_enabled false
-set -U tide_left_prompt_items pwd git hg newline character
+set -U tide_left_prompt_items pwd git hg jj newline character
 set -U tide_left_prompt_prefix
 set -U tide_left_prompt_separator_diff_color ' '
 set -U tide_left_prompt_separator_same_color ' '
@@ -127,7 +127,7 @@ set -U tide_pwd_color_truncated_dirs 8787AF
 set -U tide_pwd_icon
 set -U tide_pwd_icon_home
 set -U tide_pwd_icon_unwritable 
-set -U tide_pwd_markers '.bzr' '.citc' '.git' '.hg' '.node-version' '.python-version' '.ruby-version' '.shorten_folder_marker' '.svn' '.terraform' 'Cargo.toml' 'composer.json' CVS 'go.mod' 'package.json'
+set -U tide_pwd_markers '.bzr' '.citc' '.git' '.hg' '.jj' '.node-version' '.python-version' '.ruby-version' '.shorten_folder_marker' '.svn' '.terraform' 'Cargo.toml' 'composer.json' CVS 'go.mod' 'package.json'
 set -U tide_python_bg_color normal
 set -U tide_python_color 4584B6
 set -U tide_python_icon 󰌠
