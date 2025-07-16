@@ -1,26 +1,10 @@
 # TODO: add to helix
 [language-server]
 deno = { command = "deno", args = ["lsp"], config.deno.enable = true }
-pkl-lsp = { command = "pkl-lsp" }
-ty = { command = "ty", args = ["server"] }
-
-[language-server.fish-lsp]
-command = "fish-lsp"
-args = ["start"]
-environment = { fish_lsp_show_client_popups = "false" }
-
-[[language]]
-name = "fish"
-language-servers = ["fish-lsp"]
-
-[[language]]
-name = "pkl"
-language-servers = ["pkl-lsp"]
 
 [[language]]
 name = "python"
 auto-format = true
-language-servers = ["ty", "ruff", "jedi", "pylsp"]
 
 [language.debugger]
 name = "debugpy"
