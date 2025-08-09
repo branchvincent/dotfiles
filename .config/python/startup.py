@@ -20,7 +20,7 @@ readline.write_history_file = lambda *_: None
 
 def launch_repl() -> None:
     """Launch a better REPL (ptpython), if available."""
-    if sys.version_info < (3, 7):
+    if sys.version_info < (3, 8):
         # Not compatible
         return
 
