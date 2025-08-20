@@ -6,3 +6,5 @@ stash = ["new", "@-"]
 
 [ui]
 default-command = "log"
+diff-formatter = ":git"
+pager = ["delta", "--diff-so-fancy", "--navigate"]
