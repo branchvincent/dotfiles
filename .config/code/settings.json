@@ -1,6 +1,7 @@
 // -*- mode: jsonc -*-
 {
   // Core
+  "chat.disableAIFeatures": true,
   "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.codeActionsOnSave": { "source.organizeImports": "explicit" },
@@ -41,7 +42,7 @@
   },
   // Languages //
   // Docker
-  "[dockerfile]": { "editor.defaultFormatter": "ms-azuretools.vscode-docker" },
+  "[dockerfile]": { "editor.defaultFormatter": "ms-azuretools.vscode-containers" },
   // Git
   "git.autofetch": true,
   "git.blame.editorDecoration.enabled": true,
