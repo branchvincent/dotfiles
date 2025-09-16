@@ -1,5 +1,5 @@
 # -*- mode: ini -*-
-theme = OneHalfDark
+theme = One Half Dark
 font-family = MesloLGS Nerd Font
 confirm-close-surface = false
 cursor-style = bar
