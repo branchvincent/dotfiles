@@ -2,6 +2,7 @@
 
 [aliases]
 aliases = ["config", "list", "aliases"]
+amend = ["squash"]
 stash = ["new", "@-"]
 
 [ui]
