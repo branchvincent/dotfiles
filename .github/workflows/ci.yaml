@@ -14,6 +14,7 @@ concurrency:
 
 env:
   HOMEBREW_CACHE: /home/runner/.cache/Homebrew
+  HOMEBREW_DOWNLOAD_CONCURRENCY: auto
 
 jobs:
   lint:
