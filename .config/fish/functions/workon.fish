@@ -17,10 +17,10 @@ function workon --description "Open a project"
         case ./homebrew/brew
             $cmd $HOMEBREW_REPOSITORY
         case $taps
-            $cmd $HOMEBREW_REPOSITORY/Library/Taps/$chosen
+            $cmd (path normalize $HOMEBREW_REPOSITORY/Library/Taps/$chosen)
         case ''
             return
         case \*
-            $cmd $GIT_WORKSPACE/$chosen
+            $cmd (path normalize $GIT_WORKSPACE/$chosen | string replace ~ '~')
     end
 end
