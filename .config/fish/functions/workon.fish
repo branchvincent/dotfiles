@@ -1,5 +1,5 @@
 function workon --description "Open a project"
-    string replace "$HOMEBREW_REPOSITORY"/Library/Taps/ ./ $HOMEBREW_REPOSITORY/Library/Taps/*/* | read -laz taps
+    path filter -d $HOMEBREW_REPOSITORY/Library/Taps/*/* | string replace "$HOMEBREW_REPOSITORY"/Library/Taps/ ./ | read -laz taps
     set choices ./homebrew/brew $taps (git workspace list 2>/dev/null)
     set chosen (string split ' ' $choices | sort -u | fzf -q "$argv")
 
