@@ -36,7 +36,7 @@ repos:
       - id: fish_indent
         name: Format fish files
         entry: fish_indent -w
-        language: system
+        language: unsupported
         types: [fish]
       - id: shfmt
         name: Format shell files
