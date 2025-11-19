@@ -8,6 +8,7 @@
   "editor.fontFamily": "MesloLGS Nerd Font",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
+  "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.minimap.enabled": false,
   "editor.rulers": [80],
   "explorer.confirmDelete": false,
@@ -35,8 +36,6 @@
   "gitlens.currentLine.enabled": false,
   "gitlens.statusBar.enabled": false,
   "redhat.telemetry.enabled": false,
-  "ty.inlayHints.callArgumentNames": false,
-  "ty.inlayHints.variableTypes": false,
   "[dockercompose][html][javascript][javascriptreact][json][jsonc][markdown][typescript][typescriptreact][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
