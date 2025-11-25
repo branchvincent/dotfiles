@@ -1,4 +1,4 @@
-"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+"$schema" = "https://jj-vcs.dev/latest/config-schema.json"
 
 [aliases]
 aliases = ["config", "list", "aliases"]
@@ -10,3 +10,7 @@ stash = ["new", "@-"]
 default-command = "log"
 diff-formatter = ":git"
 pager = ["delta", "--diff-so-fancy", "--navigate"]
+
+[user]
+name = "Branch Vincent"
+email = "branchevincent@gmail.com"
