@@ -5,4 +5,3 @@ confirm-close-surface = false
 cursor-style = bar
 macos-titlebar-style = tabs
 mouse-hide-while-typing = true
-keybind = super+f=write_screen_file:open
