@@ -5,7 +5,7 @@
     user = branchvincent
 [core]
     autocrlf = input    # normalize line endings on commit (but not checkout)
-    pager = command -v delta >/dev/null 2>&1 && delta --diff-so-fancy --navigate || ${PAGER:-less}  # use a better diff visualizer
+    pager = command -v delta >/dev/null 2>&1 && delta || ${PAGER:-less}  # use a better diff visualizer
 [color "diff"]
     meta = yellow
     frag = magenta bold
@@ -20,6 +20,10 @@
     newHighlight = green bold 22
 [commit]
     template = ~/.config/git/commit
+[delta]
+    diff-so-fancy = true
+    hyperlinks = true
+    navigate = true
 [diff]
     colorMoved = default    # color moved lines differently
 [fetch]

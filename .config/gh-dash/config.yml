@@ -19,6 +19,7 @@ defaults:
     open: true
     width: 50
   prsLimit: 20
+  prApproveComment: ""
   issuesLimit: 20
   view: prs
   layout:
@@ -65,4 +66,4 @@ theme:
       showSeparator: true
       compact: false
 pager:
-  diff: delta --diff-so-fancy --paging=always
+  diff: delta --paging=always
