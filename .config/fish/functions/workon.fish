@@ -1,6 +1,7 @@
 function workon --description "Open a project"
     path filter -d $HOMEBREW_REPOSITORY/Library/Taps/*/* | string replace "$HOMEBREW_REPOSITORY"/Library/Taps/ ./ | read -laz taps
-    set choices ./homebrew/brew $taps (git workspace list 2>/dev/null)
+    path filter -d $HOMEBREW_CACHE/*/.git | path dirname | string replace "$HOMEBREW_CACHE"/ ./homebrew/ | read -laz heads
+    set choices ./homebrew/brew $taps $heads (git workspace list 2>/dev/null)
     set chosen (string split ' ' $choices | sort -u | fzf -q "$argv")
 
     if string length -q -- (commandline)
@@ -18,6 +19,9 @@ function workon --description "Open a project"
             $cmd $HOMEBREW_REPOSITORY
         case $taps
             $cmd (path normalize $HOMEBREW_REPOSITORY/Library/Taps/$chosen)
+        case $heads
+            set repo (string replace ./homebrew/ '' $chosen)
+            $cmd (path normalize $HOMEBREW_CACHE/$repo)
         case ''
             return
         case \*
