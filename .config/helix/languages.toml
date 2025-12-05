@@ -2,6 +2,11 @@
 [language-server]
 deno = { command = "deno", args = ["lsp"], config.deno.enable = true }
 
+[language-server.ciderlsp]
+command = "/google/bin/releases/cider/ciderlsp/ciderlsp"
+args = ["--tooltag=helix", "--noforward_sync_responses"]
+config = { provideFormatter = true }
+
 [[language]]
 name = "python"
 auto-format = true
@@ -25,5 +30,24 @@ auto-format = true
 
 [[language]]
 name = "typescript"
-language-servers = ["deno"]
+language-servers = ["ciderlsp", "deno"]
 auto-format = true
+
+# Cider LSP
+# TODO: we have to manually re-define the default language servers here
+# https://github.com/helix-editor/helix/issues/14769
+[[language]]
+name = "go"
+language-servers = ["ciderlsp", "gopls", "golangci-lint-lsp"]
+
+[[language]]
+name = "protobuf"
+language-servers = ["ciderlsp", "buf", "pbkit", "protols"]
+
+[[language]]
+name = "starlark"
+language-servers = ["ciderlsp", "starpls"]
+
+[[language]]
+name = "textproto"
+language-servers = ["ciderlsp"]
