@@ -77,7 +77,6 @@ function __up_dotfiles --description "Update dotfiles"
 
     # Update package lists
     command -q brew && brew bundle dump --force
-    cat "$HOMEBREW_BUNDLE_FILE" | string replace -r '("qlmarkdown"|"syntax-highlight")$' '$1, args: { no_quarantine: true }' | tee "$HOMEBREW_BUNDLE_FILE" >/dev/null
 
     # Trash non-xdg cache
     # command rm -rf ~/.{node,npm,rustup,yarnrc}

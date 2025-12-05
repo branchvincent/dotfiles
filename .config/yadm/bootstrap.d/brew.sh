@@ -17,5 +17,7 @@ debug "Installing Homebrew packages"
 export HOMEBREW_BUNDLE_FILE=~/.config/brew/Brewfile
 if ! has yadm || ! brew bundle check &>/dev/null; then
     brew bundle install
+    [ ! -d /Applications/QLMarkdown.app/ ] || xattr -dr com.apple.quarantine /Applications/QLMarkdown.app/
+    [ ! -d /Applications/Syntax\ Highlight.app/ ] || xattr -dr com.apple.quarantine /Applications/Syntax\ Highlight.app/
     ! has rustup || RUSTUP_HOME=~/.local/share/rustup rustup default stable
 fi

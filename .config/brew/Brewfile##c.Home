@@ -53,10 +53,10 @@ cask "ngrok"
 cask "omnidisksweeper"
 cask "openlens"
 cask "orbstack"
-cask "qlmarkdown", args: { no_quarantine: true }
+cask "qlmarkdown"
 cask "slack"
 cask "spotify"
-cask "syntax-highlight", args: { no_quarantine: true }
+cask "syntax-highlight"
 cask "visual-studio-code"
 vscode "angular.ng-template"
 vscode "astral-sh.ty"
