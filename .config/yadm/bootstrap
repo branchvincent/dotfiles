@@ -18,21 +18,23 @@ debugw() { printf "${yellow}[bootstrap]${reset} %s!\n" "$@"; }
 log() { printf "${bold}${green}==>${white} %s${reset}\n" "$@"; }
 logw() { printf "${bold}${yellow}==>${white} %s${reset}\n" "$@"; }
 
-confirm() {
-    if ! interactive; then
-        return
-    fi
+ask() {
+    interactive || return 0
     # shellcheck disable=SC2059
     printf "$1"
     read -rn1
     printf "\e[2K\r" # clear line
-    [[ $REPLY =~ ^[Yy]$ ]]
 }
 
 log "Running bootstrap"
 
-if [ -z "$(yadm config local.class)" ] && interactive && confirm "Is this your ${bold}${white}home${reset} computer? (y/n)"; then
-    yadm config local.class Home
+if [ -z "$(yadm config local.class)" ]; then
+    ask "Is this your ${bold}${white}(1) home${reset} or ${bold}${white}(2) work${reset} computer? (1/2/n)"
+    case "${REPLY:-}" in
+    1) yadm config local.class Home ;;
+    2) yadm config local.class Work ;;
+    *) yadm config local.class Default ;;
+    esac
 fi
 
 for file in "${BASH_SOURCE[0]}.d"/*.sh; do
@@ -40,7 +42,8 @@ for file in "${BASH_SOURCE[0]}.d"/*.sh; do
     filename=$(basename "${file%.sh}")
 
     # Allow skipping certain scripts
-    if ! confirm "Configure ${bold}${white}${filename}${reset}? (y/n)"; then
+    ask "Configure ${bold}${white}${filename}${reset}? (y/n)"
+    if [[ ! "${REPLY:-}" =~ ^[Yy]?$ ]]; then
         logw "Skipping $filename"
         continue
     fi
