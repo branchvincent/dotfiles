@@ -36,3 +36,4 @@ if command -q lsd
 end
 _alias rm trash
 _alias top glances
+alias yadmp "yadm --yadm-repo ~/.local/share/yadm/repo-private.git"
