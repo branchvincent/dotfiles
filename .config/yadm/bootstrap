@@ -6,6 +6,7 @@ set -euo pipefail
 [ -n "${DEBUG:-}" ] && set -x
 
 bold='\e[1;39m'
+cyan='\e[36m'
 green='\e[32m'
 white='\e[37m'
 yellow='\e[33m'
@@ -28,16 +29,16 @@ ask() {
 
 log "Running bootstrap"
 
-if [ -z "$(yadm config local.class)" ]; then
-    ask "Is this your ${bold}${white}(1) home${reset} or ${bold}${white}(2) work${reset} computer? (1/2/n)"
+if ! yadm gitconfig local.class &>/dev/null; then
+    ask "Is this your ${bold}${cyan}(1) home${reset} or ${bold}${cyan}(2) work${reset} computer? (1/2/n)"
     case "${REPLY:-}" in
-    1) yadm config local.class Home ;;
-    2) yadm config local.class Work ;;
-    *) yadm config local.class Default ;;
+    1) yadm gitconfig local.class Home ;;
+    2) yadm gitconfig local.class Work ;;
+    *) yadm gitconfig local.class Default ;;
     esac
 fi
 
-for file in "${BASH_SOURCE[0]}.d"/*.sh; do
+for file in "${BASH_SOURCE[0]:-$0}.d"/*.sh; do
     [[ $file =~ "##" ]] && continue
     filename=$(basename "${file%.sh}")
 
