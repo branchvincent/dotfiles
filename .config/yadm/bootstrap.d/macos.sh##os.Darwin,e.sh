@@ -63,6 +63,7 @@ debug "Sharing"
 if [ "$(scutil --get ComputerName)" != "Branch's MacBook" ]; then
     scutil --set ComputerName "Branch's MacBook"
     scutil --set LocalHostName "Branchs-MacBook"
+    scutil --set HostName branchv.dev
 fi
 
 ### Siri ###

@@ -38,7 +38,7 @@ if ! yadm gitconfig local.class &>/dev/null; then
     esac
 fi
 
-for file in "${BASH_SOURCE[0]:-$0}.d"/*.sh; do
+for file in "$0.d"/*.sh; do
     [[ $file =~ "##" ]] && continue
     filename=$(basename "${file%.sh}")
 
