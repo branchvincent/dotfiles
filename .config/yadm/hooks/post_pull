@@ -1,11 +1,14 @@
 #!/bin/bash
 
 yadm sparse-checkout set --no-cone '/*' '!/bootstrap'
-if [ "$(yadm config local.class)" = "Home" ]; then
-    yadm gitconfig status.showUntrackedFiles normal
-fi
+yadm gitconfig submodule.work.active false
+
+case "$(yadm config local.class)" in
+Home) yadm gitconfig status.showUntrackedFiles normal ;;
+Work) yadm submodule update -q --init --remote ;;
+esac
 
 # Repeat command for private repo
-if [ "${YADM_HOOK_REPO:?}" = ~/.local/share/yadm/repo.git ]; then
-    yadm --yadm-repo ~/.local/share/yadm/repo-private.git "${YADM_HOOK_COMMAND:?}"
-fi
+# if [ "${YADM_HOOK_REPO:?}" = ~/.local/share/yadm/repo.git ]; then
+#     yadm --yadm-repo ~/.local/share/yadm/repo-private.git "${YADM_HOOK_COMMAND:?}"
+# fi

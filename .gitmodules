@@ -1,0 +1,6 @@
+[submodule "work"]
+	path = .config/work
+	url = sso://user/branchv/dotfiles
+	branch = main
+	ignore = all
+	update = rebase
