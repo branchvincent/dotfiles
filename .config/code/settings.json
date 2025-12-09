@@ -28,6 +28,7 @@
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
   "terminal.integrated.macOptionIsMeta": true, // TODO: not working?
+  "terminal.integrated.suggest.enabled": false,
   "window.nativeTabs": true,
   "workbench.colorTheme": "One Dark Pro",
   "workbench.iconTheme": "vs-seti",
