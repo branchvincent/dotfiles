@@ -1,11 +1,14 @@
 #!/bin/bash
 
-yadm sparse-checkout set --no-cone '/*' '!/bootstrap'
-yadm gitconfig submodule.work.active false
+# Yadm has extra latency due to auto-alt feature, so use git directly
+export GIT_DIR="${YADM_HOOK_REPO:?}"
 
-case "$(yadm config local.class)" in
-Home) yadm gitconfig status.showUntrackedFiles normal ;;
-Work) yadm submodule update -q --init --remote ;;
+git sparse-checkout set --no-cone '/*' '!/bootstrap'
+git config submodule.work.active false
+
+case "$(git config local.class)" in
+Home) git config status.showUntrackedFiles normal ;;
+Work) git submodule update -q --init --remote ;;
 esac
 
 # Repeat command for private repo

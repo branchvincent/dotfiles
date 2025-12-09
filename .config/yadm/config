@@ -2,3 +2,5 @@
 [yadm]
     auto-private-dirs = false
     cipher = openssl
+[pull]
+	rebase = true
