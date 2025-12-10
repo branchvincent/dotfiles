@@ -34,4 +34,4 @@ fi
 echo "Bootstrapping dotfiles"
 # shellcheck source=/dev/null disable=SC2016
 source /dev/stdin <<<"$(curl -fsSL bootstrap.yadm.io | sed 's|$YADM_REPO/raw/$YADM_RELEASE/yadm|https://github.com/yadm-dev/yadm/raw/master/yadm|')"
-yadm clone --bootstrap https://github.com/branchvincent/dotfiles.git -f
+yadm clone --bootstrap https://github.com/branchv/dotfiles.git -f

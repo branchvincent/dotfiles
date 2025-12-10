@@ -6,14 +6,14 @@ function workon --description "Open a project"
 
     if string length -q -- (commandline)
         set cmd commandline --current-token --replace
-    else if string match -q ./branchvincent/dotfiles "$chosen"
+    else if string match -q ./branchv/dotfiles "$chosen"
         set cmd yadm enter code
     else
         set cmd env -u GIT_DIR -u GIT_WORK_TREE code
     end
 
     switch "$chosen"
-        case ./branchvincent/dotfiles
+        case ./branchv/dotfiles
             $cmd ~
         case ./homebrew/brew
             $cmd $HOMEBREW_REPOSITORY

@@ -45,7 +45,7 @@
 
 For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/managing-commit-signature-verification).
 
-**_Fun fact_**: GitHub exposes the public key at <https://github.com/branchvincent.gpg>
+**_Fun fact_**: GitHub exposes the public key at <https://github.com/branchv.gpg>
 
 ### SSH Keys
 
@@ -77,7 +77,7 @@ For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-t
 
 For more information, see [GitHub's guide](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/connecting-to-github-with-ssh).
 
-**_Fun fact_**: GitHub exposes the public keys at <https://github.com/branchvincent.keys>
+**_Fun fact_**: GitHub exposes the public keys at <https://github.com/branchv.keys>
 
 ## Postgres
 

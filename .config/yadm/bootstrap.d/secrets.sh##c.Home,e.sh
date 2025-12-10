@@ -26,5 +26,5 @@ chmod 600 ~/.config/fish/conf.d/secrets.fish
 ### git ###
 debug "Fetching git credentials"
 printf "protocol=https\nhost=github.com\n" | git credential-osxkeychain erase
-printf "protocol=https\nhost=github.com\nusername=branchvincent\npassword=%s\n" "$GITHUB_TOKEN" | git credential-osxkeychain store
+printf "protocol=https\nhost=github.com\nusername=branchv\npassword=%s\n" "$GITHUB_TOKEN" | git credential-osxkeychain store
 test -f ~/Code/workspace.toml && fish -c 'git workspace update'

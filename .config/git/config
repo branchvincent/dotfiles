@@ -2,7 +2,7 @@
 [user]
     name = Branch Vincent
 [github]
-    user = branchvincent
+    user = branchv
 [core]
     autocrlf = input    # normalize line endings on commit (but not checkout)
     pager = command -v delta >/dev/null 2>&1 && delta || ${PAGER:-less}  # use a better diff visualizer

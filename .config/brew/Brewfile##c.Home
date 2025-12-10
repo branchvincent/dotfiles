@@ -1,4 +1,4 @@
-tap "branchvincent/tap"
+tap "branchv/tap"
 tap "homebrew/cask"
 tap "homebrew/core"
 brew "bat"
