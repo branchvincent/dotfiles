@@ -16,7 +16,7 @@ yadm clone --bootstrap https://github.com/branchv/dotfiles.git
 Otherwise:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/branchv/dotfiles/main/bootstrap | bash
+bash -c "$(curl -fsSL https://github.com/branchv/dotfiles/raw/main/bootstrap)"
 ```
 
 ## Acknowledgements

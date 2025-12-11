@@ -79,8 +79,8 @@ debug "Trackpad"
 defaults write -g com.apple.trackpad.scaling 3 # Max trackpad speed
 
 ### Wallpaper ###
-debug "Wallpaper"
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/System/Library/Desktop Pictures/Monterey Graphic.heic"'
+# debug "Wallpaper"
+# osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/System/Library/Desktop Pictures/.wallpapers/Tahoe Day/Tahoe Day.mov"'
 
 # Restart affected apps
 debug "Restarting apps"
