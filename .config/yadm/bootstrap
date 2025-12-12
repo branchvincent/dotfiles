@@ -38,6 +38,9 @@ if ! yadm gitconfig local.class &>/dev/null; then
     esac
 fi
 
+# shellcheck disable=SC2034
+YADM_CLASS=$(yadm gitconfig local.class | tail -1)
+
 for file in "$0.d"/*.sh; do
     [[ $file =~ "##" ]] && continue
     filename=$(basename "${file%.sh}")

@@ -26,18 +26,20 @@ defaults write com.apple.dock show-recents -bool false       # Hide recent apps
 defaults write com.apple.dock minimize-to-application -int 1 # Minimize apps into itself
 defaults write com.apple.dock magnification -int 1           # Enable magnification
 defaults write com.apple.dock largesize -int 80
-dockutil --no-restart --remove all
-dockutil --no-restart --add /System/Applications/Calendar.app
-dockutil --no-restart --add /System/Applications/Mail.app
-dockutil --no-restart --add /System/Applications/Messages.app
-dockutil --no-restart --add /Applications/Slack.app
-dockutil --no-restart --add /Applications/Spotify.app
-dockutil --no-restart --add /Applications/Google\ Chrome.app
-dockutil --no-restart --add /Applications/Visual\ Studio\ Code.app
-dockutil --no-restart --add /Applications/Ghostty.app
-dockutil --no-restart --add /System/Applications/System\ Settings.app
-dockutil --no-restart --add ~/Documents --sort name --display folder --view list
-dockutil --no-restart --add ~/Downloads --sort dateadded --display folder --view fan
+if [ "${YADM_CLASS:?}" = "Home" ]; then
+    dockutil --no-restart --remove all
+    dockutil --no-restart --add /System/Applications/Calendar.app
+    dockutil --no-restart --add /System/Applications/Mail.app
+    dockutil --no-restart --add /System/Applications/Messages.app
+    dockutil --no-restart --add /Applications/Slack.app
+    dockutil --no-restart --add /Applications/Spotify.app
+    dockutil --no-restart --add /Applications/Google\ Chrome.app
+    dockutil --no-restart --add /Applications/Visual\ Studio\ Code.app
+    dockutil --no-restart --add /Applications/Ghostty.app
+    dockutil --no-restart --add /System/Applications/System\ Settings.app
+    dockutil --no-restart --add ~/Documents --sort name --display folder --view list
+    dockutil --no-restart --add ~/Downloads --sort dateadded --display folder --view fan
+fi
 
 ### Finder ###
 debug "Finder"
@@ -60,7 +62,7 @@ defaults write com.apple.dock wvous-tr-corner -int 12 # Top right: Notification 
 
 ### Sharing ###
 debug "Sharing"
-if [ "$(scutil --get ComputerName)" != "Branch's MacBook" ]; then
+if [ "${YADM_CLASS:?}" = "Home" ] && [ "$(scutil --get ComputerName)" != "Branch's MacBook" ]; then
     scutil --set ComputerName "Branch's MacBook"
     scutil --set LocalHostName "Branchs-MacBook"
     scutil --set HostName branchv.dev
