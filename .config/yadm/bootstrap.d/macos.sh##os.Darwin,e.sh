@@ -12,12 +12,11 @@ fi
 
 ### General ###
 debug "General"
-defaults write NSGlobalDomain AppleInterfaceStyle -string Dark      # Dark mode
-defaults write NSGlobalDomain AppleWindowTabbingMode -string always # Prefer tabs
+defaults write NSGlobalDomain AppleInterfaceStyle -string Dark             # Dark mode
+defaults write NSGlobalDomain AppleIconAppearanceTheme -string RegularDark # Dark icons
+defaults write NSGlobalDomain AppleWindowTabbingMode -string always        # Prefer tabs
 # Touch ID for sudo
-if ! [ -f /etc/pam.d/sudo_local ]; then
-    echo "auth       sufficient     pam_tid.so" | sudo tee /etc/pam.d/sudo_local >/dev/null
-fi
+[ -f /etc/pam.d/sudo_local ] || echo "auth sufficient pam_tid.so" | sudo tee /etc/pam.d/sudo_local >/dev/null
 
 ### Dock ###
 debug "Dock"
