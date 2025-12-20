@@ -13,3 +13,4 @@ path = "."
 env_var = "GITHUB_TOKEN"
 auth_http = true
 skip_forks = true
+exclude = ["crashtest", "poetry-ghsa-", "roadmap", "test-fixture-"]
