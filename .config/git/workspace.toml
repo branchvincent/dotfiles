@@ -3,6 +3,7 @@ provider = "github"
 name = "branchv"
 path = "."
 env_var = "GITHUB_TOKEN"
+auth_http = true
 skip_forks = true
 
 [[provider]]
@@ -10,4 +11,5 @@ provider = "github"
 name = "python-poetry"
 path = "."
 env_var = "GITHUB_TOKEN"
+auth_http = true
 skip_forks = true
