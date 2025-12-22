@@ -1,8 +1,7 @@
 name: Pre-commit autoupdate
 
 on:
-  schedule:
-    - cron: "0 0 * * 0" # weekly
+  schedule: [cron: "0 0 * * 0"] # weekly
   workflow_dispatch:
 
 jobs:
@@ -10,12 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - run: pipx install pre-commit
-      - run: pre-commit autoupdate
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v8
+      - run: pipx install prek
+      - run: prek autoupdate
+      - uses: peter-evans/create-pull-request@v8
         with:
-          branch: chore/pre-commit-autoupdate
+          branch: pre-commit-autoupdate
           title: "pre-commit: autoupdate"
           body: ""
           commit-message: "pre-commit: autoupdate"

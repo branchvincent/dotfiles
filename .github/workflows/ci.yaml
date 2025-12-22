@@ -12,27 +12,12 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  HOMEBREW_CACHE: /home/runner/.cache/Homebrew
-
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up repo
-        uses: actions/checkout@v6
-      - name: Set up cache
-        uses: actions/cache@v5
-        with:
-          path: ${{ env.HOMEBREW_CACHE }}
-          key: ${{ runner.os }}-brew-1
-          restore-keys: ${{ runner.os }}-brew-1
-      - name: Set up Homebrew
-        run: echo /home/linuxbrew/.linuxbrew/bin >> $GITHUB_PATH
-      - name: Install deps
-        run: brew install fish
-      - name: Lint
-        uses: pre-commit/action@v3.0.1
+      - uses: actions/checkout@v6
+      - uses: j178/prek-action@v1
 
   bootstrap:
     runs-on: ${{ matrix.os }}-latest

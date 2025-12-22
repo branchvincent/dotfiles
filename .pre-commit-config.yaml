@@ -16,7 +16,7 @@ repos:
         exclude_types: [zsh] # https://github.com/koalaman/shellcheck/issues/809
 
   - repo: https://github.com/frnmst/md-toc
-    rev: "9.0.0"
+    rev: 9.0.0
     hooks:
       - id: md-toc
         args: [--in-place, --skip-lines=1, github]
@@ -37,7 +37,9 @@ repos:
       - id: fish_indent
         name: Format fish files
         entry: fish_indent -w
-        language: unsupported
+        language: rust
+        additional_dependencies:
+          - cli:https://github.com/fish-shell/fish-shell:4.2.1
         types: [fish]
       - id: shfmt
         name: Format shell files
