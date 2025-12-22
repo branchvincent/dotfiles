@@ -6,7 +6,6 @@
 status is-interactive && status is-login || exit
 
 set -gx fish_greeting
-set -g fish_handle_reflow 0 # https://github.com/fish-shell/fish-shell/issues/1706#issuecomment-803655785
 string match -q "$TERM_PROGRAM" vscode && set -gx tide_shlvl_threshold "$SHLVL"
 if command -q tput
     function tide_prompt_at_bottom --on-event fish_prompt
