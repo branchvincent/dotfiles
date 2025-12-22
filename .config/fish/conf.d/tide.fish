@@ -137,7 +137,6 @@ set -U tide_right_prompt_items status cmd_duration context jobs node python rust
 set -U tide_right_prompt_prefix ' '
 set -U tide_right_prompt_separator_diff_color ' '
 set -U tide_right_prompt_separator_same_color ' '
-set -U tide_right_prompt_suffix ' ' # https://github.com/ghostty-org/ghostty/issues/884
 set -U tide_ruby_bg_color normal
 set -U tide_ruby_color B31209
 set -U tide_ruby_icon 
