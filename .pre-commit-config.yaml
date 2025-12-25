@@ -36,18 +36,18 @@ repos:
     hooks:
       - id: fish_indent
         name: Format fish files
-        entry: fish_indent -w
+        entry: fish_indent --write
         language: rust
         additional_dependencies:
           - cli:https://github.com/fish-shell/fish-shell:4.2.1
         types: [fish]
       - id: shfmt
         name: Format shell files
-        entry: shfmt -i 4 -w
+        entry: shfmt --indent=4 --write
         language: golang
-        additional_dependencies: [mvdan.cc/sh/v3/cmd/shfmt@v3.12.0]
+        additional_dependencies: [mvdan.cc/sh/v3/cmd/shfmt@d1e5f80]
         types: [shell]
-        exclude_types: [zsh] # https://github.com/mvdan/sh/issues/120
+        exclude: .p10k.zsh # https://github.com/mvdan/sh/issues/120
 
   - repo: meta
     hooks:
